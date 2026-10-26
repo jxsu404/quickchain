@@ -24,14 +24,20 @@ Q10 completa la corrida limpia; las filas Q3 son de la prueba del vendedor y el 
 | `40a58cd5` | Q2: SDK, pago 4/4 | [40a58cd5…](https://stellar.expert/explorer/testnet/tx/40a58cd54b4c04e7b649807ba82ccd0ad4b71c0a237b8b3e8cd1c21a68caa32c) |
 | — (sin tx) | Q2: SDK, 5.º pago → `PagoBloqueado: TopeAlcanzado` (contrato, en simulación) | — |
 | — (sin tx) | Q2: SDK, `/caro` → `PagoBloqueado: MontoPorLlamada` (contrato, en simulación) | — |
+| `7bc59672` | Q8: trustline USDC de la tesorería de prueba `GA6HM4CL…` | [7bc59672…](https://stellar.expert/explorer/testnet/tx/7bc596725f9040b2483ad8e8bf6743ae7f37143bc0d73f18576638a461c415dd) |
+| `3fabf3ca` | Q8: deploy de la cuenta-presupuesto `CCKZ7XID…` con tesorería distinta del dueño | [3fabf3ca…](https://stellar.expert/explorer/testnet/tx/3fabf3cace524baf14702e60ef967d85f006129133a2f9cdd27749ac5a9222b0) |
+| `5918d102` | Q8: `renovar` (tope 0,05, recarga 0,03) | [5918d102…](https://stellar.expert/explorer/testnet/tx/5918d1023c8eaf84234aaf94c64a57d937f10ed806e453672e6078d926323919) |
+| `dd977105` | Q8: pago x402 de US$0,01 vía SDK (+1.000 unidades de comisión pendiente) | [dd977105…](https://stellar.expert/explorer/testnet/tx/dd9771057ccaf0448cb60b5e0c5325bc1124184aca2efa2a827fe355a364824c) |
+| `2de5dc18` | Q8: 2.º pago de US$0,01 vía SDK (+1.000) | [2de5dc18…](https://stellar.expert/explorer/testnet/tx/2de5dc18d620d88bf1b3d7ece108848a8fcfa21be09c4a385634392dcc112c2b) |
+| `820db07e` | Q8: `cobrar_comision()` → **2.000 unidades (0,0002 USDC) a la tesorería** | [820db07e…](https://stellar.expert/explorer/testnet/tx/820db07e4b543a68ed5297398ae51009113aeadbfc1e75ac34d0be2ee919dc18) |
 
 <!-- enlaces:auto -->
 ## Enlaces
 
 - ⬆️ Arriba: [Mapa (hub)](MAPA.md) · [Índice de docs](INDICE.md)
 - 📖 Fuente de verdad: [PLAN-OPUS — la biblia](PLAN-OPUS.md)
-- Relacionado: [Demo (testnet)](DEMO.md)
-- Lo enlazan: [agent-client](../agent-client/AGENTS.md) · [api-demo](../api-demo/AGENTS.md) · [Decisiones](DECISIONES.md) · [Demo (testnet)](DEMO.md) · [Índice de docs](INDICE.md) · [Mapa (hub)](MAPA.md)
+- Relacionado: [Demo (testnet)](DEMO.md) · [Costos (Q8)](COSTOS.md)
+- Lo enlazan: [Costos (Q8)](COSTOS.md) · [agent-client](../agent-client/AGENTS.md) · [api-demo](../api-demo/AGENTS.md) · [Decisiones](DECISIONES.md) · [Demo (testnet)](DEMO.md) · [Índice de docs](INDICE.md) · [Mapa (hub)](MAPA.md)
 - Tags: #quickchain #docs
 <!-- /enlaces:auto -->
 

@@ -15,6 +15,8 @@ Cumple la fila Q2 de [PLAN-OPUS](../docs/PLAN-OPUS.md). Vive en `agent-client/`,
 ## Comandos
 - `pnpm agente`: demo; paga `API_DEMO_URL` (`/tipo-cambio` por defecto) `LLAMADAS` veces e imprime los links y el estado.
 - `pnpm --filter agent-client agente-nuevo`: crea la llave del agente. La secreta va **solo** a `AGENTE_ARCHIVO` (fuera del repo, chmod 600); en pantalla salen la pública y el hex para el constructor del contrato.
+- `pnpm --filter agent-client cobrar-comision` (Q8): llama `cobrar_comision()` de `BUDGET_CONTRACT_ID`; la comisión va a la tesorería fija; `COBRADOR_SECRET` = cualquier G… con XLM (solo para el fee).
+- `pnpm --filter agent-client medir-costos etiqueta=hash …` (Q8): tabla de fees reales desde Horizon con links; resultado en [docs/COSTOS.md](../docs/COSTOS.md).
 - `pnpm --filter agent-client test`: tests con un 402 simulado (sin red).
 
 ## Variables (nombres en `.env.example`)
@@ -27,8 +29,8 @@ Evidencia en testnet: [transacciones](../docs/transacciones.md).
 
 - ⬆️ Arriba: [Mapa (hub)](../docs/MAPA.md) · [Índice de docs](../docs/INDICE.md)
 - 📖 Fuente de verdad: [PLAN-OPUS — la biblia](../docs/PLAN-OPUS.md)
-- Relacionado: [Transacciones (testnet)](../docs/transacciones.md) · [Decisiones](../docs/DECISIONES.md) · [contracts/budget](../contracts/budget/AGENTS.md) · [api-demo](../api-demo/AGENTS.md) · [Demo (testnet)](../docs/DEMO.md)
+- Relacionado: [Costos (Q8)](../docs/COSTOS.md) · [Transacciones (testnet)](../docs/transacciones.md) · [Decisiones](../docs/DECISIONES.md) · [contracts/cuenta-presupuesto](../contracts/cuenta-presupuesto/AGENTS.md) · [api-demo](../api-demo/AGENTS.md) · [Demo (testnet)](../docs/DEMO.md)
 - Issue: [#2](https://github.com/jxsu404/quickchain/issues/2)
-- Lo enlazan: [AGENTS (raíz)](../AGENTS.md) · [Tareas](../TAREAS.md) · [api-demo](../api-demo/AGENTS.md) · [contracts/budget](../contracts/budget/AGENTS.md) · [Arquitectura](../docs/ARQUITECTURA.md) · [Demo (testnet)](../docs/DEMO.md) · [Mapa (hub)](../docs/MAPA.md) · [PLAN-OPUS — la biblia](../docs/PLAN-OPUS.md)
+- Lo enlazan: [AGENTS (raíz)](../AGENTS.md) · [Tareas](../TAREAS.md) · [api-demo](../api-demo/AGENTS.md) · [contracts/cuenta-presupuesto](../contracts/cuenta-presupuesto/AGENTS.md) · [Arquitectura](../docs/ARQUITECTURA.md) · [Demo (testnet)](../docs/DEMO.md) · [Mapa (hub)](../docs/MAPA.md) · [PLAN-OPUS — la biblia](../docs/PLAN-OPUS.md)
 - Tags: #quickchain #paquete
 <!-- /enlaces:auto -->

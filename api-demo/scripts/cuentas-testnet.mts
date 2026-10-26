@@ -1,4 +1,4 @@
-// Prepara cuentas desechables de TESTNET para Q3: pagador (G…), vendedor (payTo) y facilitador.
+// Prepara cuentas desechables de TESTNET: pagador (G…), vendedor (payTo), facilitador y tesorería (Q8).
 // Las llaves se guardan SOLO en el archivo indicado por QC_SECRETS_FILE (fuera del repo, chmod 600).
 // Nunca imprime secretos. Fondea con friendbot, crea trustline USDC (Circle testnet) y compra USDC
 // en el DEX de testnet con XLM (path payment) para el pagador.
@@ -12,7 +12,7 @@ const horizon = new Horizon.Server("https://horizon-testnet.stellar.org");
 
 const env: Record<string, string> = {};
 if (existsSync(ARCHIVO)) for (const l of readFileSync(ARCHIVO, "utf8").split("\n")) { const i = l.indexOf("="); if (i > 0) env[l.slice(0, i)] = l.slice(i + 1); }
-for (const rol of ["PAGADOR", "VENDEDOR", "FACILITADOR"]) env[`${rol}_SECRET`] ??= Keypair.random().secret();
+for (const rol of ["PAGADOR", "VENDEDOR", "FACILITADOR", "TESORERIA"]) env[`${rol}_SECRET`] ??= Keypair.random().secret();
 writeFileSync(ARCHIVO, Object.entries(env).map(([k, v]) => `${k}=${v}`).join("\n") + "\n"); chmodSync(ARCHIVO, 0o600);
 
 const kp = (rol: string) => Keypair.fromSecret(env[`${rol}_SECRET`]);
@@ -29,8 +29,8 @@ async function tx(k: Keypair, ops: any[]) {
 const tieneTrust = async (k: Keypair) => (await horizon.loadAccount(k.publicKey())).balances.some((b: any) => b.asset_code === "USDC" && b.asset_issuer === USDC.getIssuer());
 const saldo = async (k: Keypair) => (await horizon.loadAccount(k.publicKey())).balances.find((b: any) => b.asset_code === "USDC" && b.asset_issuer === USDC.getIssuer())?.balance ?? "0";
 
-for (const rol of ["PAGADOR", "VENDEDOR", "FACILITADOR"]) { await fondear(kp(rol)); console.log(rol, kp(rol).publicKey()); }
-for (const rol of ["PAGADOR", "VENDEDOR"]) if (!(await tieneTrust(kp(rol)))) {
+for (const rol of ["PAGADOR", "VENDEDOR", "FACILITADOR", "TESORERIA"]) { await fondear(kp(rol)); console.log(rol, kp(rol).publicKey()); }
+for (const rol of ["PAGADOR", "VENDEDOR", "TESORERIA"]) if (!(await tieneTrust(kp(rol)))) {
   const h = await tx(kp(rol), [Operation.changeTrust({ asset: USDC })]);
   console.log(`trustline ${rol}: https://stellar.expert/explorer/testnet/tx/${h}`);
 }

@@ -1,0 +1,228 @@
+{
+  "fecha_cr": "25/10/2026, 8:52:20 p. m.",
+  "red": "testnet",
+  "usdc_sac": "CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA",
+  "usdc_asset": "USDC:GBBD47IF6LWK7P7MDEVSCWR7DPUWV3NY3DTQEVFL4NAT4AQH3ZLLFLA5",
+  "wasm_hash": "7190eb76ae99f35f71854e4c06bc89db3b17025ff836693c7b87b874b9163288",
+  "cuentas": {
+    "owner": "GCP4NEWM7CDCWA6Q7732YPZN6LG4IDVGSJZHJPADCHJ66YOXU7K3NA3D",
+    "tesoreria": "GBPWNQGVFX7MAWYKNP5VFO43II4GJOTTGDOTDW4LQPLUQGYPXCIHW6W3",
+    "vendedor": "GA4OOAEAL2IW7XBJQCWEPZIH5VABUGOO7TV3JDKNEWNY4HJNW62D6WVC",
+    "agente_hex": "6b2c7af77efdc6ef473e12c57ee22956bbef384f57b412268c442505716fb866",
+    "agente2_hex": "e2143bbe0c163b6e3be3e9e830e849ca50f687dc7dcd7364848a298de1dcce70",
+    "llave_ajena_hex": "38fd10f58866b028976f4787470a47412c5c842d563b00f67d9fb120be310340"
+  },
+  "preparacion": [
+    {
+      "paso": "trustline USDC (owner)",
+      "tx": "d2a5f0dc7fafb9efc7a8d0350f7bb17ab21a252eaaa484a9a0de5d5d156c5a16",
+      "fee": 100
+    },
+    {
+      "paso": "trustline USDC (tesoreria)",
+      "tx": "019a45475838f81aa7493564588369308aa3102742e116b0c4928850c13d3e8d",
+      "fee": 100
+    },
+    {
+      "paso": "trustline USDC (vendedor)",
+      "tx": "aadad6f2ca02c1973df0fad4577372271cbb5b7435f240007928618b77497a1a",
+      "fee": 100
+    },
+    {
+      "paso": "faucet de Circle por API (sin navegador)",
+      "resultado": "HTTP 404 (https://faucet.circle.com/api/faucet no existe; la API /v1/faucet/drips pide API key y no incluye Stellar)"
+    },
+    {
+      "paso": "2 USDC de Circle vía path payment XLM→USDC en el DEX de testnet",
+      "tx": "8fdd0760b59941153d258a9a6cdb10c3478e3af92383fec4b0453eba7fd907aa",
+      "fee": 100
+    }
+  ],
+  "pruebas": [
+    {
+      "prueba": "01 renovar (tope 0,05; máx 0,02; 7 días; recarga 0,10)",
+      "comando": "renovar(500000, 200000, ahora+7d, 1000000) firmado por el dueño",
+      "esperado": "tx OK; saldo de C = 1.000.000; periodo 1",
+      "real": "tx OK; estado: {\"agente\":\"6b2c7af77efdc6ef473e12c57ee22956bbef384f57b412268c442505716fb866\",\"comision_pendiente\":\"0\",\"fee_bps\":100,\"fin_periodo\":\"1793588002\",\"gastado\":\"0\",\"max_por_llamada\":\"200000\",\"owner\":\"GCP4NEWM7CDCWA6Q7732YPZN6LG4IDVGSJZHJPADCHJ66YOXU7K3NA3D\",\"pausada\":false,\"periodo\":1,\"restante\":\"500000\",\"saldo\":\"1000000\",\"tesoreria\":\"GBPWNQGVFX7MAWYKNP5VFO43II4GJOTTGDOTDW4LQPLUQGYPXCIHW6W3\",\"token\":\"CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA\",\"tope\":\"500000\"}",
+      "ok": true,
+      "tx": "f9a32bf365a3b5f70d18454ce22fc85c7af209767cfaaec13bafb9057587741b",
+      "fee": 104612,
+      "hora_cr": "25/10/2026, 8:53:28 p. m."
+    },
+    {
+      "prueba": "02 pago válido 0,01 al vendedor",
+      "comando": "USDC.transfer(C, vendedor, 100000), auth de C firmada por el agente",
+      "esperado": "tx OK; gastado 101.000; comisión 1.000",
+      "real": "tx OK; gastado 101000, pendiente 1000",
+      "ok": true,
+      "tx": "c73c04500b0683455b3650c624029562f0a007ff0b63d33ee174884705edd336",
+      "fee": 11805,
+      "hora_cr": "25/10/2026, 8:53:33 p. m."
+    },
+    {
+      "prueba": "03 pago de 0,03 (> máx 0,02)",
+      "comando": "USDC.transfer(C, vendedor, 300000)",
+      "esperado": "bloqueado: Error(Contract, #7) MontoPorLlamada; sin tx",
+      "real": "bloqueado en simulación 2 (con __check_auth): Error(Contract, #7) = MontoPorLlamada",
+      "ok": true,
+      "hora_cr": "25/10/2026, 8:53:33 p. m."
+    },
+    {
+      "prueba": "04 firma de una llave que no es la del agente",
+      "comando": "USDC.transfer(C, vendedor, 100000) firmado con otra llave ed25519",
+      "esperado": "bloqueado: Error(Contract, #4) AgenteDesconocido; sin tx",
+      "real": "bloqueado en simulación 2 (con __check_auth): Error(Contract, #4) = AgenteDesconocido",
+      "ok": true,
+      "hora_cr": "25/10/2026, 8:53:34 p. m."
+    },
+    {
+      "prueba": "05a pausar",
+      "comando": "pausar() firmado por el dueño",
+      "esperado": "tx OK; pausada = true",
+      "real": "tx OK; pausada = true",
+      "ok": true,
+      "tx": "2023268260e005bd05012eed64bc3289e2a6c64fa6df1d4ca3c78cbe4483a044",
+      "fee": 3543,
+      "hora_cr": "25/10/2026, 8:53:38 p. m."
+    },
+    {
+      "prueba": "05b pago con la cuenta pausada",
+      "comando": "USDC.transfer(C, vendedor, 100000)",
+      "esperado": "bloqueado: Error(Contract, #1) Pausada; sin tx",
+      "real": "bloqueado en simulación 2 (con __check_auth): Error(Contract, #1) = Pausada",
+      "ok": true,
+      "hora_cr": "25/10/2026, 8:53:40 p. m."
+    },
+    {
+      "prueba": "05c reanudar",
+      "comando": "reanudar() firmado por el dueño",
+      "esperado": "tx OK; pausada = false",
+      "real": "tx OK; pausada = false",
+      "ok": true,
+      "tx": "90c7f486d0e0a2199a3fe230948850788e009e8a9c5727410b2edd64d3211f03",
+      "fee": 3543,
+      "hora_cr": "25/10/2026, 8:53:48 p. m."
+    },
+    {
+      "prueba": "06a cambiar_agente a una llave nueva",
+      "comando": "cambiar_agente(llave2) firmado por el dueño",
+      "esperado": "tx OK",
+      "real": "tx OK",
+      "ok": true,
+      "tx": "ae7d8218468321d8b916128fe8d6f13d41a6c59a6fa1002c6accfdb8a1054d30",
+      "fee": 3833,
+      "hora_cr": "25/10/2026, 8:53:52 p. m."
+    },
+    {
+      "prueba": "06b pago con la llave vieja",
+      "comando": "USDC.transfer(C, vendedor, 100000) firmado con la llave vieja",
+      "esperado": "bloqueado: Error(Contract, #4) AgenteDesconocido; sin tx",
+      "real": "bloqueado en simulación 2 (con __check_auth): Error(Contract, #4) = AgenteDesconocido",
+      "ok": true,
+      "hora_cr": "25/10/2026, 8:53:53 p. m."
+    },
+    {
+      "prueba": "06c pago con la llave nueva (2.º pago)",
+      "comando": "USDC.transfer(C, vendedor, 100000) firmado con la llave nueva",
+      "esperado": "tx OK; gastado 202.000",
+      "real": "tx OK; gastado 202000",
+      "ok": true,
+      "tx": "9aa0c0997dbd60d58af6bfae61df6c265c32f033add731dfd631a23e06afdfd5",
+      "fee": 11805,
+      "hora_cr": "25/10/2026, 8:53:57 p. m."
+    },
+    {
+      "prueba": "07a pago 3.º de 0,01",
+      "comando": "USDC.transfer(C, vendedor, 100000)",
+      "esperado": "tx OK; gastado 303000",
+      "real": "tx OK; gastado 303000",
+      "ok": true,
+      "tx": "602c0be2d370b04002bcbb70a7d35f04d1c472b7218cfdef7ddf13cc4dce7635",
+      "fee": 11805,
+      "hora_cr": "25/10/2026, 8:54:03 p. m."
+    },
+    {
+      "prueba": "07b pago 4.º de 0,01",
+      "comando": "USDC.transfer(C, vendedor, 100000)",
+      "esperado": "tx OK; gastado 404000",
+      "real": "tx OK; gastado 404000",
+      "ok": true,
+      "tx": "adcf2ac60604ef60b527115cf27e606aee90ef92cb8f35fbc0c215ada10d3832",
+      "fee": 11805,
+      "hora_cr": "25/10/2026, 8:54:08 p. m."
+    },
+    {
+      "prueba": "07c 5.º pago de 0,01 (pasaría a 505.000 > tope 500.000)",
+      "comando": "USDC.transfer(C, vendedor, 100000)",
+      "esperado": "bloqueado: Error(Contract, #8) TopeAlcanzado; sin tx",
+      "real": "bloqueado en simulación 2 (con __check_auth): Error(Contract, #8) = TopeAlcanzado",
+      "ok": true,
+      "hora_cr": "25/10/2026, 8:54:08 p. m."
+    },
+    {
+      "prueba": "07d pago que llena el tope exacto (95049 + comisión)",
+      "comando": "USDC.transfer(C, vendedor, 95049)",
+      "esperado": "tx OK; gastado ≤ 500.000",
+      "real": "tx OK; gastado 500000, restante 0",
+      "ok": true,
+      "tx": "7ea34ea66afd82df5f22140f97dab4dc2b1e1d457996d826c7d3b100a4b8c2db",
+      "fee": 11805,
+      "hora_cr": "25/10/2026, 8:54:14 p. m."
+    },
+    {
+      "prueba": "07e 1 stroop extra después del tope",
+      "comando": "USDC.transfer(C, vendedor, 1)",
+      "esperado": "bloqueado: Error(Contract, #8) TopeAlcanzado",
+      "real": "bloqueado en simulación 2 (con __check_auth): Error(Contract, #8) = TopeAlcanzado",
+      "ok": true,
+      "hora_cr": "25/10/2026, 8:54:14 p. m."
+    },
+    {
+      "prueba": "08 cobrar_comision",
+      "comando": "cobrar_comision() (pública)",
+      "esperado": "tx OK; llegan 4951 stroops (1 % de lo pagado) a la tesorería",
+      "real": "tx OK; devolvió 4951; tesorería 0 → 4951 (+4951); pendiente ahora 0",
+      "ok": true,
+      "tx": "deaf3431af2e1d8a1c9e9fed45a96ef5b8910f7e1c38c210a6316a9991569a4f",
+      "fee": 7930,
+      "hora_cr": "25/10/2026, 8:54:19 p. m."
+    },
+    {
+      "prueba": "09a retirar más del saldo libre",
+      "comando": "retirar(dueño, 500001)",
+      "esperado": "bloqueado: Error(Contract, #10) ParametrosInvalidos",
+      "real": "bloqueado: Error(Contract, #10) = ParametrosInvalidos",
+      "ok": true,
+      "hora_cr": "25/10/2026, 8:54:19 p. m."
+    },
+    {
+      "prueba": "09b retirar todo el saldo libre",
+      "comando": "retirar(dueño, 500000)",
+      "esperado": "tx OK; saldo de C = 0",
+      "real": "tx OK; saldo de C 0",
+      "ok": true,
+      "tx": "b06a13c9e6435b68489eaff5fff8d4774b16c0bcce7e909824ea5f69dfc43d2e",
+      "fee": 6711,
+      "hora_cr": "25/10/2026, 8:54:23 p. m."
+    }
+  ],
+  "contrato_pruebas": "CDPWYHPERIW2RU7TPUE3ZGRQWHS7VPC5SY2V3SEHSPGCVMBHAGQWJYSE",
+  "vendedor_recibio": 495049,
+  "estado_final": {
+    "agente": "e2143bbe0c163b6e3be3e9e830e849ca50f687dc7dcd7364848a298de1dcce70",
+    "comision_pendiente": "0",
+    "fee_bps": 100,
+    "fin_periodo": "1793588002",
+    "gastado": "500000",
+    "max_por_llamada": "200000",
+    "owner": "GCP4NEWM7CDCWA6Q7732YPZN6LG4IDVGSJZHJPADCHJ66YOXU7K3NA3D",
+    "pausada": false,
+    "periodo": 1,
+    "restante": "0",
+    "saldo": "0",
+    "tesoreria": "GBPWNQGVFX7MAWYKNP5VFO43II4GJOTTGDOTDW4LQPLUQGYPXCIHW6W3",
+    "token": "CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA",
+    "tope": "500000"
+  },
+  "deploy_tx": "059c72cd848fa6b5acd2866e05218736df5cb9cd071d01c23a4b589daaabf9b8"
+}

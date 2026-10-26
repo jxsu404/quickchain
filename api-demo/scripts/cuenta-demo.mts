@@ -1,5 +1,5 @@
 // Despliega una instancia DESECHABLE de la cuenta-presupuesto (wasm de Q1 ya instalado en testnet)
-// para probar que una C… paga x402. Dueño y tesorería = cuenta PAGADOR de prueba; agente = llave nueva.
+// para probar que una C… paga x402. Dueño = PAGADOR; tesorería = TESORERIA si existe (si no, el dueño); agente = llave nueva.
 // Llaves solo en QC_SECRETS_FILE (fuera del repo). Imprime links de Stellar Expert.
 import { Address, Keypair, Networks, Operation, TransactionBuilder, nativeToScVal, rpc, xdr } from "@stellar/stellar-sdk";
 import { readFileSync, appendFileSync } from "node:fs";
@@ -25,15 +25,17 @@ async function enviar(op: xdr.Operation) {
   return { hash: r.hash, fin };
 }
 
-let cuentaC = env.CUENTA_C;
+const CLAVE = process.env.CLAVE_CUENTA ?? "CUENTA_C"; // otra clave = otra instancia
+const tesoreria = env.TESORERIA_SECRET ? Keypair.fromSecret(env.TESORERIA_SECRET).publicKey() : dueno.publicKey();
+let cuentaC = env[CLAVE];
 if (!cuentaC) {
   const { hash, fin } = await enviar(Operation.createCustomContract({
     address: Address.fromString(dueno.publicKey()), wasmHash: Buffer.from(WASM, "hex"), salt: rb(32),
     constructorArgs: [nativeToScVal(dueno.publicKey(), { type: "address" }), xdr.ScVal.scvBytes(agente.rawPublicKey()),
-      nativeToScVal(USDC_SAC, { type: "address" }), nativeToScVal(dueno.publicKey(), { type: "address" }), nativeToScVal(100, { type: "u32" })],
+      nativeToScVal(USDC_SAC, { type: "address" }), nativeToScVal(tesoreria, { type: "address" }), nativeToScVal(100, { type: "u32" })],
   }));
   cuentaC = Address.fromScVal((fin as any).returnValue).toString();
-  appendFileSync(ARCHIVO, `CUENTA_C=${cuentaC}\n`);
+  appendFileSync(ARCHIVO, `${CLAVE}=${cuentaC}\n`);
   console.log(`deploy ${cuentaC}: https://stellar.expert/explorer/testnet/tx/${hash}`);
 }
 if (process.env.RENOVAR !== "0") {

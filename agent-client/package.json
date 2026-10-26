@@ -6,7 +6,9 @@
     "start": "tsx src/demo.ts",
     "agente-nuevo": "tsx src/agente-nuevo.ts",
     "test": "tsx --test test/*.test.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "cobrar-comision": "tsx src/cobrar-comision.ts",
+    "medir-costos": "tsx src/medir-costos.ts"
   },
   "dependencies": {
     "@stellar/stellar-sdk": "^16.4.1",
