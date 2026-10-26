@@ -12,7 +12,7 @@ const TESORERIA = process.env.NEXT_PUBLIC_QUICKCHAIN_TESORERIA || undefined;
 const fechaCR = (seg: bigint) => new Date(Number(seg) * 1000).toLocaleString("es-CR", { timeZone: "America/Costa_Rica" });
 
 export default function Presupuesto() {
-  const { isAuthenticated, wallet, address, walletStatus } = useCavos();
+  const { isAuthenticated, wallet, address, walletStatus, enrollPasskeyDefault, approveDeviceWithPasskey } = useCavos();
   const [contrato, setContrato] = useState(process.env.NEXT_PUBLIC_BUDGET_CONTRACT_ID ?? "");
   const [tope, setTope] = useState("0.05");
   const [max, setMax] = useState("0.02");
@@ -83,7 +83,16 @@ export default function Presupuesto() {
       {walletStatus.isUndeployed && (
         <p>Cavos crea tu cuenta en la primera operación. <button disabled={!!ocupado} onClick={crearCuenta}>Crear mi cuenta en testnet</button></p>
       )}
-      {walletStatus.needsDeviceApproval && <p>Aprobá este dispositivo desde Cavos antes de firmar.</p>}
+      <p>Estado Cavos: <code>{wallet.status}</code></p>
+      {walletStatus.needsDeviceApproval && (
+        <p style={{ color: "crimson" }}>
+          La llave de esta wallet quedó en otro navegador o en otra URL (cada URL de vercel.app guarda la suya). Abrí la página donde entraste la primera vez, tocá «Agregar passkey» y volvé acá a tocar:{" "}
+          <button disabled={!!ocupado} onClick={() => correr("Aprobando con passkey…", async () => { await approveDeviceWithPasskey(); })}>Aprobar este dispositivo con passkey</button>
+        </p>
+      )}
+      {walletStatus.isReady && (
+        <p><button disabled={!!ocupado} onClick={() => correr("Agregando passkey…", async () => { await enrollPasskeyDefault(); })}>Agregar passkey (para usar la wallet en otra URL o dispositivo)</button></p>
+      )}
 
       <label>Cuenta-presupuesto (C…)<br /><input value={contrato} onChange={(e) => { setContrato(e.target.value); setEstado(null); }} size={60} /></label>
       <p><button disabled={!contrato.trim() || !!ocupado} onClick={revisar}>Revisar cuenta</button></p>
