@@ -1,6 +1,7 @@
 "use client";
 // Q4: el dueño firma `renovar` de su cuenta-presupuesto con la wallet Cavos (una firma por mes).
 import Espera from "../espera";
+import Copiar from "../copiar";
 import { useEffect, useState } from "react";
 import { useCavos } from "@cavos/kit/react";
 import {
@@ -98,7 +99,7 @@ export default function Presupuesto() {
         <p><button disabled={!!ocupado} onClick={() => correr("Adding passkey…", async () => { await enrollPasskeyDefault(); })}>Add passkey (to use the wallet on another URL or device)</button></p>
       )}
 
-      <label>Budget account (C…)<br /><input value={contrato} onChange={(e) => { setContrato(e.target.value); setEstado(null); }} size={60} /></label>
+      <label>Budget account (C…)<br /><input value={contrato} onChange={(e) => { setContrato(e.target.value); setEstado(null); }} className="direccion" spellCheck={false} /></label> <Copiar texto={contrato.trim()} />
       <p><button disabled={!contrato.trim() || !!ocupado} onClick={revisar}>Check account</button> <small className="sub">No account yet? <a href="/crear">Create my budget</a></small></p>
 
       {estado && (
@@ -126,6 +127,12 @@ export default function Presupuesto() {
       </p>
       <p>
         <button disabled={!listo} onClick={firmar}>Sign renovar (one signature)</button>
+        {!listo && !ocupado && <><br /><small className="sub">To enable it: {[
+          !walletStatus.isReady && "your wallet must be ready",
+          !estado && "press “Check account” first",
+          problemas.length > 0 && "fix the problems shown above",
+          invalido && "fix the amounts",
+        ].filter(Boolean).join(" · ")}.</small></>}
       </p>
       <p>Stellar QuickPass fee: 1% of what the agent spends, included in the cap. No monthly fee.</p>
 

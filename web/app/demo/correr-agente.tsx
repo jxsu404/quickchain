@@ -2,6 +2,7 @@
 // Botón «Correr agente»: el agente (servidor) paga la API x402 desde la cuenta-presupuesto hasta que el
 // contrato lo bloquea al llegar al tope. Lee el NDJSON de /api/agente/correr en streaming.
 import { useEffect, useState } from "react";
+import Copiar from "../copiar";
 import { linkContrato, unidadesAUsdc } from "@/lib/renovar";
 
 type Resumen = { tope: string; gastado: string; restante: string; saldo: string; maxPorLlamada: string };
@@ -63,6 +64,19 @@ export default function CorrerAgente() {
 
   const ultimoEstado = [...eventos].reverse().find((e): e is Extract<Evento, { estado: Resumen }> => "estado" in e)?.estado;
   const pagos = eventos.filter((e): e is Extract<Evento, { tipo: "pago" }> => e.tipo === "pago");
+  // El RPC puede devolver el estado previo justo después de un pago (QA ronda 2, bug 2: el pago 3 repetía
+  // el «remaining» del 2). Si el valor leído no bajó, se deriva: anterior − lo cobrado (monto + 1 % fee).
+  const inicio = eventos.find((e): e is Extract<Evento, { tipo: "inicio" }> => e.tipo === "inicio");
+  const restantes: bigint[] = [];
+  {
+    let prev = inicio ? BigInt(inicio.estado.restante) : null;
+    for (const p of pagos) {
+      const leido = BigInt(p.estado.restante || "0");
+      const cobro = BigInt(p.monto || "0") + (BigInt(p.monto || "0") + 99n) / 100n;
+      const r = prev !== null && leido >= prev ? (prev > cobro ? prev - cobro : 0n) : leido;
+      restantes.push(r); prev = r;
+    }
+  }
   const final = eventos.find((e) => e.tipo === "bloqueado" || e.tipo === "error" || e.tipo === "fin");
   const llamando = corriendo ? [...eventos].reverse().find((e) => e.tipo === "llamando" || e.tipo === "pago") : undefined;
 
@@ -70,7 +84,7 @@ export default function CorrerAgente() {
     <section style={{ marginTop: "2rem" }}>
       <h2>Watch the agent pay (testnet)</h2>
       <p className="sub">The AI agent calls a paid x402 API (US$0.01 per call, USDC). Each call is paid from the budget contract, signed only by the agent&apos;s key. When the on-chain cap is reached, the contract rejects the payment.</p>
-      <label>Budget account (C…)<br /><input value={contrato} onChange={(e) => setContrato(e.target.value)} size={60} disabled={corriendo} /></label>
+      <label>Budget account (C…)<br /><input value={contrato} onChange={(e) => setContrato(e.target.value)} className="direccion" spellCheck={false} disabled={corriendo} /></label> <Copiar texto={contrato.trim()} />
       {contrato && <small className="sub"> <a href={linkContrato(contrato.trim())} target="_blank" rel="noreferrer">Stellar Expert ↗</a></small>}
       <p>
         <button className="primary" disabled={corriendo || !contrato.trim()} onClick={correr}>{corriendo ? "Corriendo…" : "Correr agente"}</button>{" "}
@@ -83,8 +97,8 @@ export default function CorrerAgente() {
       )}
       {pagos.length > 0 && (
         <ol>
-          {pagos.map((p) => (
-            <li key={p.n}>✅ Paid {usdc(p.monto)} USDC {p.link && <a href={p.link} target="_blank" rel="noreferrer">tx {p.tx.slice(0, 8)}… ↗</a>} — remaining {usdc(p.estado.restante)} USDC</li>
+          {pagos.map((p, i) => (
+            <li key={p.n}>✅ Paid {usdc(p.monto)} USDC {p.link && <a href={p.link} target="_blank" rel="noreferrer">tx {p.tx.slice(0, 8)}… ↗</a>} — remaining {usdc(restantes[i].toString())} USDC</li>
           ))}
         </ol>
       )}
