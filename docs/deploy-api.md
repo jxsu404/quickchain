@@ -11,9 +11,12 @@ En Vercel habría que convertir cada ruta en una función (`api/*.ts`) y adaptar
 3. Deploy. Prueba: `curl -i https://<servicio>.onrender.com/tipo-cambio` tiene que dar **402** con el header `payment-required`.
 4. Para la demo, el agente usa `API_DEMO_URL=https://<servicio>.onrender.com`.
 
-**No poner `FACILITADOR_SECRET_KEY` en el host.** En `main`, las rutas `/facilitador/*` no tienen auth y pagan fees con esa llave. Sin la llave, responden 500, que es lo correcto: la demo usa el facilitador público. #29 las limita a conexiones locales.
+**No poner `FACILITADOR_SECRET_KEY` en el host.** En `main`, las rutas `/facilitador/*` no tienen auth y pagan fees con esa llave. Sin la llave, responden 500, que es lo correcto: la demo usa el facilitador público. Además, desde #29 las rutas del facilitador propio solo existen con `FACILITADOR_PROPIO=1` y solo responden por loopback (misma máquina); en Render no se pone `FACILITADOR_PROPIO`.
 
 El plan free de Render apaga el servicio cuando no se usa, y la primera llamada tarda unos segundos. Conviene llamarlo una vez antes de grabar.
+
+## Servicio en Render
+URL pública: **https://quickchain-api-demo.onrender.com** (servicio `quickchain-api-demo`, plan free, rama `main`). Para la demo: `API_DEMO_URL=https://quickchain-api-demo.onrender.com`.
 
 ## Prueba local (2026-10-26 06:27 CR)
 `PORT=4321 X402_PAY_TO=GA6HM4CL… pnpm --filter api-demo vendedor` → `GET /tipo-cambio` respondió `HTTP/1.1 402 Payment Required` con `payment-required` (`scheme: exact`, `network: stellar:testnet`, `amount: 100000`, asset USDC `CBIELTK6…`, `areFeesSponsored: true`). Sin `FACILITADOR_SECRET_KEY`, `GET /facilitador/supported` dio 500.
