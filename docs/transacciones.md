@@ -79,6 +79,12 @@ Ver [decisión](2026-10-26-boton-correr-agente.md). Cuenta demo [`CAD2CAZC…`](
 | `1a2832bc` | prueba local: pago 4 | [1a2832bc…](https://stellar.expert/explorer/testnet/tx/1a2832bc2881c5fa5895588bede67b439110c7227c2ac26b098e0db178633f8c) |
 | — (sin tx) | prueba local: pago 5 bloqueado, `TopeAlcanzado` (simulación, sin tx) | — |
 | `32cf2c1b` | prueba local: «Reset demo budget» (`renovar`) | [32cf2c1b…](https://stellar.expert/explorer/testnet/tx/32cf2c1b8428002d9e6309344f448fd782f4d8e33f0323e09ae48079d137f171) |
+| `751d7693` | preview Vercel (PR #50): pago 1 (0,01) | [751d7693…](https://stellar.expert/explorer/testnet/tx/751d76935da781ef80b52c94e590190e1f6084b6ad2ef64196f730c2e977be49) |
+| `504e8490` | preview: pago 2 | [504e8490…](https://stellar.expert/explorer/testnet/tx/504e849057b142494b30affbc25235a55ee7c646908678adb250a57da2129f9b) |
+| `dc0c3298` | preview: pago 3 | [dc0c3298…](https://stellar.expert/explorer/testnet/tx/dc0c3298f1fce24832ebcfeec924534e245f7df5971333211502fa6a4208b6f8) |
+| `90fbbb33` | preview: pago 4 (gastado 0,0404, restante 0,0096) | [90fbbb33…](https://stellar.expert/explorer/testnet/tx/90fbbb3383367729adec539a63cf3068ff622e6d136f8f189c89ecf8e04af745) |
+| — (sin tx) | preview: pago 5 bloqueado, `TopeAlcanzado` (simulación, sin tx) | — |
+| `7df663f8` | preview: «Reset demo budget» (`renovar`) | [7df663f8…](https://stellar.expert/explorer/testnet/tx/7df663f8f46ba74182b3b59eb31e069ef84defc5585393755c7b36fde60da2a8) |
 
 <!-- enlaces:auto -->
 ## Enlaces
