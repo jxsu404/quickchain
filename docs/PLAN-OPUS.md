@@ -7,6 +7,8 @@
 1. **Ya hay proyectos muy parecidos en Stellar.** En `/workspace/fyw-ranking/readmes/` están **AgentAllowance** y **ACAN**. ACAN ganó una mención de 250 USDC en Find Your Way. Los dos usan una *smart account* (cuenta-contrato `C…`) como pagador x402 con tope de gasto en testnet. La buena noticia es que el diseño se puede construir. La mala es que la primitiva no es nueva, así que la diferencia tiene que estar en el producto (Cavos, el mes calendario con una firma, el modelo de 1%) y hay que reconocerlos en el pitch.
 2. **El facilitador público rechaza a las cuentas-contrato como pagador.** Según el README de ACAN, el facilitador público tiene un techo de fee de 50.000 stroops y solo acepta eventos `transfer`; un pago con políticas OZ simula en unos 2,3 M stroops. Por eso ACAN corre su propio facilitador. Hay que planear un facilitador propio desde el inicio y tener un modo de compatibilidad (detalle abajo).
 
+> 🔎 **Propuesta (auditoría de 3 modelos, 25 oct 2026, pendiente de aprobación de Josué):** la evidencia del repo lo desmiente: el facilitador público liquidó pagos desde la `C…` (~11.900 stroops, tx `d0e333b2…`, ver [COSTOS.md](COSTOS.md) y [transacciones.md](transacciones.md)). Sugerencia: usar el público para la demo, dejar el propio como respaldo local **sin publicarlo** (hoy está abierto y cualquiera puede gastar su XLM) y sacar el modo B del camino crítico. Consenso 3/3: [consolidado](auditorias/2026-10-25-consolidado.md).
+
 Solo leí archivos; no edité nada. Leí también el repo `caja-tica-escudo` (para reutilizar `escudo/riesgo.ts` y la capa de billetera con Freighter) y `CavosStellar.ts`. No pude abrir la spec x402 `exact` de Stellar en la web porque el fetch fue rechazado; queda como algo a verificar.
 
 ---
@@ -29,6 +31,8 @@ El dueño entra con su correo (Cavos) y firma una vez al mes un presupuesto en U
 | Facilitador x402 propio | `servidor/facilitador.ts` | `/verify`, `/settle` y `/supported` del esquema `exact` con techo de fee ajustado y tolerante a cuentas-contrato | Código de facilitador de `@x402/stellar` (verificar el módulo). Si se copia algo de ACAN (MIT), se le da crédito. **No** copiar el plugin AGPL de AgentAllowance |
 | Servicio de despliegue | `servidor/cuentas.ts` | `POST /api/cuentas {owner, agente}` despliega la cuenta-presupuesto con constructor. El deployer paga el fee | `stellar-sdk` (`createCustomContract` con `constructorArgs`, verificar) |
 | Web | `web/` (Next.js en Vercel) | Login Cavos, preparar cuenta de testnet, trustline USDC, crear o renovar presupuesto (una firma) y panel | `web/src/billetera/` (ya tiene la interfaz y Freighter: el fallback está hecho) |
+
+> 🔎 **Propuesta (auditoría de 3 modelos, 25 oct 2026, pendiente de aprobación de Josué):** el fallback Freighter (`web/src/billetera/`) **no existe** en este repo. Las rutas reales son `agent-client/` (SDK, demo, cobro de comisión) y `api-demo/` (vendedor y facilitador); `servidor/cuentas.ts` no existe. Consenso 3/3.
 | Agente demo | `scripts/agente-demo.ts` | 4 consultas pagadas, la 5.ª bloqueada por el tope y un endpoint "malicioso" de US$1 bloqueado | |
 | Cobro de comisión | `scripts/cobrar-comision.ts` | Llama `cobrar_comision()` (función pública) | |
 
@@ -163,6 +167,8 @@ impl CustomAccountInterface for CuentaPresupuesto {
 | Se compromete la wallet del dueño (Cavos) | Modelo de llave en el dispositivo de Cavos | Fuera de alcance: equivale a perder la wallet |
 | Vence el TTL de la instancia | `renovar` extiende el TTL | Si nadie renueva por meses, hay que restaurar |
 | Secretos en el repo | Solo `.env.example`; `.gitignore`; job de CI con gitleaks y grep de semillas Stellar `\bS[A-Z2-7]{55}\b`; correr gitleaks sobre **todo el historial** (el repo ya traía llaves de Writz en `.env`) | |
+
+> 🔎 **Propuesta (auditoría de 3 modelos, 25 oct 2026, pendiente de aprobación de Josué):** el «límite de llamadas por minuto en el SDK» (fila Agente en loop) **todavía no está implementado**: marcarlo como pendiente. Filas sugeridas: (a) el facilitador propio expuesto paga fees de terceros, por lo que no se publica; (b) el 402 fija `maxTimeoutSeconds`, así que conviene acotarlo en el SDK; (c) quien despliega elige `fee_bps` y tesorería, así que la web o el script los verifica antes de `renovar`; (d) una tesorería sin trustline USDC traba `renovar`. Consenso 3/3.
 | Legal | No hay custodia: los fondos están en un contrato que solo controla el dueño, que puede retirar cuando quiera. Sin rendimiento ni intereses. Testnet y sin auditar | Hay que confirmar con un abogado si cobrar 1% nos hace VASP o proveedor de pagos (Ley 10.961, SUGEF) |
 
 ---
@@ -190,10 +196,15 @@ Ahora son las 8:12 p.m. del domingo (hora CR). Arranque a las 8:30 p.m. Un PR po
 | [Q14](PITCH.md) ([#6](https://github.com/jxsu404/quickchain/issues/6)) | Video | Demo de 2 min grabada primero y pitch después; edición; subida (YouTube no listado + respaldo en Drive) | Link que funciona en una ventana privada | 2 h | 8:30–10:30 a.m. |
 | [Q15](../TAREAS.md) ([#6](https://github.com/jxsu404/quickchain/issues/6)) | Entrega en APEX | Propuesta actualizada a QuickChain, repo, video como documento | Confirmación de APEX con captura | 0,5 h | 10:30–11:00 a.m. |
 
+> 🔎 **Propuesta (auditoría de 3 modelos, 25 oct 2026, pendiente de aprobación de Josué):** según el código (3/3): Q1, Q2, Q3 y Q8 hechas; Q4 solo login; Q5 y Q6 sin empezar; Q7, Q9, Q10, Q11 y Q13 a medias. Sugerencias: **Q5:** aplicar ya el recorte a CLI (`OWNER_ADDRESS=… bash scripts/deploy-cuenta.sh`). **Q6:** mínimo `estado()` (web o terminal); `getEvents` queda opcional. **Q7:** una sola corrida con 4 pagos, el 5.º bloqueado, `/caro` bloqueado y cobro de comisión. **Q10:** una instancia **nueva** con `recarga ≥ tope` y tesorería con trustline USDC, distinta del dueño (`CBH3LQQC…` tiene recarga 0 y dueño = tesorería). **Q9/Q11/Q13:** sincronizar los docs viejos (`README.md:21`, `ARQUITECTURA.md`, `DEMO.md`, `TAREAS.md`, `PITCH.md`).
+
 **Puntos de decisión (no negociables):**
 
 - **11:30 p.m.:** ¿una `C…` ya pagó x402 en testnet con algún facilitador? Si no, se pasa al modo B (sección 1.2), con decisión final a la 1:00 a.m.
 - **1:30 a.m.:** ¿Cavos ya firmó `renovar`? Si no, se sigue intentando hasta las 3:00 a.m.; después, **Freighter** (ya existe en `web/src/billetera/freighter.ts`) y se dice en el video.
+
+> 🔎 **Propuesta (auditoría de 3 modelos, 25 oct 2026, pendiente de aprobación de Josué):** el punto de las 11:30 p.m. se da por **resuelto (modo A)**: hay pagos x402 desde la `C…`. El plan B de Cavos pasa a ser **`renovar` firmado por CLI o script** y dicho en el video, porque Freighter no existe. Hora de corte: 1:30 a.m. (2 de 3 auditores) o 3:00 a.m. (1 de 3), **lo decide Josué**. Regla sugerida: **no tocar el contrato antes de la entrega**; los hallazgos de `lib.rs` (comisión no reservada, `max_por_llamada` por transfer, cobro dentro de `renovar`) van al roadmap.
+
 - **3:00 a.m.:** congelar funcionalidades; de ahí en adelante solo arreglos. Turnos para dormir: dos personas de 12:30 a 6:30 a.m. (incluye a quien graba el pitch) y dos de 3:00 a 7:00 a.m.
 - **8:00 a.m.:** revisar commits de todos con `git shortlog -sne --since=2026-10-23`. Quien tenga pocos agarra Q9, Q11 o los slides.
 - **10:00 a.m.:** congelar el código. **11:00 a.m.:** entregado. Las 11:30 son el margen, no la meta.
@@ -284,6 +295,8 @@ Grabar con txs reales y cortar las esperas. Cada hash que salga en pantalla tien
 |---|---|---|
 | Cavos no firma Soroban o no queda `ready` | Spike de Q4 falla a la 1:30 a.m. | `{sponsored:false}` con friendbot; preguntarle a Adrián; a las 3:00 a.m., Freighter y decirlo en el video |
 | El facilitador público rechaza pagadores `C…` | Error de fee o de eventos | Facilitador propio (modo A) o modo B con el facilitador público |
+
+> 🔎 **Propuesta (auditoría de 3 modelos, 25 oct 2026, pendiente de aprobación de Josué):** este riesgo no se materializó en testnet (ver hallazgo 2). Plan B de Cavos: CLI o script, no Freighter.
 | El facilitador propio tampoco funciona a la 1:00 a.m. | | **Modo directo:** el agente envía la transferencia (con XLM de friendbot) y el vendedor demo verifica el hash. Se rotula honestamente como "no es x402 estándar" |
 | El footprint no incluye `__check_auth` | Fallas de `settle` por footprint | Re-simular con la auth firmada (ya está en Q2) |
 | La firma del agente no calza con `authorizeEntry` | El test de Q2 falla | Firmador custom que arme la `ScVal` a mano |
@@ -303,6 +316,8 @@ Grabar con txs reales y cortar las esperas. Cada hash que salga en pantalla tien
 4. ¿Cuánto cuesta en stroops un pago desde `C…`? ¿Cubre el 1%? ¿Ponemos comisión mínima?
 5. En producción, ¿quién paga el XLM del facilitador: nosotros con el 1%, o el vendedor?
 6. ¿El saldo que no se usa se acumula para el mes siguiente o vuelve solo al dueño?
+
+> 🔎 **Propuesta (auditoría de 3 modelos, 25 oct 2026, pendiente de aprobación de Josué):** según el código, no vuelve solo: el dueño llama `retirar`, y `comision_pendiente` se mantiene después de `renovar`. Consenso 2/3, pendiente de cerrar.
 7. Legal: ¿cobrar 1% sobre lo que gasta el agente nos convierte en VASP o proveedor de pagos según la Ley 10.961?
 8. ¿"QuickChain" choca con alguna marca existente? ¿"Quickpass" se puede usar como analogía hablada sin problema de marca?
 9. ¿El jurado conoce AgentAllowance y ACAN? ¿Cómo y dónde les damos crédito (README y pitch)?
@@ -341,7 +356,7 @@ Grabar con txs reales y cortar las esperas. Cada hash que salga en pantalla tien
 ## Enlaces
 
 - ⬆️ Arriba: [Mapa (hub)](MAPA.md) · [Índice de docs](INDICE.md)
-- Relacionado: [Índice de docs](INDICE.md) · [Tareas](../TAREAS.md) · [Auditoría](AUDITORIA.md) · [contracts/cuenta-presupuesto](../contracts/cuenta-presupuesto/AGENTS.md) · [agent-client](../agent-client/AGENTS.md) · [api-demo](../api-demo/AGENTS.md) · [web](../web/AGENTS.md) · [Seguridad](SEGURIDAD.md) · [Arquitectura](ARQUITECTURA.md) · [Demo (testnet)](DEMO.md) · [Pitch](PITCH.md)
-- Lo enlazan: [Mapa (hub)](MAPA.md)
+- Relacionado: [Índice de docs](INDICE.md) · [Tareas](../TAREAS.md) · [Auditoría](AUDITORIA.md) · [contracts/cuenta-presupuesto](../contracts/cuenta-presupuesto/AGENTS.md) · [agent-client](../agent-client/AGENTS.md) · [api-demo](../api-demo/AGENTS.md) · [web](../web/AGENTS.md) · [Seguridad](SEGURIDAD.md) · [Arquitectura](ARQUITECTURA.md) · [Demo (testnet)](DEMO.md) · [Pitch](PITCH.md) · [Auditoría 3 modelos (consolidado)](auditorias/2026-10-25-consolidado.md)
+- Lo enlazan: [Mapa (hub)](MAPA.md) · [Auditorías 2026-10-25](auditorias/2026-10-25-consolidado.md)
 - Tags: #quickchain #docs
 <!-- /enlaces:auto -->

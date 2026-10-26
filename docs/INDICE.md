@@ -15,7 +15,9 @@
 | [pruebas-q1.md](pruebas-q1.md) | Pruebas reales de Q1 en testnet (txs y fees) |
 | [transacciones.md](transacciones.md) | Hashes de testnet (vacío hasta Q10) y link a Stellar Expert |
 | [COSTOS.md](COSTOS.md) | Fees medidos en testnet y comisión de 1 % (Q8) |
+| [../api-demo/AGENTS.md](../api-demo/AGENTS.md) | Vendedor demo `api-demo/servidor/vendedor.ts` (`/tipo-cambio`, `/caro`) y facilitador x402 (Q3) |
 | [PITCH.md](PITCH.md) | Pitch (borrador) |
+| [auditorias/2026-10-25-consolidado.md](auditorias/2026-10-25-consolidado.md) | Auditoría de 3 modelos (Opus, Grok, GPT): consolidado + [Opus](auditorias/2026-10-25-claude-opus-5-5-high.md) · [Grok](auditorias/2026-10-25-grok-4.7-high.md) · [GPT](auditorias/2026-10-25-gpt-5.6-sol-high.md) |
 | [../TAREAS.md](../TAREAS.md) | Tareas y fecha límite |
 | [../CONTRIBUTING.md](../CONTRIBUTING.md) | Reglas del equipo |
 | [../AGENTS.md](../AGENTS.md) | Contexto para agentes de código |
@@ -26,7 +28,7 @@
 
 - ⬆️ Arriba: [Mapa (hub)](MAPA.md) · (este es el índice)
 - 📖 Fuente de verdad: [PLAN-OPUS — la biblia](PLAN-OPUS.md)
-- Relacionado: [Plan (resumen)](PLAN.md) · [Arquitectura](ARQUITECTURA.md) · [Stack](STACK.md) · [Decisiones](DECISIONES.md) · [Seguridad](SEGURIDAD.md) · [Auditoría](AUDITORIA.md) · [Demo (testnet)](DEMO.md) · [Pruebas Q1](pruebas-q1.md) · [Transacciones (testnet)](transacciones.md) · [Pitch](PITCH.md)
+- Relacionado: [Plan (resumen)](PLAN.md) · [Arquitectura](ARQUITECTURA.md) · [Stack](STACK.md) · [Decisiones](DECISIONES.md) · [Seguridad](SEGURIDAD.md) · [Auditoría](AUDITORIA.md) · [Demo (testnet)](DEMO.md) · [Pruebas Q1](pruebas-q1.md) · [Transacciones (testnet)](transacciones.md) · [Pitch](PITCH.md) · [Auditoría 3 modelos](auditorias/2026-10-25-consolidado.md)
 - Lo enlazan: [AGENTS (raíz)](../AGENTS.md) · [README](../README.md) · [Mapa (hub)](MAPA.md) · [PLAN-OPUS — la biblia](PLAN-OPUS.md) · [Transacciones (testnet)](transacciones.md)
 - Tags: #quickchain #docs
 <!-- /enlaces:auto -->

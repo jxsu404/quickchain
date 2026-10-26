@@ -14,13 +14,29 @@ export const ERRORES_CONTRATO: Record<number, { nombre: string; mensaje: string 
 
 export type MotivoBloqueo =
   | (typeof ERRORES_CONTRATO)[number]["nombre"]
-  | "HostNoPermitido" | "MaxPorLlamadaLocal" | "SinOpcionStellar" | "SaldoInsuficiente" | "PagoRechazado";
+  | "HostNoPermitido" | "MaxPorLlamadaLocal" | "LimitePorMinuto" | "SinOpcionStellar" | "SaldoInsuficiente" | "PagoRechazado";
 
 /** Pago bloqueado. `enCadena` = lo rechazó el contrato en la simulación (no hubo tx ni se movió plata). */
 export class PagoBloqueado extends Error {
   constructor(public motivo: MotivoBloqueo, mensaje: string, public enCadena = false) {
     super(`${motivo}: ${mensaje}`);
     this.name = "PagoBloqueado";
+  }
+}
+
+/** El agente pasó `maxLlamadasPorMinuto` pagos en los últimos 60 s. No se firmó nada. */
+export class LimitePorMinuto extends PagoBloqueado {
+  constructor(public limite: number, public reintentarEnMs: number) {
+    super("LimitePorMinuto", `ya hubo ${limite} pagos en el último minuto; reintentá en ${Math.ceil(reintentarEnMs / 1000)} s`);
+    this.name = "LimitePorMinuto";
+  }
+}
+
+/** Opciones del SDK mal armadas (se lanza al crear el fetch, antes de cualquier llamada). */
+export class ConfiguracionInvalida extends Error {
+  constructor(mensaje: string) {
+    super(mensaje);
+    this.name = "ConfiguracionInvalida";
   }
 }
 
