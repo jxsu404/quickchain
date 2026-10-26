@@ -1,5 +1,7 @@
 # Demo de Stellar QuickPass (testnet)
 
+Eslogan: «Your agent pays. You set the cap.»
+
 ## Guion (≈ 2 min, PLAN-OPUS §6)
 0. La landing en `/` (inglés, para el jurado) lleva con «Try the demo» a `/demo` ([web](../web/AGENTS.md)).
 1. El dueño entra con su correo en `/demo` (Cavos) y ve su cuenta `G…`.

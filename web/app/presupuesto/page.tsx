@@ -26,7 +26,7 @@ export default function Presupuesto() {
   const [saldoUsdc, setSaldoUsdc] = useState<string | null>(null);
   const finPeriodo = finDeMesCR();
 
-  if (!isAuthenticated || !address) return <main><h2>Agent monthly budget</h2><p>Log in with your email first.</p><button onClick={openModal}>Log in with email</button> <small className="sub">(via Cavos, no seed phrase)</small></main>;
+  if (!isAuthenticated || !address) return <main><h2>Agent monthly budget</h2><p className="tagline">Your agent pays. You set the cap.</p><p>Log in with your email first.</p><button onClick={openModal}>Log in with email</button> <small className="sub">(via Cavos, no seed phrase)</small></main>;
   if (!wallet || wallet.chain !== "stellar") return <p>The connected wallet is not a Stellar wallet.</p>;
   const opts = feePropio ? { fee: "self" as const } : undefined;
 
@@ -78,6 +78,7 @@ export default function Presupuesto() {
   return (
     <main>
       <h2>Agent monthly budget</h2>
+      <p className="tagline">Your agent pays. You set the cap.</p>
       <p>Your account: <code>{address}</code> ({walletStatus.isReady ? "ready" : walletStatus.isUndeployed ? "not on the network yet" : "this device needs approval"})</p>
 
       {walletStatus.isUndeployed && (

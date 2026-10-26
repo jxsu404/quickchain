@@ -7,7 +7,7 @@ export default function Demo() {
   return (
     <main>
       <h1>Stellar QuickPass — demo</h1>
-      <p>Your AI agent pays APIs on its own, within a monthly USDC cap you sign once.</p>
+      <p className="tagline">Your agent pays. You set the cap.</p>
       {!isAuthenticated ? (
         <p><button onClick={openModal}>Log in with email</button> <small className="sub">(via Cavos, no seed phrase)</small></p>
       ) : (

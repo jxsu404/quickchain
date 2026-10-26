@@ -21,7 +21,7 @@ export default function Landing() {
           <div className="wrap hero-grid">
             <div>
               <h1>Stellar QuickPass</h1>
-              <p className="tagline">Your AI agent pays for APIs automatically, never past your cap.</p>
+              <p className="tagline">Your agent pays. You set the cap.</p>
               <div className="ctas">
                 <Link className="btn primary" href="/demo">Try the demo</Link>
                 <a className="btn" href={GITHUB} target="_blank" rel="noreferrer">GitHub</a>

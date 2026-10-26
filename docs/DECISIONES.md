@@ -41,6 +41,7 @@
 | 2026-10-26 | URLs con el nombre nuevo (Josué 8:30 a. m. CR): repo `jxsu404/stellar-quickpass` (redirige desde `jxsu404/quickchain`), web `stellar-quickpass.vercel.app` (sigue `quickchain.vercel.app`). Se quedan: la API en Render (`quickchain-api-demo.onrender.com`), el buzón `quickchain-buzon` y el `appSalt` de Cavos (cambiarlo cambiaría las direcciones) | consistencia con Stellar QuickPass |
 | 2026-10-26 | Web: `/` pasa a ser una landing en inglés y la demo (login Cavos) se mueve a `/demo`; `/presupuesto` queda en su ruta, sin redirect, para no romper links ni Cavos. **Aprobado por Josué** 8:31 a. m. CR | el jurado de APEX lee inglés ([web](../web/AGENTS.md), [Demo](DEMO.md)) |
 | 2026-10-26 | Web con la marca v1.0 (carpeta compartida por Josué 8:55 a. m. CR): paleta Azul Vía/Verde Paso/Tinta/Niebla, Space Grotesk + Inter + JetBrains Mono, logo y favicon. Todas las páginas sobre Tinta y en inglés (también `/demo` y `/presupuesto`), con tarjeta de ejemplo en el hero y aviso de marca SDF en el footer (auditoría de diseño de Pao) | combinaciones con contraste WCAG AA o mejor según el manual ([MARCA](MARCA.md)) |
+| 2026-10-26 | Eslogan único para todas las piezas: **«Your agent pays. You set the cap.»**. Reemplaza las frases anteriores en la web (hero, metadata/OG, `/demo`, `/presupuesto`), README, PITCH, MARCA, DEMO y buzón 009/010. Josué 9:09 a. m. CR (vía Pao) | una sola frase, consistente con el pitch |
 
 ## Preguntas abiertas
 1. ~~**Cómo prueba el agente el pago a la API.**~~ Resuelta en Q3 (ver arriba): x402 `exact` con `from = C…`.

@@ -2,6 +2,9 @@
 
 Resumen de la identidad de marca v1.0 del 26-oct-2026. Viene de la carpeta de Drive «Stellar QuickPass - Marca», que Josué compartió a las 8:55 a. m. CR: `StellarQuickPass-marca-v1.zip` y `StellarQuickPass-manual-de-marca.pdf`, de 15 páginas. Los archivos no dicen quién los hizo; según el equipo es trabajo de José. Los assets que usa la web están en `web/public/brand/`.
 
+## Eslogan
+«Your agent pays. You set the cap.». Es el único eslogan para todas las piezas y no se traduce; lo eligió Josué el 2026-10-26 a las 9:09 a. m. CR ([Decisiones](DECISIONES.md)).
+
 ## Paleta
 | Nombre | Hex | Uso | Variable CSS |
 |---|---|---|---|
