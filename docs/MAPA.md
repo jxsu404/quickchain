@@ -147,7 +147,7 @@ graph TD
 - [Decisiones](DECISIONES.md)
 - [Seguridad](SEGURIDAD.md)
 - [Auditoría](AUDITORIA.md)
-- [Demo (testnet)](DEMO.md) — issue [#5](https://github.com/jxsu404/quickchain/issues/5)
+- [Demo (testnet)](DEMO.md) — issue [#5](https://github.com/jxsu404/quickchain/issues/5); Q7: `scripts/agente-demo.ts` (4 pagos, 5.º y `/caro` bloqueados)
 - [Costos (Q8)](COSTOS.md) — fees medidos en testnet y cobro de la comisión de 1 %
 - [Transacciones (testnet)](transacciones.md) — filas de Q3 (pagos x402 desde G… y C…); Q10 completa la corrida con links de Stellar Expert
 - [Pruebas Q1 (testnet)](pruebas-q1.md) — issue [#1](https://github.com/jxsu404/quickchain/issues/1)

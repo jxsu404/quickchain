@@ -4,7 +4,7 @@
 1. El dueño entra con su correo en la web (Cavos) y ve su cuenta `G…`.
 2. En `/presupuesto` firma `renovar`: tope 0,05 USDC, máximo 0,02 por llamada, vence el 1 de noviembre 00:00 (hora CR). **Una firma** y link a Stellar Expert.
 3. `LLAMADAS=6 pnpm agente` contra `/tipo-cambio` (0,01 USDC): 4 pagos responden 200, cada uno con su link.
-4. El 5.º queda **bloqueado** por el contrato (`TopeAlcanzado`): 4 × (0,01 + 1 %) = 0,0404 y el 5.º llevaría el gasto a 0,0505 > 0,05 (mismo caso en [pruebas-q1](pruebas-q1.md), prueba 07c). Sin tx, no se movió plata.
+4. El 5.º queda **bloqueado** por el contrato (`TopeAlcanzado`): 4 × (0,01 + 1 %) = 0,0404 y el 5.º llevaría el gasto a 0,0505 > 0,05 (mismo caso en [pruebas-q1](pruebas-q1.md), prueba 07c). Sin tx, no se movió plata. Alternativa en un solo comando: el agente demo de Q7 (`scripts/agente-demo.ts`, ver abajo) hace los 4 pagos + los 2 bloqueos.
 5. `API_DEMO_URL=http://localhost:4020/caro pnpm agente` (US$1): bloqueado por `MontoPorLlamada`, también sin tx.
 6. El mes siguiente, el dueño vuelve a firmar `renovar` y el agente sigue.
 
@@ -23,11 +23,16 @@
 - Probado sin red: argumentos `i128, i128, u64, i128`, fin de mes en hora CR, validaciones y chequeos previos (`pnpm --filter web test`); límites del SDK y facilitador opt-in (`pnpm test`); `next build`.
 - **Sin probar:** la firma real con Cavos (falta un `NEXT_PUBLIC_CAVOS_APP_ID` y una cuenta-presupuesto cuyo dueño sea una `G…` de Cavos), el botón «Crear mi cuenta» (según el código del kit, la cuenta queda `ready` aunque falle el pago de 1 stroop) y el envío real de `pnpm renovar` (no hay `OWNER_SECRET` en este entorno). Cuando se hagan, los hashes van a [transacciones.md](transacciones.md).
 
+## Cómo correr el agente demo (Q7)
+1. Vendedor: `X402_PAY_TO=G… pnpm dev:api` (puerto 4020) (facilitador público `https://x402.org/facilitator` por defecto).
+2. Cuenta con tope 0,05, máx. 0,02 por llamada y saldo ≥ US$1 (si el saldo es menor, `/caro` choca con `SaldoInsuficiente` antes que con `MontoPorLlamada`; visto en testnet el 2026-10-26).
+3. `BUDGET_CONTRACT_ID=C… AGENT_SECRET_KEY=S… API_DEMO_URL=http://localhost:4020 pnpm --filter agent-client exec tsx ../scripts/agente-demo.ts` → sale con código 0 solo si da 4 pagos + 2 bloqueos.
+4. Corrida completa (deploy → renovar → agente → comisión → pausa → retiro): Q10, `agent-client/src/corrida-e2e.ts`; resultados en [transacciones.md](transacciones.md).
+
 ## Datos de la demo
-- ID del contrato `cuenta-presupuesto` (Q1): [`CBH3LQQCVTY74KXKCS2526KXH2F7B32RSMSIV4ZKXKFPQS5I4UR3TALX`](https://stellar.expert/explorer/testnet/contract/CBH3LQQCVTY74KXKCS2526KXH2F7B32RSMSIV4ZKXKFPQS5I4UR3TALX) — datos en [`deployments/testnet.json`](../deployments/testnet.json)
-  - Deploy: [tx 9fdac47c…](https://stellar.expert/explorer/testnet/tx/9fdac47cfff9ecb3648fd89821b74ee7501c6d89a2a7d823d8cec6e2f30196b7)
-  - `renovar` inicial (tope 0,05 USDC, máx. 0,02, recarga 0): [tx 17f33d65…](https://stellar.expert/explorer/testnet/tx/17f33d6533e16be433d5f3acd93a8dc282511f1087e7e29fff11abf32cd4212f)
-  - Ojo: en esta instancia el dueño es la cuenta deployer de prueba, todavía sin USDC; Q4/Q5 despliegan una por dueño.
+- ID del contrato `cuenta-presupuesto` (instancia Q4, dueño = cuenta Cavos de Josué): [`CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE`](https://stellar.expert/explorer/testnet/contract/CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE) — datos en [`deployments/testnet.json`](../deployments/testnet.json)
+  - Deploy: [tx dfddedce…](https://stellar.expert/explorer/testnet/tx/dfddedce2f702472cdae2e4153fbe02257499dfc6d6f3a83ae5102179286d279). Sin `renovar` inicial todavía.
+  - Anterior (Q1, dueño = deployer de prueba): `CBH3LQQCVTY74KXKCS2526KXH2F7B32RSMSIV4ZKXKFPQS5I4UR3TALX`.
 - Pruebas reales de Q1 (18 pasos, txs y fees, instancia aparte): [pruebas-q1.md](pruebas-q1.md)
 - Transacciones (link Stellar Expert `https://stellar.expert/explorer/testnet/tx/<hash>`): [transacciones.md](transacciones.md) (vacío hasta Q10)
 
