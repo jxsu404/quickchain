@@ -1,85 +1,101 @@
-// Landing (/), en inglés para el jurado de APEX. La demo vive en /demo; el presupuesto sigue en /presupuesto.
+// Landing (/), en inglés. CTA principal a /crear, demo en /demo.
 import Link from "next/link";
 import { Aviso } from "./aviso";
-import { Cabecera } from "./cabecera";
+import "./landing.css";
 
 const GITHUB = "https://github.com/jxsu404/stellar-quickpass";
-const CONTRATO = "https://stellar.expert/explorer/testnet/contract/CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE";
+const FABRICA = "https://stellar.expert/explorer/testnet/contract/CAVWWLDYBCYFPDZT5P5XW7GSOQHE6TVLSZXQ47RIJKGEKUSD23AZ34MO";
 
 const PASOS = [
-  { icono: "correo", titulo: "Log in with Cavos", texto: "No seed phrase." },
-  { icono: "presupuesto", titulo: "Sign one monthly budget", texto: "A capped USDC budget on Stellar, enforced by a Soroban contract." },
-  { icono: "agente", titulo: "The agent pays", texto: "It pays x402 APIs automatically until the cap is reached or the month ends." },
+  { t: "Sign a monthly cap", p: "You sign one USDC budget. Once." },
+  { t: "Contract enforces it", p: "A Soroban contract blocks any payment over the limit." },
+  { t: "Agent pays APIs", p: "It pays x402 APIs on its own, within the cap." },
+  { t: "1% fee", p: "Only on what the agent spends. No monthly fee." },
 ];
+const CONFIANZA = [
+  { t: "On-chain limits", p: "The cap lives in the contract, not in our servers." },
+  { t: "No seed phrase", p: "Log in with email. Keys stay yours." },
+  { t: "Resets monthly", p: "Unused budget never rolls into risk." },
+];
+
+function Ctas() {
+  return (
+    <div className="ql-ctas">
+      <Link className="ql-b p" href="/crear">Create your budget</Link>
+      <Link className="ql-b" href="/demo">Watch the demo</Link>
+    </div>
+  );
+}
 
 export default function Landing() {
   return (
-    <div className="landing">
-      <div className="wrap"><Cabecera /></div>
+    <div className="ql">
+      <div className="ql-w ql-nav">
+        <Link href="/" aria-label="Stellar QuickPass home">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/brand/StellarQuickPass-horizontal-negativo.svg" alt="Stellar QuickPass" width={168} height={40} />
+        </Link>
+        <a className="ql-s" href={GITHUB} target="_blank" rel="noreferrer">GitHub</a>
+      </div>
       <main>
-        <section className="hero">
-          <div className="wrap hero-grid">
+        <section className="ql-hero">
+          <div className="ql-w ql-g">
             <div>
-              <h1>Stellar QuickPass</h1>
-              <p className="tagline">Your agent pays. You set the cap.</p>
-              <div className="ctas">
-                <Link className="btn primary" href="/demo">Try the demo</Link>
-                <a className="btn" href={GITHUB} target="_blank" rel="noreferrer">GitHub</a>
-                <span className="badge">Testnet prototype</span>
-              </div>
+              <a className="ql-pill" href={FABRICA} target="_blank" rel="noreferrer">● Live on Stellar testnet</a>
+              <h1>Your agent pays.<br /><em>You set the cap.</em></h1>
+              <p className="ql-lead">Monthly USDC budgets for AI agents, enforced on-chain.</p>
+              <Ctas />
             </div>
-            <figure className="tarjeta" aria-label="Example of a budget card">
-              <figcaption className="etiqueta">example data</figcaption>
-              <div className="tope-txt"><span>$0.03 of $0.05 used</span><span>resets Nov 1</span></div>
-              <div className="barra" role="img" aria-label="60% of the cap used"><div style={{ width: "60%" }} /></div>
-              <div className="fila ok"><span aria-hidden>✓</span> Paid $0.01</div>
-              <div className="fila no"><span aria-hidden>✕</span> Blocked by contract: cap reached</div>
+            <figure className="ql-card" aria-label="Example budget">
+              <span className="ql-tag">Example data</span>
+              <div className="ql-amt">$36.00 <small>/ $50.00 cap</small></div>
+              <div className="ql-bar" role="img" aria-label="72% of the cap used"><i /><b /></div>
+              <div className="ql-meta"><span>72% used</span><span>resets Nov 1</span></div>
+              <ul className="ql-tx">
+                <li><span>weather-api</span><span className="ok">✓ $0.02</span></li>
+                <li><span>search-api</span><span className="ok">✓ $0.05</span></li>
+                <li><span>gpu-render</span><span className="no">✕ over cap</span></li>
+              </ul>
             </figure>
           </div>
         </section>
 
-        <section>
-          <div className="wrap">
-            <h2>The problem</h2>
-            <p>
-              Today, owners of AI agents have two bad options: sign every x402 payment by hand, or give the agent
-              a wallet with no real spending limit.
-            </p>
-          </div>
-        </section>
-
-        <section>
-          <div className="wrap">
-            <h2>How it works</h2>
-            <ol className="steps">
-              {PASOS.map((p, i) => (
-                <li key={p.icono}>
-                  <span className="n">{i + 1}</span>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img className="icono" src={`/brand/iconos/${p.icono}.svg`} alt="" width={28} height={28} />
-                  <b>{p.titulo}</b><span>{p.texto}</span>
-                </li>
+        <section className="ql-sec">
+          <div className="ql-w">
+            <div className="ql-k">How it works</div>
+            <h2>One signature. Bounded spending.</h2>
+            <ol className="ql-steps">
+              {PASOS.map((s, i) => (
+                <li key={s.t}><span className="n">0{i + 1}</span><h3>{s.t}</h3><p>{s.p}</p></li>
               ))}
             </ol>
           </div>
         </section>
 
-        <section>
-          <div className="wrap">
-            <h2>Pricing</h2>
-            <p>1% of what the agent spends. No monthly fee. API providers settle in seconds on Stellar, in USDC.</p>
-            <p className="ejemplo">If your agent spends $10, you pay $0.10 (example).</p>
+        <section className="ql-sec">
+          <div className="ql-w">
+            <div className="ql-k">Trust &amp; safety</div>
+            <h2>The limit is code, not a promise.</h2>
+            <div className="ql-trust">
+              {CONFIANZA.map((c) => (<div key={c.t}><h3>{c.t}</h3><p>{c.p}</p></div>))}
+            </div>
+          </div>
+        </section>
+
+        <section className="ql-w">
+          <div className="ql-cta">
+            <h2>Give your agent a budget.</h2>
+            <p>Takes a minute on testnet.</p>
+            <Ctas />
           </div>
         </section>
       </main>
-
-      <footer>
-        <div className="wrap">
-          <div className="links">
-            <span className="badge">Testnet demo</span>
-            <a href={CONTRATO} target="_blank" rel="noreferrer">Contract on Stellar Expert</a>
+      <footer className="ql-f">
+        <div className="ql-w">
+          <div className="l">
+            <a href={FABRICA} target="_blank" rel="noreferrer">Factory contract on Stellar Expert</a>
             <a href={GITHUB} target="_blank" rel="noreferrer">GitHub</a>
-            <span>Built for Pura Vida Ideathon</span>
+            <span>Testnet prototype</span>
           </div>
           <Aviso />
         </div>
