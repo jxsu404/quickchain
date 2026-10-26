@@ -4,7 +4,7 @@
 | Monorepo | pnpm workspaces (`web`, `api-demo`, `agent-client`) + Cargo workspace (`contracts/cuenta-presupuesto`) | un solo repo, un comando |
 | Contrato | Rust + `soroban-sdk` 22 | tope y bloqueo en cadena |
 | Login | Cavos `@cavos/kit` (Stellar testnet) | correo, sin frase semilla ([docs](https://docs.cavos.xyz/docs/quickstart)) |
-| Web y API | Next.js (App Router, TS) en Vercel | como en hackathons anteriores |
+| Web y API | Web: Next.js (App Router, TS) en Vercel; vendedor demo: Node + TS (`api-demo/servidor/vendedor.ts`, node:http) | como en hackathons anteriores |
 | Pagos por uso | `@x402/core` + `@x402/stellar` (esquema `exact`) | estándar x402 en Stellar ([docs](https://developers.stellar.org/docs/build/agentic-payments/x402/built-on-stellar)) |
 | Cliente | `@stellar/stellar-sdk` (RPC Soroban) | llamar al contrato |
 | Base de datos | ninguna por ahora (Neon Postgres solo si de verdad hace falta) | el estado está en el contrato |
