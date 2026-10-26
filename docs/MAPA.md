@@ -86,6 +86,7 @@ graph TD
   docs_DEMO_md --> docs_PITCH_md
   docs_DEMO_md --> docs_transacciones_md
   api_demo_AGENTS_md --> docs_transacciones_md
+  agent_client_AGENTS_md --> docs_transacciones_md
   docs_DEMO_md --> agent_client_AGENTS_md
   docs_DEMO_md --> api_demo_AGENTS_md
   docs_DEMO_md --> web_AGENTS_md
@@ -140,7 +141,7 @@ graph TD
 - [Transacciones (testnet)](transacciones.md) — filas de Q3 (pagos x402 desde G… y C…); Q10 completa la corrida con links de Stellar Expert
 - [Pitch](PITCH.md) — issue [#6](https://github.com/jxsu404/quickchain/issues/6)
 - [contracts/budget](../contracts/budget/AGENTS.md) — issue [#1](https://github.com/jxsu404/quickchain/issues/1)
-- [agent-client](../agent-client/AGENTS.md) — issue [#2](https://github.com/jxsu404/quickchain/issues/2)
+- [agent-client](../agent-client/AGENTS.md) — issue [#2](https://github.com/jxsu404/quickchain/issues/2); Q2: SDK `crearFetchConPresupuesto`
 - [api-demo](../api-demo/AGENTS.md) — issue [#3](https://github.com/jxsu404/quickchain/issues/3); Q3: `/tipo-cambio`, `/caro` y facilitador propio
 - [web](../web/AGENTS.md) — issue [#4](https://github.com/jxsu404/quickchain/issues/4)
 

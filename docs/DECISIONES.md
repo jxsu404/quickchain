@@ -15,6 +15,8 @@
 | 2026-10-25 | Q3: el vendedor y el facilitador viven en `api-demo/` (`/tipo-cambio`, `/caro`, `/facilitador/*`), no en `servidor/` como dice el plan | es la carpeta que ya existe; mismo comportamiento |
 | 2026-10-25 | Q3: el pago a la API es x402 `exact` estándar con `from = C…` (modo A del plan), no `X-QUICKCHAIN-TX` | probado en testnet: la `C…` pagó con el facilitador público y con el propio (ver [transacciones](transacciones.md)); responde la pregunta abierta 1 |
 | 2026-10-25 | Q3: tipo de cambio de ExchangeRate-API (`open.er-api.com`), rotulado "no oficial del BCCR" | fuente real sin llave; el servicio del BCCR pide token |
+| 2026-10-25 | Q2: el SDK vive en `agent-client/` (`src/sdk.ts`), no en `sdk/` como dice el plan; se quitó `gastar()` y `X-QUICKCHAIN-TX` | es el paquete que ya existe; el pago es x402 `exact` con `from = C…`, probado en testnet ([transacciones](transacciones.md)) |
+| 2026-10-25 | Q2: la firma del agente usa `authorizeEntry` de stellar-sdk con un `Keypair`, sin firmador custom | el `Vec<{public_key, signature}>` coincide con `FirmaAgente` del contrato; se verificó en testnet (responde la pregunta abierta 2 del plan) |
 
 ## Preguntas abiertas
 1. ~~**Cómo prueba el agente el pago a la API.**~~ Resuelta en Q3 (ver arriba). El esquema x402 `exact` espera un pago firmado por quien paga; en QuickChain paga el contrato. Opción MVP: el agente manda `X-QUICKCHAIN-TX` y `api-demo` verifica la tx en el RPC (destino, monto, contrato). Alternativa: el contrato autoriza y el agente firma un `exact` normal. Decidir en tarea 2/3.

@@ -13,6 +13,9 @@ importers:
       '@stellar/stellar-sdk':
         specifier: ^16.4.1
         version: 16.4.1
+      '@x402/core':
+        specifier: ~2.28.0
+        version: 2.28.0
       dotenv:
         specifier: ^17
         version: 17.4.2

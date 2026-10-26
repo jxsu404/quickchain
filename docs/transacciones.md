@@ -17,6 +17,13 @@ Q10 completa la corrida limpia; las filas Q3 son de la prueba del vendedor y el 
 | `947c51f9` | Q3: pago 4/4 desde la `C…` (público) | [947c51f9…](https://stellar.expert/explorer/testnet/tx/947c51f9fe4b4a31504bcc722b0f135472a3146f93efb0fdffd536d057bd7852) |
 | — (sin tx) | Q3: 5.º pago desde la `C…` bloqueado en simulación: `Error(Contract, #8)` = `TopeAlcanzado`. No se movió plata | — |
 | — (sin tx) | Q3: `/caro` (US$1) desde la `C…` bloqueado: `Error(Contract, #7)` = `MontoPorLlamada` | — |
+| `3ffe6872` | Q2: `renovar` de la `C…` de prueba (periodo nuevo, tope 0,05) | [3ffe6872…](https://stellar.expert/explorer/testnet/tx/3ffe6872898a046250cbf44a876746a4f71ae2e781a1c2639efc4038393af111) |
+| `c0dca2fa` | Q2: SDK `crearFetchConPresupuesto`, pago 1/4 desde la `C…` (facilitador propio) | [c0dca2fa…](https://stellar.expert/explorer/testnet/tx/c0dca2fa3e85bf6c87571e6630e00cfd9d6cf4c90d3452b9daa430dba39bbe8b) |
+| `baa5bd1c` | Q2: SDK, pago 2/4 | [baa5bd1c…](https://stellar.expert/explorer/testnet/tx/baa5bd1c7fe8d22d45566dacebe88055dd8434484fc6d7c8c518ef8abee927a9) |
+| `943d8378` | Q2: SDK, pago 3/4 | [943d8378…](https://stellar.expert/explorer/testnet/tx/943d8378d79a2a7f7e83dd81d7584a7704b2f5e2ab371ea6731c87df19d81234) |
+| `40a58cd5` | Q2: SDK, pago 4/4 | [40a58cd5…](https://stellar.expert/explorer/testnet/tx/40a58cd54b4c04e7b649807ba82ccd0ad4b71c0a237b8b3e8cd1c21a68caa32c) |
+| — (sin tx) | Q2: SDK, 5.º pago → `PagoBloqueado: TopeAlcanzado` (contrato, en simulación) | — |
+| — (sin tx) | Q2: SDK, `/caro` → `PagoBloqueado: MontoPorLlamada` (contrato, en simulación) | — |
 
 <!-- enlaces:auto -->
 ## Enlaces
@@ -24,7 +31,7 @@ Q10 completa la corrida limpia; las filas Q3 son de la prueba del vendedor y el 
 - ⬆️ Arriba: [Mapa (hub)](MAPA.md) · [Índice de docs](INDICE.md)
 - 📖 Fuente de verdad: [PLAN-OPUS — la biblia](PLAN-OPUS.md)
 - Relacionado: [Demo (testnet)](DEMO.md)
-- Lo enlazan: [api-demo](../api-demo/AGENTS.md) · [Decisiones](DECISIONES.md) · [Demo (testnet)](DEMO.md) · [Índice de docs](INDICE.md) · [Mapa (hub)](MAPA.md)
+- Lo enlazan: [agent-client](../agent-client/AGENTS.md) · [api-demo](../api-demo/AGENTS.md) · [Decisiones](DECISIONES.md) · [Demo (testnet)](DEMO.md) · [Índice de docs](INDICE.md) · [Mapa (hub)](MAPA.md)
 - Tags: #quickchain #docs
 <!-- /enlaces:auto -->
 
