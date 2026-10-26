@@ -19,7 +19,7 @@ Fila Q8 de [PLAN-OPUS](PLAN-OPUS.md). **Toda cifra sale de una tx real de Stella
 
 ## Comisión de 1 % (contrato de [#11](https://github.com/jxsu404/quickchain/pull/11), sin cambios)
 
-- Instancia de prueba [`CCKZ7XID…`](https://stellar.expert/explorer/testnet/contract/CCKZ7XID33B73EMO2O3BBYKLVEHOJIQ7WVYJEV5TPIICEQXIDG3B7YKJ), con una tesorería propia [`GA6HM4CL…`](https://stellar.expert/explorer/testnet/account/GA6HM4CLRCQLW7G7GDS3HEFFLAU5ELNB7LA2IR3XV5IHRQ42BIPYWA5S), distinta del dueño.
+- Deploy anterior de prueba (no es el contrato vigente [`CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE`](https://stellar.expert/explorer/testnet/contract/CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE)) [`CCKZ7XID…`](https://stellar.expert/explorer/testnet/contract/CCKZ7XID33B73EMO2O3BBYKLVEHOJIQ7WVYJEV5TPIICEQXIDG3B7YKJ), con una tesorería propia [`GA6HM4CL…`](https://stellar.expert/explorer/testnet/account/GA6HM4CLRCQLW7G7GDS3HEFFLAU5ELNB7LA2IR3XV5IHRQ42BIPYWA5S), distinta del dueño.
 - 2 pagos de US$0,01 (100.000 unidades). Cada uno suma 1.000 unidades de comisión, redondeada hacia arriba: `gastado` pasa a 0,0202 USDC y la comisión pendiente a 2.000 unidades.
 - `cobrar_comision()` mandó **2.000 unidades (0,0002 USDC)** a la tesorería en la tx [820db07e…](https://stellar.expert/explorer/testnet/tx/820db07e4b543a68ed5297398ae51009113aeadbfc1e75ac34d0be2ee919dc18). El saldo USDC de la tesorería pasó de 0 a 0,0002, leído en Horizon antes y después.
 

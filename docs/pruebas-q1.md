@@ -11,7 +11,7 @@ node scripts/pruebas-q1.mjs         # escribe deployments/pruebas-q1.json
 El script nunca imprime llaves. Cada pago lo arma como `USDC.transfer(C, vendedor, monto)`, firma la auth entry de `C` con la llave del agente (`authorizeEntry`) y **simula dos veces**. La simulación en modo *recording* no corre `__check_auth`; la segunda, con la auth firmada, sí. Si la segunda falla, no se envía nada y se anota el error. Por eso **los bloqueos no tienen tx**.
 
 ## Instancia y cuentas de prueba
-- Contrato aparte (no toca el de la demo): [`CDPWYHPE…QWJYSE`](https://stellar.expert/explorer/testnet/contract/CDPWYHPERIW2RU7TPUE3ZGRQWHS7VPC5SY2V3SEHSPGCVMBHAGQWJYSE). Deploy: [059c72cd…](https://stellar.expert/explorer/testnet/tx/059c72cd848fa6b5acd2866e05218736df5cb9cd071d01c23a4b589daaabf9b8)
+- Contrato de prueba anterior (no es el vigente [`CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE`](https://stellar.expert/explorer/testnet/contract/CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE)): [`CDPWYHPE…QWJYSE`](https://stellar.expert/explorer/testnet/contract/CDPWYHPERIW2RU7TPUE3ZGRQWHS7VPC5SY2V3SEHSPGCVMBHAGQWJYSE). Deploy: [059c72cd…](https://stellar.expert/explorer/testnet/tx/059c72cd848fa6b5acd2866e05218736df5cb9cd071d01c23a4b589daaabf9b8)
 - Dueño `GCP4NEWM…NA3D` (deployer) · tesorería [`GBPWNQGV…W6W3`](https://stellar.expert/explorer/testnet/account/GBPWNQGVFX7MAWYKNP5VFO43II4GJOTTGDOTDW4LQPLUQGYPXCIHW6W3) · vendedor [`GA4OOAEA…6WVC`](https://stellar.expert/explorer/testnet/account/GA4OOAEAL2IW7XBJQCWEPZIH5VABUGOO7TV3JDKNEWNY4HJNW62D6WVC) · `fee_bps = 100`.
 - Token: SAC del USDC de Circle `CBIELTK6…DAMA` (ver verificación abajo).
 

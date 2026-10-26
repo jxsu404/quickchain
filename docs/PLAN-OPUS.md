@@ -13,6 +13,8 @@ Solo leí archivos; no edité nada. Leí también el repo `caja-tica-escudo` (pa
 
 ---
 
+**Contrato vigente (testnet):** [`CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE`](https://stellar.expert/explorer/testnet/contract/CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE), según [deployments/testnet.json](../deployments/testnet.json). Otros IDs `C…` en los docs son deploys anteriores.
+
 ## 0. Resumen en una frase
 
 El dueño entra con su correo (Cavos) y firma una vez al mes un presupuesto en USDC. El agente paga APIs x402 desde una **cuenta-presupuesto** en Soroban cuyo `__check_auth` solo deja pasar transferencias de USDC firmadas por la llave del agente, dentro del tope del mes, del máximo por llamada y antes del fin de mes. El contrato acumula un 1% de comisión que va a la tesorería.
