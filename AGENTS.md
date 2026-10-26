@@ -38,3 +38,13 @@ El buzón del equipo vive en el repo privado `jxsu404/quickchain-buzon` (acceso 
 2. Tests y `pnpm typecheck` pasan.
 3. Docs del paquete (`AGENTS.md`) y `docs/` actualizados si cambió el comportamiento.
 4. Sin secretos ni cifras sin fuente. PR a `main`.
+
+<!-- enlaces:auto -->
+## Enlaces
+
+- ⬆️ Arriba: [Mapa (hub)](docs/MAPA.md) · [Índice de docs](docs/INDICE.md)
+- 📖 Fuente de verdad: [PLAN-OPUS — la biblia](docs/PLAN-OPUS.md)
+- Relacionado: [Cómo contribuir](CONTRIBUTING.md) · [Tareas](TAREAS.md) · [Índice de docs](docs/INDICE.md) · [contracts/budget](contracts/budget/AGENTS.md) · [agent-client](agent-client/AGENTS.md) · [api-demo](api-demo/AGENTS.md) · [web](web/AGENTS.md)
+- Lo enlazan: [Cómo contribuir](CONTRIBUTING.md) · [README](README.md) · [Mapa (hub)](docs/MAPA.md)
+- Tags: #quickchain #docs
+<!-- /enlaces:auto -->

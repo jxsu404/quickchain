@@ -21,3 +21,13 @@ Listo cuando: hay un guion en `docs/DEMO.md` con pagos reales en testnet (links 
 
 ## 6. README, pitch y video
 Listo cuando: README revisado, `docs/PITCH.md` completo (cada cifra con fuente), slides con la plantilla del evento y video de ≤ 3 min subido.
+
+<!-- enlaces:auto -->
+## Enlaces
+
+- ⬆️ Arriba: [Mapa (hub)](docs/MAPA.md) · [Índice de docs](docs/INDICE.md)
+- 📖 Fuente de verdad: [PLAN-OPUS — la biblia](docs/PLAN-OPUS.md)
+- Relacionado: [contracts/budget](contracts/budget/AGENTS.md) · [agent-client](agent-client/AGENTS.md) · [api-demo](api-demo/AGENTS.md) · [web](web/AGENTS.md) · [Demo (testnet)](docs/DEMO.md) · [Pitch](docs/PITCH.md)
+- Lo enlazan: [AGENTS (raíz)](AGENTS.md) · [Cómo contribuir](CONTRIBUTING.md) · [README](README.md) · [Mapa (hub)](docs/MAPA.md) · [PLAN-OPUS — la biblia](docs/PLAN-OPUS.md) · [Plan (resumen)](docs/PLAN.md)
+- Tags: #quickchain #docs
+<!-- /enlaces:auto -->

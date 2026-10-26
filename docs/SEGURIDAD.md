@@ -14,3 +14,13 @@
 | Mensajes que suenen a inversión | reglas en AGENTS.md y CONTRIBUTING.md | hecho |
 
 Riesgos aceptados para la demo: solo testnet; un presupuesto por agente; sin auditoría externa del contrato.
+
+<!-- enlaces:auto -->
+## Enlaces
+
+- ⬆️ Arriba: [Mapa (hub)](MAPA.md) · [Índice de docs](INDICE.md)
+- 📖 Fuente de verdad: [PLAN-OPUS — la biblia](PLAN-OPUS.md)
+- Relacionado: [Arquitectura](ARQUITECTURA.md) · [Auditoría](AUDITORIA.md) · [contracts/budget](../contracts/budget/AGENTS.md)
+- Lo enlazan: [Cómo contribuir](../CONTRIBUTING.md) · [contracts/budget](../contracts/budget/AGENTS.md) · [Arquitectura](ARQUITECTURA.md) · [Auditoría](AUDITORIA.md) · [Índice de docs](INDICE.md) · [Mapa (hub)](MAPA.md) · [PLAN-OPUS — la biblia](PLAN-OPUS.md)
+- Tags: #quickchain #docs
+<!-- /enlaces:auto -->

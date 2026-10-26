@@ -7,3 +7,14 @@
 - **Nota:** no es inversión ni ahorro; demo en testnet.
 
 _Completar con la plantilla del evento y el video._
+
+<!-- enlaces:auto -->
+## Enlaces
+
+- ⬆️ Arriba: [Mapa (hub)](MAPA.md) · [Índice de docs](INDICE.md)
+- 📖 Fuente de verdad: [PLAN-OPUS — la biblia](PLAN-OPUS.md)
+- Relacionado: [Demo (testnet)](DEMO.md) · [README](../README.md)
+- Issue: [#6](https://github.com/jxsu404/quickchain/issues/6)
+- Lo enlazan: [README](../README.md) · [Tareas](../TAREAS.md) · [Demo (testnet)](DEMO.md) · [Índice de docs](INDICE.md) · [Mapa (hub)](MAPA.md) · [PLAN-OPUS — la biblia](PLAN-OPUS.md)
+- Tags: #quickchain #docs
+<!-- /enlaces:auto -->

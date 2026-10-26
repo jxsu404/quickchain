@@ -41,3 +41,13 @@ Son **sugerencias opcionales**, no requisitos para que el producto sea bueno. Sa
 | Evaluar una mensualidad como alternativa (o complemento) al 1 % | Opcional |
 | Slogan: «Tu agente paga solo. Nunca más de tu tope.» | Opcional |
 | Web con barra de tope (gastado vs. tope del mes) | Opcional |
+
+<!-- enlaces:auto -->
+## Enlaces
+
+- ⬆️ Arriba: [Mapa (hub)](MAPA.md) · [Índice de docs](INDICE.md)
+- 📖 Fuente de verdad: [PLAN-OPUS — la biblia](PLAN-OPUS.md)
+- Relacionado: [Decisiones](DECISIONES.md) · [Seguridad](SEGURIDAD.md)
+- Lo enlazan: [Decisiones](DECISIONES.md) · [Índice de docs](INDICE.md) · [Mapa (hub)](MAPA.md) · [PLAN-OPUS — la biblia](PLAN-OPUS.md) · [Seguridad](SEGURIDAD.md)
+- Tags: #quickchain #docs
+<!-- /enlaces:auto -->

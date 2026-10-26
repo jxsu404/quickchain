@@ -10,3 +10,13 @@
 6. **Lenguaje legal:** no digas "inversión", "ganancia", "rendimiento" ni "sin riesgo".
 7. **Cifras con fuente:** toda cifra en docs o pitch lleva su link.
 8. **Pedidos entre nosotros:** por el buzón, repo privado `quickchain-buzon` (acceso por invitación).
+
+<!-- enlaces:auto -->
+## Enlaces
+
+- ⬆️ Arriba: [Mapa (hub)](docs/MAPA.md) · [Índice de docs](docs/INDICE.md)
+- 📖 Fuente de verdad: [PLAN-OPUS — la biblia](docs/PLAN-OPUS.md)
+- Relacionado: [AGENTS (raíz)](AGENTS.md) · [Tareas](TAREAS.md) · [Seguridad](docs/SEGURIDAD.md)
+- Lo enlazan: [AGENTS (raíz)](AGENTS.md) · [README](README.md) · [Mapa (hub)](docs/MAPA.md)
+- Tags: #quickchain #docs
+<!-- /enlaces:auto -->

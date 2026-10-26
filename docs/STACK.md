@@ -10,3 +10,13 @@
 | Base de datos | ninguna por ahora (Neon Postgres solo si de verdad hace falta) | el estado está en el contrato |
 
 Versiones verificadas: rustc 1.99 (rustup) compila el wasm; con rustc 1.85 del sistema, `Cargo.lock` fija `ed25519-dalek` 2.2.0.
+
+<!-- enlaces:auto -->
+## Enlaces
+
+- ⬆️ Arriba: [Mapa (hub)](MAPA.md) · [Índice de docs](INDICE.md)
+- 📖 Fuente de verdad: [PLAN-OPUS — la biblia](PLAN-OPUS.md)
+- Relacionado: [Arquitectura](ARQUITECTURA.md) · [Decisiones](DECISIONES.md)
+- Lo enlazan: [Arquitectura](ARQUITECTURA.md) · [Decisiones](DECISIONES.md) · [Índice de docs](INDICE.md) · [Mapa (hub)](MAPA.md)
+- Tags: #quickchain #docs
+<!-- /enlaces:auto -->

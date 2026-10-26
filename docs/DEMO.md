@@ -10,3 +10,14 @@
 ## Datos de la demo
 - ID del contrato: _pendiente (tarea 1)_
 - Transacciones (link Stellar Expert `https://stellar.expert/explorer/testnet/tx/<hash>`): _pendiente (tarea 5)_
+
+<!-- enlaces:auto -->
+## Enlaces
+
+- ⬆️ Arriba: [Mapa (hub)](MAPA.md) · [Índice de docs](INDICE.md)
+- 📖 Fuente de verdad: [PLAN-OPUS — la biblia](PLAN-OPUS.md)
+- Relacionado: [Pitch](PITCH.md) · [agent-client](../agent-client/AGENTS.md) · [api-demo](../api-demo/AGENTS.md) · [web](../web/AGENTS.md)
+- Issue: [#5](https://github.com/jxsu404/quickchain/issues/5)
+- Lo enlazan: [README](../README.md) · [Tareas](../TAREAS.md) · [agent-client](../agent-client/AGENTS.md) · [api-demo](../api-demo/AGENTS.md) · [Índice de docs](INDICE.md) · [Mapa (hub)](MAPA.md) · [Pitch](PITCH.md) · [PLAN-OPUS — la biblia](PLAN-OPUS.md) · [web](../web/AGENTS.md)
+- Tags: #quickchain #docs
+<!-- /enlaces:auto -->

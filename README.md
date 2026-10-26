@@ -48,3 +48,13 @@ Ver también: [TAREAS.md](TAREAS.md) · [CONTRIBUTING.md](CONTRIBUTING.md) · [A
 
 ## Créditos
 El código x402 de `api-demo` se rescató de [caja-tica-escudo](https://github.com/josedanielm0202-droid/caja-tica-escudo) (Milasur, Juliana Sanabria, josedanielm0202-droid).
+
+<!-- enlaces:auto -->
+## Enlaces
+
+- ⬆️ Arriba: [Mapa (hub)](docs/MAPA.md) · [Índice de docs](docs/INDICE.md)
+- 📖 Fuente de verdad: [PLAN-OPUS — la biblia](docs/PLAN-OPUS.md)
+- Relacionado: [AGENTS (raíz)](AGENTS.md) · [Cómo contribuir](CONTRIBUTING.md) · [Tareas](TAREAS.md) · [Índice de docs](docs/INDICE.md) · [Pitch](docs/PITCH.md) · [Demo (testnet)](docs/DEMO.md)
+- Lo enlazan: [Mapa (hub)](docs/MAPA.md) · [Pitch](docs/PITCH.md)
+- Tags: #quickchain #docs
+<!-- /enlaces:auto -->

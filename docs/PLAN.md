@@ -12,3 +12,13 @@
 6. README, pitch y video.
 
 Fuera de alcance: mainnet, colones, Writz, Bitcoin, Neon (no hace falta guardar datos: el estado vive en el contrato).
+
+<!-- enlaces:auto -->
+## Enlaces
+
+- ⬆️ Arriba: [Mapa (hub)](MAPA.md) · [Índice de docs](INDICE.md)
+- 📖 Fuente de verdad: [PLAN-OPUS — la biblia](PLAN-OPUS.md)
+- Relacionado: [Decisiones](DECISIONES.md) · [Tareas](../TAREAS.md)
+- Lo enlazan: [Índice de docs](INDICE.md) · [Mapa (hub)](MAPA.md)
+- Tags: #quickchain #docs
+<!-- /enlaces:auto -->

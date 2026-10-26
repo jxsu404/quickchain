@@ -17,3 +17,13 @@
 | [../CONTRIBUTING.md](../CONTRIBUTING.md) | Reglas del equipo |
 | [../AGENTS.md](../AGENTS.md) | Contexto para agentes de código |
 | `quickchain-buzon` (repo privado, por invitación) | Pedidos entre integrantes |
+
+<!-- enlaces:auto -->
+## Enlaces
+
+- ⬆️ Arriba: [Mapa (hub)](MAPA.md) · (este es el índice)
+- 📖 Fuente de verdad: [PLAN-OPUS — la biblia](PLAN-OPUS.md)
+- Relacionado: [Plan (resumen)](PLAN.md) · [Arquitectura](ARQUITECTURA.md) · [Stack](STACK.md) · [Decisiones](DECISIONES.md) · [Seguridad](SEGURIDAD.md) · [Auditoría](AUDITORIA.md) · [Demo (testnet)](DEMO.md) · [Pitch](PITCH.md)
+- Lo enlazan: [AGENTS (raíz)](../AGENTS.md) · [README](../README.md) · [Mapa (hub)](MAPA.md) · [PLAN-OPUS — la biblia](PLAN-OPUS.md)
+- Tags: #quickchain #docs
+<!-- /enlaces:auto -->
