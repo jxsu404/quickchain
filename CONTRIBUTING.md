@@ -1,6 +1,6 @@
 # Cómo contribuir
 
-> **Regla n.º 1: [docs/PLAN-OPUS.md](docs/PLAN-OPUS.md) es la biblia de QuickChain.** Toda persona o agente que trabaje aquí (integrantes, Raúl, Martín o cualquier otro) lee el plan antes de empezar y sigue sus fases, tareas (Q0–Q15), horarios de corte y planes B. Si algo choca con el plan, gana el plan; para cambiarlo, se propone en el buzón y lo aprueba Josué.
+> **Regla n.º 1: [docs/PLAN-OPUS.md](docs/PLAN-OPUS.md) es la biblia de QuickChain.** Toda persona o agente que trabaje aquí (integrantes, Raúl, Martín o cualquier otro) lee el plan antes de empezar y sigue sus fases, tareas (Q0–Q15), horarios de corte y planes B. Si algo choca con el plan, gana el plan; cualquier integrante puede editar el plan y la app por PR y hacer merge a `main` con el CI en verde; los cambios importantes del plan se anotan con fecha en [DECISIONES](docs/DECISIONES.md).
 
 1. **Tu rama:** `rol/<tu-nombre>` (ej. `rol/juliana`). Nunca trabajes directo en `main`.
 2. **PR a `main`:** cada cambio entra por pull request. Alguien más lo revisa si hay tiempo.
