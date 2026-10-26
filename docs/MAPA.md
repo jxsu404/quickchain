@@ -19,7 +19,8 @@ graph TD
   docs_DEMO_md["Demo (testnet)"]
   docs_transacciones_md["Transacciones (testnet)"]
   docs_PITCH_md["Pitch"]
-  contracts_budget_AGENTS_md["contracts/budget"]
+  docs_pruebas_q1_md["Pruebas Q1"]
+  contracts_cuenta_presupuesto_AGENTS_md["contracts/cuenta-presupuesto"]
   agent_client_AGENTS_md["agent-client"]
   api_demo_AGENTS_md["api-demo"]
   web_AGENTS_md["web"]
@@ -27,7 +28,7 @@ graph TD
   docs_PLAN_OPUS_md --> docs_INDICE_md
   docs_PLAN_OPUS_md --> TAREAS_md
   docs_PLAN_OPUS_md --> docs_AUDITORIA_md
-  docs_PLAN_OPUS_md --> contracts_budget_AGENTS_md
+  docs_PLAN_OPUS_md --> contracts_cuenta_presupuesto_AGENTS_md
   docs_PLAN_OPUS_md --> agent_client_AGENTS_md
   docs_PLAN_OPUS_md --> api_demo_AGENTS_md
   docs_PLAN_OPUS_md --> web_AGENTS_md
@@ -44,14 +45,14 @@ graph TD
   AGENTS_md --> CONTRIBUTING_md
   AGENTS_md --> TAREAS_md
   AGENTS_md --> docs_INDICE_md
-  AGENTS_md --> contracts_budget_AGENTS_md
+  AGENTS_md --> contracts_cuenta_presupuesto_AGENTS_md
   AGENTS_md --> agent_client_AGENTS_md
   AGENTS_md --> api_demo_AGENTS_md
   AGENTS_md --> web_AGENTS_md
   CONTRIBUTING_md --> AGENTS_md
   CONTRIBUTING_md --> TAREAS_md
   CONTRIBUTING_md --> docs_SEGURIDAD_md
-  TAREAS_md --> contracts_budget_AGENTS_md
+  TAREAS_md --> contracts_cuenta_presupuesto_AGENTS_md
   TAREAS_md --> agent_client_AGENTS_md
   TAREAS_md --> api_demo_AGENTS_md
   TAREAS_md --> web_AGENTS_md
@@ -70,7 +71,7 @@ graph TD
   docs_PLAN_md --> TAREAS_md
   docs_ARQUITECTURA_md --> docs_STACK_md
   docs_ARQUITECTURA_md --> docs_SEGURIDAD_md
-  docs_ARQUITECTURA_md --> contracts_budget_AGENTS_md
+  docs_ARQUITECTURA_md --> contracts_cuenta_presupuesto_AGENTS_md
   docs_ARQUITECTURA_md --> agent_client_AGENTS_md
   docs_ARQUITECTURA_md --> api_demo_AGENTS_md
   docs_ARQUITECTURA_md --> web_AGENTS_md
@@ -80,7 +81,7 @@ graph TD
   docs_DECISIONES_md --> docs_STACK_md
   docs_SEGURIDAD_md --> docs_ARQUITECTURA_md
   docs_SEGURIDAD_md --> docs_AUDITORIA_md
-  docs_SEGURIDAD_md --> contracts_budget_AGENTS_md
+  docs_SEGURIDAD_md --> contracts_cuenta_presupuesto_AGENTS_md
   docs_AUDITORIA_md --> docs_DECISIONES_md
   docs_AUDITORIA_md --> docs_SEGURIDAD_md
   docs_DEMO_md --> docs_PITCH_md
@@ -90,14 +91,14 @@ graph TD
   docs_DEMO_md --> web_AGENTS_md
   docs_PITCH_md --> docs_DEMO_md
   docs_PITCH_md --> README_md
-  contracts_budget_AGENTS_md --> agent_client_AGENTS_md
-  contracts_budget_AGENTS_md --> docs_SEGURIDAD_md
-  agent_client_AGENTS_md --> contracts_budget_AGENTS_md
+  contracts_cuenta_presupuesto_AGENTS_md --> agent_client_AGENTS_md
+  contracts_cuenta_presupuesto_AGENTS_md --> docs_SEGURIDAD_md
+  agent_client_AGENTS_md --> contracts_cuenta_presupuesto_AGENTS_md
   agent_client_AGENTS_md --> api_demo_AGENTS_md
   agent_client_AGENTS_md --> docs_DEMO_md
   api_demo_AGENTS_md --> agent_client_AGENTS_md
   api_demo_AGENTS_md --> docs_DEMO_md
-  web_AGENTS_md --> contracts_budget_AGENTS_md
+  web_AGENTS_md --> contracts_cuenta_presupuesto_AGENTS_md
   web_AGENTS_md --> api_demo_AGENTS_md
   web_AGENTS_md --> docs_DEMO_md
   README_md -.-> docs_PLAN_OPUS_md
@@ -114,7 +115,12 @@ graph TD
   docs_DEMO_md -.-> docs_PLAN_OPUS_md
   docs_PITCH_md -.-> docs_PLAN_OPUS_md
   docs_transacciones_md -.-> docs_PLAN_OPUS_md
-  contracts_budget_AGENTS_md -.-> docs_PLAN_OPUS_md
+  contracts_cuenta_presupuesto_AGENTS_md -.-> docs_PLAN_OPUS_md
+  contracts_cuenta_presupuesto_AGENTS_md --> docs_DEMO_md
+  contracts_cuenta_presupuesto_AGENTS_md --> docs_DECISIONES_md
+  contracts_cuenta_presupuesto_AGENTS_md --> docs_pruebas_q1_md
+  docs_DEMO_md --> docs_pruebas_q1_md
+  docs_pruebas_q1_md -.-> docs_PLAN_OPUS_md
   agent_client_AGENTS_md -.-> docs_PLAN_OPUS_md
   api_demo_AGENTS_md -.-> docs_PLAN_OPUS_md
   web_AGENTS_md -.-> docs_PLAN_OPUS_md
@@ -137,8 +143,9 @@ graph TD
 - [Auditoría](AUDITORIA.md)
 - [Demo (testnet)](DEMO.md) — issue [#5](https://github.com/jxsu404/quickchain/issues/5)
 - [Transacciones (testnet)](transacciones.md) — tabla vacía; Q10 la llena con links de Stellar Expert
+- [Pruebas Q1 (testnet)](pruebas-q1.md) — issue [#1](https://github.com/jxsu404/quickchain/issues/1)
 - [Pitch](PITCH.md) — issue [#6](https://github.com/jxsu404/quickchain/issues/6)
-- [contracts/budget](../contracts/budget/AGENTS.md) — issue [#1](https://github.com/jxsu404/quickchain/issues/1)
+- [contracts/cuenta-presupuesto](../contracts/cuenta-presupuesto/AGENTS.md) — issue [#1](https://github.com/jxsu404/quickchain/issues/1) — contrato `cuenta-presupuesto` desplegado en testnet (ver [Demo](DEMO.md))
 - [agent-client](../agent-client/AGENTS.md) — issue [#2](https://github.com/jxsu404/quickchain/issues/2)
 - [api-demo](../api-demo/AGENTS.md) — issue [#3](https://github.com/jxsu404/quickchain/issues/3)
 - [web](../web/AGENTS.md) — issue [#4](https://github.com/jxsu404/quickchain/issues/4)
@@ -148,7 +155,7 @@ graph TD
 | Tarea | Nodo | Issue |
 |---|---|---|
 | Q0 | [../AGENTS.md](../AGENTS.md) | — |
-| Q1 | [../contracts/budget/AGENTS.md](../contracts/budget/AGENTS.md) | [#1](https://github.com/jxsu404/quickchain/issues/1) |
+| Q1 | [../contracts/cuenta-presupuesto/AGENTS.md](../contracts/cuenta-presupuesto/AGENTS.md) · [pruebas-q1.md](pruebas-q1.md) | [#1](https://github.com/jxsu404/quickchain/issues/1) |
 | Q2 | [../agent-client/AGENTS.md](../agent-client/AGENTS.md) | [#2](https://github.com/jxsu404/quickchain/issues/2) |
 | Q3 | [../api-demo/AGENTS.md](../api-demo/AGENTS.md) | [#3](https://github.com/jxsu404/quickchain/issues/3) |
 | Q4 | [../web/AGENTS.md](../web/AGENTS.md) | [#4](https://github.com/jxsu404/quickchain/issues/4) |

@@ -11,7 +11,7 @@ Las APIs empiezan a cobrar por llamada con x402. Con el esquema `exact`, cada ll
 ## La solución
 1. El dueño entra con su **correo** usando [Cavos](https://docs.cavos.xyz/) (sin frase semilla).
 2. Firma **una vez** un tope mensual en USDC para su agente.
-3. Un contrato Soroban (`contracts/budget`) guarda ese tope. El agente paga APIs x402 sin pedir más firmas.
+3. Un contrato Soroban (`contracts/cuenta-presupuesto`) guarda ese tope. El agente paga APIs x402 sin pedir más firmas.
 4. Si el agente intenta pasarse del tope o el mes terminó, el contrato **bloquea el pago**.
 5. El mes siguiente, una firma renueva el presupuesto.
 
@@ -37,7 +37,7 @@ pnpm agente                   # el agente llama a la API hasta chocar con el top
 ## Estructura
 | Carpeta | Qué es |
 |---|---|
-| `contracts/budget` | Contrato Soroban del presupuesto (Rust) |
+| `contracts/cuenta-presupuesto` | Contrato Soroban del presupuesto (Rust) |
 | `agent-client` | Cliente TS: ante 402 paga desde el presupuesto y reintenta |
 | `api-demo` | API de prueba que cobra con x402 (Next.js) |
 | `web` | Web del dueño con login Cavos (Next.js) |
