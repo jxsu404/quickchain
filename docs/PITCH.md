@@ -9,7 +9,7 @@
 ## Deck y guion (Q13)
 - **Deck:** [docs/pitch/index.html](pitch/index.html), versión **Stellar QuickPass** (nombre decidido por Josué a las 8:24 a. m. CR). Es un archivo HTML autónomo: se abre en el navegador.
 - **Guion de 3 min con fuentes:** [docs/pitch/GUION.md](pitch/GUION.md).
-- **Capturas:** [portada](pitch/capturas/slide-01.png) · [slide 5](pitch/capturas/slide-05.png) · [cierre](pitch/capturas/slide-12.png).
+- **Capturas:** [portada](pitch/capturas/slide-01.png) · [slide 5 · núcleo](pitch/capturas/slide-05.png) · [equipo](pitch/capturas/slide-12.png).
 - Pendiente: pasarlo a la plantilla oficial del evento (buzón 009) y grabar el video (Q14).
 
 <!-- enlaces:auto -->

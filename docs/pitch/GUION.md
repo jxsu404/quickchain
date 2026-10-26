@@ -6,7 +6,7 @@ Pura Vida Ideathon · Track Genesis · Stellar. Español de Costa Rica, con vose
 
 Estructura y proporciones calcadas de [pitch-hyto](https://pitch-hyto.vercel.app/): Portada 0:08 · Problema (a) 0:20 · Problema (b) 0:15 · Solución 0:38 · Núcleo 0:11 · Esto ya funciona 0:18 · Visión 0:12 · Lo que buscamos 0:20 · Rumbo a mainnet 0:30 · [Demo] · Cierre 0:08 · [Equipo] = 3:00, escaladas a ~2:36.
 
-Deck: `index.html` (← → / espacio / clic para navegar, **F** pantalla completa, **N** notas del orador con cronómetro, **R** reinicia el cronómetro; `index.html?notes` las abre ya). Versión con el nombre viejo: `index-quickchain.html`.
+Deck: `index.html` (← → / espacio / clic para navegar, **F** pantalla completa, **N** notas del orador con cronómetro, **R** reinicia el cronómetro; `index.html?notes` las abre ya). Estilo: manual de marca Stellar QuickPass v1.0 (paleta Azul Vía/Verde Paso/Tinta/Niebla, Space Grotesk + Inter + JetBrains Mono, logo oficial, pie con el aviso de marca de la SDF), con logo y fuentes embebidos.
 
 | # | Slide | Tiempo | Palabras | % del pitch | % en Hyto |
 |---|---|---|---|---|---|
@@ -84,7 +84,7 @@ _Fuera del reloj: sin texto hablado._
 
 ## Reglas que respeta
 
-- Nunca se presenta como inversión, ahorro, ganancia ni «sin riesgo»; testnet y contrato sin auditar dichos en pantalla (slides 9 y 11). La ley no se nombra en el pitch (PLAN-OPUS §7); se pide «revisión legal».
+- Nunca se presenta como inversión, ahorro, ganancia ni «sin riesgo» (y, según el manual de marca, esas palabras no aparecen en pantalla); testnet, «no usa dinero real» y contrato sin auditar dichos en pantalla (slides 9 y 11). Cada slide lleva el aviso «Stellar es una marca de la SDF; proyecto independiente». La ley no se nombra en el pitch (PLAN-OPUS §7); se pide «revisión legal».
 - Sin Writz, sin Bitcoin, sin precio XLM/USD, sin estadísticas de mercado, usuarios ni citas inventadas.
 
 ## Enlaces
