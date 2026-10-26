@@ -64,7 +64,7 @@ Script: `agent-client/src/corrida-e2e.ts` (datos crudos en [`deployments/corrida
 
 ## Botón «Correr agente» (/demo, 2026-10-26)
 
-Ver [decisión](2026-10-26-boton-correr-agente.md). Cuenta demo [`CAD2CAZC…`](https://stellar.expert/explorer/testnet/contract/CAD2CAZC7S22MTZKAKAW76LLU2FLGX6JQEK4ITNS4FS6T7WQ5TNFKNIB).
+Ver [decisión](2026-10-26-boton-correr-agente.md). Presupuesto del botón «Correr agente» (tope 0,05 USDC por período): [`CAD2CAZC7S22MTZKAKAW76LLU2FLGX6JQEK4ITNS4FS6T7WQ5TNFKNIB`](https://stellar.expert/explorer/testnet/contract/CAD2CAZC7S22MTZKAKAW76LLU2FLGX6JQEK4ITNS4FS6T7WQ5TNFKNIB) (`presupuesto_correr_agente` en [deployments/testnet.json](../deployments/testnet.json); ver [DEMO.md](DEMO.md)).
 
 | tx | qué prueba | link Stellar Expert testnet |
 |---|---|---|

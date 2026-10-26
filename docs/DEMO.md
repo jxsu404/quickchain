@@ -36,6 +36,7 @@ Eslogan: «Your agent pays. You set the cap.»
 - ID del contrato `cuenta-presupuesto` (instancia Q4, dueño = cuenta Cavos de Josué): [`CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE`](https://stellar.expert/explorer/testnet/contract/CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE) — datos en [`deployments/testnet.json`](../deployments/testnet.json)
   - Deploy: [tx dfddedce…](https://stellar.expert/explorer/testnet/tx/dfddedce2f702472cdae2e4153fbe02257499dfc6d6f3a83ae5102179286d279). Sin `renovar` inicial todavía.
   - Anterior (Q1, dueño = deployer de prueba): `CBH3LQQCVTY74KXKCS2526KXH2F7B32RSMSIV4ZKXKFPQS5I4UR3TALX`.
+- Presupuesto del botón «Correr agente» (`/demo` y reset de la demo, `DEMO_BUDGET_CONTRACT_ID`; tope 0,05 USDC por período; agente demo `GCK5JBEO3W42C6Z7FJNNWX67U66OO554KVA6TZ2OZYRKXNWUSOV64U3S`): [`CAD2CAZC7S22MTZKAKAW76LLU2FLGX6JQEK4ITNS4FS6T7WQ5TNFKNIB`](https://stellar.expert/explorer/testnet/contract/CAD2CAZC7S22MTZKAKAW76LLU2FLGX6JQEK4ITNS4FS6T7WQ5TNFKNIB) — ver [decisión](2026-10-26-boton-correr-agente.md) y `presupuesto_correr_agente` en [`deployments/testnet.json`](../deployments/testnet.json)
 - Pruebas reales de Q1 (18 pasos, txs y fees, instancia aparte): [pruebas-q1.md](pruebas-q1.md)
 - Transacciones (link Stellar Expert `https://stellar.expert/explorer/testnet/tx/<hash>`): [transacciones.md](transacciones.md) (vacío hasta Q10)
 
