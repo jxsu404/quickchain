@@ -73,7 +73,7 @@ sequenceDiagram
 - La wallet Stellar de Cavos es una cuenta clásica `G…` con `invokeContract` (simula y firma las auth entries de esa cuenta) y `addTrustline`.
 - **Despliegue perezoso:** `invokeContract` y `addTrustline` exigen `status === "ready"`. En testnet hay que fondear la `G…` con friendbot (o usar `execute`) y después confirmar que queda `ready`. **Verificar en el spike.**
 - La doc dice que en testnet las invocaciones Soroban patrocinadas "pueden" no estar listas y recomienda `{ sponsored: false }` con cuenta autofinanciada. Por eso friendbot es parte del onboarding de testnet.
-- USDC: usar el de Circle en testnet (`USDC:GBBD47IF6LWK7P7MDEVSCWR7DPUWV3NY3DTQEVFL4NAT4AQH3ZLLFLA5`, según la tabla de la doc de Cavos). El ID del SAC se saca con `stellar contract id asset --asset USDC:GBBD47… --network testnet`. **No** usar el USDC de Writz (`CBIELTK6…`) ni el "Cavos Testnet USDC". Para fondos, el faucet de Circle (ACAN lo usa para Stellar testnet) o una transferencia desde la cuenta del equipo.
+- USDC: usar el de Circle en testnet (`USDC:GBBD47IF6LWK7P7MDEVSCWR7DPUWV3NY3DTQEVFL4NAT4AQH3ZLLFLA5`, según la tabla de la doc de Cavos). El ID del SAC se saca con `stellar contract id asset --asset USDC:GBBD47… --network testnet`. Ese SAC es `CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA` (USDC oficial de Circle en testnet, no de Writz; corregido 2026-10-25). **No** usar el "Cavos Testnet USDC". Para fondos, el faucet de Circle (ACAN lo usa para Stellar testnet) o una transferencia desde la cuenta del equipo.
 - Los argumentos de `invokeContract` se pasan como `xdr.ScVal` ya tipados (`i128`, `u64`, `bytes`), no con la conversión automática.
 
 ---
