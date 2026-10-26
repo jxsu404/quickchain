@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  contrato:
+    name: Contrato (test + wasm)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: dtolnay/rust-toolchain@1.99.1
+        with:
+          targets: wasm32v1-none
+      - uses: Swatinem/rust-cache@v2
+      - name: cargo test -p budget
+        run: cargo test -p budget
+      - name: wasm
+        run: cargo build -p budget --target wasm32v1-none --release
+
+  typescript:
+    name: TypeScript y docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: pnpm/action-setup@v5
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
+      - name: pnpm typecheck
+        run: pnpm typecheck
+      - name: pnpm docs:links
+        run: pnpm docs:links
+
+  secretos:
+    name: gitleaks y semillas Stellar
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      # CLI MIT sobre todo el historial. gitleaks-action pide licencia en
+      # repos de organización y solo mira el rango del push.
+      - name: gitleaks (todo el historial)
+        run: |
+          version=8.30.1
+          archive="gitleaks_${version}_linux_x64.tar.gz"
+          curl -sSfL -o "$archive" "https://github.com/gitleaks/gitleaks/releases/download/v${version}/${archive}"
+          echo "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb  ${archive}" | sha256sum -c -
+          tar -xzf "$archive" gitleaks
+          ./gitleaks detect --source . --redact --log-opts="--all" --exit-code 1
+      - name: Semillas Stellar
+        run: |
+          status=0
+          while IFS= read -r rev; do
+            if git grep -E -I -q -- '\bS[A-Z2-7]{55}\b' "$rev"; then
+              echo "::error::Semilla Stellar en el commit ${rev}"
+              status=1
+              break
+            fi
+          done < <(git rev-list --all)
+          if [ "$status" -ne 0 ]; then
+            exit 1
+          fi
+          echo "Sin semillas Stellar en el historial"

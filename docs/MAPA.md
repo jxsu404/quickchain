@@ -17,6 +17,7 @@ graph TD
   docs_SEGURIDAD_md["Seguridad"]
   docs_AUDITORIA_md["Auditoría"]
   docs_DEMO_md["Demo (testnet)"]
+  docs_transacciones_md["Transacciones (testnet)"]
   docs_PITCH_md["Pitch"]
   docs_pruebas_q1_md["Pruebas Q1"]
   contracts_budget_AGENTS_md["contracts/budget"]
@@ -65,6 +66,7 @@ graph TD
   docs_INDICE_md --> docs_AUDITORIA_md
   docs_INDICE_md --> docs_DEMO_md
   docs_INDICE_md --> docs_PITCH_md
+  docs_INDICE_md --> docs_transacciones_md
   docs_PLAN_md --> docs_DECISIONES_md
   docs_PLAN_md --> TAREAS_md
   docs_ARQUITECTURA_md --> docs_STACK_md
@@ -83,6 +85,7 @@ graph TD
   docs_AUDITORIA_md --> docs_DECISIONES_md
   docs_AUDITORIA_md --> docs_SEGURIDAD_md
   docs_DEMO_md --> docs_PITCH_md
+  docs_DEMO_md --> docs_transacciones_md
   docs_DEMO_md --> agent_client_AGENTS_md
   docs_DEMO_md --> api_demo_AGENTS_md
   docs_DEMO_md --> web_AGENTS_md
@@ -111,6 +114,7 @@ graph TD
   docs_AUDITORIA_md -.-> docs_PLAN_OPUS_md
   docs_DEMO_md -.-> docs_PLAN_OPUS_md
   docs_PITCH_md -.-> docs_PLAN_OPUS_md
+  docs_transacciones_md -.-> docs_PLAN_OPUS_md
   contracts_budget_AGENTS_md -.-> docs_PLAN_OPUS_md
   contracts_budget_AGENTS_md --> docs_DEMO_md
   contracts_budget_AGENTS_md --> docs_DECISIONES_md
@@ -138,6 +142,7 @@ graph TD
 - [Seguridad](SEGURIDAD.md)
 - [Auditoría](AUDITORIA.md)
 - [Demo (testnet)](DEMO.md) — issue [#5](https://github.com/jxsu404/quickchain/issues/5)
+- [Transacciones (testnet)](transacciones.md) — tabla vacía; Q10 la llena con links de Stellar Expert
 - [Pruebas Q1 (testnet)](pruebas-q1.md) — issue [#1](https://github.com/jxsu404/quickchain/issues/1)
 - [Pitch](PITCH.md) — issue [#6](https://github.com/jxsu404/quickchain/issues/6)
 - [contracts/budget](../contracts/budget/AGENTS.md) — issue [#1](https://github.com/jxsu404/quickchain/issues/1) — contrato `cuenta-presupuesto` desplegado en testnet (ver [Demo](DEMO.md))
@@ -159,7 +164,7 @@ graph TD
 | Q7 | [DEMO.md](DEMO.md) | [#5](https://github.com/jxsu404/quickchain/issues/5) |
 | Q8 | [DEMO.md](DEMO.md) | [#5](https://github.com/jxsu404/quickchain/issues/5) |
 | Q9 | [SEGURIDAD.md](SEGURIDAD.md) | — |
-| Q10 | [DEMO.md](DEMO.md) | [#5](https://github.com/jxsu404/quickchain/issues/5) |
+| Q10 | [DEMO.md](DEMO.md) · [transacciones.md](transacciones.md) | [#5](https://github.com/jxsu404/quickchain/issues/5) |
 | Q11 | [../README.md](../README.md) | [#6](https://github.com/jxsu404/quickchain/issues/6) |
 | Q12 | [PITCH.md](PITCH.md) | — |
 | Q13 | [PITCH.md](PITCH.md) | [#6](https://github.com/jxsu404/quickchain/issues/6) |

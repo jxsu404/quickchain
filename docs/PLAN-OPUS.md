@@ -23,12 +23,12 @@ El dueño entra con su correo (Cavos) y firma una vez al mes un presupuesto en U
 
 | Pieza | Dónde (propuesto) | Qué hace | Reutiliza |
 |---|---|---|---|
-| Contrato `cuenta-presupuesto` (Rust/Soroban) | `contracts/cuenta-presupuesto/` | Cuenta-contrato `C…` por dueño. Guarda el USDC del mes, valida al agente y aplica tope, máximo por llamada, periodo, pausa y comisión | Ejemplo `account` de soroban-examples (patrón `__check_auth` + `Vec<{public_key, signature}>`) |
+| Contrato `cuenta-presupuesto` (Rust/Soroban) | `contracts/budget/` (nombre previsto `cuenta-presupuesto`; se renombra con la corrección del contrato, pendiente) | Cuenta-contrato `C…` por dueño. Guarda el USDC del mes, valida al agente y aplica tope, máximo por llamada, periodo, pausa y comisión | Ejemplo `account` de soroban-examples (patrón `__check_auth` + `Vec<{public_key, signature}>`) |
 | SDK del agente (TS) | `sdk/` | `fetch` que, ante un 402, arma el pago `exact` con `from = C…` y lo firma con la llave del agente. También lee el estado y genera llaves | `@x402/core`, `@x402/stellar` 2.28 (ya en `package.json`) |
 | API vendedora demo | `servidor/vendedor.ts` | `GET /tipo-cambio` a US$0,01 con x402 `exact` (datos de ejemplo, rotulados así) | `escudo/riesgo.ts` casi tal cual |
 | Facilitador x402 propio | `servidor/facilitador.ts` | `/verify`, `/settle` y `/supported` del esquema `exact` con techo de fee ajustado y tolerante a cuentas-contrato | Código de facilitador de `@x402/stellar` (verificar el módulo). Si se copia algo de ACAN (MIT), se le da crédito. **No** copiar el plugin AGPL de AgentAllowance |
 | Servicio de despliegue | `servidor/cuentas.ts` | `POST /api/cuentas {owner, agente}` despliega la cuenta-presupuesto con constructor. El deployer paga el fee | `stellar-sdk` (`createCustomContract` con `constructorArgs`, verificar) |
-| Web | `web/` (Vite + React existente) | Login Cavos, preparar cuenta de testnet, trustline USDC, crear o renovar presupuesto (una firma) y panel | `web/src/billetera/` (ya tiene la interfaz y Freighter: el fallback está hecho) |
+| Web | `web/` (Next.js en Vercel) | Login Cavos, preparar cuenta de testnet, trustline USDC, crear o renovar presupuesto (una firma) y panel | `web/src/billetera/` (ya tiene la interfaz y Freighter: el fallback está hecho) |
 | Agente demo | `scripts/agente-demo.ts` | 4 consultas pagadas, la 5.ª bloqueada por el tope y un endpoint "malicioso" de US$1 bloqueado | |
 | Cobro de comisión | `scripts/cobrar-comision.ts` | Llama `cobrar_comision()` (función pública) | |
 
@@ -73,7 +73,7 @@ sequenceDiagram
 - La wallet Stellar de Cavos es una cuenta clásica `G…` con `invokeContract` (simula y firma las auth entries de esa cuenta) y `addTrustline`.
 - **Despliegue perezoso:** `invokeContract` y `addTrustline` exigen `status === "ready"`. En testnet hay que fondear la `G…` con friendbot (o usar `execute`) y después confirmar que queda `ready`. **Verificar en el spike.**
 - La doc dice que en testnet las invocaciones Soroban patrocinadas "pueden" no estar listas y recomienda `{ sponsored: false }` con cuenta autofinanciada. Por eso friendbot es parte del onboarding de testnet.
-- USDC: usar el de Circle en testnet (`USDC:GBBD47IF6LWK7P7MDEVSCWR7DPUWV3NY3DTQEVFL4NAT4AQH3ZLLFLA5`, según la tabla de la doc de Cavos). El ID del SAC se saca con `stellar contract id asset --asset USDC:GBBD47… --network testnet`. **No** usar el USDC de Writz (`CBIELTK6…`) ni el "Cavos Testnet USDC". Para fondos, el faucet de Circle (ACAN lo usa para Stellar testnet) o una transferencia desde la cuenta del equipo.
+- USDC: usar el de Circle en testnet (`USDC:GBBD47IF6LWK7P7MDEVSCWR7DPUWV3NY3DTQEVFL4NAT4AQH3ZLLFLA5`, según la tabla de la doc de Cavos). El ID del SAC se saca con `stellar contract id asset --asset USDC:GBBD47… --network testnet`. Ese SAC es `CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA` (USDC oficial de Circle en testnet, no de Writz; corregido 2026-10-25). **No** usar el "Cavos Testnet USDC". Para fondos, el faucet de Circle (ACAN lo usa para Stellar testnet) o una transferencia desde la cuenta del equipo.
 - Los argumentos de `invokeContract` se pasan como `xdr.ScVal` ya tipados (`i128`, `u64`, `bytes`), no con la conversión automática.
 
 ---
@@ -173,7 +173,7 @@ Ahora son las 8:12 p.m. del domingo (hora CR). Arranque a las 8:30 p.m. Un PR po
 
 | # | Funcionalidad | Entregable | Listo cuando | Estimación | Ventana (CR) |
 |---|---|---|---|---|---|
-| [Q0](../AGENTS.md) | Base del repo | Writz y Escudo pasan a la rama `archivo/caja-tica` y salen de `main`. `TAREAS.md`, `AGENTS.md` y el README quedan en esqueleto de QuickChain. `.env.example`, job de secretos en CI y `docs/transacciones.md` vacío | `git grep -i -E "writz\|bitcoin"` sin resultados en `main`; CI en verde; gitleaks limpio en el historial | 1 h | 8:30–9:30 p.m. |
+| [Q0](../AGENTS.md) | Base del repo | Writz y Escudo pasan a la rama `archivo/caja-tica` y salen de `main`. `TAREAS.md`, `AGENTS.md` y el README quedan en esqueleto de QuickChain. `.env.example`, job de secretos en CI y `docs/transacciones.md` vacío | `git grep -i -E "writz\|bitcoin" -- contracts web api-demo agent-client` sin resultados en `main` (los docs y reglas que lo prohíben sí pueden nombrarlos); CI en verde; gitleaks limpio en el historial | 1 h | 8:30–9:30 p.m. |
 | [Q1](../contracts/budget/AGENTS.md) ([#1](https://github.com/jxsu404/quickchain/issues/1)) | Contrato `cuenta-presupuesto` | Contrato, 11 tests, script de deploy y `deployments/testnet.json` | Tests en verde; desplegado en testnet con link a Stellar Expert del contrato | 4 h | 8:45 p.m.–12:45 a.m. |
 | [Q2](../agent-client/AGENTS.md) ([#2](https://github.com/jxsu404/quickchain/issues/2)) | Pagador x402 del agente (SDK) | `crearFetchConPresupuesto({cuenta, secretoAgente, rpcUrl, maxPorLlamada, hostsPermitidos})`, `leerEstado`, `agente-nuevo`. Doble simulación (antes y después de firmar) para que el footprint incluya `__check_auth` | Un pago real desde `C…` con link; tests con mock del 402 | 3,5 h | 9:00 p.m.–12:30 a.m. (mientras Q1 termina, contra el `account` de soroban-examples) |
 | [Q3](../api-demo/AGENTS.md) ([#3](https://github.com/jxsu404/quickchain/issues/3)) | Vendedor demo y facilitador | `servidor/vendedor.ts` (`/tipo-cambio`, US$0,01) y `/caro` (US$1, para la demo de bloqueo). Facilitador propio con URL configurable. Se prueba primero el público | Un pago `exact` de una `G…` normal y uno de una `C…` liquidados, con links | 2,5 h | 9:00–11:30 p.m. |

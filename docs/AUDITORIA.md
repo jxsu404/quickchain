@@ -8,6 +8,9 @@
 - [ ] Cada cifra tiene fuente
 - [ ] Docs coinciden con el código (funciones, comandos, variables)
 - [ ] Tests del contrato pasan; wasm compila; typecheck TS pasa
+- [ ] CI en pull request y push a `main`: tests, wasm, typecheck, `docs:links`
+- [ ] gitleaks sobre todo el historial y grep de semillas Stellar sin hallazgos
+- [ ] `docs/transacciones.md` existe; cada tx de demo publicada lleva link a Stellar Expert
 - [ ] Sin lenguaje de inversión / "sin riesgo"
 
 ## Resultados — 2026-10-25, 8:40 p. m. (CR), pasada de Grok Bot
@@ -22,6 +25,16 @@
 | Contrato | OK. `cargo test -p budget`: **7 pasan** (tope, sobregasto, periodo vencido + renovar, cancelar, monto inválido/duplicado, agente sin firma, solo dueño renueva/cancela). `cargo build --target wasm32v1-none --release`: `budget.wasm` 15 KB. |
 | TypeScript | OK. `pnpm -r typecheck` pasa en `web`, `api-demo`, `agent-client`. No se corrió `next build` ni pruebas contra testnet. |
 | Lenguaje legal | OK. Solo aparece en avisos que dicen que **no** es inversión. |
+
+## Resultados — 2026-10-25, 8:50 p.m. (CR), pasada Q0
+Comandos corridos en local. El workflow de GitHub todavía no se ejecutó: esta rama no se subió.
+
+| Punto | Resultado |
+|---|---|
+| CI | `.github/workflows/ci.yml` dispara en `pull_request` y en `push` a `main`. En local: `cargo test -p budget` **7 pasan**; `cargo build -p budget --target wasm32v1-none --release` termina (rustc 1.99.1); `pnpm install --frozen-lockfile`, `pnpm typecheck` y `pnpm docs:links` pasan (20 nodos). |
+| Secretos | gitleaks 8.30.1 con `--log-opts=--all` sobre el historial de la rama: sin hallazgos. Grep `\bS[A-Z2-7]{55}\b` sobre `git rev-list --all`: sin coincidencias. |
+| Writz/Bitcoin | `git grep -i -E "writz\|bitcoin"` no pega en código (`contracts/`, `web/`, `api-demo/`, `agent-client/`). Solo en líneas que enuncian la regla o el fuera de alcance: `AGENTS.md`, `CONTRIBUTING.md`, `docs/DECISIONES.md`, `docs/AUDITORIA.md`, `docs/PLAN.md` y `docs/PLAN-OPUS.md` (USDC que no hay que usar, llaves viejas, tarea Q0, fuera del pitch). |
+| transacciones.md | Creado vacío y enlazado desde [MAPA.md](MAPA.md) e [INDICE.md](INDICE.md). |
 
 ## Pasada Q1 — 2026-10-25, 9:00 p. m. (CR), Grok Bot (rama `rol/jose`, PR #11)
 Revisión de `contracts/budget` contra PLAN-OPUS §2.1–§2.3, §3, fila Q1 de §4, TAREAS §1, contracts/budget/AGENTS.md, SEGURIDAD y estas reglas. Archivo de referencia: `contracts/budget/src/lib.rs` (`lib.rs:N`) y `test.rs`.
@@ -52,7 +65,7 @@ Revisión de `contracts/budget` contra PLAN-OPUS §2.1–§2.3, §3, fila Q1 de 
 | AUDITORIA.md al día | cumplido tras corregir | hallazgos 2–4 y el resultado de 7 tests eran viejos |
 | Token = USDC de Circle (`CBIELTK6…`) | cumplido | 3 fuentes en [pruebas-q1](pruebas-q1.md); la nota «Writz» del plan está errada |
 | Reglas AGENTS/CONTRIBUTING (rama propia, PR, sin secretos, sin Writz/Bitcoin, cifras con fuente) | cumplido | PR #11; links de Stellar Expert |
-| CI con gitleaks | no cumplido | no existe CI (fuera de Q1) |
+| CI con gitleaks | cumplido tras merge con main | `.github/workflows/ci.yml` (Q0) |
 
 Casos borde revisados: overflow (t15), redondeo de la comisión (t11, t12), tope exacto (t12, testnet 07d/07e), cambio de periodo (t06, t14; una auth firmada antes cuenta en el periodo donde se ejecuta), transferencias de otro token (t05), `to == C` (t05), varias transferencias en una auth (t13), otras funciones firmadas por el agente (t05; se revisan también subinvocaciones) y agente malicioso: solo puede mover USDC con `transfer` y el acumulado incluye la comisión, así que el máximo que puede salir en un periodo es el `tope`. No necesitó cambios en `lib.rs`.
 
@@ -61,7 +74,7 @@ Casos borde revisados: overflow (t15), redondeo de la comisión (t11, t12), tope
 2. ~~Comisión del 1 % no implementada~~ → resuelto en Q1 (`calcular_comision`, t10–t12, testnet 08).
 3. ~~Contrato sin desplegar~~ → resuelto en Q1 ([Demo](DEMO.md), [pruebas-q1](pruebas-q1.md)).
 4. Web: ya no usa `approve` + `crear_presupuesto`; falta desplegar una cuenta por dueño y firmar `renovar` (Q4/Q5).
-5. No hay CI (`.github/workflows` no existe), así que gitleaks no corre solo. Se corrió a mano (ver pasada Q1).
+5. ~~No hay CI~~ → resuelto en Q0 (`.github/workflows/ci.yml` con tests, wasm, typecheck, links y gitleaks).
 6. [Arquitectura](ARQUITECTURA.md) todavía describe el diseño viejo (`gastar`/`approve`). Le toca a Q9.
 
 ## Sugerencias del equipo de auditoría (2026-10-25)

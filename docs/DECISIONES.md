@@ -9,6 +9,9 @@
 | 2026-10-25 | **Repo nuevo** `jxsu404/quickchain`; el viejo `caja-tica-escudo` queda intacto | empezar limpio; se rescató solo el cobro x402 |
 | 2026-10-25 | Web nueva en Next.js con Cavos (la vieja era Vite + Freighter, sin Cavos) | stack del equipo |
 | 2026-10-25 | Sin base de datos | el estado vive en el contrato |
+| 2026-10-25 | CI en cada pull request y en cada push a `main`: `cargo test -p budget`, wasm (`wasm32v1-none`, rustc 1.99.1), `pnpm install --frozen-lockfile`, `pnpm typecheck`, `pnpm docs:links` | la base tiene que fallar sola si se rompe el contrato, los tipos o el grafo de docs |
+| 2026-10-25 | Job de secretos: gitleaks 8.30.1 sobre todo el historial (`fetch-depth: 0`) y grep de semillas Stellar `\bS[A-Z2-7]{55}\b` | el repo viejo traía llaves; si vuelve una semilla, el PR no pasa. CLI MIT, no gitleaks-action: en un repo de organización la action pide licencia y solo mira el rango del push |
+| 2026-10-25 | `docs/transacciones.md` nace vacío (tx, qué prueba, link de Stellar Expert testnet) | Q10 lo llena; el link es `https://stellar.expert/explorer/testnet/tx/<hash>` |
 | 2026-10-25 | Q1: el contrato pasa a ser la **cuenta-presupuesto** `C…` de PLAN-OPUS §2 (`__check_auth`, una cuenta por dueño, el USDC se deposita con `renovar`). Se reemplaza el diseño `gastar` + `approve`/`transfer_from` | lo pide el plan y los facilitadores x402 rechazan `transfer_from` (AUDITORIA) |
 | 2026-10-25 | Q1: se mantiene la carpeta `contracts/budget` y el crate `budget` (struct `CuentaPresupuesto`) en vez de `contracts/cuenta-presupuesto/` | no romper `pnpm contrato:test`, enlaces ni CI; el plan lo marcaba como "propuesto" |
 | 2026-10-25 | Q1: comisión 1 % (`fee_bps = 100`) redondeada hacia arriba, incluida en el tope, acumulada en `comision_pendiente` y cobrada en `renovar` o con `cobrar_comision()` (pública, a tesorería fija) | `__check_auth` no puede mover fondos (PLAN-OPUS §2.2); cierra la pregunta abierta 2 |
