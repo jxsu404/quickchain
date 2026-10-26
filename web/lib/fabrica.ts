@@ -7,7 +7,7 @@ import { RPC_TESTNET } from "./renovar";
 export const FABRICA_ID = process.env.NEXT_PUBLIC_FACTORY_CONTRACT_ID || "CAVWWLDYBCYFPDZT5P5XW7GSOQHE6TVLSZXQ47RIJKGEKUSD23AZ34MO";
 /** Agente de la demo: la llave que usa el servidor de /demo («Correr agente», AGENT_SECRET_KEY en Vercel).
  * Antes era eb54a995… (deployments/testnet.json), cuya secreta no está disponible. Ver docs/2026-10-26-boton-correr-agente.md. */
-export const AGENTE_DEMO_HEX = "95d4848eddb9a17b3f2a5adb5fdfa7bce777bc5541e9e74ece22abb6d493abee";
+export const AGENTE_DEMO_HEX = "253e5b859c4905aebdbefbfd89dd7d56d0e74686d7791e2f5ece6532a5abc7c9";
 
 /** Acepta una clave pública G… o 64 hex y devuelve los 32 bytes ed25519. */
 export function agenteABytes(texto: string): Uint8Array {
