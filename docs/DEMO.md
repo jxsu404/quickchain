@@ -24,7 +24,7 @@
 - **Sin probar:** la firma real con Cavos (falta un `NEXT_PUBLIC_CAVOS_APP_ID` y una cuenta-presupuesto cuyo dueño sea una `G…` de Cavos), el botón «Crear mi cuenta» (según el código del kit, la cuenta queda `ready` aunque falle el pago de 1 stroop) y el envío real de `pnpm renovar` (no hay `OWNER_SECRET` en este entorno). Cuando se hagan, los hashes van a [transacciones.md](transacciones.md).
 
 ## Cómo correr el agente demo (Q7)
-1. Vendedor: `cd api-demo && X402_PAY_TO=G… npx next dev -p 4020` (facilitador público `https://x402.org/facilitator` por defecto).
+1. Vendedor: `X402_PAY_TO=G… pnpm dev:api` (puerto 4020) (facilitador público `https://x402.org/facilitator` por defecto).
 2. Cuenta con tope 0,05, máx. 0,02 por llamada y saldo ≥ US$1 (si el saldo es menor, `/caro` choca con `SaldoInsuficiente` antes que con `MontoPorLlamada`; visto en testnet el 2026-10-26).
 3. `BUDGET_CONTRACT_ID=C… AGENT_SECRET_KEY=S… API_DEMO_URL=http://localhost:4020 pnpm --filter agent-client exec tsx ../scripts/agente-demo.ts` → sale con código 0 solo si da 4 pagos + 2 bloqueos.
 4. Corrida completa (deploy → renovar → agente → comisión → pausa → retiro): Q10, `agent-client/src/corrida-e2e.ts`; resultados en [transacciones.md](transacciones.md).
