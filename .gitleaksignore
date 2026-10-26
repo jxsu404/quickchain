@@ -1,0 +1,2 @@
+# Falso positivo: contract ID público (C...) del USDC de testnet en PR #11, no es secreto.
+4791804f9812689baf36b9e20055a69956520f17:deployments/testnet.json:generic-api-key:10
