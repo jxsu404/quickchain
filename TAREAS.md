@@ -1,5 +1,7 @@
 # Tareas — fecha límite: lunes 2026-10-26, antes de las 11:30 a. m. (hora de Costa Rica)
 
+> **Regla n.º 1: [docs/PLAN-OPUS.md](docs/PLAN-OPUS.md) es la biblia de QuickChain.** Toda persona o agente que trabaje aquí (integrantes, Raúl, Martín o cualquier otro) lee el plan antes de empezar y sigue sus fases, tareas (Q0–Q15), horarios de corte y planes B. Si algo choca con el plan, gana el plan; para cambiarlo, se propone en el buzón y lo aprueba Josué.
+
 Cada tarea tiene un issue en GitHub. Trabajá en tu rama `rol/<nombre>` y abrí PR a `main`.
 
 ## 1. Contrato de presupuesto (`contracts/budget`)

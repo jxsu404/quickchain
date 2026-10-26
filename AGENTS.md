@@ -1,5 +1,7 @@
 # AGENTS.md — contexto para agentes de código
 
+> **Regla n.º 1: [docs/PLAN-OPUS.md](docs/PLAN-OPUS.md) es la biblia de QuickChain.** Toda persona o agente que trabaje aquí (integrantes, Raúl, Martín o cualquier otro) lee el plan antes de empezar y sigue sus fases, tareas (Q0–Q15), horarios de corte y planes B. Si algo choca con el plan, gana el plan; para cambiarlo, se propone en el buzón y lo aprueba Josué.
+
 ## Producto
 QuickChain: el dueño de un agente de IA entra con correo (Cavos, sin frase semilla) y firma **una vez** un tope mensual en USDC en Stellar. El agente paga APIs x402 sin firmas por llamada hasta llegar al tope o a fin de mes. Un contrato Soroban hace cumplir el tope. Una firma renueva el mes siguiente. Modelo: 1 % de lo que gasta el agente, sin mensualidad.
 

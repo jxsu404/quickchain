@@ -1,4 +1,7 @@
 # Plan
+
+> **Regla n.º 1: [docs/PLAN-OPUS.md](PLAN-OPUS.md) es la biblia de QuickChain.** Toda persona o agente que trabaje aquí (integrantes, Raúl, Martín o cualquier otro) lee el plan antes de empezar y sigue sus fases, tareas (Q0–Q15), horarios de corte y planes B. Si algo choca con el plan, gana el plan; para cambiarlo, se propone en el buzón y lo aprueba Josué.
+
 **Meta:** demo funcionando en Stellar testnet antes del lunes 2026-10-26, 11:30 a. m. (CR).
 
 1. Contrato `budget` con tope por periodo (hecho: código + 7 tests + wasm compila). Falta: desplegar en testnet, comisión 1 %.
