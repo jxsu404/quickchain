@@ -26,6 +26,7 @@
 | Auth entry firmada en un periodo y usada en otro | cuenta contra el periodo en que se ejecuta (los contadores se leen al ejecutar); vence por `signatureExpirationLedger` | aceptado |
 | Pago a dirección *muxed* (`M…`) | `to` no convierte a `Address` → `OperacionNoPermitida` | limitación conocida |
 | Firma ed25519 inválida | `ed25519_verify` aborta la ejecución (error de host, no `FirmaInvalida=3`); igual no pasa | hecho (t04) |
+| Clickjacking / sniffing de MIME en la web | `X-Frame-Options: SAMEORIGIN`, `nosniff`, `Referrer-Policy`, `Permissions-Policy`; CSP en Report-Only ([2026-10-26](2026-10-26-headers-seguridad.md)) | hecho (CSP que bloquea: pendiente) |
 | Mensajes que suenen a inversión | reglas en AGENTS.md y CONTRIBUTING.md | hecho |
 
 Riesgos aceptados para la demo: solo testnet; un presupuesto por agente; sin auditoría externa del contrato. Legal: no hay custodia nuestra (el USDC está en un contrato que solo controla el dueño); hay que confirmar con un abogado si cobrar 1 % nos hace VASP o proveedor de pagos según la normativa costarricense que aplique (el plan menciona la Ley 10.961 y a SUGEF; falta confirmar la cita con una fuente). Tabla base: [PLAN-OPUS §3](PLAN-OPUS.md). Pendiente para dar Q9 por lista: **revisión de otra persona**.
@@ -36,6 +37,6 @@ Riesgos aceptados para la demo: solo testnet; un presupuesto por agente; sin aud
 - ⬆️ Arriba: [Mapa (hub)](MAPA.md) · [Índice de docs](INDICE.md)
 - 📖 Fuente de verdad: [PLAN-OPUS — la biblia](PLAN-OPUS.md)
 - Relacionado: [Pruebas Q1](pruebas-q1.md) · [Arquitectura](ARQUITECTURA.md) · [Auditoría](AUDITORIA.md) · [contracts/cuenta-presupuesto](../contracts/cuenta-presupuesto/AGENTS.md)
-- Lo enlazan: [Cómo contribuir](../CONTRIBUTING.md) · [contracts/cuenta-presupuesto](../contracts/cuenta-presupuesto/AGENTS.md) · [Arquitectura](ARQUITECTURA.md) · [Auditoría](AUDITORIA.md) · [Índice de docs](INDICE.md) · [Mapa (hub)](MAPA.md) · [PLAN-OPUS — la biblia](PLAN-OPUS.md)
+- Lo enlazan: [Headers de seguridad](2026-10-26-headers-seguridad.md) · [Cómo contribuir](../CONTRIBUTING.md) · [contracts/cuenta-presupuesto](../contracts/cuenta-presupuesto/AGENTS.md) · [Arquitectura](ARQUITECTURA.md) · [Auditoría](AUDITORIA.md) · [Índice de docs](INDICE.md) · [Mapa (hub)](MAPA.md) · [PLAN-OPUS — la biblia](PLAN-OPUS.md)
 - Tags: #quickchain #docs
 <!-- /enlaces:auto -->

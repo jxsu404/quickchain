@@ -12,6 +12,7 @@
 | [2026-10-26-boton-correr-agente.md](2026-10-26-boton-correr-agente.md) | Botón «Correr agente» en `/demo`: el agente paga x402 hasta el tope y queda bloqueado |
 | [2026-10-26-nuevo-plazo-entrega.md](2026-10-26-nuevo-plazo-entrega.md) | Nuevo plazo APEX: 3:00 p. m. CR, congelar 2:30 p. m. |
 | [SEGURIDAD.md](SEGURIDAD.md) | Modelo de amenazas |
+| [2026-10-26-headers-seguridad.md](2026-10-26-headers-seguridad.md) | Headers de seguridad HTTP en la web (CSP solo Report-Only) |
 | [AUDITORIA.md](AUDITORIA.md) | Lista de revisión y resultados |
 | [DEMO.md](DEMO.md) | Guion de la demo y links de transacciones |
 | [../web/AGENTS.md](../web/AGENTS.md) | Web: landing `/`, demo `/demo` (login Cavos), presupuesto `/presupuesto` |
