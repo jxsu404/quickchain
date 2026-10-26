@@ -1,5 +1,6 @@
 "use client";
 // Cualquier usuario Cavos crea SU cuenta-presupuesto con la fábrica (una firma) y sigue en /presupuesto.
+import Espera from "../espera";
 import { useEffect, useState } from "react";
 import { useCavos } from "@cavos/kit/react";
 import { StrKey } from "@stellar/stellar-sdk";
@@ -7,7 +8,7 @@ import { explicarError, linkContrato, linkTx } from "@/lib/renovar";
 import { FABRICA_ID, agenteABytes, argsCrear, listarCuentas } from "@/lib/fabrica";
 
 // La clave del agente demo es compartida: nunca se precarga, solo con casilla explícita (auditoría Flaria, High).
-const AGENTE_DEMO_G = "GDVVJKMVIC6DNYJFMUKZO53EKK6TQKNSVDEXKTY3WOZMHO2MB63QE3N4"; // AGENTE_DEMO_HEX (lib/fabrica) en formato G…
+const AGENTE_DEMO_G = "GCK5JBEO3W42C6Z7FJNNWX67U66OO554KVA6TZ2OZYRKXNWUSOV64U3S"; // AGENTE_DEMO_HEX (lib/fabrica) en formato G…; lo firma el servidor de /demo
 const RPC = process.env.NEXT_PUBLIC_STELLAR_RPC_URL || undefined;
 
 export default function Crear() {
@@ -45,9 +46,10 @@ export default function Crear() {
       <p>Owner (you): <code>{address}</code></p>
       <label>Agent public key (G…)<br /><input value={agente} placeholder="G…" onChange={(e) => { setAgente(e.target.value); setUsarDemo(false); }} size={66} /></label>
       <p><label><input type="checkbox" checked={usarDemo} onChange={(e) => { setUsarDemo(e.target.checked); setAgente(e.target.checked ? AGENTE_DEMO_G : ""); }} /> Use the demo agent (testing only)</label></p>
-      {usarDemo && <p className="err">Warning: the demo agent&apos;s key is shared. Anyone who has it could spend your top-up up to the cap. Use it only for testing with small amounts.</p>}
+      {usarDemo && <p className="err">Warning: the demo agent&apos;s key is shared. Anyone using /demo can make it spend your top-up up to the cap. Use it only for testing with small amounts.</p>}
       {agente.trim() !== "" && !agenteValido && <p className="err">Not a valid Stellar public key (must start with G…).</p>}
       <p><button disabled={!walletStatus.isReady || ocupado || !agenteValido} onClick={crear}>{ocupado ? "Creating…" : "Create my budget"}</button>{!walletStatus.isReady && <small className="sub"> Your wallet must be ready (see /presupuesto).</small>}</p>
+      {ocupado && <Espera texto="Creating your budget account…" />}
       <p><small className="sub">Factory: <a href={linkContrato(FABRICA_ID)} target="_blank" rel="noreferrer"><code>{FABRICA_ID}</code></a></small></p>
       {error && <p className="err">{error}</p>}
       {hash && <p>Transaction: <a href={linkTx(hash)} target="_blank" rel="noreferrer">Stellar Expert</a></p>}
