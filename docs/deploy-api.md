@@ -6,7 +6,7 @@ El vendedor [`api-demo/servidor/vendedor.ts`](../api-demo/servidor/vendedor.ts) 
 En Vercel habría que convertir cada ruta en una función (`api/*.ts`) y adaptar el facilitador propio. Eso cambia código de Q3 cerca del freeze. Con Render, el código corre tal cual (`pnpm --filter api-demo vendedor`).
 
 ## Pasos (los hace quien tenga la cuenta de Render del equipo)
-1. Render → **New → Blueprint** → elegir el repo `jxsu404/quickchain` y la rama `main`. Render lee `render.yaml`.
+1. Render → **New → Blueprint** → elegir el repo `jxsu404/stellar-quickpass` y la rama `main`. Render lee `render.yaml`.
 2. Llenar la variable **`X402_PAY_TO`** con la `G…` del vendedor; esta dirección es pública. Las demás ya vienen en el blueprint: `X402_FACILITATOR_URL=https://x402.org/facilitator`, `STELLAR_RPC_URL` de testnet y Node 22. Render pone `PORT` solo.
 3. Deploy. Prueba: `curl -i https://<servicio>.onrender.com/tipo-cambio` tiene que dar **402** con el header `payment-required`.
 4. Para la demo, el agente usa `API_DEMO_URL=https://<servicio>.onrender.com`.

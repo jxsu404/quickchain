@@ -149,37 +149,37 @@ graph TD
 - [Decisiones](DECISIONES.md)
 - [Seguridad](SEGURIDAD.md) — Q9: tabla de amenazas del plan §3 con estado real
 - [Auditoría](AUDITORIA.md)
-- [Demo (testnet)](DEMO.md) — issue [#5](https://github.com/jxsu404/quickchain/issues/5); Q7: `scripts/agente-demo.ts` (4 pagos, 5.º y `/caro` bloqueados); vendedor con `pnpm --filter api-demo vendedor` tras #18
+- [Demo (testnet)](DEMO.md) — issue [#5](https://github.com/jxsu404/stellar-quickpass/issues/5); Q7: `scripts/agente-demo.ts` (4 pagos, 5.º y `/caro` bloqueados); vendedor con `pnpm --filter api-demo vendedor` tras #18
 - [Deploy de api-demo](deploy-api.md) — Render (render.yaml) o Docker para el vendedor x402
 - [Costos (Q8)](COSTOS.md) — fees medidos en testnet y cobro de la comisión de 1 %
 - [Transacciones (testnet)](transacciones.md) — filas de Q3 (pagos x402 desde G… y C…); Q10: corrida limpia (deploy, renovar, 4 pagos, bloqueos, comisión, pausa, retiro) con links de Stellar Expert
-- [Pruebas Q1 (testnet)](pruebas-q1.md) — issue [#1](https://github.com/jxsu404/quickchain/issues/1)
-- [Pitch](PITCH.md) — issue [#6](https://github.com/jxsu404/quickchain/issues/6)
-- [contracts/cuenta-presupuesto](../contracts/cuenta-presupuesto/AGENTS.md) — issue [#1](https://github.com/jxsu404/quickchain/issues/1) — contrato `cuenta-presupuesto` desplegado en testnet (ver [Demo](DEMO.md))
-- [agent-client](../agent-client/AGENTS.md) — issue [#2](https://github.com/jxsu404/quickchain/issues/2); Q2: SDK `crearFetchConPresupuesto`
-- [api-demo](../api-demo/AGENTS.md) — issue [#3](https://github.com/jxsu404/quickchain/issues/3); Q3: `servidor/vendedor.ts` con `/tipo-cambio`, `/caro` y facilitador propio
-- [web](../web/AGENTS.md) — issue [#4](https://github.com/jxsu404/quickchain/issues/4)
+- [Pruebas Q1 (testnet)](pruebas-q1.md) — issue [#1](https://github.com/jxsu404/stellar-quickpass/issues/1)
+- [Pitch](PITCH.md) — issue [#6](https://github.com/jxsu404/stellar-quickpass/issues/6)
+- [contracts/cuenta-presupuesto](../contracts/cuenta-presupuesto/AGENTS.md) — issue [#1](https://github.com/jxsu404/stellar-quickpass/issues/1) — contrato `cuenta-presupuesto` desplegado en testnet (ver [Demo](DEMO.md))
+- [agent-client](../agent-client/AGENTS.md) — issue [#2](https://github.com/jxsu404/stellar-quickpass/issues/2); Q2: SDK `crearFetchConPresupuesto`
+- [api-demo](../api-demo/AGENTS.md) — issue [#3](https://github.com/jxsu404/stellar-quickpass/issues/3); Q3: `servidor/vendedor.ts` con `/tipo-cambio`, `/caro` y facilitador propio
+- [web](../web/AGENTS.md) — issue [#4](https://github.com/jxsu404/stellar-quickpass/issues/4)
 
 ## Tareas → nodos
 
 | Tarea | Nodo | Issue |
 |---|---|---|
 | Q0 | [../AGENTS.md](../AGENTS.md) | — |
-| Q1 | [../contracts/cuenta-presupuesto/AGENTS.md](../contracts/cuenta-presupuesto/AGENTS.md) · [pruebas-q1.md](pruebas-q1.md) | [#1](https://github.com/jxsu404/quickchain/issues/1) |
-| Q2 | [../agent-client/AGENTS.md](../agent-client/AGENTS.md) | [#2](https://github.com/jxsu404/quickchain/issues/2) |
-| Q3 | [../api-demo/AGENTS.md](../api-demo/AGENTS.md) | [#3](https://github.com/jxsu404/quickchain/issues/3) |
-| Q4 | [../web/AGENTS.md](../web/AGENTS.md) | [#4](https://github.com/jxsu404/quickchain/issues/4) |
-| Q5 | [../web/AGENTS.md](../web/AGENTS.md) | [#4](https://github.com/jxsu404/quickchain/issues/4) |
-| Q6 | [../web/AGENTS.md](../web/AGENTS.md) | [#4](https://github.com/jxsu404/quickchain/issues/4) |
-| Q7 | [DEMO.md](DEMO.md) | [#5](https://github.com/jxsu404/quickchain/issues/5) |
-| Q8 | [DEMO.md](DEMO.md) · [COSTOS.md](COSTOS.md) | [#5](https://github.com/jxsu404/quickchain/issues/5) |
+| Q1 | [../contracts/cuenta-presupuesto/AGENTS.md](../contracts/cuenta-presupuesto/AGENTS.md) · [pruebas-q1.md](pruebas-q1.md) | [#1](https://github.com/jxsu404/stellar-quickpass/issues/1) |
+| Q2 | [../agent-client/AGENTS.md](../agent-client/AGENTS.md) | [#2](https://github.com/jxsu404/stellar-quickpass/issues/2) |
+| Q3 | [../api-demo/AGENTS.md](../api-demo/AGENTS.md) | [#3](https://github.com/jxsu404/stellar-quickpass/issues/3) |
+| Q4 | [../web/AGENTS.md](../web/AGENTS.md) | [#4](https://github.com/jxsu404/stellar-quickpass/issues/4) |
+| Q5 | [../web/AGENTS.md](../web/AGENTS.md) | [#4](https://github.com/jxsu404/stellar-quickpass/issues/4) |
+| Q6 | [../web/AGENTS.md](../web/AGENTS.md) | [#4](https://github.com/jxsu404/stellar-quickpass/issues/4) |
+| Q7 | [DEMO.md](DEMO.md) | [#5](https://github.com/jxsu404/stellar-quickpass/issues/5) |
+| Q8 | [DEMO.md](DEMO.md) · [COSTOS.md](COSTOS.md) | [#5](https://github.com/jxsu404/stellar-quickpass/issues/5) |
 | Q9 | [SEGURIDAD.md](SEGURIDAD.md) | — |
-| Q10 | [DEMO.md](DEMO.md) · [transacciones.md](transacciones.md) | [#5](https://github.com/jxsu404/quickchain/issues/5) |
-| Q11 | [../README.md](../README.md) | [#6](https://github.com/jxsu404/quickchain/issues/6) |
+| Q10 | [DEMO.md](DEMO.md) · [transacciones.md](transacciones.md) | [#5](https://github.com/jxsu404/stellar-quickpass/issues/5) |
+| Q11 | [../README.md](../README.md) | [#6](https://github.com/jxsu404/stellar-quickpass/issues/6) |
 | Q12 | [PITCH.md](PITCH.md) | — |
-| Q13 | [PITCH.md](PITCH.md) | [#6](https://github.com/jxsu404/quickchain/issues/6) |
-| Q14 | [PITCH.md](PITCH.md) | [#6](https://github.com/jxsu404/quickchain/issues/6) |
-| Q15 | [../TAREAS.md](../TAREAS.md) | [#6](https://github.com/jxsu404/quickchain/issues/6) |
+| Q13 | [PITCH.md](PITCH.md) | [#6](https://github.com/jxsu404/stellar-quickpass/issues/6) |
+| Q14 | [PITCH.md](PITCH.md) | [#6](https://github.com/jxsu404/stellar-quickpass/issues/6) |
+| Q15 | [../TAREAS.md](../TAREAS.md) | [#6](https://github.com/jxsu404/stellar-quickpass/issues/6) |
 
 ## Auditorías
 

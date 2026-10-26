@@ -38,6 +38,7 @@
 | 2026-10-26 | **Permisos abiertos al equipo**: cualquier integrante puede editar el plan y la app por PR y hacer merge a `main` con el CI en verde, sin aprobación de Josué; los cambios importantes del plan se anotan aquí con fecha. Josué 2026-10-26 8:08 a. m. CR | pedido de Josué; José no tenía permisos |
 
 | 2026-10-26 | Nombre del producto: **Stellar QuickPass** (antes QuickChain), Josué 8:24 a. m. CR. Cambia en docs visibles y textos de la web; **no** cambian repo, paquetes, contrato, variables de entorno ni identificadores de código | decisión de marca para el pitch y la identidad ([buzón 010](https://github.com/jxsu404/quickchain-buzon/blob/main/buzon/010-josue-jose-identidad-de-marca.md)) |
+| 2026-10-26 | URLs con el nombre nuevo (Josué 8:30 a. m. CR): repo `jxsu404/stellar-quickpass` (redirige desde `jxsu404/quickchain`), web `stellar-quickpass.vercel.app` (sigue `quickchain.vercel.app`). Se quedan: la API en Render (`quickchain-api-demo.onrender.com`), el buzón `quickchain-buzon` y el `appSalt` de Cavos (cambiarlo cambiaría las direcciones) | consistencia con Stellar QuickPass |
 ## Preguntas abiertas
 1. ~~**Cómo prueba el agente el pago a la API.**~~ Resuelta en Q3 (ver arriba): x402 `exact` con `from = C…`.
 2. ~~**Comisión 1 %**~~ resuelto en Q1 (ver tabla).
