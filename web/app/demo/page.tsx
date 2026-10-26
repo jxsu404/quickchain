@@ -7,14 +7,14 @@ export default function Demo() {
   return (
     <main>
       <h1>Stellar QuickPass — demo</h1>
-      <p>Tu agente de IA paga APIs solo, con un tope mensual en USDC que vos firmás una vez.</p>
+      <p>Your AI agent pays APIs on its own, within a monthly USDC cap you sign once.</p>
       {!isAuthenticated ? (
-        <button onClick={openModal}>Entrar con correo</button>
+        <p><button onClick={openModal}>Log in with email</button> <small className="sub">(via Cavos, no seed phrase)</small></p>
       ) : (
         <>
-          <p>Tu cuenta Stellar: <code>{address}</code></p>
-          <Link href="/presupuesto">Definir presupuesto del agente →</Link>
-          <p><button onClick={logout}>Salir</button></p>
+          <p>Your Stellar account: <code>{address}</code></p>
+          <p><Link className="btn primary" href="/presupuesto">Set the agent budget →</Link></p>
+          <p><button className="secondary" onClick={logout}>Log out</button></p>
         </>
       )}
     </main>

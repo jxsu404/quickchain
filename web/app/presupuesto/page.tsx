@@ -26,8 +26,8 @@ export default function Presupuesto() {
   const [saldoUsdc, setSaldoUsdc] = useState<string | null>(null);
   const finPeriodo = finDeMesCR();
 
-  if (!isAuthenticated || !address) return <main><h2>Presupuesto mensual del agente</h2><p>Primero entrá con tu correo.</p><button onClick={openModal}>Entrar con correo</button></main>;
-  if (!wallet || wallet.chain !== "stellar") return <p>La wallet conectada no es de Stellar.</p>;
+  if (!isAuthenticated || !address) return <main><h2>Agent monthly budget</h2><p>Log in with your email first.</p><button onClick={openModal}>Log in with email</button> <small className="sub">(via Cavos, no seed phrase)</small></main>;
+  if (!wallet || wallet.chain !== "stellar") return <p>The connected wallet is not a Stellar wallet.</p>;
   const opts = feePropio ? { fee: "self" as const } : undefined;
 
   async function correr(que: string, f: () => Promise<void>) {
@@ -42,7 +42,7 @@ export default function Presupuesto() {
     invalido = validarRenovar(params);
   } catch (e) { invalido = (e as Error).message; }
 
-  const revisar = () => correr("Leyendo la cuenta-presupuesto…", async () => {
+  const revisar = () => correr("Reading the budget account…", async () => {
     const e = await leerEstado(contrato.trim(), RPC);
     setEstado(e);
     setProblemas(problemasAntesDeFirmar(e, address, TESORERIA));
@@ -50,21 +50,21 @@ export default function Presupuesto() {
 
   // Cavos crea la cuenta en la primera operación (patrocinada). El pago de 1 stroop a sí misma puede fallar
   // por saldo 0, pero la cuenta queda creada y en `ready`.
-  const crearCuenta = () => correr("Creando tu cuenta en testnet…", async () => {
+  const crearCuenta = () => correr("Creating your testnet account…", async () => {
     try { await wallet.execute(1n, address, opts); } catch (e) { if (wallet.status !== "ready") throw e; }
   });
 
-  const trustline = () => correr("Abriendo trustline USDC…", async () => {
+  const trustline = () => correr("Opening USDC trustline…", async () => {
     const hash = await wallet.addTrustline(USDC, opts);
     setTxs((t) => [...t, { que: "trustline USDC", hash }]);
     setSaldoUsdc(await wallet.tokenBalance(USDC));
   });
 
-  const verSaldo = () => correr("Leyendo tu saldo USDC…", async () => {
+  const verSaldo = () => correr("Reading your USDC balance…", async () => {
     setSaldoUsdc(await wallet.tokenBalance(USDC));
   });
 
-  const firmar = () => correr("Firmando renovar con Cavos…", async () => {
+  const firmar = () => correr("Signing renovar with Cavos…", async () => {
     if (!params) return;
     await simularRenovar(contrato.trim(), address, params, RPC);
     const hash = await wallet.invokeContract({ contractId: contrato.trim(), method: "renovar", args: argsRenovar(params), opts });
@@ -77,58 +77,58 @@ export default function Presupuesto() {
 
   return (
     <main>
-      <h2>Presupuesto mensual del agente</h2>
-      <p>Tu cuenta: <code>{address}</code> ({walletStatus.isReady ? "lista" : walletStatus.isUndeployed ? "todavía no existe en la red" : "este dispositivo necesita aprobación"})</p>
+      <h2>Agent monthly budget</h2>
+      <p>Your account: <code>{address}</code> ({walletStatus.isReady ? "ready" : walletStatus.isUndeployed ? "not on the network yet" : "this device needs approval"})</p>
 
       {walletStatus.isUndeployed && (
-        <p>Cavos crea tu cuenta en la primera operación. <button disabled={!!ocupado} onClick={crearCuenta}>Crear mi cuenta en testnet</button></p>
+        <p>Cavos creates your account on the first operation. <button disabled={!!ocupado} onClick={crearCuenta}>Create my testnet account</button></p>
       )}
-      <p>Estado Cavos: <code>{wallet.status}</code></p>
+      <p>Cavos status: <code>{wallet.status}</code></p>
       {walletStatus.needsDeviceApproval && (
-        <p style={{ color: "crimson" }}>
-          La llave de esta wallet quedó en otro navegador o en otra URL (cada URL de vercel.app guarda la suya). Abrí la página donde entraste la primera vez, tocá «Agregar passkey» y volvé acá a tocar:{" "}
-          <button disabled={!!ocupado} onClick={() => correr("Aprobando con passkey…", async () => { await approveDeviceWithPasskey(); })}>Aprobar este dispositivo con passkey</button>
+        <p className="err">
+          This wallet key lives in another browser or URL (each vercel.app URL keeps its own). Open the page where you first logged in, tap “Add passkey”, then come back and tap:{" "}
+          <button disabled={!!ocupado} onClick={() => correr("Approving with passkey…", async () => { await approveDeviceWithPasskey(); })}>Approve this device with passkey</button>
         </p>
       )}
       {walletStatus.isReady && (
-        <p><button disabled={!!ocupado} onClick={() => correr("Agregando passkey…", async () => { await enrollPasskeyDefault(); })}>Agregar passkey (para usar la wallet en otra URL o dispositivo)</button></p>
+        <p><button disabled={!!ocupado} onClick={() => correr("Adding passkey…", async () => { await enrollPasskeyDefault(); })}>Add passkey (to use the wallet on another URL or device)</button></p>
       )}
 
-      <label>Cuenta-presupuesto (C…)<br /><input value={contrato} onChange={(e) => { setContrato(e.target.value); setEstado(null); }} size={60} /></label>
-      <p><button disabled={!contrato.trim() || !!ocupado} onClick={revisar}>Revisar cuenta</button></p>
+      <label>Budget account (C…)<br /><input value={contrato} onChange={(e) => { setContrato(e.target.value); setEstado(null); }} size={60} /></label>
+      <p><button disabled={!contrato.trim() || !!ocupado} onClick={revisar}>Check account</button></p>
 
       {estado && (
         <ul>
-          <li>Contrato: <a href={linkContrato(contrato.trim())} target="_blank" rel="noreferrer">Stellar Expert</a></li>
-          <li>Dueño: <code>{estado.owner}</code></li>
-          <li>Tesorería: <code>{estado.tesoreria}</code> · comisión {Number(estado.fee_bps) / 100} %</li>
-          <li>Periodo {estado.periodo}: gastado {unidadesAUsdc(estado.gastado)} de {unidadesAUsdc(estado.tope)} USDC (restante {unidadesAUsdc(estado.restante)}); vence {estado.fin_periodo ? fechaCR(estado.fin_periodo) : "—"}{estado.pausada ? " · PAUSADA" : ""}</li>
-          <li>Saldo de la cuenta: {unidadesAUsdc(estado.saldo)} USDC · comisión pendiente {unidadesAUsdc(estado.comision_pendiente)}</li>
+          <li>Contract: <a href={linkContrato(contrato.trim())} target="_blank" rel="noreferrer">Stellar Expert</a></li>
+          <li>Owner: <code>{estado.owner}</code></li>
+          <li>Treasury: <code>{estado.tesoreria}</code> · fee {Number(estado.fee_bps) / 100} %</li>
+          <li>Period {estado.periodo}: spent {unidadesAUsdc(estado.gastado)} of {unidadesAUsdc(estado.tope)} USDC (left {unidadesAUsdc(estado.restante)}); ends {estado.fin_periodo ? fechaCR(estado.fin_periodo) : "—"}{estado.pausada ? " · PAUSED" : ""}</li>
+          <li>Account balance: {unidadesAUsdc(estado.saldo)} USDC · pending fee {unidadesAUsdc(estado.comision_pendiente)}</li>
         </ul>
       )}
-      {problemas.map((p) => <p key={p} style={{ color: "crimson" }}>{p}</p>)}
+      {problemas.map((p) => <p key={p} className="err">{p}</p>)}
 
-      <label>Tope del periodo (USDC, incluye la comisión de 1 %)<br /><input value={tope} onChange={(e) => setTope(e.target.value)} /></label><br />
-      <label>Máximo por llamada (USDC)<br /><input value={max} onChange={(e) => setMax(e.target.value)} /></label><br />
-      <label>Recarga desde tu cuenta (USDC; necesita trustline y saldo, 0 = no mover plata)<br /><input value={recarga} onChange={(e) => setRecarga(e.target.value)} /></label>
-      <p>Vence: {fechaCR(finPeriodo)} (1.º del mes que viene, hora CR).</p>
-      <p><label><input type="checkbox" checked={feePropio} onChange={(e) => setFeePropio(e.target.checked)} /> Mi cuenta paga el fee (sin patrocinio de Cavos; necesita XLM)</label></p>
-      {invalido && <p style={{ color: "crimson" }}>{invalido}</p>}
+      <label>Period cap (USDC, includes the 1% fee)<br /><input value={tope} onChange={(e) => setTope(e.target.value)} /></label><br />
+      <label>Max per call (USDC)<br /><input value={max} onChange={(e) => setMax(e.target.value)} /></label><br />
+      <label>Top-up from your account (USDC; needs trustline and balance, 0 = move no funds)<br /><input value={recarga} onChange={(e) => setRecarga(e.target.value)} /></label>
+      <p>Ends: {fechaCR(finPeriodo)} (1st of next month, Costa Rica time).</p>
+      <p><label><input type="checkbox" checked={feePropio} onChange={(e) => setFeePropio(e.target.checked)} /> My account pays the network fee (no Cavos sponsorship; needs XLM)</label></p>
+      {invalido && <p className="err">{invalido}</p>}
 
       <p>
-        <button disabled={!walletStatus.isReady || !!ocupado} onClick={trustline}>Activar USDC</button>{" "}
-        <button disabled={!walletStatus.isReady || !!ocupado} onClick={verSaldo}>Ver saldo USDC</button>{" "}
-        Tu saldo: {saldoUsdc ?? "—"} USDC · USDC de prueba: <a href="https://faucet.circle.com" target="_blank" rel="noreferrer">faucet.circle.com</a> (Stellar Testnet, pegá tu dirección)
+        <button disabled={!walletStatus.isReady || !!ocupado} onClick={trustline}>Enable USDC</button>{" "}
+        <button disabled={!walletStatus.isReady || !!ocupado} onClick={verSaldo}>Check USDC balance</button>{" "}
+        Your balance: {saldoUsdc ?? "—"} USDC · Test USDC: <a href="https://faucet.circle.com" target="_blank" rel="noreferrer">faucet.circle.com</a> (Stellar Testnet, paste your address)
       </p>
       <p>
-        <button disabled={!listo} onClick={firmar}>Firmar renovar (una firma)</button>
+        <button disabled={!listo} onClick={firmar}>Sign renovar (one signature)</button>
       </p>
-      <p>Comisión Stellar QuickPass: 1 % de lo que gaste el agente, incluida en el tope. Sin mensualidad.</p>
+      <p>Stellar QuickPass fee: 1% of what the agent spends, included in the cap. No monthly fee.</p>
 
       {ocupado && <p>{ocupado}</p>}
-      {error && <p style={{ color: "crimson" }}>Error: {error}</p>}
+      {error && <p className="err">Error: {error}</p>}
       {txs.map((t) => (
-        <p key={t.hash}>{t.que}: <a href={linkTx(t.hash)} target="_blank" rel="noreferrer">{t.hash.slice(0, 8)}… en Stellar Expert</a></p>
+        <p key={t.hash}>{t.que}: <a href={linkTx(t.hash)} target="_blank" rel="noreferrer">{t.hash.slice(0, 8)}… on Stellar Expert</a></p>
       ))}
     </main>
   );
