@@ -4,8 +4,9 @@
 import { useEffect, useState } from "react";
 import Copiar from "../copiar";
 import { linkContrato, unidadesAUsdc } from "@/lib/renovar";
+import { guardarBloqueo } from "@/lib/tablero";
 
-type Resumen = { tope: string; gastado: string; restante: string; saldo: string; maxPorLlamada: string };
+type Resumen = { tope: string; gastado: string; restante: string; saldo: string; maxPorLlamada: string; periodo?: string };
 type Evento =
   | { tipo: "inicio"; contrato: string; agente: string; estado: Resumen }
   | { tipo: "llamando"; n: number }
@@ -48,7 +49,12 @@ export default function CorrerAgente() {
         if (done) break;
         resto += value;
         const lineas = resto.split("\n"); resto = lineas.pop() ?? "";
-        for (const l of lineas) if (l.trim()) setEventos((ev) => [...ev, JSON.parse(l)]);
+        for (const l of lineas) if (l.trim()) {
+          const ev: Evento = JSON.parse(l);
+          // El dashboard muestra este bloqueo (solo en este navegador): no queda en la red.
+          if (ev.tipo === "bloqueado") guardarBloqueo(contrato.trim(), { n: ev.n, motivo: ev.motivo, mensaje: ev.mensaje, fecha: new Date().toISOString(), periodo: Number(ev.estado.periodo ?? 0) });
+          setEventos((evs) => [...evs, ev]);
+        }
       }
     } catch (e) {
       setEventos((ev) => [...ev, { tipo: "error", motivo: "Error", mensaje: String((e as Error).message) }]);
@@ -108,6 +114,7 @@ export default function CorrerAgente() {
           <small>Call {final.n} was rejected by the contract during simulation: no transaction was sent and no money moved.</small>
         </p>
       )}
+      {final && <p><a href={`/dashboard?contract=${encodeURIComponent(contrato.trim())}`}>Open the owner dashboard →</a></p>}
       {final?.tipo === "error" && <p className="error">⚠️ {final.mensaje}</p>}
       {final?.tipo === "fin" && <p>{final.mensaje}</p>}
     </section>

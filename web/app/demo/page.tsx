@@ -14,7 +14,7 @@ export default function Demo() {
       ) : (
         <>
           <p>Your Stellar account: <code>{address}</code></p>
-          <p><Link className="btn primary" href="/presupuesto">Set the agent budget →</Link></p>
+          <p><Link className="btn primary" href="/presupuesto">Set the agent budget →</Link> <Link href="/dashboard">Owner dashboard</Link></p>
           <p><button className="secondary" onClick={logout}>Log out</button></p>
         </>
       )}

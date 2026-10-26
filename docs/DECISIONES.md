@@ -50,6 +50,7 @@
 | 2026-10-26 | Seguridad: `/crear` arranca con la clave del agente **vacía**; el agente demo solo con casilla explícita y aviso. **Aprobado por Josué** 11:12 a. m. CR | ver [2026-10-26-crear-agente-vacio.md](2026-10-26-crear-agente-vacio.md) |
 | 2026-10-26 | QA ronda 2 (Aang): estilo de `/crear`, «remaining» por pago en `/demo`, pista en «Sign renovar», contador de espera, direcciones en 375 px + botón Copy. **Aprobado por Josué** 11:42 a. m. CR | ver [2026-10-26-qa-ronda-2.md](2026-10-26-qa-ronda-2.md) |
 | 2026-10-26 | **Botón «Correr agente»** en `/demo`: el agente (servidor, llave en Vercel) paga x402 desde la cuenta-presupuesto hasta el tope y queda bloqueado. **Aprobado por Josué** 11:06 a. m. CR | ver [2026-10-26-boton-correr-agente.md](2026-10-26-boton-correr-agente.md) |
+| 2026-10-26 | **Dashboard del dueño** `/dashboard`: anillo gastado/tope (Verde/Ámbar > 80 %/Rojo), tarjetas de `estado()`, pagos reales desde eventos de Soroban RPC con link a Stellar Expert, bloqueos solo de «Correr agente» en el navegador (no quedan en la red). Mockup A elegido por Juliana 2:43 p. m. CR; **pendiente OK de Josué** | ver [2026-10-26-dashboard.md](2026-10-26-dashboard.md) |
 
 ## Preguntas abiertas
 1. ~~**Cómo prueba el agente el pago a la API.**~~ Resuelta en Q3 (ver arriba): x402 `exact` con `from = C…`.
