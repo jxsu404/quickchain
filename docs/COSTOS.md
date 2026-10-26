@@ -1,6 +1,6 @@
 # Costos medidos (testnet) y comisión de 1 %
 
-Fila Q8 de [PLAN-OPUS](PLAN-OPUS.md). **Toda cifra sale de una tx real de Stellar testnet**: cada fila enlaza su hash en Stellar Expert. Los fees se leyeron de Horizon (`fee_charged`) con `pnpm --filter agent-client medir-costos`. No hay proyecciones ni precios externos: el valor del XLM en dólares no se incluye porque no tenemos una fuente citada (ver "Pendiente").
+Fila Q8 de [PLAN-OPUS](PLAN-OPUS.md). **Toda cifra sale de una tx real de Stellar testnet**: cada fila enlaza su hash en Stellar Expert. Los fees se leyeron de Horizon (`fee_charged`) con `pnpm --filter agent-client medir-costos`. No hay proyecciones ni precios externos: el valor del XLM en dólares no se incluye por decisión de Josué ([decisiones](DECISIONES.md)).
 
 ## Fee de red por operación
 
@@ -26,11 +26,10 @@ Fila Q8 de [PLAN-OPUS](PLAN-OPUS.md). **Toda cifra sale de una tx real de Stella
 ## Lectura honesta
 
 - Un pago desde la `C…` cuesta unos 11.800 stroops de fee: apenas entre 200 y 400 stroops más que uno desde una `G…` normal (entre 11.497 y 11.597). Eso queda **por debajo** del techo de 50.000 stroops del facilitador público, que de hecho aceptó la `C…`.
-- En un pago de US$0,01, la comisión es 0,0001 USDC, mientras que el fee de red es de unos 0,00118 XLM y lo paga el facilitador. Para saber si el 1 % cubre ese fee hace falta un precio XLM/USD con fuente. Si no lo cubre en micropagos, se dice, como pide el plan (§8: lotes, canal o comisión mínima).
+- En un pago de US$0,01, la comisión es 0,0001 USDC, mientras que el fee de red es de unos 0,00118 XLM y lo paga el facilitador. El fee se reporta en XLM; no se usa precio XLM/USD (se quitó por decisión de Josué, 2026-10-26 7:03 a. m. CR). Si no lo cubre en micropagos, se dice, como pide el plan (§8: lotes, canal o comisión mínima).
 - `renovar` cuesta unos 104.612 stroops y el deploy unos 656.537 stroops. Son pagos de una vez al mes y una vez por dueño, respectivamente.
 
 ## Pendiente
-- Precio XLM/USD con fuente citada, para convertir los fees a dólares.
 - Repetir la medición en la corrida limpia de Q10 con la cuenta oficial del equipo.
 
 <!-- enlaces:auto -->
