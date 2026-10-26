@@ -15,6 +15,8 @@
 
 Riesgos aceptados para la demo: solo testnet; un presupuesto por agente; sin auditoría externa del contrato.
 
+**Escaneo de secretos:** el CI corre gitleaks 8.30.1 sobre todo el historial con `.gitleaks.toml` (reglas por defecto + allowlist solo para direcciones públicas `C…`/`G…`) y un grep de semillas `\bS[A-Z2-7]{55}\b`. Ver [Decisiones](DECISIONES.md).
+
 <!-- enlaces:auto -->
 ## Enlaces
 
