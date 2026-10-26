@@ -44,7 +44,7 @@ export default function Crear() {
       <h2>Create my budget</h2>
       <p className="tagline">Your own budget account, owned by your wallet.</p>
       <p>Owner (you): <code>{address}</code></p>
-      <label>Agent public key (G…)<br /><input value={agente} placeholder="G…" onChange={(e) => { setAgente(e.target.value); setUsarDemo(false); }} size={66} /></label>
+      <label>Agent public key (G…)<br /><input value={agente} placeholder="G…" onChange={(e) => { setAgente(e.target.value); setUsarDemo(false); }} className="direccion" spellCheck={false} /></label>
       <p><label><input type="checkbox" checked={usarDemo} onChange={(e) => { setUsarDemo(e.target.checked); setAgente(e.target.checked ? AGENTE_DEMO_G : ""); }} /> Use the demo agent (testing only)</label></p>
       {usarDemo && <p className="err">Warning: the demo agent&apos;s key is shared. Anyone using /demo can make it spend your top-up up to the cap. Use it only for testing with small amounts.</p>}
       {agente.trim() !== "" && !agenteValido && <p className="err">Not a valid Stellar public key (must start with G…).</p>}

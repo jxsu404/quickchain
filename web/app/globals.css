@@ -72,3 +72,7 @@ code { font-family: var(--font-mono), ui-monospace, monospace; }
 .marco-demo input:not([type=checkbox]) { background: var(--card); color: var(--fg); border: 1px solid var(--line); border-radius: 8px; padding: .5rem .7rem; font: inherit; max-width: 100%; margin: .3rem 0 .8rem; }
 .marco-demo .err { color: #FF8A8F; }
 .marco-demo button { margin: .2rem 0; }
+/* QA ronda 2: direcciones largas en móvil (375 px) */
+.marco-demo input.direccion { width: 100%; box-sizing: border-box; font-family: var(--font-mono), ui-monospace, monospace; font-size: .85rem; text-overflow: ellipsis; }
+.marco-demo .copiar { padding: .25rem .6rem; font-size: .8rem; }
+.marco-demo { overflow-wrap: anywhere; }
