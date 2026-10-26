@@ -123,7 +123,7 @@ export default function Presupuesto() {
       <p>
         <button disabled={!listo} onClick={firmar}>Firmar renovar (una firma)</button>
       </p>
-      <p>Comisión QuickChain: 1 % de lo que gaste el agente, incluida en el tope. Sin mensualidad.</p>
+      <p>Comisión Stellar QuickPass: 1 % de lo que gaste el agente, incluida en el tope. Sin mensualidad.</p>
 
       {ocupado && <p>{ocupado}</p>}
       {error && <p style={{ color: "crimson" }}>Error: {error}</p>}

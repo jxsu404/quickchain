@@ -1,6 +1,6 @@
 # Índice de documentación
 
-> **Regla n.º 1: [docs/PLAN-OPUS.md](PLAN-OPUS.md) es la biblia de QuickChain.** Toda persona o agente que trabaje aquí (integrantes, Raúl, Martín o cualquier otro) lee el plan antes de empezar y sigue sus fases, tareas (Q0–Q15), horarios de corte y planes B. Si algo choca con el plan, gana el plan; cualquier integrante puede editar el plan y la app por PR y hacer merge a `main` con el CI en verde; los cambios importantes del plan se anotan con fecha en [DECISIONES](DECISIONES.md).
+> **Regla n.º 1: [docs/PLAN-OPUS.md](PLAN-OPUS.md) es la biblia de Stellar QuickPass.** Toda persona o agente que trabaje aquí (integrantes, Raúl, Martín o cualquier otro) lee el plan antes de empezar y sigue sus fases, tareas (Q0–Q15), horarios de corte y planes B. Si algo choca con el plan, gana el plan; cualquier integrante puede editar el plan y la app por PR y hacer merge a `main` con el CI en verde; los cambios importantes del plan se anotan con fecha en [DECISIONES](DECISIONES.md).
 
 | Documento | Para qué |
 |---|---|

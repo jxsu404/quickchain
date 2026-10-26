@@ -2,7 +2,7 @@
 
 
 > **Permisos (2026-10-26):** cualquier integrante del equipo puede editar este plan y la app por PR y hacer merge a `main` cuando el CI está en verde, sin esperar aprobación de Josué. Los cambios importantes del plan se anotan con fecha en [DECISIONES](DECISIONES.md).
-# Plan QuickChain: Pura Vida Ideathon (entrega lunes 26 oct, antes de las 11:30 a.m. CR)
+# Plan Stellar QuickPass: Pura Vida Ideathon (entrega lunes 26 oct, antes de las 11:30 a.m. CR)
 
 **El plan cabe en el plazo, pero hay dos hallazgos que cambian decisiones antes de arrancar:**
 

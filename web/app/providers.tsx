@@ -6,7 +6,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <CavosProvider
       config={{ chains: ["stellar"], defaultChain: "stellar", network: "testnet", appSalt: "quickchain", appId: process.env.NEXT_PUBLIC_CAVOS_APP_ID! }}
-      modal={{ appName: "QuickChain" }}
+      modal={{ appName: "Stellar QuickPass" }}
     >
       {children}
     </CavosProvider>

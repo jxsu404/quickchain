@@ -1,4 +1,4 @@
-# Mapa de QuickChain (hub de nodos)
+# Mapa de Stellar QuickPass (hub de nodos)
 
 Puerta de entrada para agentes: todo nodo enlaza aquí, a [PLAN-OPUS](PLAN-OPUS.md) (la biblia, fuente de verdad obligatoria) y a sus nodos relacionados en la sección **Enlaces** al final. Verificá con `pnpm docs:links`.
 
