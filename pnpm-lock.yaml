@@ -47,22 +47,10 @@ importers:
       dotenv:
         specifier: ^17
         version: 17.4.2
-      next:
-        specifier: ^16
-        version: 16.4.3(@babel/core@7.29.7)(@types/node@24.19.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
-      react:
-        specifier: ^19
-        version: 19.3.1
-      react-dom:
-        specifier: ^19
-        version: 19.3.1(react@19.3.1)
     devDependencies:
       '@types/node':
         specifier: ^24
         version: 24.19.2
-      '@types/react':
-        specifier: ^19
-        version: 19.3.0
       tsx:
         specifier: ^4
         version: 4.23.15
@@ -94,6 +82,9 @@ importers:
       '@types/react':
         specifier: ^19
         version: 19.3.0
+      tsx:
+        specifier: ^4
+        version: 4.23.15
       typescript:
         specifier: ^5
         version: 5.9.3

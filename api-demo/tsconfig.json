@@ -1,2 +1,2 @@
-{ "compilerOptions": { "target": "ES2022", "lib": ["dom", "esnext"], "module": "esnext", "moduleResolution": "bundler", "strict": true, "jsx": "preserve", "noEmit": true, "skipLibCheck": true, "esModuleInterop": true, "isolatedModules": true, "incremental": true, "plugins": [{ "name": "next" }], "paths": { "@/*": ["./*"] } },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"], "exclude": ["node_modules"] }
+{ "compilerOptions": { "target": "ES2022", "lib": ["dom", "esnext"], "module": "esnext", "moduleResolution": "bundler", "allowImportingTsExtensions": true, "strict": true, "noEmit": true, "skipLibCheck": true, "esModuleInterop": true, "isolatedModules": true, "types": ["node"] },
+  "include": ["servidor/**/*.ts", "scripts/**/*.mts", "test/**/*.ts"], "exclude": ["node_modules"] }
