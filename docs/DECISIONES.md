@@ -31,6 +31,7 @@
 | 2026-10-26 | DEMO.md: el vendedor se levanta con `pnpm --filter api-demo vendedor` (servidor `node:http` de #18) en vez de `next dev` | Josué decidió que el vendedor va en `servidor/vendedor.ts` (buzón 005); probado en testnet con ese servidor ([DEMO](DEMO.md)) |
 | 2026-10-26 | Q10: la corrida usa una cuenta-presupuesto nueva desplegada con el SDK (`createCustomContract`, mismo `wasm_hash` de Q1), sin la CLI `stellar`; recarga 1,05 para que `/caro` muestre `MontoPorLlamada`; al final se retira todo el saldo libre al dueño | reproducible sin CLI y no deja plata de prueba varada ([transacciones](transacciones.md)) |
 | 2026-10-26 | Q11: el README dice que la comisión de 1 % ya está en el contrato (antes decía "todavía no está implementada") y que el facilitador público aceptó pagos desde la `C…` | ambas cosas están probadas en testnet ([costos](COSTOS.md), [transacciones](transacciones.md)); la lista de equipo sale de los commits y la confirma Josué |
+| 2026-10-26 | Q9: se actualizan `docs/SEGURIDAD.md` y `docs/ARQUITECTURA.md` (mayúsculas, ya enlazados) en vez de crear `seguridad.md`/`arquitectura.md` como dice el plan; la arquitectura vieja (`transfer_from`, `gastar`, `X-QUICKCHAIN-TX`) se reemplaza por la vigente (USDC en la `C…`, x402 `exact`) | evita duplicar nodos; refleja el código de main |
 
 ## Preguntas abiertas
 1. ~~**Cómo prueba el agente el pago a la API.**~~ Resuelta en Q3 (ver arriba): x402 `exact` con `from = C…`.

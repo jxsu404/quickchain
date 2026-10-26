@@ -142,10 +142,10 @@ graph TD
 - [Tareas](../TAREAS.md)
 - [Índice de docs](INDICE.md)
 - [Plan (resumen)](PLAN.md)
-- [Arquitectura](ARQUITECTURA.md)
+- [Arquitectura](ARQUITECTURA.md) — Q9: diagramas del diseño vigente (USDC en la `C…`, x402 `exact`)
 - [Stack](STACK.md)
 - [Decisiones](DECISIONES.md)
-- [Seguridad](SEGURIDAD.md)
+- [Seguridad](SEGURIDAD.md) — Q9: tabla de amenazas del plan §3 con estado real
 - [Auditoría](AUDITORIA.md)
 - [Demo (testnet)](DEMO.md) — issue [#5](https://github.com/jxsu404/quickchain/issues/5); Q7: `scripts/agente-demo.ts` (4 pagos, 5.º y `/caro` bloqueados); vendedor con `pnpm --filter api-demo vendedor` tras #18
 - [Costos (Q8)](COSTOS.md) — fees medidos en testnet y cobro de la comisión de 1 %
