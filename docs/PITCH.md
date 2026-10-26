@@ -1,5 +1,7 @@
 # Pitch de Stellar QuickPass (borrador — tarea 6)
 
+**Eslogan (único para todas las piezas):** «Your agent pays. You set the cap.»
+
 - **Problema:** con x402 `exact` cada llamada necesita un pago firmado y una tx ([x402 #946](https://github.com/x402-foundation/x402/issues/946)); en Stellar el facilitador público solo soporta `exact` ([Stellar docs](https://developers.stellar.org/docs/build/agentic-payments/x402/built-on-stellar)).
 - **Contexto:** x402 suma 195.026.077 tx y US$42.220.552 liquidados al 25/10/2026 ([agenteconomy.to](https://agenteconomy.to/x402)). McKinsey estima que los agentes podrían intermediar US$3–5 billones (trillion) de comercio para 2030 ([McKinsey](https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-agentic-commerce-opportunity-how-ai-agents-are-ushering-in-a-new-era-for-consumers-and-merchants)).
 - **Solución:** una firma al mes, tope en contrato, el agente paga solo.

@@ -1,27 +1,74 @@
-body { margin: 0; font-family: system-ui, sans-serif; }
-.marco-demo { max-width: 640px; margin: 2rem auto; padding: 0 1rem; }
+/* Marca Stellar QuickPass v1.0 (docs/MARCA.md, web/public/brand/StellarQuickPass-paleta.css). */
+:root {
+  --sqp-principal: #1F3FD9; /* Azul Vía */
+  --sqp-acento: #14C38E; /* Verde Paso */
+  --sqp-neutro-oscuro: #0B1020; /* Tinta */
+  --sqp-neutro-claro: #F4F6FB; /* Niebla */
+  --sqp-apoyo-1: #F2A516; /* Ámbar Tope */
+  --sqp-apoyo-2: #E0464E; /* Rojo Bloqueo */
+}
+body { margin: 0; font-family: var(--font-inter), system-ui, sans-serif; background: var(--sqp-neutro-oscuro); }
+h1, h2, h3, .btn, button { font-family: var(--font-grotesk), var(--font-inter), system-ui, sans-serif; }
+code { font-family: var(--font-mono), ui-monospace, monospace; }
 
-/* Landing (/). Colores en variables para re-skin fácil con la marca. */
+/* Todas las páginas: fondo Tinta. Nunca texto azul sobre Tinta (2,49:1): links en Niebla o Verde Paso. */
 .landing {
-  --bg: #0b0d10; --fg: #e8eaed; --muted: #9aa0a6; --card: #14171c; --line: #262a31; --accent: #7c5cff; --accent-fg: #fff;
+  --bg: var(--sqp-neutro-oscuro); --fg: var(--sqp-neutro-claro); --muted: #C9CED8; --card: #141B33; --line: #26304F;
   background: var(--bg); color: var(--fg); min-height: 100vh; line-height: 1.55;
 }
-.landing a { color: inherit; }
-.landing .wrap { max-width: 880px; margin: 0 auto; padding: 0 1.25rem; }
+.landing a { color: var(--fg); text-underline-offset: 3px; }
+.landing a:hover { color: var(--sqp-acento); }
+.landing .wrap { max-width: 960px; margin: 0 auto; padding: 0 1.25rem; }
+.cabecera { padding: 1.25rem 0; }
+.cabecera img { display: block; width: 180px; height: auto; }
 .landing section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
-.landing .hero { border-top: 0; padding: 5rem 0 4rem; }
-.landing h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); margin: 0 0 1rem; letter-spacing: -0.02em; }
-.landing h2 { font-size: 1.5rem; margin: 0 0 1rem; }
-.landing .tagline { font-size: clamp(1.1rem, 2.6vw, 1.35rem); color: var(--muted); max-width: 36rem; margin: 0 0 2rem; }
-.landing .ctas { display: flex; gap: .75rem; flex-wrap: wrap; }
-.landing .btn { display: inline-block; padding: .75rem 1.25rem; border-radius: 10px; text-decoration: none; font-weight: 600; border: 1px solid var(--line); }
-.landing .btn.primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
+.landing .hero { border-top: 0; padding: 2.5rem 0 4rem; }
+.hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2.5rem; align-items: center; }
+@media (max-width: 760px) { .hero-grid { grid-template-columns: 1fr; } }
+.landing h1 { font-size: clamp(2.2rem, 6vw, 3rem); line-height: 1.17; margin: 0 0 1rem; letter-spacing: -0.01em; }
+.landing h2 { font-size: clamp(1.5rem, 4vw, 2.25rem); line-height: 1.22; margin: 0 0 1rem; letter-spacing: -0.005em; }
+.landing .tagline { font-size: clamp(1.1rem, 2.6vw, 1.3rem); color: var(--muted); max-width: 34rem; margin: 0 0 2rem; }
 .landing p { color: var(--muted); max-width: 42rem; }
+.landing .ctas { display: flex; gap: .75rem; flex-wrap: wrap; align-items: center; }
+.landing .btn, .landing button { display: inline-block; padding: .75rem 1.25rem; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 1rem;
+  border: 1px solid var(--line); background: transparent; color: var(--fg); cursor: pointer; }
+/* CTA: Azul Vía con texto blanco (7,57:1). */
+.landing .btn.primary, .landing button:not(.secondary) { background: var(--sqp-principal); color: #fff; border-color: var(--sqp-principal); }
+.landing .btn.primary:hover, .landing button:not(.secondary):hover:not(:disabled) { background: #2A4BEB; color: #fff; }
+.landing button:disabled { opacity: .55; cursor: default; }
+.landing .badge { border: 1px solid var(--line); border-radius: 999px; padding: .15rem .7rem; font-size: .85rem; color: var(--muted); }
+.landing .sub { color: var(--muted); }
+
+/* Tarjeta visual del hero (datos de ejemplo). */
+.tarjeta { margin: 0; background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 1.25rem; font-family: var(--font-mono), ui-monospace, monospace; font-size: .875rem; position: relative; }
+.tarjeta .etiqueta { position: absolute; top: .6rem; right: .8rem; font-family: var(--font-inter), sans-serif; font-size: .75rem; color: var(--muted); }
+.tarjeta .tope-txt { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin: 1.1rem 0 .5rem; }
+.tarjeta .tope-txt span:last-child { color: var(--muted); }
+.tarjeta .barra { height: 10px; background: #26304F; border-radius: 999px; overflow: hidden; margin-bottom: 1rem; }
+.tarjeta .barra div { height: 100%; background: linear-gradient(90deg, var(--sqp-acento), var(--sqp-apoyo-1)); }
+.tarjeta .fila { padding: .55rem .75rem; border-radius: 8px; margin-top: .5rem; border-left: 4px solid; }
+.tarjeta .fila.ok { border-color: var(--sqp-acento); color: var(--sqp-acento); background: rgba(20,195,142,.1); }
+.tarjeta .fila.no { border-color: var(--sqp-apoyo-2); color: #FF8A8F; background: rgba(224,70,78,.12); }
+
 .landing .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; list-style: none; padding: 0; margin: 0; }
 .landing .steps li { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 1.25rem; }
-.landing .steps b { display: block; color: var(--fg); margin-bottom: .4rem; }
-.landing .steps span { color: var(--muted); }
-.landing .n { color: var(--accent); font-weight: 700; display: block; margin-bottom: .5rem; }
+.landing .steps b { display: block; color: var(--fg); margin-bottom: .4rem; font-family: var(--font-grotesk), sans-serif; font-size: 1.1rem; }
+.landing .steps span:not(.n) { color: var(--muted); }
+.landing .n { display: inline-grid; place-items: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--sqp-principal); color: #fff; font-weight: 700; margin-right: .6rem; vertical-align: middle; }
+.landing .icono { vertical-align: middle; }
+.landing .steps li > b { margin-top: .9rem; }
+.landing .ejemplo { font-family: var(--font-mono), monospace; font-size: .9rem; }
+
 .landing footer { border-top: 1px solid var(--line); padding: 2rem 0 3rem; font-size: .9rem; color: var(--muted); }
-.landing footer .wrap { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; }
-.landing .badge { border: 1px solid var(--line); border-radius: 999px; padding: .1rem .6rem; }
+.landing footer .links { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; align-items: center; }
+@media (max-width: 560px) { .landing footer .links { flex-direction: column; align-items: flex-start; gap: 12px; } }
+.landing .aviso { font-size: .8125rem; line-height: 1.4; margin-top: 1.25rem; }
+
+/* /demo y /presupuesto: misma estética, columna angosta. */
+.marco-demo { max-width: 680px; padding: 1.5rem 0 2rem; }
+.marco-demo p, .marco-demo li, .marco-demo label { color: var(--fg); }
+.marco-demo a { color: var(--sqp-acento); }
+.marco-demo code { word-break: break-all; color: var(--sqp-acento); }
+.marco-demo input:not([type=checkbox]) { background: var(--card); color: var(--fg); border: 1px solid var(--line); border-radius: 8px; padding: .5rem .7rem; font: inherit; max-width: 100%; margin: .3rem 0 .8rem; }
+.marco-demo .err { color: #FF8A8F; }
+.marco-demo button { margin: .2rem 0; }
