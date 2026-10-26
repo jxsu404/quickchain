@@ -3,9 +3,15 @@
 ## Guion (≈ 2 min)
 1. El dueño entra con su correo en la web (Cavos) y ve su cuenta G….
 2. Firma un tope de, por ejemplo, 0,05 USDC al mes para su agente (una firma).
-3. `pnpm agente` con `LLAMADAS=8` y API a 0,01 USDC: las primeras 5 llamadas pagan y responden 200.
-4. La 6.ª llamada queda **bloqueada** por el contrato (`TopeAlcanzado`). No hubo ninguna firma del dueño entre llamadas.
+3. Agente demo (Q7, `scripts/agente-demo.ts`): 5 llamadas a `/tipo-cambio` (US$0,01). Con tope 0,05 y comisión de 1 % (0,0101 por llamada) las **4 primeras pagan** y responden 200, cada una con su link.
+4. La **5.ª queda bloqueada** por el contrato (`TopeAlcanzado`) y **`/caro` (US$1) también** (`MontoPorLlamada`, máx. 0,02). Los bloqueos pasan en la simulación: no hay tx y no se mueve plata. No hubo ninguna firma del dueño entre llamadas.
 5. El dueño firma `renovar` y el agente sigue.
+
+## Cómo correr el agente demo (Q7)
+1. Vendedor: `cd api-demo && X402_PAY_TO=G… npx next dev -p 4020` (facilitador público `https://x402.org/facilitator` por defecto).
+2. Cuenta con tope 0,05, máx. 0,02 por llamada y saldo ≥ US$1 (si el saldo es menor, `/caro` choca con `SaldoInsuficiente` antes que con `MontoPorLlamada`; visto en testnet el 2026-10-26).
+3. `BUDGET_CONTRACT_ID=C… AGENT_SECRET_KEY=S… API_DEMO_URL=http://localhost:4020 pnpm --filter agent-client exec tsx ../scripts/agente-demo.ts` → sale con código 0 solo si da 4 pagos + 2 bloqueos.
+4. Corrida completa (deploy → renovar → agente → comisión → pausa → retiro): Q10, `agent-client/src/corrida-e2e.ts`; resultados en [transacciones.md](transacciones.md).
 
 ## Datos de la demo
 - ID del contrato `cuenta-presupuesto` (Q1): [`CBH3LQQCVTY74KXKCS2526KXH2F7B32RSMSIV4ZKXKFPQS5I4UR3TALX`](https://stellar.expert/explorer/testnet/contract/CBH3LQQCVTY74KXKCS2526KXH2F7B32RSMSIV4ZKXKFPQS5I4UR3TALX) — datos en [`deployments/testnet.json`](../deployments/testnet.json)
