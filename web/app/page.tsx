@@ -35,7 +35,10 @@ export default function Landing() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/brand/StellarQuickPass-horizontal-negativo.svg" alt="Stellar QuickPass" width={168} height={40} />
         </Link>
-        <a className="ql-s" href={GITHUB} target="_blank" rel="noreferrer">GitHub</a>
+        <div>
+          <Link className="ql-s" href="/demo">Live demo</Link>
+          <a className="ql-s" href={GITHUB} target="_blank" rel="noreferrer">GitHub</a>
+        </div>
       </div>
       <main>
         <section className="ql-hero">
