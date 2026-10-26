@@ -39,6 +39,8 @@
 
 | 2026-10-26 | Nombre del producto: **Stellar QuickPass** (antes QuickChain), Josué 8:24 a. m. CR. Cambia en docs visibles y textos de la web; **no** cambian repo, paquetes, contrato, variables de entorno ni identificadores de código | decisión de marca para el pitch y la identidad ([buzón 010](https://github.com/jxsu404/quickchain-buzon/blob/main/buzon/010-josue-jose-identidad-de-marca.md)) |
 | 2026-10-26 | URLs con el nombre nuevo (Josué 8:30 a. m. CR): repo `jxsu404/stellar-quickpass` (redirige desde `jxsu404/quickchain`), web `stellar-quickpass.vercel.app` (sigue `quickchain.vercel.app`). Se quedan: la API en Render (`quickchain-api-demo.onrender.com`), el buzón `quickchain-buzon` y el `appSalt` de Cavos (cambiarlo cambiaría las direcciones) | consistencia con Stellar QuickPass |
+| 2026-10-26 | Web: `/` pasa a ser una landing en inglés y la demo (login Cavos) se mueve a `/demo`; `/presupuesto` queda en su ruta, sin redirect, para no romper links ni Cavos. **Aprobado por Josué** 8:31 a. m. CR | el jurado de APEX lee inglés ([web](../web/AGENTS.md), [Demo](DEMO.md)) |
+
 ## Preguntas abiertas
 1. ~~**Cómo prueba el agente el pago a la API.**~~ Resuelta en Q3 (ver arriba): x402 `exact` con `from = C…`.
 2. ~~**Comisión 1 %**~~ resuelto en Q1 (ver tabla).
