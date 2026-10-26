@@ -13,6 +13,7 @@ Ver [docs/ARQUITECTURA.md](docs/ARQUITECTURA.md). Resumen: `web` (dueño, Cavos)
 - `agent-client/` — TS + @stellar/stellar-sdk. [AGENTS.md](agent-client/AGENTS.md)
 - `api-demo/` — `servidor/vendedor.ts` (node:http) + @x402/core + @x402/stellar. [AGENTS.md](api-demo/AGENTS.md)
 - `web/` — Next.js + @cavos/kit. [AGENTS.md](web/AGENTS.md)
+- `mcp/` — MCP server (stdio) para que cualquier agente pague x402 desde su cuenta-presupuesto en testnet. Fuera del workspace pnpm (`cd mcp && npm ci && npm run build`). [README](mcp/README.md) · [decisión](docs/2026-10-26-mcp-quickpass.md)
 - `docs/` — [INDICE.md](docs/INDICE.md).
 
 ## Comandos

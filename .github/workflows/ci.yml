@@ -43,6 +43,9 @@ jobs:
         run: pnpm typecheck
       - name: pnpm docs:links
         run: pnpm docs:links
+      - name: mcp (npm ci + typecheck)
+        working-directory: mcp
+        run: npm ci && npm run typecheck
 
   secretos:
     name: gitleaks y semillas Stellar

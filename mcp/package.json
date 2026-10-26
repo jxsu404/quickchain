@@ -1,0 +1,24 @@
+{
+  "name": "quickpass-mcp",
+  "version": "0.1.0",
+  "description": "MCP server de Stellar QuickPass: el agente paga APIs x402 desde una cuenta-presupuesto con tope (Stellar testnet).",
+  "private": true,
+  "type": "module",
+  "bin": { "quickpass-mcp": "dist/index.js" },
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.20.0",
+    "@stellar/stellar-sdk": "^16.4.1",
+    "@x402/core": "~2.28.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "typescript": "^5"
+  }
+}
