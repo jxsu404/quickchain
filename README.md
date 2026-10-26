@@ -19,7 +19,7 @@ Las APIs empiezan a cobrar por llamada con x402. Con el esquema `exact`, cada ll
 - La comisión todavía no está implementada en el contrato (ver `TAREAS.md`).
 
 ## Nota legal
-QuickChain es una herramienta para **controlar gastos** de un agente. **No es una inversión, ni ahorro, ni promete ganancias, ni es "sin riesgo".** No capta dinero del público ni custodia fondos: el USDC queda en la cuenta del dueño hasta que el agente paga. Esta demo corre en Stellar **testnet** (dinero de prueba). Antes de usar dinero real en Costa Rica hay que revisar con un abogado lo que aplique de la Ley 10.961 y la normativa de SUGEF.
+QuickChain es una herramienta para **controlar gastos** de un agente. **No es una inversión, ni ahorro, ni promete ganancias, ni es "sin riesgo".** No capta dinero del público. Ojo: el presupuesto en USDC **sí queda guardado en el contrato** de Stellar (no en una cuenta nuestra); solo el dueño puede pausarlo, cambiar el tope o retirar lo que sobra, y el agente solo puede gastar dentro del tope. Esta demo corre en Stellar **testnet** (dinero de prueba). Antes de usar dinero real en Costa Rica hay que revisar con un abogado lo que aplique de la Ley 10.961 y la normativa de SUGEF.
 
 ## Cómo correrlo
 Requisitos: Node 22+, pnpm 9, Rust (rustup) con target `wasm32v1-none`, opcional `stellar` CLI.

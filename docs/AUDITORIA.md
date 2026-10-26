@@ -28,3 +28,16 @@
 2. Comisión del 1 % no implementada (TODO en `gastar`).
 3. Contrato sin desplegar; `stellar` CLI no instalado en la máquina de la auditoría.
 4. Web no firma aún `approve` + `crear_presupuesto`.
+
+## Sugerencias del equipo de auditoría (2026-10-25)
+Son **sugerencias opcionales**, no requisitos para que el producto sea bueno. Salen de las auditorías de Raven, jueces, validador y Pao.
+
+| Sugerencia | Estado |
+|---|---|
+| Que cada integrante tenga commits propios en el repo | Opcional |
+| Demo real en testnet: 4 llamadas pagadas + la 5.ª bloqueada por el tope, con links de Stellar Expert | **Pendiente** |
+| Cambiar el contrato al diseño de cuenta-presupuesto `C…` (`__check_auth`). Según Raven, los facilitadores x402 rechazan pagos con `approve`/`transfer_from` | **Pendiente** |
+| Validar con 5–10 personas que construyen agentes | Opcional |
+| Evaluar una mensualidad como alternativa (o complemento) al 1 % | Opcional |
+| Slogan: «Tu agente paga solo. Nunca más de tu tope.» | Opcional |
+| Web con barra de tope (gastado vs. tope del mes) | Opcional |
