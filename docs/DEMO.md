@@ -19,7 +19,7 @@
 - **Plan B (CLI, sin Cavos):** si Cavos no firma a la hora de corte del plan, el dueño de la cuenta-presupuesto es una `G…` normal y firma con su llave: `OWNER_SECRET=… pnpm renovar --tope 0.05 --max 0.02 --recarga 0.05` (lee `BUDGET_CONTRACT_ID`; `--simular` prueba sin firmar; `--tesoreria G…` exige la tesorería). Imprime el link de Stellar Expert. Se dice en el video que esa firma fue por CLI.
 
 ## Qué está probado y qué no (2026-10-26)
-- Probado contra testnet, solo lectura: `estado()` y la simulación de `renovar` con el dueño de `CBH3LQQC…` como fuente (web y `pnpm renovar --simular`), incluidos los rechazos `PeriodoInvalido` y falta de saldo USDC.
+- Probado contra testnet, solo lectura: `estado()` y la simulación de `renovar` con el dueño de `CBH3LQQC…` (deploy anterior; el vigente es [`CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE`](https://stellar.expert/explorer/testnet/contract/CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE)) como fuente (web y `pnpm renovar --simular`), incluidos los rechazos `PeriodoInvalido` y falta de saldo USDC.
 - Probado sin red: argumentos `i128, i128, u64, i128`, fin de mes en hora CR, validaciones y chequeos previos (`pnpm --filter web test`); límites del SDK y facilitador opt-in (`pnpm test`); `next build`.
 - **Sin probar:** la firma real con Cavos (falta un `NEXT_PUBLIC_CAVOS_APP_ID` y una cuenta-presupuesto cuyo dueño sea una `G…` de Cavos), el botón «Crear mi cuenta» (según el código del kit, la cuenta queda `ready` aunque falle el pago de 1 stroop) y el envío real de `pnpm renovar` (no hay `OWNER_SECRET` en este entorno). Cuando se hagan, los hashes van a [transacciones.md](transacciones.md).
 

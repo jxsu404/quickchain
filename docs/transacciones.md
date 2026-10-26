@@ -1,5 +1,7 @@
 # Transacciones (testnet)
 
+> **Contrato vigente:** [`CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE`](https://stellar.expert/explorer/testnet/contract/CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE) ([deployments/testnet.json](../deployments/testnet.json)). Los otros IDs `C…` de esta tabla son deploys anteriores de prueba.
+
 La corrida limpia de Q10 está al final; las filas Q3 son de la prueba del vendedor y el facilitador (cuentas desechables de testnet). Q10 la llena con la corrida de punta a punta. Cada hash va con link `https://stellar.expert/explorer/testnet/tx/<hash>`.
 
 | tx | qué prueba | link Stellar Expert testnet |
@@ -33,7 +35,7 @@ La corrida limpia de Q10 está al final; las filas Q3 son de la prueba del vende
 
 ## Corrida limpia Q10 (26/10/2026, 12:39:07 a. m. CR)
 
-Script: `agent-client/src/corrida-e2e.ts` (datos crudos en [`deployments/corrida-q10.json`](../deployments/corrida-q10.json)). Cuenta [`CBAVYNKB…`](https://stellar.expert/explorer/testnet/contract/CBAVYNKBG5TKC56BXON4UKVOQX4YVPX2UA3YB77J6VSSCCKHKHSYJKCG), vendedor de `api-demo` local con el facilitador **público** `x402.org`. Cuentas de testnet de prueba; sin valor real.
+Script: `agent-client/src/corrida-e2e.ts` (datos crudos en [`deployments/corrida-q10.json`](../deployments/corrida-q10.json)). Cuenta de la corrida Q10 (deploy anterior; el vigente es [`CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE`](https://stellar.expert/explorer/testnet/contract/CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE)) [`CBAVYNKB…`](https://stellar.expert/explorer/testnet/contract/CBAVYNKBG5TKC56BXON4UKVOQX4YVPX2UA3YB77J6VSSCCKHKHSYJKCG), vendedor de `api-demo` local con el facilitador **público** `x402.org`. Cuentas de testnet de prueba; sin valor real.
 
 | tx | qué prueba | link Stellar Expert testnet |
 |---|---|---|

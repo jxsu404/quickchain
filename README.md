@@ -23,6 +23,7 @@ Evidencia en testnet, cada fila con link a Stellar Expert: [docs/transacciones.m
 - Soroban permite cuentas-contrato con `__check_auth` propio: el límite lo aplica la cadena, no el agente.
 - Fees medidos en testnet: un pago x402 desde la `C…` cobró unos 11.800 stroops ([dd977105…](https://stellar.expert/explorer/testnet/tx/dd9771057ccaf0448cb60b5e0c5325bc1124184aca2efa2a827fe355a364824c)), apenas unos cientos más que desde una `G…` normal ([e82320dc…](https://stellar.expert/explorer/testnet/tx/e82320dc157bd63ddb31f821794569da5929b5f680cc07ac81376040910788e0)). Tabla completa en [docs/COSTOS.md](docs/COSTOS.md).
 - USDC de Circle en testnet (SAC `CBIELTK6…`).
+- **Contrato vigente** (`cuenta-presupuesto`, testnet, fuente: [deployments/testnet.json](deployments/testnet.json)): [`CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE`](https://stellar.expert/explorer/testnet/contract/CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE). Los demás IDs `C…` en los docs son deploys anteriores de prueba.
 
 ## Negocio
 - **Cliente:** quien tiene agentes (dev o equipo) y quiere que paguen APIs x402 sin darles una wallet con fondos.
