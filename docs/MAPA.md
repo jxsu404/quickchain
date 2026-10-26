@@ -178,6 +178,10 @@ graph TD
 | Q14 | [PITCH.md](PITCH.md) | [#6](https://github.com/jxsu404/quickchain/issues/6) |
 | Q15 | [../TAREAS.md](../TAREAS.md) | [#6](https://github.com/jxsu404/quickchain/issues/6) |
 
+## Auditorías
+
+- 2026-10-25, 3 modelos: [consolidado](auditorias/2026-10-25-consolidado.md) · [Opus](auditorias/2026-10-25-claude-opus-5-5-high.md) · [Grok](auditorias/2026-10-25-grok-4.7-high.md) · [GPT](auditorias/2026-10-25-gpt-5.6-sol-high.md)
+
 ## Fuera del repo
 
 - Buzón privado del equipo: `jxsu404/quickchain-buzon` (README, AGENTS, `buzon/000-bienvenida.md`)
