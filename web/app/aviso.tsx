@@ -1,8 +1,9 @@
-// Aviso de la demo (antes en el layout raíz); se muestra en /demo y /presupuesto, no en la landing.
-export function Aviso() {
+// Footer común de todas las páginas (aviso de testnet y marca Stellar).
+export function Aviso({ demo = false }: { demo?: boolean }) {
   return (
-    <footer style={{ marginTop: 48, fontSize: 12, color: "#666" }}>
-      Demo en Stellar testnet. Stellar QuickPass no es una inversión ni un producto de ahorro; sirve para controlar gastos de un agente.
-    </footer>
+    <p className="aviso">
+      {demo && <>Stellar testnet demo. Not an investment or savings product; it controls an agent&apos;s spending.<br /></>}
+      Stellar is a trademark of the Stellar Development Foundation. Independent project, not affiliated with or endorsed by SDF.
+    </p>
   );
 }

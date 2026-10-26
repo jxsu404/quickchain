@@ -26,7 +26,7 @@ Versiones: principal vertical, horizontal en 2 líneas (la preferida), horizonta
 - Área de respeto: 2x, donde x es el alto de la barra verde. Tamaños mínimos: ícono 16 px, horizontal 110 px de ancho. Por debajo de 110 px se usa solo el ícono.
 - No estirar, rotar, recolorear ni agregar sombras.
 - Sobre fondo Tinta va el negativo; sobre Niebla o blanco, el de color.
-- En la web: el negativo horizontal en la landing `/`, el de color horizontal en `/demo` y `/presupuesto`, y el ícono como favicon (`web/app/icon.png` y `apple-icon.png`).
+- En la web, todas las páginas van sobre fondo Tinta con el logo horizontal negativo en la cabecera (`web/app/cabecera.tsx`). El CTA es Azul Vía con texto blanco; los links y textos sobre Tinta van en Niebla o Verde Paso, y el gris secundario es `#C9CED8`. El ícono se usa como favicon (`web/app/icon.png` y `apple-icon.png`). Íconos de pasos: `web/public/brand/iconos/`, recoloreados a Niebla.
 
 ## Voz
 Clara, precisa y tranquila, sin jerga cripto. Palabras prohibidas: inversión, ahorro, rendimiento, ganancia, «sin riesgo» y «100 % seguro». Tampoco se menciona Bitcoin ni Writz. Toda cifra lleva fuente o la etiqueta «ejemplo», y mientras sea prototipo se dice «Stellar testnet». «Stellar» es una marca de la SDF y el proyecto no tiene afiliación con ella.
