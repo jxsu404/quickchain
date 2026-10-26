@@ -4,8 +4,8 @@
 
 Cada tarea tiene un issue en GitHub. Trabajá en tu rama `rol/<nombre>` y abrí PR a `main`.
 
-## 1. Contrato de presupuesto (`contracts/budget`)
-Listo cuando: `cargo test -p budget` pasa; está desplegado en testnet; el ID está en `docs/DEMO.md`; la comisión de 1 % está implementada o documentada como pendiente.
+## 1. Contrato de presupuesto (`contracts/cuenta-presupuesto`)
+Listo cuando: `cargo test -p cuenta-presupuesto` pasa; está desplegado en testnet; el ID está en `docs/DEMO.md`; la comisión de 1 % está implementada o documentada como pendiente.
 
 ## 2. Cliente del agente (`agent-client`)
 Listo cuando: `pnpm agente` recibe un 402, paga desde el contrato y reintenta; imprime el link de Stellar Expert de cada pago; cuando el contrato bloquea, lo muestra sin romperse.
@@ -27,7 +27,7 @@ Listo cuando: README revisado, `docs/PITCH.md` completo (cada cifra con fuente),
 
 - ⬆️ Arriba: [Mapa (hub)](docs/MAPA.md) · [Índice de docs](docs/INDICE.md)
 - 📖 Fuente de verdad: [PLAN-OPUS — la biblia](docs/PLAN-OPUS.md)
-- Relacionado: [contracts/budget](contracts/budget/AGENTS.md) · [agent-client](agent-client/AGENTS.md) · [api-demo](api-demo/AGENTS.md) · [web](web/AGENTS.md) · [Demo (testnet)](docs/DEMO.md) · [Pitch](docs/PITCH.md)
+- Relacionado: [contracts/cuenta-presupuesto](contracts/cuenta-presupuesto/AGENTS.md) · [agent-client](agent-client/AGENTS.md) · [api-demo](api-demo/AGENTS.md) · [web](web/AGENTS.md) · [Demo (testnet)](docs/DEMO.md) · [Pitch](docs/PITCH.md)
 - Lo enlazan: [AGENTS (raíz)](AGENTS.md) · [Cómo contribuir](CONTRIBUTING.md) · [README](README.md) · [Mapa (hub)](docs/MAPA.md) · [PLAN-OPUS — la biblia](docs/PLAN-OPUS.md) · [Plan (resumen)](docs/PLAN.md)
 - Tags: #quickchain #docs
 <!-- /enlaces:auto -->

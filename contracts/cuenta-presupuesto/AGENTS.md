@@ -1,4 +1,4 @@
-# contracts/budget — `cuenta-presupuesto` (Q1)
+# contracts/cuenta-presupuesto (Q1)
 
 Contrato Soroban (Rust, `soroban-sdk` 22). Implementa la **cuenta-presupuesto** de [PLAN-OPUS §2](../../docs/PLAN-OPUS.md): una cuenta-contrato `C…` por dueño que guarda el USDC del mes. Su `__check_auth` solo deja pasar `USDC.transfer(C, to, monto)` firmadas por la llave ed25519 del agente, con `to ≠ C`, `0 < monto ≤ max_por_llamada`, `gastado + monto + comisión ≤ tope` y antes de `fin_periodo`. Sin admin ni `upgrade`.
 
@@ -19,8 +19,8 @@ fn estado() -> Estado; // owner, agente, token, tesoreria, fee_bps, periodo, top
 - Montos en unidades de 7 decimales (`1 USDC = 10_000_000`).
 
 ## Comandos
-- Tests: `cargo test -p budget` (17 tests). Pruebas reales en testnet: `node scripts/pruebas-q1.mjs` → [pruebas-q1](../../docs/pruebas-q1.md).
-- Wasm: `stellar contract build --package budget` (target `wasm32v1-none`, rustc ≥ 1.84).
+- Tests: `cargo test -p cuenta-presupuesto` (17 tests). Pruebas reales en testnet: `node scripts/pruebas-q1.mjs` → [pruebas-q1](../../docs/pruebas-q1.md).
+- Wasm: `stellar contract build --package cuenta-presupuesto` (target `wasm32v1-none`, rustc ≥ 1.84).
 - Deploy a testnet: `bash scripts/deploy-cuenta.sh` (lee `.env`: `DEPLOYER_SECRET_KEY`, `AGENT_SECRET_KEY` o `AGENT_PUBLIC_KEY_HEX`; opcionales `OWNER_ADDRESS`, `QUICKCHAIN_TESORERIA`, `USDC_CONTRACT_ID`, `FEE_BPS`). Escribe `deployments/testnet.json`.
 - Despliegue actual: ver [`deployments/testnet.json`](../../deployments/testnet.json) y [Demo](../../docs/DEMO.md).
 - `Cargo.lock` fija `ed25519-dalek` 2.2.0. No lo borres.

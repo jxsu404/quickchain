@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Q1 — despliega `cuenta-presupuesto` (contracts/budget) en Stellar testnet.
+# Q1 — despliega `cuenta-presupuesto` (contracts/cuenta-presupuesto) en Stellar testnet.
 # Lee las llaves de .env (ignorado por git) y nunca las imprime.
 # Uso: bash scripts/deploy-cuenta.sh
 # Variables (.env): DEPLOYER_SECRET_KEY, AGENT_SECRET_KEY (opcional: OWNER_ADDRESS,
@@ -25,8 +25,8 @@ USDC=${USDC_CONTRACT_ID:-$(stellar contract id asset --asset USDC:GBBD47IF6LWK7P
 echo "Fondeando deployer $DEPLOYER con friendbot (si ya existe, no pasa nada)…"
 curl -s "https://friendbot.stellar.org/?addr=$DEPLOYER" >/dev/null || true
 
-stellar contract build --package budget >/dev/null
-WASM=target/wasm32v1-none/release/budget.wasm
+stellar contract build --package cuenta-presupuesto >/dev/null
+WASM=target/wasm32v1-none/release/cuenta_presupuesto.wasm
 export STELLAR_ACCOUNT="$DEPLOYER_SECRET_KEY" STELLAR_NETWORK=$NET STELLAR_RPC_URL=$RPC STELLAR_NETWORK_PASSPHRASE="$PASS"
 
 WASM_HASH=$(stellar contract upload --wasm "$WASM" 2>/dev/null)
@@ -38,7 +38,7 @@ cat > deployments/testnet.json <<JSON
 {
   "red": "testnet",
   "contrato": "cuenta-presupuesto",
-  "paquete": "contracts/budget",
+  "paquete": "contracts/cuenta-presupuesto",
   "contract_id": "$ID",
   "wasm_hash": "$WASM_HASH",
   "deploy_tx": "$DEPLOY_TX",

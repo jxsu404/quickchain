@@ -69,15 +69,15 @@ Un pago del agente cuesta ≈ 0,0012 XLM en testnet.
 Conclusión: es el SAC del USDC de Circle. La nota del plan que lo atribuye a Writz parece un error; corregirla en PLAN-OPUS es decisión de Josué.
 
 ## Tests unitarios
-`cargo test -p budget`: **17 pasan** (t01–t11 del plan y t12–t17 de casos borde; ver [contracts/budget](../contracts/budget/AGENTS.md)). La auditoría de cumplimiento está en [Auditoría](AUDITORIA.md).
+`cargo test -p cuenta-presupuesto`: **17 pasan** (t01–t11 del plan y t12–t17 de casos borde; ver [contracts/cuenta-presupuesto](../contracts/cuenta-presupuesto/AGENTS.md)). La auditoría de cumplimiento está en [Auditoría](AUDITORIA.md).
 
 <!-- enlaces:auto -->
 ## Enlaces
 
 - ⬆️ Arriba: [Mapa (hub)](MAPA.md) · [Índice de docs](INDICE.md)
 - 📖 Fuente de verdad: [PLAN-OPUS — la biblia](PLAN-OPUS.md)
-- Relacionado: [Demo (testnet)](DEMO.md) · [Auditoría](AUDITORIA.md) · [Seguridad](SEGURIDAD.md) · [Decisiones](DECISIONES.md) · [contracts/budget](../contracts/budget/AGENTS.md)
+- Relacionado: [Demo (testnet)](DEMO.md) · [Auditoría](AUDITORIA.md) · [Seguridad](SEGURIDAD.md) · [Decisiones](DECISIONES.md) · [contracts/cuenta-presupuesto](../contracts/cuenta-presupuesto/AGENTS.md)
 - Issue: [#1](https://github.com/jxsu404/quickchain/issues/1)
-- Lo enlazan: [Demo (testnet)](DEMO.md) · [Índice de docs](INDICE.md) · [Mapa (hub)](MAPA.md) · [Auditoría](AUDITORIA.md) · [contracts/budget](../contracts/budget/AGENTS.md)
+- Lo enlazan: [Demo (testnet)](DEMO.md) · [Índice de docs](INDICE.md) · [Mapa (hub)](MAPA.md) · [Auditoría](AUDITORIA.md) · [contracts/cuenta-presupuesto](../contracts/cuenta-presupuesto/AGENTS.md)
 - Tags: #quickchain #docs #q1
 <!-- /enlaces:auto -->

@@ -1,10 +1,19 @@
-# Config de gitleaks: reglas por defecto + allowlist de llaves PÚBLICAS ed25519 (hex) en deployments/.
-# Las llaves secretas viven solo en .env (gitignored).
+# Config de gitleaks para QuickChain (CI: job "gitleaks y semillas Stellar").
+# Extiende las reglas por defecto y solo permite direcciones PÚBLICAS de Stellar:
+# contratos (C…) y cuentas (G…) de 56 caracteres en base32. Las semillas secretas (S…)
+# NO entran en este allowlist y las sigue atrapando gitleaks y el grep de semillas del CI.
+# Motivo: falso positivo generic-api-key en `"token": "CBIELTK6…"` (SAC de USDC de Circle en testnet).
 [extend]
 useDefault = true
 
 [[allowlists]]
-description = "Llaves públicas ed25519 del agente en deployments/*.json"
+description = "Direcciones públicas de Stellar (contrato C… o cuenta G…), no son secretos"
+regexTarget = "secret"
+regexes = ['''^[CG][A-Z2-7]{55}$''']
+
+[[allowlists]]
+description = "Llaves públicas ed25519 (hex) del agente en deployments/*.json (PR #11); las secretas viven solo en .env (gitignored)"
+condition = "AND"
 paths = ['''deployments/.*\.json''']
 regexTarget = "line"
-regexes = ['''"(agente_ed25519_hex|agente2_ed25519_hex|agente2_hex|ajena_hex|llave_ajena_hex|[a-z0-9_]*_hex)"\s*:''']
+regexes = ['''"[a-z0-9_]*_hex"\s*:''']

@@ -37,7 +37,7 @@ Comandos corridos en local. El workflow de GitHub todavía no se ejecutó: esta 
 | transacciones.md | Creado vacío y enlazado desde [MAPA.md](MAPA.md) e [INDICE.md](INDICE.md). |
 
 ## Pasada Q1 — 2026-10-25, 9:00 p. m. (CR), Grok Bot (rama `rol/jose`, PR #11)
-Revisión de `contracts/budget` contra PLAN-OPUS §2.1–§2.3, §3, fila Q1 de §4, TAREAS §1, contracts/budget/AGENTS.md, SEGURIDAD y estas reglas. Archivo de referencia: `contracts/budget/src/lib.rs` (`lib.rs:N`) y `test.rs`.
+Revisión de `contracts/cuenta-presupuesto` contra PLAN-OPUS §2.1–§2.3, §3, fila Q1 de §4, TAREAS §1, contracts/cuenta-presupuesto/AGENTS.md, SEGURIDAD y estas reglas. Archivo de referencia: `contracts/cuenta-presupuesto/src/lib.rs` (`lib.rs:N`) y `test.rs`.
 
 | Punto | Estado | Evidencia |
 |---|---|---|
@@ -51,16 +51,16 @@ Revisión de `contracts/budget` contra PLAN-OPUS §2.1–§2.3, §3, fila Q1 de 
 | §2.2 `__check_auth`: orden pausa → periodo → firma → contextos → tope | cumplido | lib.rs:298–370; t01–t07 |
 | §2.2 errores con código | parcial | firma ed25519 inválida aborta en host en vez de `FirmaInvalida=3` (no deja pasar; documentado) |
 | §2.2 sin eventos en `__check_auth` | cumplido | solo `publish` en lib.rs:217, 226, 234, 243 |
-| §2.3 los 11 tests | cumplido | t01–t11; `cargo test -p budget` 17/17 |
+| §2.3 los 11 tests | cumplido | t01–t11; `cargo test -p cuenta-presupuesto` 17/17 |
 | §3 agente comprometido / loop / prompt injection (lado contrato) | cumplido | tope + máx. por llamada: t02, t03, t12, t13, t15; testnet 03, 07c, 07e |
 | §3 llave ajena / rotación | cumplido | t04, t07; testnet 04, 06b, 06c |
 | §3 replay | cumplido (por la red) | nonce de la auth entry de Soroban; no se probó aparte |
 | §3 rate limit, facilitador, verificación `X-QUICKCHAIN-TX` | fuera de Q1 | Q2/Q3 |
 | §3 secretos fuera de git | cumplido | `gitleaks git` 0 hallazgos (con `.gitleaks.toml`); `.env` gitignored |
 | §4 fila Q1: contrato, tests, deploy, `deployments/testnet.json`, link | cumplido | [Demo](DEMO.md); `scripts/deploy-cuenta.sh` |
-| §4 carpeta `contracts/cuenta-presupuesto/` | parcial | se mantuvo `contracts/budget` (decisión en DECISIONES) |
+| §4 carpeta `contracts/cuenta-presupuesto/` | cumplido | renombrada desde `contracts/budget` al ponerse al día con main |
 | TAREAS §1 | cumplido | tests, deploy, ID en Demo, comisión |
-| contracts/budget/AGENTS.md coincide con el código | cumplido | actualizado a 17 tests |
+| contracts/cuenta-presupuesto/AGENTS.md coincide con el código | cumplido | actualizado a 17 tests |
 | SEGURIDAD.md al día | cumplido tras corregir | tenía 3 filas del diseño viejo; corregidas |
 | AUDITORIA.md al día | cumplido tras corregir | hallazgos 2–4 y el resultado de 7 tests eran viejos |
 | Token = USDC de Circle (`CBIELTK6…`) | cumplido | 3 fuentes en [pruebas-q1](pruebas-q1.md); la nota «Writz» del plan está errada |

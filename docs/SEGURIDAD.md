@@ -24,7 +24,7 @@ Riesgos aceptados para la demo: solo testnet; un presupuesto por agente; sin aud
 
 - ⬆️ Arriba: [Mapa (hub)](MAPA.md) · [Índice de docs](INDICE.md)
 - 📖 Fuente de verdad: [PLAN-OPUS — la biblia](PLAN-OPUS.md)
-- Relacionado: [Pruebas Q1](pruebas-q1.md) · [Arquitectura](ARQUITECTURA.md) · [Auditoría](AUDITORIA.md) · [contracts/budget](../contracts/budget/AGENTS.md)
-- Lo enlazan: [Cómo contribuir](../CONTRIBUTING.md) · [contracts/budget](../contracts/budget/AGENTS.md) · [Arquitectura](ARQUITECTURA.md) · [Auditoría](AUDITORIA.md) · [Índice de docs](INDICE.md) · [Mapa (hub)](MAPA.md) · [PLAN-OPUS — la biblia](PLAN-OPUS.md)
+- Relacionado: [Pruebas Q1](pruebas-q1.md) · [Arquitectura](ARQUITECTURA.md) · [Auditoría](AUDITORIA.md) · [contracts/cuenta-presupuesto](../contracts/cuenta-presupuesto/AGENTS.md)
+- Lo enlazan: [Cómo contribuir](../CONTRIBUTING.md) · [contracts/cuenta-presupuesto](../contracts/cuenta-presupuesto/AGENTS.md) · [Arquitectura](ARQUITECTURA.md) · [Auditoría](AUDITORIA.md) · [Índice de docs](INDICE.md) · [Mapa (hub)](MAPA.md) · [PLAN-OPUS — la biblia](PLAN-OPUS.md)
 - Tags: #quickchain #docs
 <!-- /enlaces:auto -->

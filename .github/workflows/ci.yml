@@ -18,10 +18,10 @@ jobs:
         with:
           targets: wasm32v1-none
       - uses: Swatinem/rust-cache@v2
-      - name: cargo test -p budget
-        run: cargo test -p budget
+      - name: cargo test -p cuenta-presupuesto
+        run: cargo test -p cuenta-presupuesto
       - name: wasm
-        run: cargo build -p budget --target wasm32v1-none --release
+        run: cargo build -p cuenta-presupuesto --target wasm32v1-none --release
 
   typescript:
     name: TypeScript y docs

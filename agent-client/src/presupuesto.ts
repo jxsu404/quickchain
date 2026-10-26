@@ -1,4 +1,4 @@
-// Llama al contrato budget en Stellar testnet con la llave del agente.
+// Llama al contrato cuenta-presupuesto en Stellar testnet con la llave del agente.
 import { Address, BASE_FEE, Contract, Keypair, Networks, TransactionBuilder, nativeToScVal, rpc } from "@stellar/stellar-sdk";
 
 export interface ConfigAgente { rpcUrl: string; contratoId: string; agente: Keypair }

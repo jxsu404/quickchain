@@ -1,7 +1,7 @@
 {
   "red": "testnet",
   "contrato": "cuenta-presupuesto",
-  "paquete": "contracts/budget",
+  "paquete": "contracts/cuenta-presupuesto",
   "contract_id": "CBH3LQQCVTY74KXKCS2526KXH2F7B32RSMSIV4ZKXKFPQS5I4UR3TALX",
   "wasm_hash": "7190eb76ae99f35f71854e4c06bc89db3b17025ff836693c7b87b874b9163288",
   "deploy_tx": "9fdac47cfff9ecb3648fd89821b74ee7501c6d89a2a7d823d8cec6e2f30196b7",
