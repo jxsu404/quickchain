@@ -8,7 +8,7 @@ import { explicarError, linkContrato, linkTx } from "@/lib/renovar";
 import { FABRICA_ID, agenteABytes, argsCrear, listarCuentas } from "@/lib/fabrica";
 
 // La clave del agente demo es compartida: nunca se precarga, solo con casilla explícita (auditoría Flaria, High).
-const AGENTE_DEMO_G = "GCK5JBEO3W42C6Z7FJNNWX67U66OO554KVA6TZ2OZYRKXNWUSOV64U3S"; // AGENTE_DEMO_HEX (lib/fabrica) en formato G…; lo firma el servidor de /demo
+const AGENTE_DEMO_G = "GAST4W4FTREQLLV5X3573CO5PVLNBZ2GQ3LXSHRPL3HGKMVFVPD4SABS"; // AGENTE_DEMO_HEX (lib/fabrica) en formato G…; lo firma el servidor de /demo
 const RPC = process.env.NEXT_PUBLIC_STELLAR_RPC_URL || undefined;
 
 export default function Crear() {
