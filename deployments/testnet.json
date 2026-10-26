@@ -36,5 +36,14 @@
       "instancia_link": "https://stellar.expert/explorer/testnet/contract/CCAV5PZ46MDMKW256SW3UEM366KO2RKDCVK5ZW2N3CYDPLM446WJZZKX"
     },
     "nota": "Deployer nuevo de testnet (la identidad GBMD67Q5… no estaba en esta máquina). La fábrica despliega el wasm 7190eb76… ya subido."
+  },
+  "presupuesto_correr_agente": {
+    "contract_id": "CAD2CAZC7S22MTZKAKAW76LLU2FLGX6JQEK4ITNS4FS6T7WQ5TNFKNIB",
+    "stellar_expert": "https://stellar.expert/explorer/testnet/contract/CAD2CAZC7S22MTZKAKAW76LLU2FLGX6JQEK4ITNS4FS6T7WQ5TNFKNIB",
+    "uso": "Botón «Correr agente» de /demo y reset de la demo (PR #50); variable de servidor DEMO_BUDGET_CONTRACT_ID",
+    "tope_usdc_por_periodo": "0.05",
+    "agente_demo": "GCK5JBEO3W42C6Z7FJNNWX67U66OO554KVA6TZ2OZYRKXNWUSOV64U3S",
+    "creada_con": "fabrica (tx 6e4cc87824e01c4b1cb916466c5536252e6394b1073e516dfb2fdf67080eb1ea)",
+    "nota": "No reemplaza contract_id (CBKMDFKW…), que sigue siendo el contrato vigente de la demo."
   }
 }
