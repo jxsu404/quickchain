@@ -4,10 +4,14 @@ import { Providers } from "./providers";
 
 const ESLOGAN = "Your agent pays. You set the cap.";
 export const metadata = {
+  metadataBase: new URL("https://stellar-quickpass.vercel.app"),
   title: "Stellar QuickPass",
   description: ESLOGAN,
-  openGraph: { title: "Stellar QuickPass", description: ESLOGAN, url: "https://stellar-quickpass.vercel.app" },
-  twitter: { card: "summary", title: "Stellar QuickPass", description: ESLOGAN },
+  openGraph: {
+    title: "Stellar QuickPass", description: ESLOGAN, url: "https://stellar-quickpass.vercel.app", type: "website",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Stellar QuickPass — Your agent pays. You set the cap." }],
+  },
+  twitter: { card: "summary_large_image", title: "Stellar QuickPass", description: ESLOGAN, images: ["/og.png"] },
 };
 
 const inter = Inter({ subsets: ["latin"], weight: ["400", "600", "700"], variable: "--font-inter" });
