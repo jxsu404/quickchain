@@ -10,12 +10,12 @@
 | Desbordamiento de enteros | `checked_*` (contadores y comisión) + `overflow-checks = true` (Cargo.toml:7) | hecho (t15) |
 | Allowance mayor que el tope | ya no aplica: no hay `approve`/`transfer_from`; el USDC vive en `C` y `approve` desde `C` da `OperacionNoPermitida` | no aplica (t05) |
 | API cobra sin entregar | `api-demo` prepara la respuesta antes de liquidar | hecho (heredado) |
-| Prompt injection o un 402 que pide un monto enorme | `max_por_llamada` en cadena; en el SDK, `maxPorLlamada` local y `hostsPermitidos` | hecho (Q2/Q7: `/caro` de US$1 bloqueado con `MontoPorLlamada`, ver [transacciones](transacciones.md)). Límite: un vendedor permitido puede cobrar caro dentro del máximo |
-| Prompt injection lleva al agente a pagarle a cualquier host | `hostsPermitidos` obligatorio y no vacío en el SDK; se compara contra la URL **final** (después de redirects) y el pago firmado va con `redirect: "manual"` | hecho (tests de `agent-client`, 2026-10-26) |
-| Agente en loop | tope del periodo en cadena + `maxLlamadasPorMinuto` en el SDK (por defecto 10, error `LimitePorMinuto` antes de firmar) | hecho (tests de `agent-client`, 2026-10-26) |
+| Prompt injection o un 402 que pide un monto enorme | `max_por_llamada` en cadena; en el SDK, `maxPorLlamada` local (los hosts, en la fila siguiente) | hecho (Q2/Q7: `/caro` de US$1 bloqueado con `MontoPorLlamada`, ver [transacciones](transacciones.md)). Límite: un vendedor o facilitador aceptado (host en `hostsPermitidos`) puede cobrar hasta `max_por_llamada` por llamada sin entregar |
+| Prompt injection lleva al agente a pagarle a cualquier host | `hostsPermitidos` obligatorio y no vacío en el SDK desde #29 (antes era opcional); se compara contra la URL **final** (después de redirects) y el pago firmado va con `redirect: "manual"` | hecho (tests de `agent-client`, 2026-10-26) |
+| Agente en loop | tope del periodo en cadena + `maxLlamadasPorMinuto` en el SDK, implementado en #29 (por defecto 10, error `LimitePorMinuto` antes de firmar) | hecho (tests de `agent-client`, 2026-10-26) |
 | El 402 pide una firma que viva mucho (`maxTimeoutSeconds`) | el SDK la acota a 300 s | hecho (2026-10-26) |
 | Repetir o modificar la auth entry | nonce y vencimiento de Soroban; la firma queda ligada a `transfer(C, payTo, monto)` | hecho (propio de Soroban) |
-| Facilitador malicioso | solo puede enviar la transferencia exacta que firmó el agente | aceptado: puede cobrar y que el vendedor no entregue (riesgo de x402, acotado por llamada) |
+| Facilitador malicioso | solo puede enviar la transferencia exacta que firmó el agente | aceptado: un facilitador o vendedor aceptado puede cobrar hasta `max_por_llamada` por llamada sin entregar (riesgo de x402; el tope del periodo y el límite por minuto acotan el total) |
 | Cualquiera usa el facilitador propio y gasta su XLM | apagado por defecto; con `FACILITADOR_PROPIO=1` solo atiende IP loopback con `Host` local y sin cabeceras de proxy. La demo usa el facilitador público | hecho (tests de `api-demo`, 2026-10-26) |
 | Nosotros (el operador) | sin admin ni `upgrade`; la comisión va a una tesorería fija del constructor | hecho. Si se pierde la llave de la tesorería, solo se pierden comisiones |
 | Vence el TTL de la instancia | `renovar` extiende el TTL | hecho; si nadie renueva por meses hay que restaurar |
@@ -28,7 +28,7 @@
 | Firma ed25519 inválida | `ed25519_verify` aborta la ejecución (error de host, no `FirmaInvalida=3`); igual no pasa | hecho (t04) |
 | Mensajes que suenen a inversión | reglas en AGENTS.md y CONTRIBUTING.md | hecho |
 
-Riesgos aceptados para la demo: solo testnet; un presupuesto por agente; sin auditoría externa del contrato. Legal: no hay custodia nuestra (el USDC está en un contrato que solo controla el dueño); hay que confirmar con un abogado si cobrar 1 % nos hace VASP o proveedor de pagos (Ley 10.961, SUGEF). Tabla base: [PLAN-OPUS §3](PLAN-OPUS.md). Pendiente para dar Q9 por lista: **revisión de otra persona**.
+Riesgos aceptados para la demo: solo testnet; un presupuesto por agente; sin auditoría externa del contrato. Legal: no hay custodia nuestra (el USDC está en un contrato que solo controla el dueño); hay que confirmar con un abogado si cobrar 1 % nos hace VASP o proveedor de pagos según la normativa costarricense que aplique (el plan menciona la Ley 10.961 y a SUGEF; falta confirmar la cita con una fuente). Tabla base: [PLAN-OPUS §3](PLAN-OPUS.md). Pendiente para dar Q9 por lista: **revisión de otra persona**.
 
 <!-- enlaces:auto -->
 ## Enlaces
