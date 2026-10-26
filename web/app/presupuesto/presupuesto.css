@@ -1,0 +1,4 @@
+/* /presupuesto: one primary action per step; the copy button is a secondary control (prefijo qp-). */
+.qp-page .marco-demo button.copiar { background: transparent; color: var(--sqp-neutro-claro); border-color: var(--line); }
+.qp-page .marco-demo button.copiar:hover:not(:disabled) { background: var(--card); color: var(--sqp-neutro-claro); }
+.qp-page .marco-demo button.secondary:hover:not(:disabled) { border-color: var(--sqp-acento); color: var(--sqp-acento); }
