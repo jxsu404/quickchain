@@ -1,6 +1,5 @@
 "use client";
 // Cualquier usuario Cavos crea SU cuenta-presupuesto con la fábrica (una firma) y sigue en /presupuesto.
-import Espera from "../espera";
 import { useEffect, useState } from "react";
 import { useCavos } from "@cavos/kit/react";
 import { StrKey } from "@stellar/stellar-sdk";
@@ -49,7 +48,6 @@ export default function Crear() {
       {usarDemo && <p className="err">Warning: the demo agent&apos;s key is shared. Anyone who has it could spend your top-up up to the cap. Use it only for testing with small amounts.</p>}
       {agente.trim() !== "" && !agenteValido && <p className="err">Not a valid Stellar public key (must start with G…).</p>}
       <p><button disabled={!walletStatus.isReady || ocupado || !agenteValido} onClick={crear}>{ocupado ? "Creating…" : "Create my budget"}</button>{!walletStatus.isReady && <small className="sub"> Your wallet must be ready (see /presupuesto).</small>}</p>
-      {ocupado && <Espera texto="Creating your budget account…" />}
       <p><small className="sub">Factory: <a href={linkContrato(FABRICA_ID)} target="_blank" rel="noreferrer"><code>{FABRICA_ID}</code></a></small></p>
       {error && <p className="err">{error}</p>}
       {hash && <p>Transaction: <a href={linkTx(hash)} target="_blank" rel="noreferrer">Stellar Expert</a></p>}
