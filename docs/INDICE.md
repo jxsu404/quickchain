@@ -22,6 +22,7 @@
 | [../api-demo/AGENTS.md](../api-demo/AGENTS.md) | Vendedor demo `api-demo/servidor/vendedor.ts` (`/tipo-cambio`, `/caro`) y facilitador x402 (Q3) |
 | [PITCH.md](PITCH.md) | Pitch (borrador) |
 | [MARCA.md](MARCA.md) | Marca v1.0: paleta, tipografía, logo, voz |
+| [2026-10-26-crear-agente-vacio.md](2026-10-26-crear-agente-vacio.md) | Decisión: `/crear` sin agente demo precargado (seguridad) |
 | [auditorias/2026-10-25-consolidado.md](auditorias/2026-10-25-consolidado.md) | Auditoría de 3 modelos (Opus, Grok, GPT): consolidado + [Opus](auditorias/2026-10-25-claude-opus-5-5-high.md) · [Grok](auditorias/2026-10-25-grok-4.7-high.md) · [GPT](auditorias/2026-10-25-gpt-5.6-sol-high.md) |
 | [../TAREAS.md](../TAREAS.md) | Tareas y fecha límite |
 | [../CONTRIBUTING.md](../CONTRIBUTING.md) | Reglas del equipo |

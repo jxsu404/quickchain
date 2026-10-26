@@ -2,14 +2,18 @@
 // Cualquier usuario Cavos crea SU cuenta-presupuesto con la fábrica (una firma) y sigue en /presupuesto.
 import { useEffect, useState } from "react";
 import { useCavos } from "@cavos/kit/react";
+import { StrKey } from "@stellar/stellar-sdk";
 import { explicarError, linkContrato, linkTx } from "@/lib/renovar";
 import { AGENTE_DEMO_HEX, FABRICA_ID, agenteABytes, argsCrear, listarCuentas } from "@/lib/fabrica";
 
+// La clave del agente demo es compartida: nunca se precarga, solo con casilla explícita (auditoría Flaria, High).
+const AGENTE_DEMO_G = StrKey.encodeEd25519PublicKey(agenteABytes(AGENTE_DEMO_HEX) as unknown as Buffer);
 const RPC = process.env.NEXT_PUBLIC_STELLAR_RPC_URL || undefined;
 
 export default function Crear() {
   const { isAuthenticated, wallet, address, walletStatus, openModal } = useCavos();
-  const [agente, setAgente] = useState(AGENTE_DEMO_HEX);
+  const [agente, setAgente] = useState("");
+  const [usarDemo, setUsarDemo] = useState(false);
   const [cuentas, setCuentas] = useState<string[]>([]);
   const [hash, setHash] = useState<string | null>(null);
   const [ocupado, setOcupado] = useState(false);
@@ -20,8 +24,10 @@ export default function Crear() {
   if (!isAuthenticated || !address) return <main><h2>Create my budget</h2><p>Log in with your email first.</p><button onClick={openModal}>Log in with email</button></main>;
   if (!wallet || wallet.chain !== "stellar") return <p>The connected wallet is not a Stellar wallet.</p>;
 
+  const agenteValido = StrKey.isValidEd25519PublicKey(agente.trim());
   const w = wallet;
   async function crear() {
+    if (!agenteValido) { setError("Enter a valid Stellar public key (G…)."); return; }
     setOcupado(true); setError(null);
     try {
       const salt = crypto.getRandomValues(new Uint8Array(32));
@@ -37,8 +43,11 @@ export default function Crear() {
       <h2>Create my budget</h2>
       <p className="tagline">Your own budget account, owned by your wallet.</p>
       <p>Owner (you): <code>{address}</code></p>
-      <label>Agent public key (G… or 64 hex; default is the demo agent)<br /><input value={agente} onChange={(e) => setAgente(e.target.value)} size={66} /></label>
-      <p><button disabled={!walletStatus.isReady || ocupado} onClick={crear}>{ocupado ? "Creating…" : "Create my budget"}</button>{!walletStatus.isReady && <small className="sub"> Your wallet must be ready (see /presupuesto).</small>}</p>
+      <label>Agent public key (G…)<br /><input value={agente} placeholder="G…" onChange={(e) => { setAgente(e.target.value); setUsarDemo(false); }} size={66} /></label>
+      <p><label><input type="checkbox" checked={usarDemo} onChange={(e) => { setUsarDemo(e.target.checked); setAgente(e.target.checked ? AGENTE_DEMO_G : ""); }} /> Use the demo agent (testing only)</label></p>
+      {usarDemo && <p className="err">Warning: the demo agent&apos;s key is shared. Anyone who has it could spend your top-up up to the cap. Use it only for testing with small amounts.</p>}
+      {agente.trim() !== "" && !agenteValido && <p className="err">Not a valid Stellar public key (must start with G…).</p>}
+      <p><button disabled={!walletStatus.isReady || ocupado || !agenteValido} onClick={crear}>{ocupado ? "Creating…" : "Create my budget"}</button>{!walletStatus.isReady && <small className="sub"> Your wallet must be ready (see /presupuesto).</small>}</p>
       <p><small className="sub">Factory: <a href={linkContrato(FABRICA_ID)} target="_blank" rel="noreferrer"><code>{FABRICA_ID}</code></a></small></p>
       {error && <p className="err">{error}</p>}
       {hash && <p>Transaction: <a href={linkTx(hash)} target="_blank" rel="noreferrer">Stellar Expert</a></p>}
