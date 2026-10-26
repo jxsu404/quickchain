@@ -2,7 +2,7 @@
 
 > **Regla n.º 1: [docs/PLAN-OPUS.md](PLAN-OPUS.md) es la biblia de Stellar QuickPass.** Toda persona o agente que trabaje aquí (integrantes, Raúl, Martín o cualquier otro) lee el plan antes de empezar y sigue sus fases, tareas (Q0–Q15), horarios de corte y planes B. Si algo choca con el plan, gana el plan; cualquier integrante puede editar el plan y la app por PR y hacer merge a `main` con el CI en verde; los cambios importantes del plan se anotan con fecha en [DECISIONES](DECISIONES.md).
 
-**Meta:** demo funcionando en Stellar testnet antes del lunes 2026-10-26, 11:30 a. m. (CR).
+**Meta:** demo funcionando en Stellar testnet antes del lunes 2026-10-26, 3:00 p. m. (CR); congelar código a las 2:30 p. m. ([nuevo plazo](2026-10-26-nuevo-plazo-entrega.md)).
 
 1. Contrato `cuenta-presupuesto` con tope por periodo (hecho: código + 7 tests + wasm compila). Falta: desplegar en testnet, comisión 1 %.
 2. API x402 de prueba (hecho: cobro `exact`). Falta: aceptar pagos desde el contrato y desplegar en Vercel.

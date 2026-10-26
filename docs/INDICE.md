@@ -9,6 +9,7 @@
 | [STACK.md](STACK.md) | Tecnologías y por qué |
 | [ARQUITECTURA.md](ARQUITECTURA.md) | Piezas y flujos (diagramas) |
 | [DECISIONES.md](DECISIONES.md) | Decisiones con fecha y preguntas abiertas |
+| [2026-10-26-nuevo-plazo-entrega.md](2026-10-26-nuevo-plazo-entrega.md) | Nuevo plazo APEX: 3:00 p. m. CR, congelar 2:30 p. m. |
 | [SEGURIDAD.md](SEGURIDAD.md) | Modelo de amenazas |
 | [AUDITORIA.md](AUDITORIA.md) | Lista de revisión y resultados |
 | [DEMO.md](DEMO.md) | Guion de la demo y links de transacciones |
