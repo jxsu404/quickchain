@@ -5,11 +5,21 @@
 import { x402Client } from "@x402/core/client";
 import { decodePaymentRequiredHeader, decodePaymentResponseHeader, encodePaymentSignatureHeader } from "@x402/core/http";
 import { Keypair, Networks, authorizeEntry, contract, nativeToScVal, rpc, scValToNative } from "@stellar/stellar-sdk";
-import { PagoBloqueado, traducirErrorSimulacion } from "./errores.js";
+import { ConfiguracionInvalida, LimitePorMinuto, PagoBloqueado, traducirErrorSimulacion } from "./errores.js";
 
 export const RED = "stellar:testnet";
 export const RPC_TESTNET = "https://soroban-testnet.stellar.org";
 export const linkExpert = (hash: string) => `https://stellar.expert/explorer/testnet/tx/${hash}`;
+/** La auth entry firmada vive como mucho esto, diga lo que diga el 402. */
+export const MAX_TIMEOUT_SEG = 300;
+export const LLAMADAS_POR_MINUTO_DEFECTO = 10;
+
+/** Ledgers de vigencia de la firma (~5 s por ledger), con `maxTimeoutSeconds` acotado a [1, MAX_TIMEOUT_SEG]. */
+export function ledgersDeVigencia(maxTimeoutSeconds: unknown): number {
+  const seg = Number(maxTimeoutSeconds);
+  const acotado = Number.isFinite(seg) && seg > 0 ? Math.min(seg, MAX_TIMEOUT_SEG) : 60;
+  return Math.ceil(acotado / 5);
+}
 
 export interface OpcionesPresupuesto {
   /** Cuenta-presupuesto C… que paga. */
@@ -19,12 +29,16 @@ export interface OpcionesPresupuesto {
   rpcUrl?: string;
   /** Tope local por llamada en unidades de 7 decimales (1 USDC = 10_000_000). Se suma al máximo en cadena. */
   maxPorLlamada?: bigint;
-  /** Hosts a los que el agente puede pagar (ej. ["localhost:4020"]). Vacío o sin definir = cualquiera. */
-  hostsPermitidos?: string[];
+  /** Hosts (con puerto) a los que el agente puede pagar, ej. ["localhost:4020"]. Obligatorio y no vacío. Se compara contra la URL final, después de redirects. */
+  hostsPermitidos: string[];
+  /** Máximo de pagos en una ventana de 60 s (por defecto 10). Corta loops del agente antes de firmar. */
+  maxLlamadasPorMinuto?: number;
   /** Se llama tras cada pago liquidado. */
   alPagar?: (p: PagoHecho) => void;
   /** Solo para tests: reemplaza la construcción del pago firmado. */
   crearPago?: (requisito: any) => Promise<{ transaction: string }>;
+  /** Solo para tests: reloj en ms. */
+  ahora?: () => number;
 }
 
 export interface PagoHecho { url: string; monto: string; payTo: string; tx?: string; link?: string; pagador?: string }
@@ -32,7 +46,7 @@ export interface PagoHecho { url: string; monto: string; payTo: string; tx?: str
 /** Pago `exact` con `from = cuenta`, firmado por el agente y doblemente simulado. Devuelve el XDR de la tx. */
 export async function armarPagoDesdeCuenta(req: any, cuenta: string, agente: Keypair, rpcUrl = RPC_TESTNET) {
   const servidor = new rpc.Server(rpcUrl);
-  const maxLedger = (await servidor.getLatestLedger()).sequence + Math.ceil((req.maxTimeoutSeconds ?? 60) / 5);
+  const maxLedger = (await servidor.getLatestLedger()).sequence + ledgersDeVigencia(req.maxTimeoutSeconds);
   let tx;
   try {
     tx = await contract.AssembledTransaction.build({
@@ -53,6 +67,14 @@ export async function armarPagoDesdeCuenta(req: any, cuenta: string, agente: Key
 
 /** Envuelve fetch: ante un 402 x402 paga desde la cuenta-presupuesto y reintenta una vez. */
 export function crearFetchConPresupuesto(op: OpcionesPresupuesto, fetchBase: typeof fetch = fetch) {
+  const hosts = op.hostsPermitidos;
+  if (!Array.isArray(hosts) || !hosts.length || hosts.some((h) => typeof h !== "string" || !h.trim()))
+    throw new ConfiguracionInvalida("hostsPermitidos es obligatorio: lista no vacía de hosts (ej. [\"localhost:4020\"])");
+  const limite = op.maxLlamadasPorMinuto ?? LLAMADAS_POR_MINUTO_DEFECTO;
+  if (!Number.isInteger(limite) || limite < 1)
+    throw new ConfiguracionInvalida(`maxLlamadasPorMinuto tiene que ser un entero ≥ 1 (vino ${op.maxLlamadasPorMinuto})`);
+  const ahora = op.ahora ?? Date.now;
+  const pagosRecientes: number[] = [];
   const agente = Keypair.fromSecret(op.secretoAgente);
   const crearPago = op.crearPago ?? ((req: any) => armarPagoDesdeCuenta(req, op.cuenta, agente, op.rpcUrl));
   const esquema = {
@@ -62,14 +84,22 @@ export function crearFetchConPresupuesto(op: OpcionesPresupuesto, fetchBase: typ
       return { x402Version, payload: await crearPago(req) };
     },
   };
-  // El tope real lo aplica el contrato; los límites locales van abajo (host y maxPorLlamada).
+  // El tope real lo aplica el contrato; los límites locales van abajo (host, maxPorLlamada y pagos por minuto).
   const cliente = x402Client.fromConfig({ schemes: [{ network: "stellar:*", client: esquema as any }], spendControls: false });
 
+  function reservarPago() {
+    const t = ahora();
+    while (pagosRecientes.length && pagosRecientes[0] <= t - 60_000) pagosRecientes.shift();
+    if (pagosRecientes.length >= limite) throw new LimitePorMinuto(limite, pagosRecientes[0] + 60_000 - t);
+    pagosRecientes.push(t);
+  }
+
   return async function fetchConPresupuesto(entrada: string | URL, init: RequestInit = {}): Promise<Response> {
-    const url = new URL(String(entrada));
-    const r1 = await fetchBase(url, init);
+    const r1 = await fetchBase(new URL(String(entrada)), init);
     if (r1.status !== 402) return r1;
-    if (op.hostsPermitidos?.length && !op.hostsPermitidos.includes(url.host))
+    // Si hubo redirects, quien cobra es la URL final: esa es la que tiene que estar permitida.
+    const url = new URL(r1.url || String(entrada));
+    if (!hosts.includes(url.host))
       throw new PagoBloqueado("HostNoPermitido", `${url.host} no está en hostsPermitidos`);
     const cabecera = r1.headers.get("payment-required");
     const pedido: any = cabecera ? decodePaymentRequiredHeader(cabecera) : await r1.json();
@@ -78,10 +108,12 @@ export function crearFetchConPresupuesto(op: OpcionesPresupuesto, fetchBase: typ
     const elegido = opciones.reduce((a: any, b: any) => (BigInt(b.amount) < BigInt(a.amount) ? b : a));
     if (op.maxPorLlamada !== undefined && BigInt(elegido.amount) > op.maxPorLlamada)
       throw new PagoBloqueado("MaxPorLlamadaLocal", `cobra ${elegido.amount} y el máximo local es ${op.maxPorLlamada}`);
+    reservarPago();
     const pago = await cliente.createPaymentPayload({ ...pedido, accepts: [elegido] });
     const headers = new Headers(init.headers);
     headers.set("PAYMENT-SIGNATURE", encodePaymentSignatureHeader(pago));
-    const r2 = await fetchBase(url, { ...init, headers });
+    // `manual`: el pago firmado no sigue un redirect hacia otro host.
+    const r2 = await fetchBase(url, { ...init, headers, redirect: "manual" });
     if (r2.status === 402) {
       const motivo = r2.headers.get("payment-required");
       const err = motivo ? (decodePaymentRequiredHeader(motivo) as any).error : undefined;

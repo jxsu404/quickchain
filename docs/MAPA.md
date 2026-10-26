@@ -136,7 +136,7 @@ graph TD
 ## Nodos
 
 - **[PLAN-OPUS — la biblia](PLAN-OPUS.md)** — centro; tareas Q0–Q15 enlazan a paquetes e issues
-- [README](../README.md)
+- [README](../README.md) — Q11: problema, cómo funciona, por qué Stellar, negocio, nota legal y créditos, cada cifra con link
 - [AGENTS (raíz)](../AGENTS.md)
 - [Cómo contribuir](../CONTRIBUTING.md)
 - [Tareas](../TAREAS.md)
@@ -147,9 +147,9 @@ graph TD
 - [Decisiones](DECISIONES.md)
 - [Seguridad](SEGURIDAD.md) — Q9: tabla de amenazas del plan §3 con estado real
 - [Auditoría](AUDITORIA.md)
-- [Demo (testnet)](DEMO.md) — issue [#5](https://github.com/jxsu404/quickchain/issues/5)
+- [Demo (testnet)](DEMO.md) — issue [#5](https://github.com/jxsu404/quickchain/issues/5); Q7: `scripts/agente-demo.ts` (4 pagos, 5.º y `/caro` bloqueados); vendedor con `pnpm --filter api-demo vendedor` tras #18
 - [Costos (Q8)](COSTOS.md) — fees medidos en testnet y cobro de la comisión de 1 %
-- [Transacciones (testnet)](transacciones.md) — filas de Q3 (pagos x402 desde G… y C…); Q10 completa la corrida con links de Stellar Expert
+- [Transacciones (testnet)](transacciones.md) — filas de Q3 (pagos x402 desde G… y C…); Q10: corrida limpia (deploy, renovar, 4 pagos, bloqueos, comisión, pausa, retiro) con links de Stellar Expert
 - [Pruebas Q1 (testnet)](pruebas-q1.md) — issue [#1](https://github.com/jxsu404/quickchain/issues/1)
 - [Pitch](PITCH.md) — issue [#6](https://github.com/jxsu404/quickchain/issues/6)
 - [contracts/cuenta-presupuesto](../contracts/cuenta-presupuesto/AGENTS.md) — issue [#1](https://github.com/jxsu404/quickchain/issues/1) — contrato `cuenta-presupuesto` desplegado en testnet (ver [Demo](DEMO.md))
