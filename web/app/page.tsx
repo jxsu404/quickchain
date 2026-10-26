@@ -50,7 +50,7 @@ export default function Landing() {
             <figure className="ql-card" id="example" aria-label="Example budget">
               <span className="ql-tag">Example data</span>
               <div className="ql-amt">36.00 USDC <small>/ 50.00 USDC cap</small></div>
-              <div className="ql-bar warn" role="img" aria-label="72% of the cap used"><i /><b /></div>
+              <div className="ql-bar" role="img" aria-label="72% of the cap used"><i /><b /></div>
               <div className="ql-meta"><span>72% used</span><span>resets Nov 1</span></div>
               <ul className="ql-tx">
                 <li><span>weather-api</span><span className="ok">✓ 0.02 USDC</span></li>
