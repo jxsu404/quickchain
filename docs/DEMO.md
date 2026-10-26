@@ -1,4 +1,4 @@
-# Demo (testnet)
+# Demo de Stellar QuickPass (testnet)
 
 ## Guion (≈ 2 min, PLAN-OPUS §6)
 1. El dueño entra con su correo en la web (Cavos) y ve su cuenta `G…`.

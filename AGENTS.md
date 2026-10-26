@@ -1,9 +1,9 @@
 # AGENTS.md — contexto para agentes de código
 
-> **Regla n.º 1: [docs/PLAN-OPUS.md](docs/PLAN-OPUS.md) es la biblia de QuickChain.** Toda persona o agente que trabaje aquí (integrantes, Raúl, Martín o cualquier otro) lee el plan antes de empezar y sigue sus fases, tareas (Q0–Q15), horarios de corte y planes B. Si algo choca con el plan, gana el plan; cualquier integrante puede editar el plan y la app por PR y hacer merge a `main` con el CI en verde; los cambios importantes del plan se anotan con fecha en [DECISIONES](docs/DECISIONES.md).
+> **Regla n.º 1: [docs/PLAN-OPUS.md](docs/PLAN-OPUS.md) es la biblia de Stellar QuickPass.** Toda persona o agente que trabaje aquí (integrantes, Raúl, Martín o cualquier otro) lee el plan antes de empezar y sigue sus fases, tareas (Q0–Q15), horarios de corte y planes B. Si algo choca con el plan, gana el plan; cualquier integrante puede editar el plan y la app por PR y hacer merge a `main` con el CI en verde; los cambios importantes del plan se anotan con fecha en [DECISIONES](docs/DECISIONES.md).
 
 ## Producto
-QuickChain: el dueño de un agente de IA entra con correo (Cavos, sin frase semilla) y firma **una vez** un tope mensual en USDC en Stellar. El agente paga APIs x402 sin firmas por llamada hasta llegar al tope o a fin de mes. Un contrato Soroban hace cumplir el tope. Una firma renueva el mes siguiente. Modelo: 1 % de lo que gasta el agente, sin mensualidad.
+Stellar QuickPass: el dueño de un agente de IA entra con correo (Cavos, sin frase semilla) y firma **una vez** un tope mensual en USDC en Stellar. El agente paga APIs x402 sin firmas por llamada hasta llegar al tope o a fin de mes. Un contrato Soroban hace cumplir el tope. Una firma renueva el mes siguiente. Modelo: 1 % de lo que gasta el agente, sin mensualidad.
 
 ## Arquitectura
 Ver [docs/ARQUITECTURA.md](docs/ARQUITECTURA.md). Resumen: `web` (dueño, Cavos) → `contracts/cuenta-presupuesto` (tope) ← `agent-client` (agente) → `api-demo` (cobra con x402).
@@ -24,7 +24,7 @@ CI (pull request y push a `main`): esos tests, el wasm, `pnpm typecheck`, `pnpm 
 Rama `rol/<nombre>`, PR a `main`, commits pequeños. Detalle en [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Reglas legales y de texto
-- Nunca presentar QuickChain como inversión, ahorro, rendimiento ni "sin riesgo" (Ley 10.961, SUGEF).
+- Nunca presentar Stellar QuickPass como inversión, ahorro, rendimiento ni "sin riesgo" (Ley 10.961, SUGEF).
 - Toda cifra lleva fuente. Toda tx de demo lleva link `https://stellar.expert/explorer/testnet/tx/<hash>`.
 - Sin Writz ni Bitcoin.
 

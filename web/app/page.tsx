@@ -6,7 +6,7 @@ export default function Inicio() {
   const { address, isAuthenticated, openModal, logout } = useCavos();
   return (
     <main>
-      <h1>QuickChain</h1>
+      <h1>Stellar QuickPass</h1>
       <p>Tu agente de IA paga APIs solo, con un tope mensual en USDC que vos firmás una vez.</p>
       {!isAuthenticated ? (
         <button onClick={openModal}>Entrar con correo</button>

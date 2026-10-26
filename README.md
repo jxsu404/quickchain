@@ -1,6 +1,6 @@
-# QuickChain
+# Stellar QuickPass
 
-> **Regla n.º 1: [docs/PLAN-OPUS.md](docs/PLAN-OPUS.md) es la biblia de QuickChain.** Toda persona o agente que trabaje aquí (integrantes, Raúl, Martín o cualquier otro) lee el plan antes de empezar y sigue sus fases, tareas (Q0–Q15), horarios de corte y planes B. Si algo choca con el plan, gana el plan; cualquier integrante puede editar el plan y la app por PR y hacer merge a `main` con el CI en verde; los cambios importantes del plan se anotan con fecha en [DECISIONES](docs/DECISIONES.md).
+> **Regla n.º 1: [docs/PLAN-OPUS.md](docs/PLAN-OPUS.md) es la biblia de Stellar QuickPass.** Toda persona o agente que trabaje aquí (integrantes, Raúl, Martín o cualquier otro) lee el plan antes de empezar y sigue sus fases, tareas (Q0–Q15), horarios de corte y planes B. Si algo choca con el plan, gana el plan; cualquier integrante puede editar el plan y la app por PR y hacer merge a `main` con el CI en verde; los cambios importantes del plan se anotan con fecha en [DECISIONES](docs/DECISIONES.md).
 
 **Tu agente de IA paga APIs solo, con un tope mensual en USDC que firmás una sola vez.**
 Hecho para el Pura Vida Ideathon sobre Stellar. **Corre en testnet y el contrato no está auditado.**
@@ -32,7 +32,7 @@ Evidencia en testnet, cada fila con link a Stellar Expert: [docs/transacciones.m
 - **Riesgo honesto:** en un pago de US$0,01 la comisión es 0,0001 USDC. No damos un precio XLM/USD: se quitó por decisión de Josué (2026-10-26 7:03 a. m. CR, ver [decisiones](docs/DECISIONES.md)); el fee de red se reporta en XLM medido ([costos](docs/COSTOS.md)). Además, en x402 normalmente paga el vendedor; cobrarle al comprador hay que validarlo.
 
 ## Nota legal
-QuickChain es una herramienta para **controlar gastos** de un agente. **No es una inversión, ni ahorro, ni promete ganancias, ni es "sin riesgo".** No capta dinero del público. El presupuesto en USDC **sí queda guardado en el contrato** de Stellar (no en una cuenta nuestra); solo el dueño puede pausarlo, cambiar el tope o retirar lo que sobra, y el agente solo puede gastar dentro del tope. Esta demo corre en Stellar **testnet** (dinero de prueba) y **el contrato no está auditado**. Antes de usar dinero real en Costa Rica hay que revisar con un abogado lo que aplique de la Ley 10.961 y la normativa de SUGEF.
+Stellar QuickPass es una herramienta para **controlar gastos** de un agente. **No es una inversión, ni ahorro, ni promete ganancias, ni es "sin riesgo".** No capta dinero del público. El presupuesto en USDC **sí queda guardado en el contrato** de Stellar (no en una cuenta nuestra); solo el dueño puede pausarlo, cambiar el tope o retirar lo que sobra, y el agente solo puede gastar dentro del tope. Esta demo corre en Stellar **testnet** (dinero de prueba) y **el contrato no está auditado**. Antes de usar dinero real en Costa Rica hay que revisar con un abogado lo que aplique de la Ley 10.961 y la normativa de SUGEF.
 
 ## Cómo correrlo
 Requisitos: Node 22+, pnpm 9, Rust (rustup) con target `wasm32v1-none`, opcional `stellar` CLI.
