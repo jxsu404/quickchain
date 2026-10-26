@@ -1,0 +1,18 @@
+/* /crear layout (prefijo qc- para evitar colisiones). Contraste AA sobre Tinta; nunca texto azul sobre oscuro. */
+.qc-head { display: flex; align-items: center; justify-content: space-between; gap: .5rem 1.5rem; flex-wrap: wrap; border-bottom: 1px solid var(--line); }
+.qc-slogan { margin: 0; font-family: var(--font-grotesk), var(--font-inter), sans-serif; font-weight: 600; color: var(--sqp-neutro-claro) !important; font-size: 1rem; }
+.landing a.qc-back { display: inline-flex; align-items: center; min-height: 48px; margin-top: .5rem; color: var(--sqp-neutro-claro); font-weight: 600; text-decoration: none; }
+.landing a.qc-back:hover { color: var(--sqp-acento); text-decoration: underline; }
+.qc-body { font-size: 1.0625rem; }
+.qc-body h2 { color: #fff; }
+.qc-body p, .qc-body label, .qc-body li, .qc-body summary { color: var(--sqp-neutro-claro); }
+.qc-body .tagline, .qc-body .sub { color: #C9CED8; }
+.qc-body small { font-size: .9rem; }
+.qc-body button, .qc-body .btn { min-height: 48px; padding: .75rem 1.5rem; }
+.qc-body .copiar { min-height: 0; }
+.qc-body input:not([type=checkbox]) { min-height: 48px; box-sizing: border-box; }
+.qc-body input[type=checkbox] { width: 20px; height: 20px; vertical-align: middle; accent-color: var(--sqp-acento); }
+.qc-body a, .qc-body code { color: var(--sqp-acento); }
+.qc-foot .qc-foot-links { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; align-items: center; }
+.qc-foot .qc-foot-links a { display: inline-flex; align-items: center; min-height: 48px; }
+@media (max-width: 560px) { .qc-foot .qc-foot-links { flex-direction: column; align-items: flex-start; gap: 0; } }
