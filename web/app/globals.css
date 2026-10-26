@@ -1,16 +1,36 @@
-body { margin: 0; font-family: system-ui, sans-serif; }
-.marco-demo { max-width: 640px; margin: 2rem auto; padding: 0 1rem; }
+/* Marca Stellar QuickPass v1.0 (docs/MARCA.md, web/public/brand/). */
+:root {
+  --sqp-principal: #1F3FD9; /* Azul Vía */
+  --sqp-acento: #14C38E; /* Verde Paso */
+  --sqp-neutro-oscuro: #0B1020; /* Tinta */
+  --sqp-neutro-claro: #F4F6FB; /* Niebla */
+  --sqp-apoyo-1: #F2A516; /* Ámbar Tope */
+  --sqp-apoyo-2: #E0464E; /* Rojo Bloqueo */
+}
+body { margin: 0; font-family: var(--font-inter), system-ui, sans-serif; }
+h1, h2, h3 { font-family: var(--font-grotesk), var(--font-inter), system-ui, sans-serif; }
+code { font-family: var(--font-mono), ui-monospace, monospace; }
+
+/* /demo y /presupuesto: fondo Niebla, texto Tinta (17,5:1), botones Azul Vía con texto blanco (7,57:1). */
+.marco-demo { max-width: 640px; margin: 0 auto; padding: 1.5rem 1rem 2rem; color: var(--sqp-neutro-oscuro); }
+body:has(.marco-demo) { background: var(--sqp-neutro-claro); }
+.marco-demo .logo-demo { display: inline-block; margin-bottom: 1rem; }
+.marco-demo a { color: var(--sqp-principal); }
+.marco-demo button { background: var(--sqp-principal); color: #fff; border: 0; border-radius: 8px; padding: .55rem 1rem; font: inherit; font-weight: 600; cursor: pointer; }
+.marco-demo button:disabled { opacity: .6; cursor: default; }
+.marco-demo code { word-break: break-all; }
 
 /* Landing (/). Colores en variables para re-skin fácil con la marca. */
 .landing {
-  --bg: #0b0d10; --fg: #e8eaed; --muted: #9aa0a6; --card: #14171c; --line: #262a31; --accent: #7c5cff; --accent-fg: #fff;
+  --bg: var(--sqp-neutro-oscuro); --fg: var(--sqp-neutro-claro); --muted: #B4BCCE; --card: #141B33; --line: #232C4A; --accent: var(--sqp-acento); --accent-fg: var(--sqp-neutro-oscuro);
   background: var(--bg); color: var(--fg); min-height: 100vh; line-height: 1.55;
 }
 .landing a { color: inherit; }
 .landing .wrap { max-width: 880px; margin: 0 auto; padding: 0 1.25rem; }
 .landing section { padding: 3.5rem 0; border-top: 1px solid var(--line); }
-.landing .hero { border-top: 0; padding: 5rem 0 4rem; }
-.landing h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); margin: 0 0 1rem; letter-spacing: -0.02em; }
+.landing .hero { border-top: 0; padding: 4rem 0 4rem; }
+.landing .logo-hero { display: block; width: min(320px, 80%); height: auto; margin-bottom: 2rem; }
+.landing h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); margin: 0 0 1rem; letter-spacing: -0.01em; }
 .landing h2 { font-size: 1.5rem; margin: 0 0 1rem; }
 .landing .tagline { font-size: clamp(1.1rem, 2.6vw, 1.35rem); color: var(--muted); max-width: 36rem; margin: 0 0 2rem; }
 .landing .ctas { display: flex; gap: .75rem; flex-wrap: wrap; }

@@ -10,6 +10,8 @@ export default function Landing() {
       <main>
         <section className="hero">
           <div className="wrap">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className="logo-hero" src="/brand/StellarQuickPass-horizontal-negativo.svg" alt="" width={433} height={104} />
             <h1>Stellar QuickPass</h1>
             <p className="tagline">Your AI agent pays for APIs automatically, never past your cap.</p>
             <div className="ctas">
