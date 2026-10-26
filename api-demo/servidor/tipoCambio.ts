@@ -3,7 +3,7 @@
 export const FUENTE_TC = "https://open.er-api.com/v6/latest/USD";
 
 export async function tipoCambioUsdCrc() {
-  const r = await fetch(FUENTE_TC, { cache: "no-store" });
+  const r = await fetch(FUENTE_TC, { cache: "no-store" } as RequestInit);
   if (!r.ok) throw new Error(`Fuente de tipo de cambio respondió ${r.status}`);
   const d = (await r.json()) as { result: string; rates: Record<string, number>; time_last_update_utc: string; provider: string };
   if (d.result !== "success" || typeof d.rates?.CRC !== "number") throw new Error("Fuente sin dato CRC");

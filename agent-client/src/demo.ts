@@ -8,9 +8,13 @@ if (falta.length) throw new Error(`Faltan variables: ${falta.join(", ")}`);
 const cuenta = process.env.BUDGET_CONTRACT_ID!;
 const rpcUrl = process.env.STELLAR_RPC_URL || undefined;
 const url = process.env.API_DEMO_URL || "http://localhost:4020/tipo-cambio";
+// Sin HOSTS_PERMITIDOS, la demo solo le paga al host de API_DEMO_URL.
+const hostsPermitidos = process.env.HOSTS_PERMITIDOS?.split(",").map((h) => h.trim()).filter(Boolean) ?? [];
+if (!hostsPermitidos.length) hostsPermitidos.push(new URL(url).host);
+const maxLlamadasPorMinuto = process.env.MAX_LLAMADAS_POR_MINUTO ? Number(process.env.MAX_LLAMADAS_POR_MINUTO) : undefined;
+console.log(`Hosts permitidos: ${hostsPermitidos.join(", ")}`);
 const pagar = crearFetchConPresupuesto({
-  cuenta, secretoAgente: process.env.AGENT_SECRET_KEY!, rpcUrl,
-  hostsPermitidos: process.env.HOSTS_PERMITIDOS?.split(",").filter(Boolean),
+  cuenta, secretoAgente: process.env.AGENT_SECRET_KEY!, rpcUrl, hostsPermitidos, maxLlamadasPorMinuto,
   alPagar: (p) => console.log(`  pagado ${Number(p.monto) / 1e7} USDC desde ${p.pagador}: ${p.link}`),
 });
 for (let i = 1; i <= Number(process.env.LLAMADAS || 5); i++) {
