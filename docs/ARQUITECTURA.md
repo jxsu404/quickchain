@@ -9,7 +9,7 @@ flowchart LR
   W -->|1 firma: renovar tope, máx., fin, recarga| C[(cuenta-presupuesto C…<br/>Soroban)]
   A[Agente IA<br/>agent-client, llave sin fondos] -->|firma auth entry de transfer| F[Facilitador x402<br/>público o propio]
   F -->|envía transfer C→vendedor| C
-  C -->|USDC| V[Vendedor api-demo G…]
+  C -->|USDC| V[Vendedor api-demo G…<br/>servidor/vendedor.ts]
   A -->|HTTP + PAYMENT-SIGNATURE| V
   C -->|comisión 1 % acumulada| T[Tesorería fija]
 ```
@@ -18,7 +18,7 @@ flowchart LR
 ```mermaid
 sequenceDiagram
   participant A as agent-client
-  participant V as vendedor (api-demo)
+  participant V as vendedor (api-demo/servidor/vendedor.ts)
   participant F as facilitador
   participant C as cuenta-presupuesto
   A->>V: GET /tipo-cambio
