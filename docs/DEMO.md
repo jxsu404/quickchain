@@ -8,7 +8,7 @@
 5. El dueño firma `renovar` y el agente sigue.
 
 ## Cómo correr el agente demo (Q7)
-1. Vendedor: `cd api-demo && X402_PAY_TO=G… npx next dev -p 4020` (facilitador público `https://x402.org/facilitator` por defecto).
+1. Vendedor (después de [#18](https://github.com/jxsu404/quickchain/pull/18), `api-demo/servidor/vendedor.ts`): `X402_PAY_TO=G… pnpm --filter api-demo vendedor` (puerto `PORT`, 4020 por defecto; facilitador público `https://x402.org/facilitator` salvo que `X402_FACILITATOR_URL` diga otra cosa). Probado con este vendedor el 2026-10-26 ~1:05 a.m. CR: 4 pagos ([1e5d05a2…](https://stellar.expert/explorer/testnet/tx/1e5d05a27bfd1d5a5aa783adf5ed4a191ee4c0a4bdbc5f6ddbf69fd11a86d9c4), [2d1c8201…](https://stellar.expert/explorer/testnet/tx/2d1c82014289c436c45f6d5730902096caae4f5f99d805dbcb0b4d92f0b439ce), [3fba1952…](https://stellar.expert/explorer/testnet/tx/3fba1952f2a9f7b0da3b95c7589646f4520259fbf0e0dfabc1e844bdd589104b), [a192d41f…](https://stellar.expert/explorer/testnet/tx/a192d41f4a3b35c81ad6b3b4cca52a78f3a02fcad5d9c49c684ee095e59681df)), 5.º `TopeAlcanzado` y `/caro` `MontoPorLlamada`, sin tx.
 2. Cuenta con tope 0,05, máx. 0,02 por llamada y saldo ≥ US$1 (si el saldo es menor, `/caro` choca con `SaldoInsuficiente` antes que con `MontoPorLlamada`; visto en testnet el 2026-10-26).
 3. `BUDGET_CONTRACT_ID=C… AGENT_SECRET_KEY=S… API_DEMO_URL=http://localhost:4020 pnpm --filter agent-client exec tsx ../scripts/agente-demo.ts` → sale con código 0 solo si da 4 pagos + 2 bloqueos.
 4. Corrida completa (deploy → renovar → agente → comisión → pausa → retiro): Q10, `agent-client/src/corrida-e2e.ts`; resultados en [transacciones.md](transacciones.md).
