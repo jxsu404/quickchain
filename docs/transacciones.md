@@ -33,6 +33,15 @@ La corrida limpia de Q10 está al final; las filas Q3 son de la prueba del vende
 | `2de5dc18` | Q8: 2.º pago de US$0,01 vía SDK (+1.000) | [2de5dc18…](https://stellar.expert/explorer/testnet/tx/2de5dc18d620d88bf1b3d7ece108848a8fcfa21be09c4a385634392dcc112c2b) |
 | `820db07e` | Q8: `cobrar_comision()` → **2.000 unidades (0,0002 USDC) a la tesorería** | [820db07e…](https://stellar.expert/explorer/testnet/tx/820db07e4b543a68ed5297398ae51009113aeadbfc1e75ac34d0be2ee919dc18) |
 
+## Contrato vigente (Q4)
+
+Cuenta-presupuesto [`CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE`](https://stellar.expert/explorer/testnet/contract/CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE), dueño = cuenta Cavos de Josué. `renovar` todavía pendiente (sin firmar).
+
+| Hash | Qué es | Link |
+|---|---|---|
+| `f0aa5692` | Q4: trustline USDC de la tesorería (GAAIYNFO…) — 26/10/2026, 5:17 a. m. CR | [f0aa5692…](https://stellar.expert/explorer/testnet/tx/f0aa56929d4dcdc9c87d10ade7d1efa7f24e1e688bf6d42881965eb154ba8028) |
+| `dfddedce` | Q4: deploy de la cuenta-presupuesto vigente (deployer GBMD67Q5…) — 26/10/2026, 5:18 a. m. CR | [dfddedce…](https://stellar.expert/explorer/testnet/tx/dfddedce2f702472cdae2e4153fbe02257499dfc6d6f3a83ae5102179286d279) |
+
 ## Corrida limpia Q10 (26/10/2026, 12:39:07 a. m. CR)
 
 Script: `agent-client/src/corrida-e2e.ts` (datos crudos en [`deployments/corrida-q10.json`](../deployments/corrida-q10.json)). Cuenta de la corrida Q10 (deploy anterior; el vigente es [`CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE`](https://stellar.expert/explorer/testnet/contract/CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE)) [`CBAVYNKB…`](https://stellar.expert/explorer/testnet/contract/CBAVYNKBG5TKC56BXON4UKVOQX4YVPX2UA3YB77J6VSSCCKHKHSYJKCG), vendedor de `api-demo` local con el facilitador **público** `x402.org`. Cuentas de testnet de prueba; sin valor real.
