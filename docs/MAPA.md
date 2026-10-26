@@ -154,7 +154,7 @@ graph TD
 - [Pitch](PITCH.md) — issue [#6](https://github.com/jxsu404/quickchain/issues/6)
 - [contracts/cuenta-presupuesto](../contracts/cuenta-presupuesto/AGENTS.md) — issue [#1](https://github.com/jxsu404/quickchain/issues/1) — contrato `cuenta-presupuesto` desplegado en testnet (ver [Demo](DEMO.md))
 - [agent-client](../agent-client/AGENTS.md) — issue [#2](https://github.com/jxsu404/quickchain/issues/2); Q2: SDK `crearFetchConPresupuesto`
-- [api-demo](../api-demo/AGENTS.md) — issue [#3](https://github.com/jxsu404/quickchain/issues/3); Q3: `/tipo-cambio`, `/caro` y facilitador propio
+- [api-demo](../api-demo/AGENTS.md) — issue [#3](https://github.com/jxsu404/quickchain/issues/3); Q3: `servidor/vendedor.ts` con `/tipo-cambio`, `/caro` y facilitador propio
 - [web](../web/AGENTS.md) — issue [#4](https://github.com/jxsu404/quickchain/issues/4)
 
 ## Tareas → nodos

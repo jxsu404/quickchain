@@ -4,10 +4,11 @@
   "packageManager": "pnpm@9.15.0",
   "scripts": {
     "dev:web": "pnpm --filter web dev",
-    "dev:api": "pnpm --filter api-demo dev",
+    "dev:api": "pnpm --filter api-demo vendedor",
     "agente": "pnpm --filter agent-client start",
     "contrato:test": "cargo test -p cuenta-presupuesto",
     "typecheck": "pnpm -r typecheck",
+    "test": "pnpm -r test",
     "docs:links": "node scripts/check-links.mjs"
   }
 }
