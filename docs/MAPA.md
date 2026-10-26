@@ -21,6 +21,7 @@ graph TD
   docs_COSTOS_md["Costos (Q8)"]
   docs_deploy_api_md["Deploy de api-demo"]
   docs_PITCH_md["Pitch"]
+  docs_pitch_GUION_md["Guion del pitch"]
   docs_pruebas_q1_md["Pruebas Q1"]
   contracts_cuenta_presupuesto_AGENTS_md["contracts/cuenta-presupuesto"]
   agent_client_AGENTS_md["agent-client"]
@@ -99,6 +100,7 @@ graph TD
   docs_DEMO_md --> web_AGENTS_md
   docs_PITCH_md --> docs_DEMO_md
   docs_PITCH_md --> README_md
+  docs_PITCH_md --> docs_pitch_GUION_md
   contracts_cuenta_presupuesto_AGENTS_md --> agent_client_AGENTS_md
   contracts_cuenta_presupuesto_AGENTS_md --> docs_SEGURIDAD_md
   agent_client_AGENTS_md --> contracts_cuenta_presupuesto_AGENTS_md
@@ -154,7 +156,7 @@ graph TD
 - [Costos (Q8)](COSTOS.md) — fees medidos en testnet y cobro de la comisión de 1 %
 - [Transacciones (testnet)](transacciones.md) — filas de Q3 (pagos x402 desde G… y C…); Q10: corrida limpia (deploy, renovar, 4 pagos, bloqueos, comisión, pausa, retiro) con links de Stellar Expert
 - [Pruebas Q1 (testnet)](pruebas-q1.md) — issue [#1](https://github.com/jxsu404/stellar-quickpass/issues/1)
-- [Pitch](PITCH.md) — issue [#6](https://github.com/jxsu404/stellar-quickpass/issues/6)
+- [Pitch](PITCH.md) — issue [#6](https://github.com/jxsu404/stellar-quickpass/issues/6); Q13: [deck](pitch/index.html) y [guion](pitch/GUION.md)
 - [contracts/cuenta-presupuesto](../contracts/cuenta-presupuesto/AGENTS.md) — issue [#1](https://github.com/jxsu404/stellar-quickpass/issues/1) — contrato `cuenta-presupuesto` desplegado en testnet (ver [Demo](DEMO.md))
 - [agent-client](../agent-client/AGENTS.md) — issue [#2](https://github.com/jxsu404/stellar-quickpass/issues/2); Q2: SDK `crearFetchConPresupuesto`
 - [api-demo](../api-demo/AGENTS.md) — issue [#3](https://github.com/jxsu404/stellar-quickpass/issues/3); Q3: `servidor/vendedor.ts` con `/tipo-cambio`, `/caro` y facilitador propio
@@ -177,7 +179,7 @@ graph TD
 | Q10 | [DEMO.md](DEMO.md) · [transacciones.md](transacciones.md) | [#5](https://github.com/jxsu404/stellar-quickpass/issues/5) |
 | Q11 | [../README.md](../README.md) | [#6](https://github.com/jxsu404/stellar-quickpass/issues/6) |
 | Q12 | [PITCH.md](PITCH.md) | — |
-| Q13 | [PITCH.md](PITCH.md) | [#6](https://github.com/jxsu404/stellar-quickpass/issues/6) |
+| Q13 | [PITCH.md](PITCH.md) · [guion](pitch/GUION.md) | [#6](https://github.com/jxsu404/stellar-quickpass/issues/6) |
 | Q14 | [PITCH.md](PITCH.md) | [#6](https://github.com/jxsu404/stellar-quickpass/issues/6) |
 | Q15 | [../TAREAS.md](../TAREAS.md) | [#6](https://github.com/jxsu404/stellar-quickpass/issues/6) |
 
