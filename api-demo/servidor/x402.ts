@@ -5,13 +5,17 @@ import { decodePaymentSignatureHeader, encodePaymentRequiredHeader, encodePaymen
 import { ExactStellarScheme } from "@x402/stellar/exact/server";
 
 export const RED_X402 = "stellar:testnet" as const;
+export const FACILITADOR_PUBLICO = "https://x402.org/facilitator";
+
+export const facilitadorPropioActivo = (env = process.env) => env.FACILITADOR_PROPIO?.trim() === "1";
 
 export function leerConfig(env = process.env) {
   if (!env.X402_PAY_TO) throw new Error("Falta X402_PAY_TO (cuenta G... que recibe los pagos)");
+  const propio = `http://127.0.0.1:${env.PORT?.trim() || 4020}/facilitador`;
   return {
     payTo: env.X402_PAY_TO,
     precio: env.X402_PRECIO?.trim() || "$0.01",
-    facilitadorUrl: env.X402_FACILITATOR_URL?.trim() || "https://x402.org/facilitator",
+    facilitadorUrl: env.X402_FACILITATOR_URL?.trim() || (facilitadorPropioActivo(env) ? propio : FACILITADOR_PUBLICO),
   };
 }
 
