@@ -39,7 +39,7 @@ Requisitos: Node 22+, pnpm 9, Rust (rustup) con target `wasm32v1-none`, opcional
 pnpm install
 cp .env.example .env          # llenar valores (nunca subir .env)
 pnpm contrato:test            # tests del contrato
-pnpm dev:api                  # API x402 de prueba en :4020
+pnpm dev:api                  # vendedor x402 (api-demo/servidor/vendedor.ts) en :4020
 pnpm dev:web                  # web con Cavos en :3000
 pnpm agente                   # el agente llama a la API hasta chocar con el tope
 ```
@@ -50,7 +50,7 @@ Guía de la demo en testnet: [docs/DEMO.md](docs/DEMO.md).
 |---|---|
 | `contracts/cuenta-presupuesto` | Contrato Soroban de la cuenta-presupuesto (Rust) |
 | `agent-client` | SDK del agente: ante un 402 paga desde la `C…` y reintenta |
-| `api-demo` | Vendedor demo que cobra con x402 y facilitador propio |
+| `api-demo` | Vendedor demo que cobra con x402 (`servidor/vendedor.ts`, node:http) y facilitador propio |
 | `web` | Web del dueño con login Cavos (Next.js) |
 | `docs/` | Plan, arquitectura, decisiones, seguridad, demo ([índice](docs/INDICE.md)) |
 | (privado) | Buzón del equipo: repo privado `quickchain-buzon`, acceso por invitación |

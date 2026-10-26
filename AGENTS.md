@@ -11,12 +11,12 @@ Ver [docs/ARQUITECTURA.md](docs/ARQUITECTURA.md). Resumen: `web` (dueño, Cavos)
 ## Mapa de carpetas
 - `contracts/cuenta-presupuesto/` — Rust, soroban-sdk 22. Tiene su propio [AGENTS.md](contracts/cuenta-presupuesto/AGENTS.md).
 - `agent-client/` — TS + @stellar/stellar-sdk. [AGENTS.md](agent-client/AGENTS.md)
-- `api-demo/` — Next.js + @x402/core + @x402/stellar. [AGENTS.md](api-demo/AGENTS.md)
+- `api-demo/` — `servidor/vendedor.ts` (node:http) + @x402/core + @x402/stellar. [AGENTS.md](api-demo/AGENTS.md)
 - `web/` — Next.js + @cavos/kit. [AGENTS.md](web/AGENTS.md)
 - `docs/` — [INDICE.md](docs/INDICE.md).
 
 ## Comandos
-`pnpm install` · `pnpm contrato:test` · `pnpm dev:api` · `pnpm dev:web` · `pnpm agente` · `pnpm typecheck`
+`pnpm install` · `pnpm contrato:test` · `pnpm dev:api` · `pnpm dev:web` · `pnpm agente` · `pnpm typecheck` · `pnpm test`
 Wasm: `cargo build -p cuenta-presupuesto --target wasm32v1-none --release` (o `stellar contract build`).
 CI (pull request y push a `main`): esos tests, el wasm, `pnpm typecheck`, `pnpm docs:links` y gitleaks sobre todo el historial.
 

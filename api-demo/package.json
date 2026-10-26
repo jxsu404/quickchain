@@ -2,9 +2,9 @@
   "name": "api-demo",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 4020",
-    "build": "next build",
-    "start": "next start -p 4020",
+    "vendedor": "tsx servidor/vendedor.ts",
+    "dev": "tsx watch servidor/vendedor.ts",
+    "test": "tsx --test test/*.test.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -12,15 +12,12 @@
     "@x402/core": "~2.28.0",
     "@x402/fetch": "~2.28.0",
     "@x402/stellar": "~2.28.0",
-    "dotenv": "^17",
-    "next": "^16",
-    "react": "^19",
-    "react-dom": "^19"
+    "dotenv": "^17"
   },
   "devDependencies": {
     "@types/node": "^24",
-    "@types/react": "^19",
     "tsx": "^4",
     "typescript": "^5"
-  }
+  },
+  "type": "module"
 }
