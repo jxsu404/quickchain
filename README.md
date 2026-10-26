@@ -52,7 +52,7 @@ Guía de la demo en testnet: [docs/DEMO.md](docs/DEMO.md).
 | `contracts/cuenta-presupuesto` | Contrato Soroban de la cuenta-presupuesto (Rust) |
 | `agent-client` | SDK del agente: ante un 402 paga desde la `C…` y reintenta |
 | `api-demo` | Vendedor demo que cobra con x402 (`servidor/vendedor.ts`, node:http); liquida con el facilitador público y trae uno propio como respaldo local opcional |
-| `web` | Web del dueño con login Cavos (Next.js) |
+| `web` | Web del dueño (Next.js): landing en `/`, demo con login Cavos en `/demo`, firma del presupuesto en `/presupuesto` ([web](web/AGENTS.md)) |
 | `docs/` | Plan, arquitectura, decisiones, seguridad, demo ([índice](docs/INDICE.md)) |
 | (privado) | Buzón del equipo: repo privado `quickchain-buzon`, acceso por invitación |
 

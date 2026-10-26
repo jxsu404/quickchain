@@ -1,7 +1,8 @@
 # Demo de Stellar QuickPass (testnet)
 
 ## Guion (≈ 2 min, PLAN-OPUS §6)
-1. El dueño entra con su correo en la web (Cavos) y ve su cuenta `G…`.
+0. La landing en `/` (inglés, para el jurado) lleva con «Try the demo» a `/demo` ([web](../web/AGENTS.md)).
+1. El dueño entra con su correo en `/demo` (Cavos) y ve su cuenta `G…`.
 2. En `/presupuesto` firma `renovar`: tope 0,05 USDC, máximo 0,02 por llamada, vence el 1 de noviembre 00:00 (hora CR). **Una firma** y link a Stellar Expert.
 3. `LLAMADAS=6 pnpm agente` contra `/tipo-cambio` (0,01 USDC): 4 pagos responden 200, cada uno con su link.
 4. El 5.º queda **bloqueado** por el contrato (`TopeAlcanzado`): 4 × (0,01 + 1 %) = 0,0404 y el 5.º llevaría el gasto a 0,0505 > 0,05 (mismo caso en [pruebas-q1](pruebas-q1.md), prueba 07c). Sin tx, no se movió plata. Alternativa en un solo comando: el agente demo de Q7 (`scripts/agente-demo.ts`, ver abajo) hace los 4 pagos + los 2 bloqueos.
