@@ -104,7 +104,7 @@ export default function Presupuesto() {
 
       {estado && (
         <ul>
-          <li>Contract: <a href={linkContrato(contrato.trim())} target="_blank" rel="noreferrer">Stellar Expert</a></li>
+          <li>Contract: <a href={linkContrato(contrato.trim())} target="_blank" rel="noreferrer">Stellar Expert</a> · <a href={`/dashboard?contract=${encodeURIComponent(contrato.trim())}`}>Dashboard</a></li>
           <li>Owner: <code>{estado.owner}</code></li>
           <li>Treasury: <code>{estado.tesoreria}</code> · fee {Number(estado.fee_bps) / 100} %</li>
           <li>Period {estado.periodo}: spent {unidadesAUsdc(estado.gastado)} of {unidadesAUsdc(estado.tope)} USDC (left {unidadesAUsdc(estado.restante)}); ends {estado.fin_periodo ? fechaCR(estado.fin_periodo) : "—"}{estado.pausada ? " · PAUSED" : ""}</li>

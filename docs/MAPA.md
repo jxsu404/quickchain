@@ -27,6 +27,7 @@ graph TD
   agent_client_AGENTS_md["agent-client"]
   api_demo_AGENTS_md["api-demo"]
   web_AGENTS_md["web"]
+  docs_dashboard_md["Dashboard del dueño"]
   docs_PLAN_OPUS_md:::biblia
   docs_PLAN_OPUS_md --> docs_INDICE_md
   docs_PLAN_OPUS_md --> TAREAS_md
@@ -134,6 +135,9 @@ graph TD
   agent_client_AGENTS_md -.-> docs_PLAN_OPUS_md
   api_demo_AGENTS_md -.-> docs_PLAN_OPUS_md
   web_AGENTS_md -.-> docs_PLAN_OPUS_md
+  web_AGENTS_md --> docs_dashboard_md
+  docs_DECISIONES_md --> docs_dashboard_md
+  docs_dashboard_md -.-> docs_PLAN_OPUS_md
   classDef biblia fill:#f9d71c,stroke:#333,stroke-width:3px
 ```
 
@@ -161,6 +165,7 @@ graph TD
 - [agent-client](../agent-client/AGENTS.md) — issue [#2](https://github.com/jxsu404/stellar-quickpass/issues/2); Q2: SDK `crearFetchConPresupuesto`
 - [api-demo](../api-demo/AGENTS.md) — issue [#3](https://github.com/jxsu404/stellar-quickpass/issues/3); Q3: `servidor/vendedor.ts` con `/tipo-cambio`, `/caro` y facilitador propio
 - [web](../web/AGENTS.md) — issue [#4](https://github.com/jxsu404/stellar-quickpass/issues/4)
+- [Dashboard del dueño](2026-10-26-dashboard.md) — `/dashboard`: anillo gastado/tope, pagos reales de eventos RPC, bloqueos de «Correr agente»
 
 ## Tareas → nodos
 

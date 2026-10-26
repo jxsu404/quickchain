@@ -10,12 +10,13 @@
 | [ARQUITECTURA.md](ARQUITECTURA.md) | Piezas y flujos (diagramas) |
 | [DECISIONES.md](DECISIONES.md) | Decisiones con fecha y preguntas abiertas |
 | [2026-10-26-boton-correr-agente.md](2026-10-26-boton-correr-agente.md) | Botón «Correr agente» en `/demo`: el agente paga x402 hasta el tope y queda bloqueado |
+| [2026-10-26-dashboard.md](2026-10-26-dashboard.md) | Dashboard del dueño `/dashboard`: gastado, restante, pagos reales y bloqueos |
 | [2026-10-26-nuevo-plazo-entrega.md](2026-10-26-nuevo-plazo-entrega.md) | Nuevo plazo APEX: 3:00 p. m. CR, congelar 2:30 p. m. |
 | [SEGURIDAD.md](SEGURIDAD.md) | Modelo de amenazas |
 | [2026-10-26-headers-seguridad.md](2026-10-26-headers-seguridad.md) | Headers de seguridad HTTP en la web (CSP solo Report-Only) |
 | [AUDITORIA.md](AUDITORIA.md) | Lista de revisión y resultados |
 | [DEMO.md](DEMO.md) | Guion de la demo y links de transacciones |
-| [../web/AGENTS.md](../web/AGENTS.md) | Web: landing `/`, demo `/demo` (login Cavos), presupuesto `/presupuesto` |
+| [../web/AGENTS.md](../web/AGENTS.md) | Web: landing `/`, demo `/demo` (login Cavos), presupuesto `/presupuesto`, dashboard `/dashboard` |
 | [../contracts/fabrica-presupuesto/AGENTS.md](../contracts/fabrica-presupuesto/AGENTS.md) | Fábrica: cualquiera crea su cuenta-presupuesto (`crear`, `listar`); decisión [2026-10-26](2026-10-26-fabrica-presupuesto.md) |
 | [../mcp/README.md](../mcp/README.md) | MCP server: agentes MCP (Claude, Cursor, Grok Bot) pagan x402 con tope; decisión [2026-10-26](2026-10-26-mcp-quickpass.md) |
 | [pruebas-q1.md](pruebas-q1.md) | Pruebas reales de Q1 en testnet (txs y fees) |

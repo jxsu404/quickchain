@@ -1,0 +1,55 @@
+/* /dashboard (prefijo qd-): mockup A «anillo». Colores de estado solo en marcas, nunca en texto chico
+   (Verde Paso sobre Tinta 8,31:1; Ámbar y Rojo van con ícono + texto en Niebla o tono claro). */
+.qd h1 { font-size: clamp(1.6rem, 5vw, 2.1rem); margin: 0 0 .25rem; }
+.qd h2 { font-size: 1.2rem; margin: 2rem 0 .5rem; }
+/* La landing da padding y borde a cada <section>: acá no. */
+.landing .qd section { padding: 0; border-top: 0; }
+.qd-mono, .qd-val, .qd-pct { font-family: var(--font-mono), ui-monospace, monospace; }
+.qd-hero { display: grid; justify-items: center; text-align: center; margin-top: 1rem; }
+.qd-anillo { position: relative; width: 210px; height: 210px; }
+.qd-centro { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: .2rem; }
+.qd-pct { font-size: 2rem; font-weight: 600; }
+.qd-de { font-size: .75rem; color: var(--muted); max-width: 150px; }
+.qd-arco.ok { stroke: var(--sqp-acento); }
+.qd-arco.cerca { stroke: var(--sqp-apoyo-1); }
+.qd-arco.bloqueo { stroke: var(--sqp-apoyo-2); }
+.qd-chip { display: inline-flex; gap: .35rem; align-items: center; border-radius: 999px; padding: .2rem .7rem; font-size: .8rem; font-weight: 700; margin-top: .25rem; }
+.qd-chip.ok { background: rgba(20,195,142,.15); color: var(--sqp-acento); }
+.qd-chip.cerca { background: rgba(242,165,22,.15); color: var(--sqp-apoyo-1); }
+.qd-chip.bloqueo { background: rgba(224,70,78,.2); color: #FF8A8F; }
+.qd-chip.vacio { background: var(--card); color: var(--muted); }
+.qd-resumen { margin: .75rem 0 0; }
+.marco-demo .qd-fuente, .marco-demo .qd-nota { font-size: .78rem; color: var(--muted); margin: .35rem 0 0; }
+.marco-demo .qd-aviso-saldo { font-size: .9rem; border-left: 4px solid var(--sqp-apoyo-1); padding: .5rem .75rem; background: rgba(242,165,22,.08); border-radius: 6px; text-align: left; }
+.qd-acciones { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; margin: 1.25rem 0 .25rem; }
+.qd-acciones .qd-full { grid-column: 1 / -1; }
+.marco-demo .qd-acciones .btn, .marco-demo .qd-acciones button { min-height: 48px; padding: .5rem .75rem; margin: 0; display: inline-flex; align-items: center; justify-content: center; text-align: center; box-sizing: border-box; width: 100%; }
+.marco-demo .qd-acciones .qd-sec { color: var(--fg); border: 1px solid var(--line); }
+.marco-demo .qd-acciones .qd-sec:hover { color: var(--sqp-acento); border-color: var(--sqp-acento); }
+.marco-demo .qd-acciones .btn.primary { color: #fff; }
+.qd-tarjetas { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; margin-top: 1.25rem; }
+.qd-tarjeta { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: .8rem .9rem; }
+.qd-lbl { font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.qd-val { font-size: 1.05rem; font-weight: 600; margin-top: .2rem; }
+.qd-val.qd-chico { font-size: .85rem; font-family: var(--font-inter), sans-serif; font-weight: 400; }
+.qd-lista { list-style: none; padding: 0; margin: 0; background: var(--card); border: 1px solid var(--line); border-radius: 12px; }
+.qd-fila { display: grid; grid-template-columns: 12px 1fr auto; gap: .6rem; align-items: start; padding: .7rem .85rem; border-top: 1px solid var(--line); }
+.qd-fila:first-child { border-top: 0; }
+.qd-fila small { color: var(--muted); }
+.qd-punto { width: 10px; height: 10px; border-radius: 50%; margin-top: .45rem; background: var(--muted); }
+.qd-fila.pago .qd-punto { background: var(--sqp-acento); }
+.qd-fila.bloqueado .qd-punto { background: var(--sqp-apoyo-2); }
+.qd-fila.renovar .qd-punto, .qd-fila.recarga .qd-punto { background: var(--sqp-neutro-claro); }
+.qd-tx { white-space: nowrap; font-size: .85rem; }
+.marco-demo .qd-tx a { display: inline-flex; min-height: 44px; align-items: center; margin-top: -.6rem; }
+.marco-demo .qd-fila code { color: var(--fg); }
+.qd-todo { margin-top: .75rem; }
+.qd-todo summary { cursor: pointer; min-height: 48px; display: flex; align-items: center; font-weight: 600; }
+.marco-demo .qd-vacio { color: var(--muted); background: var(--card); border: 1px dashed var(--line); border-radius: 12px; padding: .9rem; }
+.qd-error { border: 1px solid var(--sqp-apoyo-2); border-radius: 12px; padding: .75rem .9rem; margin-top: 1rem; }
+.qd-esqueleto { height: 300px; border-radius: 14px; margin-top: 1rem; background: linear-gradient(90deg, var(--card), #1c2545, var(--card)); background-size: 200% 100%; animation: qd-brillo 1.4s linear infinite; }
+.qd-esqueleto.chico { height: 120px; }
+@keyframes qd-brillo { to { background-position: -200% 0; } }
+@media (prefers-reduced-motion: reduce) { .qd-esqueleto { animation: none; } }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.marco-demo button.secondary { min-height: 48px; }

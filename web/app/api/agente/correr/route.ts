@@ -30,7 +30,7 @@ export async function POST(req: Request) {
       const enviar = (o: unknown) => ctrl.enqueue(enc.encode(JSON.stringify(o) + "\n"));
       try {
         let e = await leerEstado(contrato);
-        const resumen = (x: typeof e) => ({ tope: s(x.tope), gastado: s(x.gastado), restante: s(x.restante), saldo: s(x.saldo), maxPorLlamada: s(x.max_por_llamada) });
+        const resumen = (x: typeof e) => ({ tope: s(x.tope), gastado: s(x.gastado), restante: s(x.restante), saldo: s(x.saldo), maxPorLlamada: s(x.max_por_llamada), periodo: s(x.periodo) });
         enviar({ tipo: "inicio", contrato, agente: agente.publicKey(), estado: resumen(e) });
         if (hex(e.agente) !== agente.rawPublicKey().toString("hex")) {
           enviar({ tipo: "error", motivo: "AgenteDesconocido", mensaje: `Esta cuenta autoriza a otro agente (${hex(e.agente).slice(0, 12)}…), no a ${agente.publicKey()}. Creá una en /crear con el agente demo o usá la cuenta demo.` });

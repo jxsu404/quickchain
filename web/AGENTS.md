@@ -38,3 +38,6 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## /demo «Correr agente»
 `app/demo/correr-agente.tsx` + `app/api/agente/correr` (NDJSON) + `app/api/x402/tipo-cambio` (API x402 US$0,01) + `app/api/agente/reiniciar` (renovar la cuenta demo). Variables de servidor: `AGENT_SECRET_KEY`, `X402_PAY_TO`, `DEMO_BUDGET_CONTRACT_ID`, `DEMO_OWNER_SECRET`. Ver [decisión](../docs/2026-10-26-boton-correr-agente.md).
+
+## /dashboard (dueño)
+`app/dashboard/page.tsx` + `lib/historial.ts` + `lib/tablero.ts`: `/dashboard?contract=C…` (sin `contract` usa la cuenta demo de `/api/agente/correr` o `NEXT_PUBLIC_BUDGET_CONTRACT_ID`). Anillo gastado/tope desde `estado()` (Verde Paso ≤ 80 %, Ámbar Tope > 80 %, Rojo Bloqueo si pausada, vencida o bloqueada), tarjetas, y pagos/comisión/recargas/renovaciones/pausas leídos de eventos de Soroban RPC (~7 días), cada uno con link a Stellar Expert. Un pago se distingue de un retiro leyendo la tx (invoca el SAC o la `C…`). Los bloqueos no están en la red: `correr-agente.tsx` los guarda en `sessionStorage` (`sqp-bloqueos:<C…>`, con `periodo`, que ahora viaja en el NDJSON) y el dashboard los muestra como «no tx». «Pause/Resume» firma `pausar`/`reanudar` con Cavos solo si sos el `owner` (sin probar con Cavos). Ver [decisión](../docs/2026-10-26-dashboard.md).
