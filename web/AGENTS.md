@@ -25,3 +25,16 @@ Correr: `pnpm dev:web`. Tests sin red: `pnpm --filter web test`.
 
 ## /crear (fábrica)
 `web/app/crear/page.tsx` + `web/lib/fabrica.ts`: el usuario Cavos firma `crear` en la [fábrica](../contracts/fabrica-presupuesto/AGENTS.md) (dueño = su `G…`, agente demo o pegado), ve su `C…` y sigue a `/presupuesto?contract=C…`. `NEXT_PUBLIC_FACTORY_CONTRACT_ID` cambia la fábrica.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+## This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
+
+## /demo «Correr agente»
+`app/demo/correr-agente.tsx` + `app/api/agente/correr` (NDJSON) + `app/api/x402/tipo-cambio` (API x402 US$0,01) + `app/api/agente/reiniciar` (renovar la cuenta demo). Variables de servidor: `AGENT_SECRET_KEY`, `X402_PAY_TO`, `DEMO_BUDGET_CONTRACT_ID`, `DEMO_OWNER_SECRET`. Ver [decisión](../docs/2026-10-26-boton-correr-agente.md).

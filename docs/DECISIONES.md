@@ -48,6 +48,7 @@
 | 2026-10-26 | **MCP server** `mcp/`: cualquier agente MCP paga x402 desde su cuenta-presupuesto (testnet) | ver [2026-10-26-mcp-quickpass.md](2026-10-26-mcp-quickpass.md) |
 | 2026-10-26 | **Nuevo plazo de entrega APEX:** 3:00 p. m. CR (antes 11:30 a. m.); congelar código 2:30 p. m. | ver [2026-10-26-nuevo-plazo-entrega.md](2026-10-26-nuevo-plazo-entrega.md) |
 | 2026-10-26 | Seguridad: `/crear` arranca con la clave del agente **vacía**; el agente demo solo con casilla explícita y aviso. **Aprobado por Josué** 11:12 a. m. CR | ver [2026-10-26-crear-agente-vacio.md](2026-10-26-crear-agente-vacio.md) |
+| 2026-10-26 | **Botón «Correr agente»** en `/demo`: el agente (servidor, llave en Vercel) paga x402 desde la cuenta-presupuesto hasta el tope y queda bloqueado. **Aprobado por Josué** 11:06 a. m. CR | ver [2026-10-26-boton-correr-agente.md](2026-10-26-boton-correr-agente.md) |
 
 ## Preguntas abiertas
 1. ~~**Cómo prueba el agente el pago a la API.**~~ Resuelta en Q3 (ver arriba): x402 `exact` con `from = C…`.

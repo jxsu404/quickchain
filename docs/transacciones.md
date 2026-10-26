@@ -62,13 +62,37 @@ Script: `agent-client/src/corrida-e2e.ts` (datos crudos en [`deployments/corrida
 | `ab4e837d` | Q10: retirar 1.0096 USDC al dueño | [ab4e837d…](https://stellar.expert/explorer/testnet/tx/ab4e837d3e37301d2a1d854af08b9a34d71a6a872a61bb59141441447f5e6c39) |
 | `15b78583` | Limpieza: `retirar` del saldo de una corrida Q10 interrumpida (`CA4NUFYM…`, 1,0096 USDC de vuelta al dueño) | [15b78583…](https://stellar.expert/explorer/testnet/tx/15b7858346956c95faf4acc70fc6d333cc60194b00e2d6876deee881dfad74ef) |
 
+## Botón «Correr agente» (/demo, 2026-10-26)
+
+Ver [decisión](2026-10-26-boton-correr-agente.md). Cuenta demo [`CAD2CAZC…`](https://stellar.expert/explorer/testnet/contract/CAD2CAZC7S22MTZKAKAW76LLU2FLGX6JQEK4ITNS4FS6T7WQ5TNFKNIB).
+
+| tx | qué prueba | link Stellar Expert testnet |
+|---|---|---|
+| `a0c60839` | trustline USDC del dueño demo `GA67QBA6…` | [a0c60839…](https://stellar.expert/explorer/testnet/tx/a0c608393e1d744fa64db6e3e31926e5fbb359dad73ce0063f3c62574112b32b) |
+| `1e7558ef` | trustline USDC del vendedor (payTo) `GAAYCAII…` | [1e7558ef…](https://stellar.expert/explorer/testnet/tx/1e7558ef0de43cc45c7fd86181c0e55a42dbf7ccc4c5fc30261b8202609be489) |
+| `41210173` | compra de 3 USDC en el DEX de testnet (dueño demo) | [41210173…](https://stellar.expert/explorer/testnet/tx/41210173e5ec504a401c0cf2fdc1607828a0251ea73ca60d61da84a7da569edc) |
+| `6e4cc878` | fábrica `crear` → cuenta demo `CAD2CAZC…` (agente `GCK5JBEO…`) | [6e4cc878…](https://stellar.expert/explorer/testnet/tx/6e4cc87824e01c4b1cb916466c5536252e6394b1073e516dfb2fdf67080eb1ea) |
+| `a0b911ff` | `renovar` (tope 0,05, máx. 0,02, recarga 0,05) | [a0b911ff…](https://stellar.expert/explorer/testnet/tx/a0b911ffe0eacf54c61c78c0af139b00946e4da1d8c431c29a9472b8d25ba7b5) |
+| `c5a8368b` | prueba local: pago 1 (0,01) desde la `C…` | [c5a8368b…](https://stellar.expert/explorer/testnet/tx/c5a8368b1cff53720f468be5c0389698d0dfaac5dfacdaf1589b5c194a8bd1e8) |
+| `90253b74` | prueba local: pago 2 | [90253b74…](https://stellar.expert/explorer/testnet/tx/90253b7409db3a36e61a2609569725aff32b70523783168cb75487bd82cdbe6a) |
+| `78672d8c` | prueba local: pago 3 | [78672d8c…](https://stellar.expert/explorer/testnet/tx/78672d8c621c41419d3829c0ba44ce510bde9656a3b77add69986dc165d10d30) |
+| `1a2832bc` | prueba local: pago 4 | [1a2832bc…](https://stellar.expert/explorer/testnet/tx/1a2832bc2881c5fa5895588bede67b439110c7227c2ac26b098e0db178633f8c) |
+| — (sin tx) | prueba local: pago 5 bloqueado, `TopeAlcanzado` (simulación, sin tx) | — |
+| `32cf2c1b` | prueba local: «Reset demo budget» (`renovar`) | [32cf2c1b…](https://stellar.expert/explorer/testnet/tx/32cf2c1b8428002d9e6309344f448fd782f4d8e33f0323e09ae48079d137f171) |
+| `751d7693` | preview Vercel (PR #50): pago 1 (0,01) | [751d7693…](https://stellar.expert/explorer/testnet/tx/751d76935da781ef80b52c94e590190e1f6084b6ad2ef64196f730c2e977be49) |
+| `504e8490` | preview: pago 2 | [504e8490…](https://stellar.expert/explorer/testnet/tx/504e849057b142494b30affbc25235a55ee7c646908678adb250a57da2129f9b) |
+| `dc0c3298` | preview: pago 3 | [dc0c3298…](https://stellar.expert/explorer/testnet/tx/dc0c3298f1fce24832ebcfeec924534e245f7df5971333211502fa6a4208b6f8) |
+| `90fbbb33` | preview: pago 4 (gastado 0,0404, restante 0,0096) | [90fbbb33…](https://stellar.expert/explorer/testnet/tx/90fbbb3383367729adec539a63cf3068ff622e6d136f8f189c89ecf8e04af745) |
+| — (sin tx) | preview: pago 5 bloqueado, `TopeAlcanzado` (simulación, sin tx) | — |
+| `7df663f8` | preview: «Reset demo budget» (`renovar`) | [7df663f8…](https://stellar.expert/explorer/testnet/tx/7df663f8f46ba74182b3b59eb31e069ef84defc5585393755c7b36fde60da2a8) |
+
 <!-- enlaces:auto -->
 ## Enlaces
 
 - ⬆️ Arriba: [Mapa (hub)](MAPA.md) · [Índice de docs](INDICE.md)
 - 📖 Fuente de verdad: [PLAN-OPUS — la biblia](PLAN-OPUS.md)
 - Relacionado: [Demo (testnet)](DEMO.md) · [Costos (Q8)](COSTOS.md)
-- Lo enlazan: [Costos (Q8)](COSTOS.md) · [agent-client](../agent-client/AGENTS.md) · [api-demo](../api-demo/AGENTS.md) · [Decisiones](DECISIONES.md) · [Demo (testnet)](DEMO.md) · [Índice de docs](INDICE.md) · [Mapa (hub)](MAPA.md)
+- Lo enlazan: [Botón Correr agente](2026-10-26-boton-correr-agente.md) · [Costos (Q8)](COSTOS.md) · [agent-client](../agent-client/AGENTS.md) · [api-demo](../api-demo/AGENTS.md) · [Decisiones](DECISIONES.md) · [Demo (testnet)](DEMO.md) · [Índice de docs](INDICE.md) · [Mapa (hub)](MAPA.md)
 - Tags: #quickchain #docs
 <!-- /enlaces:auto -->
 
