@@ -67,7 +67,7 @@ filas[filas.length - 1].nota = `${String(scValToNative(cobro.returnValue))} unid
 // 5. pausar y probar un pago (debe bloquearse sin tx)
 await invocar(cuenta, "pausar", [], "pausar()");
 try {
-  await crearFetchConPresupuesto({ cuenta, secretoAgente: process.env.AGENT_SECRET_KEY!, rpcUrl })(`${base.replace(/\/$/, "")}/tipo-cambio`);
+  await crearFetchConPresupuesto({ cuenta, secretoAgente: process.env.AGENT_SECRET_KEY!, rpcUrl, hostsPermitidos: [new URL(base).host] })(`${base.replace(/\/$/, "")}/tipo-cambio`);
   filas.push({ paso: "pago con la cuenta pausada", nota: "⚠️ NO se bloqueó" });
 } catch (e) {
   const m = e instanceof PagoBloqueado ? e.motivo : (e as Error).message.slice(0, 120);
