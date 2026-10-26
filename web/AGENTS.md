@@ -18,7 +18,7 @@ Correr: `pnpm dev:web`. Tests sin red: `pnpm --filter web test`.
 - ⬆️ Arriba: [Mapa (hub)](../docs/MAPA.md) · [Índice de docs](../docs/INDICE.md)
 - 📖 Fuente de verdad: [PLAN-OPUS — la biblia](../docs/PLAN-OPUS.md)
 - Relacionado: [contracts/cuenta-presupuesto](../contracts/cuenta-presupuesto/AGENTS.md) · [api-demo](../api-demo/AGENTS.md) · [Demo (testnet)](../docs/DEMO.md)
-- Issue: [#4](https://github.com/jxsu404/quickchain/issues/4)
+- Issue: [#4](https://github.com/jxsu404/stellar-quickpass/issues/4)
 - Lo enlazan: [AGENTS (raíz)](../AGENTS.md) · [Tareas](../TAREAS.md) · [Arquitectura](../docs/ARQUITECTURA.md) · [Demo (testnet)](../docs/DEMO.md) · [Mapa (hub)](../docs/MAPA.md) · [PLAN-OPUS — la biblia](../docs/PLAN-OPUS.md)
 - Tags: #quickchain #paquete
 <!-- /enlaces:auto -->

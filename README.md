@@ -3,6 +3,10 @@
 > **Regla n.º 1: [docs/PLAN-OPUS.md](docs/PLAN-OPUS.md) es la biblia de Stellar QuickPass.** Toda persona o agente que trabaje aquí (integrantes, Raúl, Martín o cualquier otro) lee el plan antes de empezar y sigue sus fases, tareas (Q0–Q15), horarios de corte y planes B. Si algo choca con el plan, gana el plan; cualquier integrante puede editar el plan y la app por PR y hacer merge a `main` con el CI en verde; los cambios importantes del plan se anotan con fecha en [DECISIONES](docs/DECISIONES.md).
 
 **Tu agente de IA paga APIs solo, con un tope mensual en USDC que firmás una sola vez.**
+
+- **Web (testnet):** https://stellar-quickpass.vercel.app (también responde https://quickchain.vercel.app)
+- **API demo x402 (Render):** https://quickchain-api-demo.onrender.com (conserva el nombre viejo: renombrarla exige un servicio nuevo)
+- **Repo:** https://github.com/jxsu404/stellar-quickpass (la URL vieja redirige)
 Hecho para el Pura Vida Ideathon sobre Stellar. **Corre en testnet y el contrato no está auditado.**
 
 ## El problema
