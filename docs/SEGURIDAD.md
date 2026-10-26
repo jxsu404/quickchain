@@ -10,14 +10,20 @@
 | Desbordamiento de enteros | `checked_*` (contadores y comisión) + `overflow-checks = true` (Cargo.toml:7) | hecho (t15) |
 | Allowance mayor que el tope | ya no aplica: no hay `approve`/`transfer_from`; el USDC vive en `C` y `approve` desde `C` da `OperacionNoPermitida` | no aplica (t05) |
 | API cobra sin entregar | `api-demo` prepara la respuesta antes de liquidar | hecho (heredado) |
-| Pago falso con `X-QUICKCHAIN-TX` | verificar tx en RPC (destino, monto, contrato, no reutilizada) | pendiente (pregunta abierta 1) |
-| Filtración de llaves | `.gitignore` cubre `.env*`; `.env.example` solo nombres; `gitleaks git` sobre todo el historial sin hallazgos (`.gitleaks.toml` permite llaves públicas hex) | hecho (sin CI: no hay `.github/workflows`) |
+| Prompt injection o un 402 que pide un monto enorme | `max_por_llamada` en cadena; en el SDK, `maxPorLlamada` local y `hostsPermitidos` | hecho (Q2/Q7: `/caro` de US$1 bloqueado con `MontoPorLlamada`, ver [transacciones](transacciones.md)). Límite: un vendedor permitido puede cobrar caro dentro del máximo |
+| Agente en loop | tope por periodo | hecho (5.º pago bloqueado con `TopeAlcanzado`). Límite de llamadas por minuto en el SDK: pendiente |
+| Repetir o modificar la auth entry | nonce y vencimiento de Soroban; la firma queda ligada a `transfer(C, payTo, monto)` | hecho (propio de Soroban) |
+| Facilitador malicioso | solo puede enviar la transferencia exacta que firmó el agente | aceptado: puede cobrar y que el vendedor no entregue (riesgo de x402, acotado por llamada) |
+| Nosotros (el operador) | sin admin ni `upgrade`; la comisión va a una tesorería fija del constructor | hecho. Si se pierde la llave de la tesorería, solo se pierden comisiones |
+| Vence el TTL de la instancia | `renovar` extiende el TTL | hecho; si nadie renueva por meses hay que restaurar |
+| Pago falso con `X-QUICKCHAIN-TX` | ya no aplica: Q2 quitó ese header; el pago es x402 `exact` liquidado por el facilitador | no aplica |
+| Filtración de llaves | `.gitignore` cubre `.env*`; `.env.example` solo nombres; `gitleaks git` sobre todo el historial sin hallazgos (`.gitleaks.toml` permite llaves públicas hex) | hecho (Q0: job de CI con gitleaks y grep de semillas Stellar en cada PR) |
 | Auth entry firmada en un periodo y usada en otro | cuenta contra el periodo en que se ejecuta (los contadores se leen al ejecutar); vence por `signatureExpirationLedger` | aceptado |
 | Pago a dirección *muxed* (`M…`) | `to` no convierte a `Address` → `OperacionNoPermitida` | limitación conocida |
 | Firma ed25519 inválida | `ed25519_verify` aborta la ejecución (error de host, no `FirmaInvalida=3`); igual no pasa | hecho (t04) |
 | Mensajes que suenen a inversión | reglas en AGENTS.md y CONTRIBUTING.md | hecho |
 
-Riesgos aceptados para la demo: solo testnet; un presupuesto por agente; sin auditoría externa del contrato.
+Riesgos aceptados para la demo: solo testnet; un presupuesto por agente; sin auditoría externa del contrato. Legal: no hay custodia nuestra (el USDC está en un contrato que solo controla el dueño); hay que confirmar con un abogado si cobrar 1 % nos hace VASP o proveedor de pagos (Ley 10.961, SUGEF). Tabla base: [PLAN-OPUS §3](PLAN-OPUS.md). Pendiente para dar Q9 por lista: **revisión de otra persona**.
 
 <!-- enlaces:auto -->
 ## Enlaces

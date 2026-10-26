@@ -1,46 +1,58 @@
 # Arquitectura
 
+Diseño vigente según [PLAN-OPUS §1](PLAN-OPUS.md) (modo A: la cuenta-contrato paga directo). El USDC del mes **vive en la cuenta-presupuesto `C…`**; no hay `approve` ni `transfer_from`.
+
 ## Piezas
 ```mermaid
 flowchart LR
-  D[Dueño] -->|correo| W[web + Cavos]
-  W -->|1 firma: approve + crear_presupuesto| C[(Contrato cuenta-presupuesto<br/>Soroban)]
-  A[Agente IA<br/>agent-client] -->|gastar| C
-  C -->|USDC transfer_from dueño→API| P[Cuenta de la API]
-  A -->|HTTP| API[api-demo x402]
+  D[Dueño G…] -->|correo| W[web + Cavos]
+  W -->|1 firma: renovar tope, máx., fin, recarga| C[(cuenta-presupuesto C…<br/>Soroban)]
+  A[Agente IA<br/>agent-client, llave sin fondos] -->|firma auth entry de transfer| F[Facilitador x402<br/>público o propio]
+  F -->|envía transfer C→vendedor| C
+  C -->|USDC| V[Vendedor api-demo G…]
+  A -->|HTTP + PAYMENT-SIGNATURE| V
+  C -->|comisión 1 % acumulada| T[Tesorería fija]
 ```
 
-## Flujo de un pago
+## Flujo de un pago (x402 `exact`, `from = C…`)
 ```mermaid
 sequenceDiagram
   participant A as agent-client
-  participant API as api-demo
+  participant V as vendedor (api-demo)
+  participant F as facilitador
   participant C as cuenta-presupuesto
-  A->>API: GET /api/clima
-  API-->>A: 402 + accepts (payTo, amount)
-  A->>C: gastar(agent, payTo, amount)
-  alt dentro del tope y del mes
-    C-->>A: OK (hash de tx)
-    A->>API: GET + X-QUICKCHAIN-TX
-    API-->>A: 200 datos
-  else pasa el tope / mes vencido / cancelado
-    C-->>A: error (TopeExcedido / PeriodoVencido / Inactivo)
+  A->>V: GET /tipo-cambio
+  V-->>A: 402 + PAYMENT-REQUIRED (payTo, amount, areFeesSponsored)
+  A->>A: arma transfer(C, payTo, amount), simula, firma la auth entry con la llave del agente, simula otra vez
+  alt __check_auth lo rechaza en la simulación
+    A-->>A: PagoBloqueado (TopeAlcanzado / MontoPorLlamada / Pausada / PeriodoVencido…), sin tx
+  else pasa
+    A->>V: GET + PAYMENT-SIGNATURE
+    V->>F: verify y settle
+    F->>C: envía la tx (el facilitador paga el fee)
+    C->>C: __check_auth: firma del agente, solo transfer de USDC, tope + comisión, máx. por llamada, periodo, pausa
+    C-->>V: USDC
+    V-->>A: 200 + PAYMENT-RESPONSE (hash de la tx)
   end
 ```
 
-## Ciclo mensual
+## Ciclo del periodo
 ```mermaid
 stateDiagram-v2
-  [*] --> Activo: crear_presupuesto (firma dueño)
-  Activo --> Activo: gastar (firma agente, ≤ tope)
-  Activo --> Vencido: fin del periodo
-  Vencido --> Activo: renovar (firma dueño)
-  Activo --> Cancelado: cancelar (firma dueño)
-  Cancelado --> Activo: renovar
+  [*] --> SinPresupuesto: deploy (constructor: owner, agente, token, tesorería, fee_bps)
+  SinPresupuesto --> Activo: renovar (firma del dueño)
+  Activo --> Activo: pago del agente (≤ tope y ≤ máx. por llamada)
+  Activo --> Vencido: fin_periodo
+  Vencido --> Activo: renovar (cobra comisión pendiente, reinicia gastado)
+  Activo --> Pausado: pausar (dueño)
+  Pausado --> Activo: reanudar (dueño)
 ```
 
 ## Contrato `cuenta-presupuesto`
-Estado por agente: `owner, agent, token, cap, period, inicio, gastado, activo`. El USDC no entra al contrato: queda en la cuenta del dueño y sale con `transfer_from` usando la allowance que el dueño dio una vez.
+- Config (constructor): `owner`, `token` (USDC de Circle en testnet), `tesoreria`, `fee_bps` (100 = 1 %). Sin admin ni `upgrade`.
+- Política: `agente` (llave ed25519), `tope`, `max_por_llamada`, `fin_periodo`, `pausada`. Contadores: `periodo`, `gastado`, `comision_pendiente`.
+- Funciones del dueño (`owner.require_auth()`): `renovar`, `pausar`, `reanudar`, `cambiar_agente`, `retirar` (no puede tocar la comisión pendiente). Pública: `cobrar_comision`, `estado`.
+- Código: [`contracts/cuenta-presupuesto/src/lib.rs`](../contracts/cuenta-presupuesto/AGENTS.md). Corrida de punta a punta en testnet con links: [transacciones](transacciones.md).
 
 <!-- enlaces:auto -->
 ## Enlaces
