@@ -28,10 +28,10 @@ async function x402() {
 const json = (status: number, body: unknown, headers: Record<string, string> = {}) =>
   Response.json(body, { status, headers });
 
-/** Envuelve un handler: sin pago responde 402; con pago válido cobra y responde 200. */
-export async function cobrar(req: Request, descripcion: string, entregar: () => Promise<unknown>): Promise<Response> {
+/** Envuelve un handler (precio opcional, ej. "$1"; si no, X402_PRECIO): sin pago responde 402; con pago válido cobra y responde 200. */
+export async function cobrar(req: Request, descripcion: string, entregar: () => Promise<unknown>, precio?: string): Promise<Response> {
   const { s, cfg } = await x402();
-  const requisitos = await s.buildPaymentRequirements({ scheme: "exact", payTo: cfg.payTo, price: cfg.precio, network: RED_X402 });
+  const requisitos = await s.buildPaymentRequirements({ scheme: "exact", payTo: cfg.payTo, price: precio ?? cfg.precio, network: RED_X402 });
   const recurso = { url: new URL(req.url).pathname, description: descripcion, mimeType: "application/json" };
   const pedirPago = async (error?: string) => {
     const pr = await s.createPaymentRequiredResponse(requisitos, recurso, error);

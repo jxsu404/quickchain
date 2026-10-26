@@ -17,9 +17,15 @@
 | 2026-10-25 | Q1: comisión 1 % (`fee_bps = 100`) redondeada hacia arriba, incluida en el tope, acumulada en `comision_pendiente` y cobrada en `renovar` o con `cobrar_comision()` (pública, a tesorería fija) | `__check_auth` no puede mover fondos (PLAN-OPUS §2.2); cierra la pregunta abierta 2 |
 | 2026-10-25 | Q1: token = SAC del USDC de Circle en testnet (`USDC:GBBD47…` → `CBIELTK6…DAMA`). Ojo: el plan dice no usar `CBIELTK6…` "de Writz", pero ese ID **es** el SAC del USDC de Circle (`stellar contract id asset`). Lo confirma Josué | dato verificado con la CLI |
 | 2026-10-25 | Q1: `CBIELTK6…` verificado con 3 fuentes (CLI, Horizon `/assets`, docs de Circle): es el USDC de Circle, no de Writz. Pruebas en testnet con USDC obtenido por path payment XLM→USDC en el DEX (el faucet de Circle no tiene API usable) | ver [pruebas-q1.md](pruebas-q1.md) |
+| 2026-10-25 | Q3: el vendedor y el facilitador viven en `api-demo/` (`/tipo-cambio`, `/caro`, `/facilitador/*`), no en `servidor/` como dice el plan | es la carpeta que ya existe; mismo comportamiento |
+| 2026-10-25 | Q3: el pago a la API es x402 `exact` estándar con `from = C…` (modo A del plan), no `X-QUICKCHAIN-TX` | probado en testnet: la `C…` pagó con el facilitador público y con el propio (ver [transacciones](transacciones.md)); responde la pregunta abierta 1 |
+| 2026-10-25 | Q3: tipo de cambio de ExchangeRate-API (`open.er-api.com`), rotulado "no oficial del BCCR" | fuente real sin llave; el servicio del BCCR pide token |
+| 2026-10-25 | Q2: el SDK vive en `agent-client/` (`src/sdk.ts`), no en `sdk/` como dice el plan; se quitó `gastar()` y `X-QUICKCHAIN-TX` | es el paquete que ya existe; el pago es x402 `exact` con `from = C…`, probado en testnet ([transacciones](transacciones.md)) |
+| 2026-10-25 | Q2: la firma del agente usa `authorizeEntry` de stellar-sdk con un `Keypair`, sin firmador custom | el `Vec<{public_key, signature}>` coincide con `FirmaAgente` del contrato; se verificó en testnet (responde la pregunta abierta 2 del plan) |
+| 2026-10-25 | Q8: la comisión de 1 % se usa tal como la implementa el contrato de #11 (acumulada en `__check_auth` y cobrada con `cobrar_comision()`/`renovar`); Q8 no toca el contrato. Scripts en `agent-client/src/` (`cobrar-comision`, `medir-costos`), no en `scripts/` | el plan ya lo asigna a Q1; probado en testnet ([costos](COSTOS.md)) |
 
 ## Preguntas abiertas
-1. **Cómo prueba el agente el pago a la API.** El esquema x402 `exact` espera un pago firmado por quien paga; en QuickChain paga el contrato. Opción MVP: el agente manda `X-QUICKCHAIN-TX` y `api-demo` verifica la tx en el RPC (destino, monto, contrato). Alternativa: el contrato autoriza y el agente firma un `exact` normal. Decidir en tarea 2/3.
+1. ~~**Cómo prueba el agente el pago a la API.**~~ Resuelta en Q3 (ver arriba): x402 `exact` con `from = C…`.
 2. ~~**Comisión 1 %**~~ resuelto en Q1 (ver tabla).
 3. **Allowance:** `approve` del token tiene vencimiento por ledger; la web debe pedir uno que cubra el periodo.
 
@@ -28,7 +34,7 @@
 
 - ⬆️ Arriba: [Mapa (hub)](MAPA.md) · [Índice de docs](INDICE.md)
 - 📖 Fuente de verdad: [PLAN-OPUS — la biblia](PLAN-OPUS.md)
-- Relacionado: [Auditoría](AUDITORIA.md) · [Stack](STACK.md)
+- Relacionado: [Costos (Q8)](COSTOS.md) · [Auditoría](AUDITORIA.md) · [Stack](STACK.md) · [Transacciones (testnet)](transacciones.md)
 - Lo enlazan: [Auditoría](AUDITORIA.md) · [Índice de docs](INDICE.md) · [Mapa (hub)](MAPA.md) · [Plan (resumen)](PLAN.md) · [Stack](STACK.md)
 - Tags: #quickchain #docs
 <!-- /enlaces:auto -->

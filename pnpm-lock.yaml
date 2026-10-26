@@ -13,6 +13,9 @@ importers:
       '@stellar/stellar-sdk':
         specifier: ^16.4.1
         version: 16.4.1
+      '@x402/core':
+        specifier: ~2.28.0
+        version: 2.28.0
       dotenv:
         specifier: ^17
         version: 17.4.2
@@ -29,12 +32,21 @@ importers:
 
   api-demo:
     dependencies:
+      '@stellar/stellar-sdk':
+        specifier: ^16.4.1
+        version: 16.4.1
       '@x402/core':
+        specifier: ~2.28.0
+        version: 2.28.0
+      '@x402/fetch':
         specifier: ~2.28.0
         version: 2.28.0
       '@x402/stellar':
         specifier: ~2.28.0
         version: 2.28.0
+      dotenv:
+        specifier: ^17
+        version: 17.4.2
       next:
         specifier: ^16
         version: 16.4.3(@babel/core@7.29.7)(@types/node@24.19.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -51,6 +63,9 @@ importers:
       '@types/react':
         specifier: ^19
         version: 19.3.0
+      tsx:
+        specifier: ^4
+        version: 4.23.15
       typescript:
         specifier: ^5
         version: 5.9.3
@@ -888,6 +903,9 @@ packages:
 
   '@x402/core@2.28.0':
     resolution: {integrity: sha512-Da/7zKxCKqpBoB4Msc9tFgkAv7tJTD8nG+DSSm+QdXAyJS4PQsmgVSKe17rDJTtlu0pwNbLcOje6MyQ6kaDkig==}
+
+  '@x402/fetch@2.28.0':
+    resolution: {integrity: sha512-kF5IjZIz/izg2TD/Zav+SVj0jtC0zBDfE7WcKCnMZWIsZcLCyL2GgvwXCn7CCSsNjpQ/z3Rz4OqTCA4AaeKySQ==}
 
   '@x402/stellar@2.28.0':
     resolution: {integrity: sha512-H/P46YVVEvJmnXlss8fJBNGgjaLkp3pWJ6PH2uOJY+jVemugUoQPArwtQKNovEV2BnF0gnJ+sdaRg+4Gucu6jQ==}
@@ -2519,6 +2537,10 @@ snapshots:
   '@x402/core@2.28.0':
     dependencies:
       zod: 3.25.76
+
+  '@x402/fetch@2.28.0':
+    dependencies:
+      '@x402/core': 2.28.0
 
   '@x402/stellar@2.28.0':
     dependencies:

@@ -18,6 +18,7 @@ graph TD
   docs_AUDITORIA_md["Auditoría"]
   docs_DEMO_md["Demo (testnet)"]
   docs_transacciones_md["Transacciones (testnet)"]
+  docs_COSTOS_md["Costos (Q8)"]
   docs_PITCH_md["Pitch"]
   docs_pruebas_q1_md["Pruebas Q1"]
   contracts_cuenta_presupuesto_AGENTS_md["contracts/cuenta-presupuesto"]
@@ -86,6 +87,11 @@ graph TD
   docs_AUDITORIA_md --> docs_SEGURIDAD_md
   docs_DEMO_md --> docs_PITCH_md
   docs_DEMO_md --> docs_transacciones_md
+  api_demo_AGENTS_md --> docs_transacciones_md
+  agent_client_AGENTS_md --> docs_transacciones_md
+  docs_INDICE_md --> docs_COSTOS_md
+  docs_COSTOS_md --> docs_transacciones_md
+  agent_client_AGENTS_md --> docs_COSTOS_md
   docs_DEMO_md --> agent_client_AGENTS_md
   docs_DEMO_md --> api_demo_AGENTS_md
   docs_DEMO_md --> web_AGENTS_md
@@ -142,12 +148,13 @@ graph TD
 - [Seguridad](SEGURIDAD.md)
 - [Auditoría](AUDITORIA.md)
 - [Demo (testnet)](DEMO.md) — issue [#5](https://github.com/jxsu404/quickchain/issues/5)
-- [Transacciones (testnet)](transacciones.md) — tabla vacía; Q10 la llena con links de Stellar Expert
+- [Costos (Q8)](COSTOS.md) — fees medidos en testnet y cobro de la comisión de 1 %
+- [Transacciones (testnet)](transacciones.md) — filas de Q3 (pagos x402 desde G… y C…); Q10 completa la corrida con links de Stellar Expert
 - [Pruebas Q1 (testnet)](pruebas-q1.md) — issue [#1](https://github.com/jxsu404/quickchain/issues/1)
 - [Pitch](PITCH.md) — issue [#6](https://github.com/jxsu404/quickchain/issues/6)
 - [contracts/cuenta-presupuesto](../contracts/cuenta-presupuesto/AGENTS.md) — issue [#1](https://github.com/jxsu404/quickchain/issues/1) — contrato `cuenta-presupuesto` desplegado en testnet (ver [Demo](DEMO.md))
-- [agent-client](../agent-client/AGENTS.md) — issue [#2](https://github.com/jxsu404/quickchain/issues/2)
-- [api-demo](../api-demo/AGENTS.md) — issue [#3](https://github.com/jxsu404/quickchain/issues/3)
+- [agent-client](../agent-client/AGENTS.md) — issue [#2](https://github.com/jxsu404/quickchain/issues/2); Q2: SDK `crearFetchConPresupuesto`
+- [api-demo](../api-demo/AGENTS.md) — issue [#3](https://github.com/jxsu404/quickchain/issues/3); Q3: `/tipo-cambio`, `/caro` y facilitador propio
 - [web](../web/AGENTS.md) — issue [#4](https://github.com/jxsu404/quickchain/issues/4)
 
 ## Tareas → nodos
@@ -162,7 +169,7 @@ graph TD
 | Q5 | [../web/AGENTS.md](../web/AGENTS.md) | [#4](https://github.com/jxsu404/quickchain/issues/4) |
 | Q6 | [../web/AGENTS.md](../web/AGENTS.md) | [#4](https://github.com/jxsu404/quickchain/issues/4) |
 | Q7 | [DEMO.md](DEMO.md) | [#5](https://github.com/jxsu404/quickchain/issues/5) |
-| Q8 | [DEMO.md](DEMO.md) | [#5](https://github.com/jxsu404/quickchain/issues/5) |
+| Q8 | [DEMO.md](DEMO.md) · [COSTOS.md](COSTOS.md) | [#5](https://github.com/jxsu404/quickchain/issues/5) |
 | Q9 | [SEGURIDAD.md](SEGURIDAD.md) | — |
 | Q10 | [DEMO.md](DEMO.md) · [transacciones.md](transacciones.md) | [#5](https://github.com/jxsu404/quickchain/issues/5) |
 | Q11 | [../README.md](../README.md) | [#6](https://github.com/jxsu404/quickchain/issues/6) |
