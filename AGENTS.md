@@ -18,6 +18,7 @@ Ver [docs/ARQUITECTURA.md](docs/ARQUITECTURA.md). Resumen: `web` (dueño, Cavos)
 ## Comandos
 `pnpm install` · `pnpm contrato:test` · `pnpm dev:api` · `pnpm dev:web` · `pnpm agente` · `pnpm typecheck`
 Wasm: `cargo build -p budget --target wasm32v1-none --release` (o `stellar contract build`).
+CI (pull request y push a `main`): esos tests, el wasm, `pnpm typecheck`, `pnpm docs:links` y gitleaks sobre todo el historial.
 
 ## Reglas del equipo
 Rama `rol/<nombre>`, PR a `main`, commits pequeños. Detalle en [CONTRIBUTING.md](CONTRIBUTING.md).
