@@ -136,7 +136,7 @@ graph TD
 ## Nodos
 
 - **[PLAN-OPUS — la biblia](PLAN-OPUS.md)** — centro; tareas Q0–Q15 enlazan a paquetes e issues
-- [README](../README.md)
+- [README](../README.md) — Q11: problema, cómo funciona, por qué Stellar, negocio, nota legal y créditos, cada cifra con link
 - [AGENTS (raíz)](../AGENTS.md)
 - [Cómo contribuir](../CONTRIBUTING.md)
 - [Tareas](../TAREAS.md)

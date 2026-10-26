@@ -23,6 +23,7 @@
 | 2026-10-25 | Q2: el SDK vive en `agent-client/` (`src/sdk.ts`), no en `sdk/` como dice el plan; se quitó `gastar()` y `X-QUICKCHAIN-TX` | es el paquete que ya existe; el pago es x402 `exact` con `from = C…`, probado en testnet ([transacciones](transacciones.md)) |
 | 2026-10-25 | Q2: la firma del agente usa `authorizeEntry` de stellar-sdk con un `Keypair`, sin firmador custom | el `Vec<{public_key, signature}>` coincide con `FirmaAgente` del contrato; se verificó en testnet (responde la pregunta abierta 2 del plan) |
 | 2026-10-25 | Q8: la comisión de 1 % se usa tal como la implementa el contrato de #11 (acumulada en `__check_auth` y cobrada con `cobrar_comision()`/`renovar`); Q8 no toca el contrato. Scripts en `agent-client/src/` (`cobrar-comision`, `medir-costos`), no en `scripts/` | el plan ya lo asigna a Q1; probado en testnet ([costos](COSTOS.md)) |
+| 2026-10-26 | Q11: el README dice que la comisión de 1 % ya está en el contrato (antes decía "todavía no está implementada") y que el facilitador público aceptó pagos desde la `C…` | ambas cosas están probadas en testnet ([costos](COSTOS.md), [transacciones](transacciones.md)); la lista de equipo sale de los commits y la confirma Josué |
 
 ## Preguntas abiertas
 1. ~~**Cómo prueba el agente el pago a la API.**~~ Resuelta en Q3 (ver arriba): x402 `exact` con `from = C…`.
