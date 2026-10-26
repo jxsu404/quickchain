@@ -29,7 +29,7 @@ Requisitos: Node 22+, pnpm 9, Rust (rustup) con target `wasm32v1-none`, opcional
 pnpm install
 cp .env.example .env          # llenar valores (nunca subir .env)
 pnpm contrato:test            # tests del contrato
-pnpm dev:api                  # API x402 de prueba en :4020
+pnpm dev:api                  # vendedor x402 (api-demo/servidor/vendedor.ts) en :4020
 pnpm dev:web                  # web con Cavos en :3000
 pnpm agente                   # el agente llama a la API hasta chocar con el tope
 ```
@@ -39,7 +39,7 @@ pnpm agente                   # el agente llama a la API hasta chocar con el top
 |---|---|
 | `contracts/cuenta-presupuesto` | Contrato Soroban del presupuesto (Rust) |
 | `agent-client` | Cliente TS: ante 402 paga desde el presupuesto y reintenta |
-| `api-demo` | API de prueba que cobra con x402 (Next.js) |
+| `api-demo` | Vendedor demo que cobra con x402 (`servidor/vendedor.ts`, node:http) y facilitador propio |
 | `web` | Web del dueño con login Cavos (Next.js) |
 | `docs/` | Plan, arquitectura, decisiones, seguridad, demo ([índice](docs/INDICE.md)) |
 | (privado) | Buzón del equipo: repo privado `quickchain-buzon`, acceso por invitación |
