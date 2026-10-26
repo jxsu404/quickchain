@@ -18,7 +18,7 @@ graph TD
   docs_AUDITORIA_md["Auditoría"]
   docs_DEMO_md["Demo (testnet)"]
   docs_transacciones_md["Transacciones (testnet)"]
-  docs_COSTOS_md["Costos (Q8)"]
+  docs_COSTOS_md["Costos (Q8) + precio XLM/USD"]
   docs_PITCH_md["Pitch"]
   docs_pruebas_q1_md["Pruebas Q1"]
   contracts_cuenta_presupuesto_AGENTS_md["contracts/cuenta-presupuesto"]

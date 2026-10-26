@@ -1,6 +1,6 @@
 # Costos medidos (testnet) y comisión de 1 %
 
-Fila Q8 de [PLAN-OPUS](PLAN-OPUS.md). **Toda cifra sale de una tx real de Stellar testnet**: cada fila enlaza su hash en Stellar Expert. Los fees se leyeron de Horizon (`fee_charged`) con `pnpm --filter agent-client medir-costos`. No hay proyecciones ni precios externos: el valor del XLM en dólares no se incluye porque no tenemos una fuente citada (ver "Pendiente").
+Fila Q8 de [PLAN-OPUS](PLAN-OPUS.md). **Toda cifra sale de una tx real de Stellar testnet**: cada fila enlaza su hash en Stellar Expert. Los fees se leyeron de Horizon (`fee_charged`) con `pnpm --filter agent-client medir-costos`. El único precio externo es el XLM/USD de la sección "Precio XLM/USD", con fuente y hora.
 
 ## Fee de red por operación
 
@@ -23,14 +23,25 @@ Fila Q8 de [PLAN-OPUS](PLAN-OPUS.md). **Toda cifra sale de una tx real de Stella
 - 2 pagos de US$0,01 (100.000 unidades). Cada uno suma 1.000 unidades de comisión, redondeada hacia arriba: `gastado` pasa a 0,0202 USDC y la comisión pendiente a 2.000 unidades.
 - `cobrar_comision()` mandó **2.000 unidades (0,0002 USDC)** a la tesorería en la tx [820db07e…](https://stellar.expert/explorer/testnet/tx/820db07e4b543a68ed5297398ae51009113aeadbfc1e75ac34d0be2ee919dc18). El saldo USDC de la tesorería pasó de 0 a 0,0002, leído en Horizon antes y después.
 
+## Precio XLM/USD (fuente pública)
+
+| Fuente | URL exacta | Valor | Hora |
+|---|---|---|---|
+| CoinGecko, API pública `simple/price` | https://api.coingecko.com/api/v3/simple/price?ids=stellar&vs_currencies=usd&include_last_updated_at=true | US$0,169648 | 2026-10-26 06:26 (CR); `last_updated_at` = 1793017543 |
+| Coinbase, precio spot (control) | https://api.coinbase.com/v2/prices/XLM-USD/spot | US$0,169465 | 2026-10-26 06:26 (CR) |
+
+Es el precio de mercado del XLM de **mainnet**: el XLM de testnet no vale nada. Sirve solo para estimar cuánto costaría el fee con dinero real. El precio cambia, así que antes de citarlo en el pitch hay que consultarlo de nuevo con la misma URL.
+
+**Cuenta** (con CoinGecko): un pago desde la `C…` cuesta 0,0011805 XLM × 0,169648 ≈ **US$0,00020**. La comisión de 1 % en un pago de US$0,01 es **US$0,0001**. **En un micropago de US$0,01, el 1 % no cubre el fee: cubre más o menos la mitad.** El punto de equilibrio es 1 XLM ≈ US$0,085 (0,0001 ÷ 0,0011805). Según el plan §8, eso se dice tal cual: hay que agrupar pagos, usar un canal o cobrar una comisión mínima. Hoy el fee lo paga el facilitador (`areFeesSponsored: true`), no la cuenta.
+
 ## Lectura honesta
 
 - Un pago desde la `C…` cuesta unos 11.800 stroops de fee: apenas entre 200 y 400 stroops más que uno desde una `G…` normal (entre 11.497 y 11.597). Eso queda **por debajo** del techo de 50.000 stroops del facilitador público, que de hecho aceptó la `C…`.
-- En un pago de US$0,01, la comisión es 0,0001 USDC, mientras que el fee de red es de unos 0,00118 XLM y lo paga el facilitador. Para saber si el 1 % cubre ese fee hace falta un precio XLM/USD con fuente. Si no lo cubre en micropagos, se dice, como pide el plan (§8: lotes, canal o comisión mínima).
+- En un pago de US$0,01, la comisión es 0,0001 USDC, mientras que el fee de red es de unos 0,00118 XLM y lo paga el facilitador. Con el precio de arriba, el fee es de unos US$0,00020, así que el 1 % no lo cubre. Como no lo cubre en micropagos, se dice, como pide el plan (§8: lotes, canal o comisión mínima).
 - `renovar` cuesta unos 104.612 stroops y el deploy unos 656.537 stroops. Son pagos de una vez al mes y una vez por dueño, respectivamente.
 
 ## Pendiente
-- Precio XLM/USD con fuente citada, para convertir los fees a dólares.
+- Volver a consultar el precio XLM/USD (misma URL) el día del pitch.
 - Repetir la medición en la corrida limpia de Q10 con la cuenta oficial del equipo.
 
 <!-- enlaces:auto -->
