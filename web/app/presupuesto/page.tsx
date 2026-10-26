@@ -23,6 +23,7 @@ export default function Presupuesto() {
   const [ocupado, setOcupado] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [txs, setTxs] = useState<{ que: string; hash: string }[]>([]);
+  const [saldoUsdc, setSaldoUsdc] = useState<string | null>(null);
   const finPeriodo = finDeMesCR();
 
   if (!isAuthenticated || !address) return <p>Primero entrá con tu correo.</p>;
@@ -56,6 +57,11 @@ export default function Presupuesto() {
   const trustline = () => correr("Abriendo trustline USDC…", async () => {
     const hash = await wallet.addTrustline(USDC, opts);
     setTxs((t) => [...t, { que: "trustline USDC", hash }]);
+    setSaldoUsdc(await wallet.tokenBalance(USDC));
+  });
+
+  const verSaldo = () => correr("Leyendo tu saldo USDC…", async () => {
+    setSaldoUsdc(await wallet.tokenBalance(USDC));
   });
 
   const firmar = () => correr("Firmando renovar con Cavos…", async () => {
@@ -101,7 +107,11 @@ export default function Presupuesto() {
       {invalido && <p style={{ color: "crimson" }}>{invalido}</p>}
 
       <p>
-        <button disabled={!walletStatus.isReady || !!ocupado} onClick={trustline}>Abrir trustline USDC</button>{" "}
+        <button disabled={!walletStatus.isReady || !!ocupado} onClick={trustline}>Activar USDC</button>{" "}
+        <button disabled={!walletStatus.isReady || !!ocupado} onClick={verSaldo}>Ver saldo USDC</button>{" "}
+        Tu saldo: {saldoUsdc ?? "—"} USDC · USDC de prueba: <a href="https://faucet.circle.com" target="_blank" rel="noreferrer">faucet.circle.com</a> (Stellar Testnet, pegá tu dirección)
+      </p>
+      <p>
         <button disabled={!listo} onClick={firmar}>Firmar renovar (una firma)</button>
       </p>
       <p>Comisión QuickChain: 1 % de lo que gaste el agente, incluida en el tope. Sin mensualidad.</p>
