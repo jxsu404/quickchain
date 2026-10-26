@@ -27,6 +27,8 @@
 ## Prueba en el navegador (2026-10-26 ~2:40 p. m. CR, `next dev` contra testnet)
 Cuenta demo [`CAD2CAZC…`](https://stellar.expert/explorer/testnet/contract/CAD2CAZC7S22MTZKAKAW76LLU2FLGX6JQEK4ITNS4FS6T7WQ5TNFKNIB), periodo #11: 81 % (0,0404 de 0,05 USDC) en Ámbar, restante 0,0096 USDC y 4 pagos de 0,01 USDC con su tx ([a70649da…](https://stellar.expert/explorer/testnet/tx/a70649dad8f0b44981994b9911c53ca81282ebfd07f053fdbd55baed25a7ade3), [b5cad151…](https://stellar.expert/explorer/testnet/tx/b5cad1515de960387000586d101c41b596301c312e545265a66e93c341c71d56), [ca3293bf…](https://stellar.expert/explorer/testnet/tx/ca3293bfd35a4910bdf1c5797ee6ce77309779d9c41a35cabd018cced93f5c84), [f571e9a9…](https://stellar.expert/explorer/testnet/tx/f571e9a95624ec5f25065fcf7c28b5f91e6d889355d0fde958402b61e40665ee)), más la renovación [c3581ca0…](https://stellar.expert/explorer/testnet/tx/c3581ca0cb9e015e09a9e7c0f5cc11d31e4ebca945954f7cef75c2b391a54d1c). El estado rojo y el de error (C… inválida) se probaron a mano; el rojo, con un bloqueo puesto en `sessionStorage` solo para la prueba.
 
+Capturas (local, testnet): [móvil](capturas/dashboard-movil.png) · [escritorio](capturas/dashboard-escritorio.png).
+
 <!-- enlaces:auto -->
 ## Enlaces
 
