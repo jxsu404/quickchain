@@ -12,6 +12,7 @@
 | [SEGURIDAD.md](SEGURIDAD.md) | Modelo de amenazas |
 | [AUDITORIA.md](AUDITORIA.md) | Lista de revisión y resultados |
 | [DEMO.md](DEMO.md) | Guion de la demo y links de transacciones |
+| [transacciones.md](transacciones.md) | Hashes de testnet (vacío hasta Q10) y link a Stellar Expert |
 | [PITCH.md](PITCH.md) | Pitch (borrador) |
 | [../TAREAS.md](../TAREAS.md) | Tareas y fecha límite |
 | [../CONTRIBUTING.md](../CONTRIBUTING.md) | Reglas del equipo |
@@ -23,7 +24,7 @@
 
 - ⬆️ Arriba: [Mapa (hub)](MAPA.md) · (este es el índice)
 - 📖 Fuente de verdad: [PLAN-OPUS — la biblia](PLAN-OPUS.md)
-- Relacionado: [Plan (resumen)](PLAN.md) · [Arquitectura](ARQUITECTURA.md) · [Stack](STACK.md) · [Decisiones](DECISIONES.md) · [Seguridad](SEGURIDAD.md) · [Auditoría](AUDITORIA.md) · [Demo (testnet)](DEMO.md) · [Pitch](PITCH.md)
-- Lo enlazan: [AGENTS (raíz)](../AGENTS.md) · [README](../README.md) · [Mapa (hub)](MAPA.md) · [PLAN-OPUS — la biblia](PLAN-OPUS.md)
+- Relacionado: [Plan (resumen)](PLAN.md) · [Arquitectura](ARQUITECTURA.md) · [Stack](STACK.md) · [Decisiones](DECISIONES.md) · [Seguridad](SEGURIDAD.md) · [Auditoría](AUDITORIA.md) · [Demo (testnet)](DEMO.md) · [Transacciones (testnet)](transacciones.md) · [Pitch](PITCH.md)
+- Lo enlazan: [AGENTS (raíz)](../AGENTS.md) · [README](../README.md) · [Mapa (hub)](MAPA.md) · [PLAN-OPUS — la biblia](PLAN-OPUS.md) · [Transacciones (testnet)](transacciones.md)
 - Tags: #quickchain #docs
 <!-- /enlaces:auto -->
