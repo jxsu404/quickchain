@@ -1,0 +1,18 @@
+{
+  "red": "testnet",
+  "contrato": "cuenta-presupuesto",
+  "paquete": "contracts/cuenta-presupuesto",
+  "contract_id": "CBH3LQQCVTY74KXKCS2526KXH2F7B32RSMSIV4ZKXKFPQS5I4UR3TALX",
+  "wasm_hash": "7190eb76ae99f35f71854e4c06bc89db3b17025ff836693c7b87b874b9163288",
+  "deploy_tx": "9fdac47cfff9ecb3648fd89821b74ee7501c6d89a2a7d823d8cec6e2f30196b7",
+  "owner": "GCP4NEWM7CDCWA6Q7732YPZN6LG4IDVGSJZHJPADCHJ66YOXU7K3NA3D",
+  "agente_ed25519_hex": "6b2c7af77efdc6ef473e12c57ee22956bbef384f57b412268c442505716fb866",
+  "token_usdc": "CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA",
+  "tesoreria": "GCP4NEWM7CDCWA6Q7732YPZN6LG4IDVGSJZHJPADCHJ66YOXU7K3NA3D",
+  "fee_bps": 100,
+  "deployer": "GCP4NEWM7CDCWA6Q7732YPZN6LG4IDVGSJZHJPADCHJ66YOXU7K3NA3D",
+  "fecha": "2026-10-25 20:44 (CR)",
+  "stellar_expert": "https://stellar.expert/explorer/testnet/contract/CBH3LQQCVTY74KXKCS2526KXH2F7B32RSMSIV4ZKXKFPQS5I4UR3TALX",
+  "renovar_inicial_tx": "17f33d6533e16be433d5f3acd93a8dc282511f1087e7e29fff11abf32cd4212f",
+  "nota": "Instancia de referencia: owner y tesorería = deployer de prueba; renovar inicial con tope 0,05 USDC, máx 0,02 por llamada, fin 2026-11-01 00:00 CR, recarga 0 (sin USDC todavía)."
+}

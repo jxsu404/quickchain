@@ -6,10 +6,10 @@
 QuickChain: el dueño de un agente de IA entra con correo (Cavos, sin frase semilla) y firma **una vez** un tope mensual en USDC en Stellar. El agente paga APIs x402 sin firmas por llamada hasta llegar al tope o a fin de mes. Un contrato Soroban hace cumplir el tope. Una firma renueva el mes siguiente. Modelo: 1 % de lo que gasta el agente, sin mensualidad.
 
 ## Arquitectura
-Ver [docs/ARQUITECTURA.md](docs/ARQUITECTURA.md). Resumen: `web` (dueño, Cavos) → `contracts/budget` (tope) ← `agent-client` (agente) → `api-demo` (cobra con x402).
+Ver [docs/ARQUITECTURA.md](docs/ARQUITECTURA.md). Resumen: `web` (dueño, Cavos) → `contracts/cuenta-presupuesto` (tope) ← `agent-client` (agente) → `api-demo` (cobra con x402).
 
 ## Mapa de carpetas
-- `contracts/budget/` — Rust, soroban-sdk 22. Tiene su propio [AGENTS.md](contracts/budget/AGENTS.md).
+- `contracts/cuenta-presupuesto/` — Rust, soroban-sdk 22. Tiene su propio [AGENTS.md](contracts/cuenta-presupuesto/AGENTS.md).
 - `agent-client/` — TS + @stellar/stellar-sdk. [AGENTS.md](agent-client/AGENTS.md)
 - `api-demo/` — Next.js + @x402/core + @x402/stellar. [AGENTS.md](api-demo/AGENTS.md)
 - `web/` — Next.js + @cavos/kit. [AGENTS.md](web/AGENTS.md)
@@ -17,7 +17,7 @@ Ver [docs/ARQUITECTURA.md](docs/ARQUITECTURA.md). Resumen: `web` (dueño, Cavos)
 
 ## Comandos
 `pnpm install` · `pnpm contrato:test` · `pnpm dev:api` · `pnpm dev:web` · `pnpm agente` · `pnpm typecheck`
-Wasm: `cargo build -p budget --target wasm32v1-none --release` (o `stellar contract build`).
+Wasm: `cargo build -p cuenta-presupuesto --target wasm32v1-none --release` (o `stellar contract build`).
 CI (pull request y push a `main`): esos tests, el wasm, `pnpm typecheck`, `pnpm docs:links` y gitleaks sobre todo el historial.
 
 ## Reglas del equipo
@@ -45,7 +45,7 @@ El buzón del equipo vive en el repo privado `jxsu404/quickchain-buzon` (acceso 
 
 - ⬆️ Arriba: [Mapa (hub)](docs/MAPA.md) · [Índice de docs](docs/INDICE.md)
 - 📖 Fuente de verdad: [PLAN-OPUS — la biblia](docs/PLAN-OPUS.md)
-- Relacionado: [Cómo contribuir](CONTRIBUTING.md) · [Tareas](TAREAS.md) · [Índice de docs](docs/INDICE.md) · [contracts/budget](contracts/budget/AGENTS.md) · [agent-client](agent-client/AGENTS.md) · [api-demo](api-demo/AGENTS.md) · [web](web/AGENTS.md)
+- Relacionado: [Cómo contribuir](CONTRIBUTING.md) · [Tareas](TAREAS.md) · [Índice de docs](docs/INDICE.md) · [contracts/cuenta-presupuesto](contracts/cuenta-presupuesto/AGENTS.md) · [agent-client](agent-client/AGENTS.md) · [api-demo](api-demo/AGENTS.md) · [web](web/AGENTS.md)
 - Lo enlazan: [Cómo contribuir](CONTRIBUTING.md) · [README](README.md) · [Mapa (hub)](docs/MAPA.md)
 - Tags: #quickchain #docs
 <!-- /enlaces:auto -->
