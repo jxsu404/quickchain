@@ -54,6 +54,7 @@ Guía de la demo en testnet: [docs/DEMO.md](docs/DEMO.md).
 | Carpeta | Qué es |
 |---|---|
 | `contracts/cuenta-presupuesto` | Contrato Soroban de la cuenta-presupuesto (Rust) |
+| `contracts/fabrica-presupuesto` | Fábrica: cualquiera crea su propia cuenta-presupuesto desde `/crear` ([fábrica](contracts/fabrica-presupuesto/AGENTS.md)) |
 | `agent-client` | SDK del agente: ante un 402 paga desde la `C…` y reintenta |
 | `api-demo` | Vendedor demo que cobra con x402 (`servidor/vendedor.ts`, node:http); liquida con el facilitador público y trae uno propio como respaldo local opcional |
 | `web` | Web del dueño (Next.js): landing en `/`, demo con login Cavos en `/demo`, firma del presupuesto en `/presupuesto` ([web](web/AGENTS.md)) |

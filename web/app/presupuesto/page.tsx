@@ -1,6 +1,6 @@
 "use client";
 // Q4: el dueño firma `renovar` de su cuenta-presupuesto con la wallet Cavos (una firma por mes).
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCavos } from "@cavos/kit/react";
 import {
   USDC, argsRenovar, explicarError, finDeMesCR, leerEstado, linkContrato, linkTx, problemasAntesDeFirmar,
@@ -25,6 +25,8 @@ export default function Presupuesto() {
   const [txs, setTxs] = useState<{ que: string; hash: string }[]>([]);
   const [saldoUsdc, setSaldoUsdc] = useState<string | null>(null);
   const finPeriodo = finDeMesCR();
+  // ?contract=C… (viene de /crear): la cuenta del usuario, no la de la demo.
+  useEffect(() => { const c = new URLSearchParams(window.location.search).get("contract"); if (c) setContrato(c); }, []);
 
   if (!isAuthenticated || !address) return <main><h2>Agent monthly budget</h2><p className="tagline">Your agent pays. You set the cap.</p><p>Log in with your email first.</p><button onClick={openModal}>Log in with email</button> <small className="sub">(via Cavos, no seed phrase)</small></main>;
   if (!wallet || wallet.chain !== "stellar") return <p>The connected wallet is not a Stellar wallet.</p>;
@@ -96,7 +98,7 @@ export default function Presupuesto() {
       )}
 
       <label>Budget account (C…)<br /><input value={contrato} onChange={(e) => { setContrato(e.target.value); setEstado(null); }} size={60} /></label>
-      <p><button disabled={!contrato.trim() || !!ocupado} onClick={revisar}>Check account</button></p>
+      <p><button disabled={!contrato.trim() || !!ocupado} onClick={revisar}>Check account</button> <small className="sub">No account yet? <a href="/crear">Create my budget</a></small></p>
 
       {estado && (
         <ul>
