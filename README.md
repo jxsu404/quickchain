@@ -12,11 +12,11 @@ Las APIs empiezan a cobrar por llamada con x402. Con el esquema `exact`, cada ll
 1. El dueño entra con su **correo** usando [Cavos](https://docs.cavos.xyz/) (sin frase semilla).
 2. Se despliega su **cuenta-presupuesto**: una cuenta-contrato `C…` de Soroban ([`contracts/cuenta-presupuesto`](contracts/cuenta-presupuesto/AGENTS.md)).
 3. El dueño firma **una vez** `renovar`: tope del mes, máximo por llamada, fin del periodo y recarga en USDC.
-4. El agente tiene una llave ed25519 **sin fondos**. Ante un 402, el SDK ([`agent-client`](agent-client/AGENTS.md)) arma el pago x402 `exact` con `from = C…` y lo firma con esa llave.
+4. El agente tiene una llave ed25519 **sin fondos**. Ante un 402, el SDK ([`agent-client`](agent-client/AGENTS.md)) arma el pago x402 `exact` con `from = C…` y lo firma con esa llave. Antes de firmar, el SDK exige una lista de hosts permitidos (obligatoria), limita a 10 pagos por minuto por defecto y acota la vida de la firma a 300 s como máximo.
 5. El `__check_auth` del contrato solo deja pasar transferencias de USDC dentro del tope (comisión incluida), del máximo por llamada, antes del fin del periodo y sin pausa. Si no, **bloquea en la simulación: no hay tx y no se mueve plata**.
 6. El dueño puede pausar, rotar la llave del agente o retirar lo que sobra, cada cosa con una firma.
 
-Evidencia en testnet, cada fila con link a Stellar Expert: [docs/transacciones.md](docs/transacciones.md). Por ejemplo, un pago desde la `C…` con el facilitador público: [d0e333b2…](https://stellar.expert/explorer/testnet/tx/d0e333b29eb42b717426844ebf4dc443083fc2abaa72e5c60d454f137d1b1fc0). Diagramas en [docs/ARQUITECTURA.md](docs/ARQUITECTURA.md) y amenazas en [docs/SEGURIDAD.md](docs/SEGURIDAD.md).
+Evidencia en testnet, cada fila con link a Stellar Expert: [docs/transacciones.md](docs/transacciones.md). Por ejemplo, un pago desde la `C…` con el facilitador público: [d0e333b2…](https://stellar.expert/explorer/testnet/tx/d0e333b29eb42b717426844ebf4dc443083fc2abaa72e5c60d454f137d1b1fc0). Instancia actual de la demo: [`CBKMDFKW…`](https://stellar.expert/explorer/testnet/contract/CBKMDFKWDHO2V6K27R5W7N3DPSDNHOV5GBACNHZQ4YRC5YLYF2XROEEE) ([`deployments/testnet.json`](deployments/testnet.json)). Diagramas en [docs/ARQUITECTURA.md](docs/ARQUITECTURA.md) y amenazas en [docs/SEGURIDAD.md](docs/SEGURIDAD.md).
 
 ## Por qué Stellar
 - x402 ya corre en Stellar con el esquema `exact` y un facilitador público ([docs de Stellar](https://developers.stellar.org/docs/build/agentic-payments/x402/built-on-stellar), [blog de x402 en Stellar](https://stellar.org/es/blog/noticias-fundacion/x402-en-stellar)).
@@ -39,7 +39,7 @@ Requisitos: Node 22+, pnpm 9, Rust (rustup) con target `wasm32v1-none`, opcional
 pnpm install
 cp .env.example .env          # llenar valores (nunca subir .env)
 pnpm contrato:test            # tests del contrato
-pnpm dev:api                  # API x402 de prueba en :4020
+pnpm dev:api                  # vendedor x402 (api-demo/servidor/vendedor.ts) en :4020
 pnpm dev:web                  # web con Cavos en :3000
 pnpm agente                   # el agente llama a la API hasta chocar con el tope
 ```
@@ -50,7 +50,7 @@ Guía de la demo en testnet: [docs/DEMO.md](docs/DEMO.md).
 |---|---|
 | `contracts/cuenta-presupuesto` | Contrato Soroban de la cuenta-presupuesto (Rust) |
 | `agent-client` | SDK del agente: ante un 402 paga desde la `C…` y reintenta |
-| `api-demo` | Vendedor demo que cobra con x402 y facilitador propio |
+| `api-demo` | Vendedor demo que cobra con x402 (`servidor/vendedor.ts`, node:http); liquida con el facilitador público y trae uno propio como respaldo local opcional |
 | `web` | Web del dueño con login Cavos (Next.js) |
 | `docs/` | Plan, arquitectura, decisiones, seguridad, demo ([índice](docs/INDICE.md)) |
 | (privado) | Buzón del equipo: repo privado `quickchain-buzon`, acceso por invitación |

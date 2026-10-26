@@ -7,14 +7,14 @@ flowchart LR
   W -->|1 firma: approve + crear_presupuesto| C[(Contrato cuenta-presupuesto<br/>Soroban)]
   A[Agente IA<br/>agent-client] -->|gastar| C
   C -->|USDC transfer_from dueño→API| P[Cuenta de la API]
-  A -->|HTTP| API[api-demo x402]
+  A -->|HTTP| API[api-demo/servidor/vendedor.ts x402]
 ```
 
 ## Flujo de un pago
 ```mermaid
 sequenceDiagram
   participant A as agent-client
-  participant API as api-demo
+  participant API as api-demo (servidor/vendedor.ts)
   participant C as cuenta-presupuesto
   A->>API: GET /api/clima
   API-->>A: 402 + accepts (payTo, amount)

@@ -1,6 +1,6 @@
 # Transacciones (testnet)
 
-Q10 completa la corrida limpia; las filas Q3 son de la prueba del vendedor y el facilitador (cuentas desechables de testnet). Q10 la llena con la corrida de punta a punta. Cada hash va con link `https://stellar.expert/explorer/testnet/tx/<hash>`.
+La corrida limpia de Q10 está al final; las filas Q3 son de la prueba del vendedor y el facilitador (cuentas desechables de testnet). Q10 la llena con la corrida de punta a punta. Cada hash va con link `https://stellar.expert/explorer/testnet/tx/<hash>`.
 
 | tx | qué prueba | link Stellar Expert testnet |
 |---|---|---|
@@ -30,6 +30,26 @@ Q10 completa la corrida limpia; las filas Q3 son de la prueba del vendedor y el 
 | `dd977105` | Q8: pago x402 de US$0,01 vía SDK (+1.000 unidades de comisión pendiente) | [dd977105…](https://stellar.expert/explorer/testnet/tx/dd9771057ccaf0448cb60b5e0c5325bc1124184aca2efa2a827fe355a364824c) |
 | `2de5dc18` | Q8: 2.º pago de US$0,01 vía SDK (+1.000) | [2de5dc18…](https://stellar.expert/explorer/testnet/tx/2de5dc18d620d88bf1b3d7ece108848a8fcfa21be09c4a385634392dcc112c2b) |
 | `820db07e` | Q8: `cobrar_comision()` → **2.000 unidades (0,0002 USDC) a la tesorería** | [820db07e…](https://stellar.expert/explorer/testnet/tx/820db07e4b543a68ed5297398ae51009113aeadbfc1e75ac34d0be2ee919dc18) |
+
+## Corrida limpia Q10 (26/10/2026, 12:39:07 a. m. CR)
+
+Script: `agent-client/src/corrida-e2e.ts` (datos crudos en [`deployments/corrida-q10.json`](../deployments/corrida-q10.json)). Cuenta [`CBAVYNKB…`](https://stellar.expert/explorer/testnet/contract/CBAVYNKBG5TKC56BXON4UKVOQX4YVPX2UA3YB77J6VSSCCKHKHSYJKCG), vendedor de `api-demo` local con el facilitador **público** `x402.org`. Cuentas de testnet de prueba; sin valor real.
+
+| tx | qué prueba | link Stellar Expert testnet |
+|---|---|---|
+| `8c0b190c` | Q10: deploy de la cuenta-presupuesto — C… = CBAVYNKBG5TKC56BXON4UKVOQX4YVPX2UA3YB77J6VSSCCKHKHSYJKCG | [8c0b190c…](https://stellar.expert/explorer/testnet/tx/8c0b190cfe716aade875f1d8e1697dcb35ab732150555294cb4f51aef58633ae) |
+| `331c01f0` | Q10: renovar (tope 0,05, máx. 0,02, recarga 1,05) | [331c01f0…](https://stellar.expert/explorer/testnet/tx/331c01f02702acd7e94530fe6b92dc50eba1cb012b2e14d679a1be6b66cabe94) |
+| `aa26ecdd` | Q10: agente: pago 1/5 /tipo-cambio (US$0,01) | [aa26ecdd…](https://stellar.expert/explorer/testnet/tx/aa26ecdd60d84a052974132f4b630df26f6474740a3d50cf30ea891992203d26) |
+| `8929c0b8` | Q10: agente: pago 2/5 /tipo-cambio (US$0,01) | [8929c0b8…](https://stellar.expert/explorer/testnet/tx/8929c0b8a39ffe5e572dac0efbba411ab0fceb188b2697c3e15188b0fca05770) |
+| `af058a6a` | Q10: agente: pago 3/5 /tipo-cambio (US$0,01) | [af058a6a…](https://stellar.expert/explorer/testnet/tx/af058a6a8138662f480b41280988cd8f49a3e2fe86b06b807369e7d2a7aa12fe) |
+| `3213715f` | Q10: agente: pago 4/5 /tipo-cambio (US$0,01) | [3213715f…](https://stellar.expert/explorer/testnet/tx/3213715f1bde951afe6f9c59d56c59552c18f081922072fa6fdf55b057f9370d) |
+| — (sin tx) | Q10: agente: pago 5/5 /tipo-cambio (US$0,01) — TopeAlcanzado (contrato, simulación, sin tx) | — |
+| — (sin tx) | Q10: agente: /caro (US$1) — MontoPorLlamada (contrato, simulación, sin tx) | — |
+| `2497dec9` | Q10: cobrar_comision() — 4000 unidades a la tesorería | [2497dec9…](https://stellar.expert/explorer/testnet/tx/2497dec9905e57b4c3267b05ee4e4cccae6a77ee8113837b1e6e7e1fd138945a) |
+| `2e8b7da3` | Q10: pausar() | [2e8b7da3…](https://stellar.expert/explorer/testnet/tx/2e8b7da3dafdc273fbdff6b6b4b244930949e35f2c86aaeeaa01f284e3fd8e10) |
+| — (sin tx) | Q10: pago con la cuenta pausada — Pausada (contrato, simulación, sin tx) | — |
+| `ab4e837d` | Q10: retirar 1.0096 USDC al dueño | [ab4e837d…](https://stellar.expert/explorer/testnet/tx/ab4e837d3e37301d2a1d854af08b9a34d71a6a872a61bb59141441447f5e6c39) |
+| `15b78583` | Limpieza: `retirar` del saldo de una corrida Q10 interrumpida (`CA4NUFYM…`, 1,0096 USDC de vuelta al dueño) | [15b78583…](https://stellar.expert/explorer/testnet/tx/15b7858346956c95faf4acc70fc6d333cc60194b00e2d6876deee881dfad74ef) |
 
 <!-- enlaces:auto -->
 ## Enlaces

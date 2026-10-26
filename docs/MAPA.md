@@ -147,14 +147,14 @@ graph TD
 - [Decisiones](DECISIONES.md)
 - [Seguridad](SEGURIDAD.md)
 - [Auditoría](AUDITORIA.md)
-- [Demo (testnet)](DEMO.md) — issue [#5](https://github.com/jxsu404/quickchain/issues/5)
+- [Demo (testnet)](DEMO.md) — issue [#5](https://github.com/jxsu404/quickchain/issues/5); Q7: `scripts/agente-demo.ts` (4 pagos, 5.º y `/caro` bloqueados); vendedor con `pnpm --filter api-demo vendedor` tras #18
 - [Costos (Q8)](COSTOS.md) — fees medidos en testnet y cobro de la comisión de 1 %
-- [Transacciones (testnet)](transacciones.md) — filas de Q3 (pagos x402 desde G… y C…); Q10 completa la corrida con links de Stellar Expert
+- [Transacciones (testnet)](transacciones.md) — filas de Q3 (pagos x402 desde G… y C…); Q10: corrida limpia (deploy, renovar, 4 pagos, bloqueos, comisión, pausa, retiro) con links de Stellar Expert
 - [Pruebas Q1 (testnet)](pruebas-q1.md) — issue [#1](https://github.com/jxsu404/quickchain/issues/1)
 - [Pitch](PITCH.md) — issue [#6](https://github.com/jxsu404/quickchain/issues/6)
 - [contracts/cuenta-presupuesto](../contracts/cuenta-presupuesto/AGENTS.md) — issue [#1](https://github.com/jxsu404/quickchain/issues/1) — contrato `cuenta-presupuesto` desplegado en testnet (ver [Demo](DEMO.md))
 - [agent-client](../agent-client/AGENTS.md) — issue [#2](https://github.com/jxsu404/quickchain/issues/2); Q2: SDK `crearFetchConPresupuesto`
-- [api-demo](../api-demo/AGENTS.md) — issue [#3](https://github.com/jxsu404/quickchain/issues/3); Q3: `/tipo-cambio`, `/caro` y facilitador propio
+- [api-demo](../api-demo/AGENTS.md) — issue [#3](https://github.com/jxsu404/quickchain/issues/3); Q3: `servidor/vendedor.ts` con `/tipo-cambio`, `/caro` y facilitador propio
 - [web](../web/AGENTS.md) — issue [#4](https://github.com/jxsu404/quickchain/issues/4)
 
 ## Tareas → nodos
@@ -177,6 +177,10 @@ graph TD
 | Q13 | [PITCH.md](PITCH.md) | [#6](https://github.com/jxsu404/quickchain/issues/6) |
 | Q14 | [PITCH.md](PITCH.md) | [#6](https://github.com/jxsu404/quickchain/issues/6) |
 | Q15 | [../TAREAS.md](../TAREAS.md) | [#6](https://github.com/jxsu404/quickchain/issues/6) |
+
+## Auditorías
+
+- 2026-10-25, 3 modelos: [consolidado](auditorias/2026-10-25-consolidado.md) · [Opus](auditorias/2026-10-25-claude-opus-5-5-high.md) · [Grok](auditorias/2026-10-25-grok-4.7-high.md) · [GPT](auditorias/2026-10-25-gpt-5.6-sol-high.md)
 
 ## Fuera del repo
 
