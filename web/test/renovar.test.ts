@@ -59,5 +59,5 @@ test("explicarError: traduce Error(Contract, #N)", () => {
   assert.match(explicarError("... trustline entry is missing for account"), /trustline/);
   // error real de testnet: recarga mayor al saldo; el #10 es del SAC, no ParametrosInvalidos
   const sinSaldo = `HostError: Error(Contract, #10)\n 2: [Failed Diagnostic Event (not emitted)] contract:${USDC_SAC}, topics:[error, Error(Contract, #10)], data:["resulting balance is not within the allowed range", 0, -980500000, 9223372036854775807]`;
-  assert.match(explicarError(sinSaldo), /saldo USDC/);
+  assert.match(explicarError(sinSaldo), /USDC balance/);
 });

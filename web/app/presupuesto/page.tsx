@@ -11,7 +11,7 @@ import {
 
 const RPC = process.env.NEXT_PUBLIC_STELLAR_RPC_URL || undefined;
 const TESORERIA = process.env.NEXT_PUBLIC_QUICKCHAIN_TESORERIA || undefined;
-const fechaCR = (seg: bigint) => new Date(Number(seg) * 1000).toLocaleString("es-CR", { timeZone: "America/Costa_Rica" });
+const fechaCR = (seg: bigint) => new Date(Number(seg) * 1000).toLocaleString("en-US", { timeZone: "America/Costa_Rica", dateStyle: "medium", timeStyle: "short" }) + " CR time";
 
 export default function Presupuesto() {
   const { isAuthenticated, wallet, address, walletStatus, enrollPasskeyDefault, approveDeviceWithPasskey, openModal } = useCavos();
@@ -60,7 +60,7 @@ export default function Presupuesto() {
 
   const trustline = () => correr("Opening USDC trustline…", async () => {
     const hash = await wallet.addTrustline(USDC, opts);
-    setTxs((t) => [...t, { que: "trustline USDC", hash }]);
+    setTxs((t) => [...t, { que: "USDC trustline", hash }]);
     setSaldoUsdc(await wallet.tokenBalance(USDC));
   });
 
@@ -68,11 +68,11 @@ export default function Presupuesto() {
     setSaldoUsdc(await wallet.tokenBalance(USDC));
   });
 
-  const firmar = () => correr("Signing renovar with Cavos…", async () => {
+  const firmar = () => correr("Signing the renewal with Cavos…", async () => {
     if (!params) return;
     await simularRenovar(contrato.trim(), address, params, RPC);
     const hash = await wallet.invokeContract({ contractId: contrato.trim(), method: "renovar", args: argsRenovar(params), opts });
-    setTxs((t) => [...t, { que: "renovar", hash }]);
+    setTxs((t) => [...t, { que: "Renewal", hash }]);
     const e = await leerEstado(contrato.trim(), RPC);
     setEstado(e);
   });
@@ -88,7 +88,7 @@ export default function Presupuesto() {
       {walletStatus.isUndeployed && (
         <p>Cavos creates your account on the first operation. <button disabled={!!ocupado} onClick={crearCuenta}>Create my testnet account</button></p>
       )}
-      <p>Cavos status: <code>{wallet.status}</code></p>
+      <p>Cavos wallet status: <code>{wallet.status}</code></p>
       {walletStatus.needsDeviceApproval && (
         <p className="err">
           This wallet key lives in another browser or URL (each vercel.app URL keeps its own). Open the page where you first logged in, tap “Add passkey”, then come back and tap:{" "}
@@ -96,7 +96,7 @@ export default function Presupuesto() {
         </p>
       )}
       {walletStatus.isReady && (
-        <p><button disabled={!!ocupado} onClick={() => correr("Adding passkey…", async () => { await enrollPasskeyDefault(); })}>Add passkey (to use the wallet on another URL or device)</button></p>
+        <p><button disabled={!!ocupado} className="secondary" onClick={() => correr("Adding passkey…", async () => { await enrollPasskeyDefault(); })}>Add passkey (to use the wallet on another URL or device)</button></p>
       )}
 
       <label>Budget account (C…)<br /><input value={contrato} onChange={(e) => { setContrato(e.target.value); setEstado(null); }} className="direccion" spellCheck={false} /></label> <Copiar texto={contrato.trim()} />
@@ -116,17 +116,17 @@ export default function Presupuesto() {
       <label>Period cap (USDC, includes the 1% fee)<br /><input value={tope} onChange={(e) => setTope(e.target.value)} /></label><br />
       <label>Max per call (USDC)<br /><input value={max} onChange={(e) => setMax(e.target.value)} /></label><br />
       <label>Top-up from your account (USDC; needs trustline and balance, 0 = move no funds)<br /><input value={recarga} onChange={(e) => setRecarga(e.target.value)} /></label>
-      <p>Ends: {fechaCR(finPeriodo)} (1st of next month, Costa Rica time).</p>
+      <p>Ends: {fechaCR(finPeriodo)} (1st of next month).</p>
       <p><label><input type="checkbox" checked={feePropio} onChange={(e) => setFeePropio(e.target.checked)} /> My account pays the network fee (no Cavos sponsorship; needs XLM)</label></p>
       {invalido && <p className="err">{invalido}</p>}
 
       <p>
         <button disabled={!walletStatus.isReady || !!ocupado} onClick={trustline}>Enable USDC</button>{" "}
-        <button disabled={!walletStatus.isReady || !!ocupado} onClick={verSaldo}>Check USDC balance</button>{" "}
+        <button disabled={!walletStatus.isReady || !!ocupado} className="secondary" onClick={verSaldo}>Check USDC balance</button>{" "}
         Your balance: {saldoUsdc ?? "—"} USDC · Test USDC: <a href="https://faucet.circle.com" target="_blank" rel="noreferrer">faucet.circle.com</a> (Stellar Testnet, paste your address)
       </p>
       <p>
-        <button disabled={!listo} onClick={firmar}>Sign renovar (one signature)</button>
+        <button disabled={!listo} onClick={firmar}>Sign renewal (one signature)</button>
         {!listo && !ocupado && <><br /><small className="sub">To enable it: {[
           !walletStatus.isReady && "your wallet must be ready",
           !estado && "press “Check account” first",
