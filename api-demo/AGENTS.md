@@ -39,3 +39,5 @@ Evidencia en [docs/transacciones.md](../docs/transacciones.md).
 - Lo enlazan: [AGENTS (raíz)](../AGENTS.md) · [Tareas](../TAREAS.md) · [agent-client](../agent-client/AGENTS.md) · [Arquitectura](../docs/ARQUITECTURA.md) · [Demo (testnet)](../docs/DEMO.md) · [Mapa (hub)](../docs/MAPA.md) · [PLAN-OPUS — la biblia](../docs/PLAN-OPUS.md) · [web](../web/AGENTS.md)
 - Tags: #quickchain #paquete
 <!-- /enlaces:auto -->
+
+Deploy: ver [docs/deploy-api.md](../docs/deploy-api.md).
