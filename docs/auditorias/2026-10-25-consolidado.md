@@ -73,10 +73,12 @@ Límite común: ninguno pudo correr tests ni consultar Horizon. Por eso «hecho�
 
 ## Decisiones para Josué
 
-- La hora de corte de Cavos: 1:30 a. m. (2 de 3) o 3:00 a. m.
-- Si se arregla el SDK esta noche (timeout, redirects, allowlist: unos 30 min) o queda para después.
-- Cerrar la pregunta 6 del plan: el saldo no vuelve solo, hay que llamar `retirar`.
-- Aprobar o rechazar estas ediciones al PLAN-OPUS (regla n.º 1).
+**Aprobadas por Josué el 2026-10-26 6:41 a. m. CR** (propuestas 1-10, en bloque; ver [DECISIONES](../DECISIONES.md) y [PLAN-OPUS](../PLAN-OPUS.md)):
+
+- ✅ La hora de corte de Cavos: ya no aplica; el plan B es `renovar` por CLI (`pnpm renovar`).
+- ✅ Arreglar el SDK (timeout, redirects, allowlist, límite por minuto): hecho en [#29](https://github.com/jxsu404/quickchain/pull/29).
+- ✅ Cerrar la pregunta 6 del plan: el saldo no vuelve solo, hay que llamar `retirar`; `comision_pendiente` se mantiene tras `renovar`.
+- ✅ Aprobar estas ediciones al PLAN-OPUS (regla n.º 1): aprobadas en bloque e incorporadas al plan.
 
 <!-- enlaces:auto -->
 ## Enlaces
