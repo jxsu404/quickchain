@@ -12,7 +12,7 @@ const TESORERIA = process.env.NEXT_PUBLIC_QUICKCHAIN_TESORERIA || undefined;
 const fechaCR = (seg: bigint) => new Date(Number(seg) * 1000).toLocaleString("es-CR", { timeZone: "America/Costa_Rica" });
 
 export default function Presupuesto() {
-  const { isAuthenticated, wallet, address, walletStatus, enrollPasskeyDefault, approveDeviceWithPasskey } = useCavos();
+  const { isAuthenticated, wallet, address, walletStatus, enrollPasskeyDefault, approveDeviceWithPasskey, openModal } = useCavos();
   const [contrato, setContrato] = useState(process.env.NEXT_PUBLIC_BUDGET_CONTRACT_ID ?? "");
   const [tope, setTope] = useState("0.05");
   const [max, setMax] = useState("0.02");
@@ -26,7 +26,7 @@ export default function Presupuesto() {
   const [saldoUsdc, setSaldoUsdc] = useState<string | null>(null);
   const finPeriodo = finDeMesCR();
 
-  if (!isAuthenticated || !address) return <p>Primero entrá con tu correo.</p>;
+  if (!isAuthenticated || !address) return <main><h2>Presupuesto mensual del agente</h2><p>Primero entrá con tu correo.</p><button onClick={openModal}>Entrar con correo</button></main>;
   if (!wallet || wallet.chain !== "stellar") return <p>La wallet conectada no es de Stellar.</p>;
   const opts = feePropio ? { fee: "self" as const } : undefined;
 
