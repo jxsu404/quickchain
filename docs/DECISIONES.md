@@ -34,6 +34,7 @@
 | 2026-10-26 | Q9: se actualizan `docs/SEGURIDAD.md` y `docs/ARQUITECTURA.md` (mayúsculas, ya enlazados) en vez de crear `seguridad.md`/`arquitectura.md` como dice el plan; la arquitectura vieja (`transfer_from`, `gastar`, `X-QUICKCHAIN-TX`) se reemplaza por la vigente (USDC en la `C…`, x402 `exact`) | evita duplicar nodos; refleja el código de main |
 | 2026-10-26 | Josué aprobó propuestas 1-10 de la auditoría (#23) el 2026-10-26 6:41 a. m. CR | se incorporan a [PLAN-OPUS](PLAN-OPUS.md) (las 7 notas 🔎 pasan a texto oficial) y se marcan aprobadas en el [consolidado](auditorias/2026-10-25-consolidado.md) |
 | 2026-10-26 | Deploy de api-demo: Render con `render.yaml` (Node 22, `pnpm --filter api-demo vendedor`), con `Dockerfile.api-demo` como alternativa; no Vercel, porque el plan solo pone la web en Vercel y el vendedor es `node:http` de larga vida. Sin `FACILITADOR_SECRET_KEY` en el host. **Aprobado por Josué** el 2026-10-26 7:03 a. m. CR | ver [deploy-api.md](deploy-api.md) |
+| 2026-10-26 | Precio XLM/USD: se quita, Josué 2026-10-26 7:03 a. m. CR. No se cita CoinGecko ni otra fuente; los fees quedan en XLM medidos en testnet ([costos](COSTOS.md)). #32 no se fusiona | decisión de Josué |
 
 ## Preguntas abiertas
 1. ~~**Cómo prueba el agente el pago a la API.**~~ Resuelta en Q3 (ver arriba): x402 `exact` con `from = C…`.
