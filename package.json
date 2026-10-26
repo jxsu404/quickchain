@@ -7,6 +7,7 @@
     "dev:api": "pnpm --filter api-demo dev",
     "agente": "pnpm --filter agent-client start",
     "contrato:test": "cargo test -p budget",
-    "typecheck": "pnpm -r typecheck"
+    "typecheck": "pnpm -r typecheck",
+    "docs:links": "node scripts/check-links.mjs"
   }
 }
