@@ -29,6 +29,7 @@
 | 2026-10-26 | Q2: el SDK exige `hostsPermitidos` no vacío (se compara contra la URL final, el pago no sigue redirects), limita a `maxLlamadasPorMinuto` pagos por minuto (10 por defecto, error `LimitePorMinuto`) y acota la vida de la firma a 300 s | PLAN-OPUS §3 (lista de hosts y llamadas por minuto); hallazgos de la auditoría sobre `maxTimeoutSeconds` y redirects |
 | 2026-10-26 | Q7: el agente demo vive en `agent-client/src/agente-demo.ts` (reutilizable por Q10) y `scripts/agente-demo.ts` es la entrada que pide el plan; 5 llamadas en vez de `LLAMADAS=8` | con tope 0,05 y comisión 1 % entran 4 pagos; `/caro` necesita saldo ≥ US$1 en la cuenta para llegar a `MontoPorLlamada` (probado en testnet, [transacciones](transacciones.md)) |
 | 2026-10-26 | DEMO.md: el vendedor se levanta con `pnpm --filter api-demo vendedor` (servidor `node:http` de #18) en vez de `next dev` | Josué decidió que el vendedor va en `servidor/vendedor.ts` (buzón 005); probado en testnet con ese servidor ([DEMO](DEMO.md)) |
+| 2026-10-26 | Q10: la corrida usa una cuenta-presupuesto nueva desplegada con el SDK (`createCustomContract`, mismo `wasm_hash` de Q1), sin la CLI `stellar`; recarga 1,05 para que `/caro` muestre `MontoPorLlamada`; al final se retira todo el saldo libre al dueño | reproducible sin CLI y no deja plata de prueba varada ([transacciones](transacciones.md)) |
 
 ## Preguntas abiertas
 1. ~~**Cómo prueba el agente el pago a la API.**~~ Resuelta en Q3 (ver arriba): x402 `exact` con `from = C…`.
