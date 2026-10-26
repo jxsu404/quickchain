@@ -10,6 +10,12 @@
 | Desbordamiento de enteros | `checked_*` (contadores y comisión) + `overflow-checks = true` (Cargo.toml:7) | hecho (t15) |
 | Allowance mayor que el tope | ya no aplica: no hay `approve`/`transfer_from`; el USDC vive en `C` y `approve` desde `C` da `OperacionNoPermitida` | no aplica (t05) |
 | API cobra sin entregar | `api-demo` prepara la respuesta antes de liquidar | hecho (heredado) |
+| Prompt injection lleva al agente a pagarle a cualquier host | `hostsPermitidos` obligatorio y no vacío en el SDK; se compara contra la URL **final** (después de redirects) y el pago firmado va con `redirect: "manual"` | hecho (tests de `agent-client`, 2026-10-26) |
+| Agente en loop | tope del periodo en cadena + `maxLlamadasPorMinuto` en el SDK (por defecto 10, error `LimitePorMinuto` antes de firmar) | hecho (tests de `agent-client`, 2026-10-26) |
+| El 402 pide una firma que viva mucho (`maxTimeoutSeconds`) | el SDK la acota a 300 s | hecho (2026-10-26) |
+| Cualquiera usa el facilitador propio y gasta su XLM | apagado por defecto; con `FACILITADOR_PROPIO=1` solo atiende IP loopback con `Host` local y sin cabeceras de proxy. La demo usa el facilitador público | hecho (tests de `api-demo`, 2026-10-26) |
+| El dueño firma `renovar` sobre una cuenta con otra comisión, otro token u otro dueño | la web y `scripts/renovar.mjs` leen `estado()` y no firman si `fee_bps ≠ 100`, el token no es el USDC de Circle, el dueño no coincide o la tesorería no es la esperada | hecho (2026-10-26) |
+| El SDK no valida `asset` ni `payTo` del 402 | el contrato solo deja transferir su token, hasta el máximo por llamada | pendiente |
 | Pago falso con `X-QUICKCHAIN-TX` | verificar tx en RPC (destino, monto, contrato, no reutilizada) | pendiente (pregunta abierta 1) |
 | Filtración de llaves | `.gitignore` cubre `.env*`; `.env.example` solo nombres; `gitleaks git` sobre todo el historial sin hallazgos (`.gitleaks.toml` permite llaves públicas hex) | hecho (sin CI: no hay `.github/workflows`) |
 | Auth entry firmada en un periodo y usada en otro | cuenta contra el periodo en que se ejecuta (los contadores se leen al ejecutar); vence por `signatureExpirationLedger` | aceptado |

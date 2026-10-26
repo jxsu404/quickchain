@@ -1,2 +1,4 @@
 # Falso positivo: contract ID público (C...) del USDC de testnet en PR #11, no es secreto.
 4791804f9812689baf36b9e20055a69956520f17:deployments/testnet.json:generic-api-key:10
+# Falso positivo: URL pública del facilitador x402 en render.yaml (rama rol/jose-deploy-api), no es secreto.
+fa1efa883b8e38be39ceabdda02ecf0f0018408f:render.yaml:generic-api-key:15
