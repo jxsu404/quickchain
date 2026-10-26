@@ -1,0 +1,122 @@
+{
+  "fecha_cr": "26/10/2026, 12:39:07 a. m.",
+  "red": "testnet",
+  "cuenta": "CBAVYNKBG5TKC56BXON4UKVOQX4YVPX2UA3YB77J6VSSCCKHKHSYJKCG",
+  "owner": "GA77J54NR5HCEHRLI7G65G4S5QGUILXSAKM4M73Y56CZSS5SZMB4CTFA",
+  "tesoreria": "GA6HM4CLRCQLW7G7GDS3HEFFLAU5ELNB7LA2IR3XV5IHRQ42BIPYWA5S",
+  "wasm_hash": "7190eb76ae99f35f71854e4c06bc89db3b17025ff836693c7b87b874b9163288",
+  "api": "http://localhost:4020",
+  "filas": [
+    {
+      "paso": "deploy de la cuenta-presupuesto",
+      "tx": "8c0b190cfe716aade875f1d8e1697dcb35ab732150555294cb4f51aef58633ae",
+      "link": "https://stellar.expert/explorer/testnet/tx/8c0b190cfe716aade875f1d8e1697dcb35ab732150555294cb4f51aef58633ae",
+      "nota": "C… = CBAVYNKBG5TKC56BXON4UKVOQX4YVPX2UA3YB77J6VSSCCKHKHSYJKCG"
+    },
+    {
+      "paso": "renovar (tope 0,05, máx. 0,02, recarga 1,05)",
+      "tx": "331c01f02702acd7e94530fe6b92dc50eba1cb012b2e14d679a1be6b66cabe94",
+      "link": "https://stellar.expert/explorer/testnet/tx/331c01f02702acd7e94530fe6b92dc50eba1cb012b2e14d679a1be6b66cabe94"
+    },
+    {
+      "paso": "agente: pago 1/5 /tipo-cambio (US$0,01)",
+      "tx": "aa26ecdd60d84a052974132f4b630df26f6474740a3d50cf30ea891992203d26",
+      "link": "https://stellar.expert/explorer/testnet/tx/aa26ecdd60d84a052974132f4b630df26f6474740a3d50cf30ea891992203d26"
+    },
+    {
+      "paso": "agente: pago 2/5 /tipo-cambio (US$0,01)",
+      "tx": "8929c0b8a39ffe5e572dac0efbba411ab0fceb188b2697c3e15188b0fca05770",
+      "link": "https://stellar.expert/explorer/testnet/tx/8929c0b8a39ffe5e572dac0efbba411ab0fceb188b2697c3e15188b0fca05770"
+    },
+    {
+      "paso": "agente: pago 3/5 /tipo-cambio (US$0,01)",
+      "tx": "af058a6a8138662f480b41280988cd8f49a3e2fe86b06b807369e7d2a7aa12fe",
+      "link": "https://stellar.expert/explorer/testnet/tx/af058a6a8138662f480b41280988cd8f49a3e2fe86b06b807369e7d2a7aa12fe"
+    },
+    {
+      "paso": "agente: pago 4/5 /tipo-cambio (US$0,01)",
+      "tx": "3213715f1bde951afe6f9c59d56c59552c18f081922072fa6fdf55b057f9370d",
+      "link": "https://stellar.expert/explorer/testnet/tx/3213715f1bde951afe6f9c59d56c59552c18f081922072fa6fdf55b057f9370d"
+    },
+    {
+      "paso": "agente: pago 5/5 /tipo-cambio (US$0,01)",
+      "nota": "TopeAlcanzado (contrato, simulación, sin tx)"
+    },
+    {
+      "paso": "agente: /caro (US$1)",
+      "nota": "MontoPorLlamada (contrato, simulación, sin tx)"
+    },
+    {
+      "paso": "cobrar_comision()",
+      "tx": "2497dec9905e57b4c3267b05ee4e4cccae6a77ee8113837b1e6e7e1fd138945a",
+      "link": "https://stellar.expert/explorer/testnet/tx/2497dec9905e57b4c3267b05ee4e4cccae6a77ee8113837b1e6e7e1fd138945a",
+      "nota": "4000 unidades a la tesorería"
+    },
+    {
+      "paso": "pausar()",
+      "tx": "2e8b7da3dafdc273fbdff6b6b4b244930949e35f2c86aaeeaa01f284e3fd8e10",
+      "link": "https://stellar.expert/explorer/testnet/tx/2e8b7da3dafdc273fbdff6b6b4b244930949e35f2c86aaeeaa01f284e3fd8e10"
+    },
+    {
+      "paso": "pago con la cuenta pausada",
+      "nota": "Pausada (contrato, simulación, sin tx)"
+    },
+    {
+      "paso": "retirar 1.0096 USDC al dueño",
+      "tx": "ab4e837d3e37301d2a1d854af08b9a34d71a6a872a61bb59141441447f5e6c39",
+      "link": "https://stellar.expert/explorer/testnet/tx/ab4e837d3e37301d2a1d854af08b9a34d71a6a872a61bb59141441447f5e6c39"
+    }
+  ],
+  "estado_final": {
+    "agente": {
+      "type": "Buffer",
+      "data": [
+        86,
+        69,
+        72,
+        2,
+        70,
+        22,
+        130,
+        205,
+        161,
+        198,
+        168,
+        251,
+        138,
+        125,
+        121,
+        228,
+        203,
+        138,
+        63,
+        240,
+        38,
+        57,
+        188,
+        203,
+        174,
+        128,
+        183,
+        211,
+        161,
+        42,
+        10,
+        7
+      ]
+    },
+    "comision_pendiente": "0",
+    "fee_bps": 100,
+    "fin_periodo": "1793601508",
+    "gastado": "404000",
+    "max_por_llamada": "200000",
+    "owner": "GA77J54NR5HCEHRLI7G65G4S5QGUILXSAKM4M73Y56CZSS5SZMB4CTFA",
+    "pausada": true,
+    "periodo": 1,
+    "restante": "96000",
+    "saldo": "0",
+    "tesoreria": "GA6HM4CLRCQLW7G7GDS3HEFFLAU5ELNB7LA2IR3XV5IHRQ42BIPYWA5S",
+    "token": "CBIELTK6YBZJU5UP2WWQEUCYKLPU6AUNZ2BQ4WWFEIE3USCIHMXQDAMA",
+    "tope": "500000"
+  }
+}

@@ -24,6 +24,7 @@
 | 2026-10-25 | Q2: la firma del agente usa `authorizeEntry` de stellar-sdk con un `Keypair`, sin firmador custom | el `Vec<{public_key, signature}>` coincide con `FirmaAgente` del contrato; se verificó en testnet (responde la pregunta abierta 2 del plan) |
 | 2026-10-25 | Q8: la comisión de 1 % se usa tal como la implementa el contrato de #11 (acumulada en `__check_auth` y cobrada con `cobrar_comision()`/`renovar`); Q8 no toca el contrato. Scripts en `agent-client/src/` (`cobrar-comision`, `medir-costos`), no en `scripts/` | el plan ya lo asigna a Q1; probado en testnet ([costos](COSTOS.md)) |
 | 2026-10-26 | Q7: el agente demo vive en `agent-client/src/agente-demo.ts` (reutilizable por Q10) y `scripts/agente-demo.ts` es la entrada que pide el plan; 5 llamadas en vez de `LLAMADAS=8` | con tope 0,05 y comisión 1 % entran 4 pagos; `/caro` necesita saldo ≥ US$1 en la cuenta para llegar a `MontoPorLlamada` (probado en testnet, [transacciones](transacciones.md)) |
+| 2026-10-26 | Q10: la corrida usa una cuenta-presupuesto nueva desplegada con el SDK (`createCustomContract`, mismo `wasm_hash` de Q1), sin la CLI `stellar`; recarga 1,05 para que `/caro` muestre `MontoPorLlamada`; al final se retira todo el saldo libre al dueño | reproducible sin CLI y no deja plata de prueba varada ([transacciones](transacciones.md)) |
 
 ## Preguntas abiertas
 1. ~~**Cómo prueba el agente el pago a la API.**~~ Resuelta en Q3 (ver arriba): x402 `exact` con `from = C…`.
