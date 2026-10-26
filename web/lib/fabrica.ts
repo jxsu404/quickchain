@@ -5,8 +5,9 @@ import { Address, Networks, StrKey, contract, nativeToScVal, scValToNative, xdr 
 import { RPC_TESTNET } from "./renovar";
 
 export const FABRICA_ID = process.env.NEXT_PUBLIC_FACTORY_CONTRACT_ID || "CAVWWLDYBCYFPDZT5P5XW7GSOQHE6TVLSZXQ47RIJKGEKUSD23AZ34MO";
-/** Agente de la demo (deployments/testnet.json, agente_ed25519_hex). */
-export const AGENTE_DEMO_HEX = "eb54a99540bc36e125651597776452bd3829b2a8c9754f1bb3b2c3bb4c0fb702";
+/** Agente de la demo: la llave que usa el servidor de /demo («Correr agente», AGENT_SECRET_KEY en Vercel).
+ * Antes era eb54a995… (deployments/testnet.json), cuya secreta no está disponible. Ver docs/2026-10-26-boton-correr-agente.md. */
+export const AGENTE_DEMO_HEX = "95d4848eddb9a17b3f2a5adb5fdfa7bce777bc5541e9e74ece22abb6d493abee";
 
 /** Acepta una clave pública G… o 64 hex y devuelve los 32 bytes ed25519. */
 export function agenteABytes(texto: string): Uint8Array {

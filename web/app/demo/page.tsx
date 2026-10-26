@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useCavos } from "@cavos/kit/react";
+import CorrerAgente from "./correr-agente";
 
 export default function Demo() {
   const { address, isAuthenticated, openModal, logout } = useCavos();
@@ -17,6 +18,7 @@ export default function Demo() {
           <p><button className="secondary" onClick={logout}>Log out</button></p>
         </>
       )}
+      <CorrerAgente />
     </main>
   );
 }

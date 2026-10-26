@@ -1,5 +1,6 @@
 "use client";
 // Q4: el dueño firma `renovar` de su cuenta-presupuesto con la wallet Cavos (una firma por mes).
+import Espera from "../espera";
 import { useEffect, useState } from "react";
 import { useCavos } from "@cavos/kit/react";
 import {
@@ -128,7 +129,7 @@ export default function Presupuesto() {
       </p>
       <p>Stellar QuickPass fee: 1% of what the agent spends, included in the cap. No monthly fee.</p>
 
-      {ocupado && <p>{ocupado}</p>}
+      {ocupado && <Espera texto={ocupado} />}
       {error && <p className="err">Error: {error}</p>}
       {txs.map((t) => (
         <p key={t.hash}>{t.que}: <a href={linkTx(t.hash)} target="_blank" rel="noreferrer">{t.hash.slice(0, 8)}… on Stellar Expert</a></p>
