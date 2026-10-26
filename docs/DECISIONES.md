@@ -45,6 +45,7 @@
 | 2026-10-26 | Web con la marca v1.0 (carpeta compartida por Josué 8:55 a. m. CR): paleta Azul Vía/Verde Paso/Tinta/Niebla, Space Grotesk + Inter + JetBrains Mono, logo y favicon. Todas las páginas sobre Tinta y en inglés (también `/demo` y `/presupuesto`), con tarjeta de ejemplo en el hero y aviso de marca SDF en el footer (auditoría de diseño de Pao) | combinaciones con contraste WCAG AA o mejor según el manual ([MARCA](MARCA.md)) |
 | 2026-10-26 | Eslogan único para todas las piezas: **«Your agent pays. You set the cap.»**. Reemplaza las frases anteriores en la web (hero, metadata/OG, `/demo`, `/presupuesto`), README, PITCH, MARCA, DEMO y buzón 009/010. Josué 9:09 a. m. CR (vía Pao) | una sola frase, consistente con el pitch |
 | 2026-10-26 | **Fábrica** `fabrica-presupuesto`: cualquiera crea su cuenta-presupuesto desde `/crear` | ver [2026-10-26-fabrica-presupuesto.md](2026-10-26-fabrica-presupuesto.md) |
+| 2026-10-26 | **Nuevo plazo de entrega APEX:** 3:00 p. m. CR (antes 11:30 a. m.); congelar código 2:30 p. m. | ver [2026-10-26-nuevo-plazo-entrega.md](2026-10-26-nuevo-plazo-entrega.md) |
 
 ## Preguntas abiertas
 1. ~~**Cómo prueba el agente el pago a la API.**~~ Resuelta en Q3 (ver arriba): x402 `exact` con `from = C…`.

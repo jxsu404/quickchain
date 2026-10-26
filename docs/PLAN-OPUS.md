@@ -2,7 +2,7 @@
 
 
 > **Permisos (2026-10-26):** cualquier integrante del equipo puede editar este plan y la app por PR y hacer merge a `main` cuando el CI está en verde, sin esperar aprobación de Josué. Los cambios importantes del plan se anotan con fecha en [DECISIONES](DECISIONES.md).
-# Plan Stellar QuickPass: Pura Vida Ideathon (entrega lunes 26 oct, antes de las 11:30 a.m. CR)
+# Plan Stellar QuickPass: Pura Vida Ideathon (entrega lunes 26 oct, antes de las 3:00 p. m. CR; ver [nuevo plazo](2026-10-26-nuevo-plazo-entrega.md))
 
 **El plan cabe en el plazo, pero hay dos hallazgos que cambian decisiones antes de arrancar:**
 
@@ -198,7 +198,7 @@ Ahora son las 8:12 p.m. del domingo (hora CR). Arranque a las 8:30 p.m. Un PR po
 | [Q12](PITCH.md) | Validación | Mensajes a quienes construyen agentes (preguntas en la sección 7) | Respuestas reales citables (o el "no") antes de las 9:00 a.m. | 1,5 h activas | Envío 8:30–9:30 p.m.; recolección 7:00–9:00 a.m. |
 | [Q13](PITCH.md) ([#6](https://github.com/jxsu404/quickchain/issues/6)) | Pitch | Guion de 3 min en la plantilla de slides y ensayo cronometrado | Dura ≤ 3:00 leído en voz alta | 2 h | 12:00–1:00 a.m. (borrador) y 7:30–8:30 a.m. |
 | [Q14](PITCH.md) ([#6](https://github.com/jxsu404/quickchain/issues/6)) | Video | Demo de 2 min grabada primero y pitch después; edición; subida (YouTube no listado + respaldo en Drive) | Link que funciona en una ventana privada | 2 h | 8:30–10:30 a.m. |
-| [Q15](../TAREAS.md) ([#6](https://github.com/jxsu404/quickchain/issues/6)) | Entrega en APEX | Propuesta actualizada a QuickChain, repo, video como documento | Confirmación de APEX con captura | 0,5 h | 10:30–11:00 a.m. |
+| [Q15](../TAREAS.md) ([#6](https://github.com/jxsu404/quickchain/issues/6)) | Entrega en APEX | Propuesta actualizada a QuickChain, repo, video como documento | Confirmación de APEX con captura | 0,5 h | 2:30–3:00 p. m. |
 
 **Estado y recortes** (Aprobado por Josué el 2026-10-26 6:41 a. m. CR (propuestas de la auditoría, [#23](https://github.com/jxsu404/quickchain/pull/23), [consolidado](auditorias/2026-10-25-consolidado.md))): según el código, Q1, Q2, Q3 y Q8 hechas; Q4 con login y `renovar` (#29). **Q5:** recorte a CLI (`OWNER_ADDRESS=… bash scripts/deploy-cuenta.sh`). **Q6:** mínimo `estado()` (web o terminal); `getEvents` queda opcional. **Q7:** una sola corrida con 4 pagos, el 5.º bloqueado, `/caro` bloqueado y cobro de comisión. **Q10:** una instancia **nueva** con `recarga ≥ tope` y tesorería con trustline USDC, distinta del dueño. **Q9/Q11/Q13:** sincronizar los docs viejos (README, ARQUITECTURA, DEMO, TAREAS, PITCH).
 
@@ -209,7 +209,7 @@ Ahora son las 8:12 p.m. del domingo (hora CR). Arranque a las 8:30 p.m. Un PR po
 
 - **3:00 a.m.:** congelar funcionalidades; de ahí en adelante solo arreglos. Turnos para dormir: dos personas de 12:30 a 6:30 a.m. (incluye a quien graba el pitch) y dos de 3:00 a 7:00 a.m.
 - **8:00 a.m.:** revisar commits de todos con `git shortlog -sne --since=2026-10-23`. Quien tenga pocos agarra Q9, Q11 o los slides.
-- **10:00 a.m.:** congelar el código. **11:00 a.m.:** entregado. Las 11:30 son el margen, no la meta.
+- **2:30 p. m.:** congelar el código (sugerido). **3:00 p. m.:** plazo de entrega en APEX ([decisión 2026-10-26](2026-10-26-nuevo-plazo-entrega.md)). Los cortes viejos de 11:05/11:10/11:30 a. m. ya no aplican.
 
 **Si vamos atrasados, se recorta en este orden:** panel (se reemplaza por salida de CLI) → servicio de despliegue (se usa la CLI) → Cavos (`renovar` por CLI) → modo A (modo B). Lo que **nunca** se recorta: contrato, SDK, vendedor y evidencia con links.
 
@@ -217,7 +217,7 @@ Ahora son las 8:12 p.m. del domingo (hora CR). Arranque a las 8:30 p.m. Un PR po
 
 ## 5. MVP de hackathon vs. roadmap
 
-**MVP (lunes 10:00 a.m.):** una cuenta-presupuesto por dueño con un agente; tope por mes calendario (la web calcula el fin de mes en hora CR); máximo por llamada; pausa, rotación de llave y retiro; comisión de 1% acumulada y cobrable; SDK `fetch`; vendedor demo; facilitador público (el propio como respaldo local); web con Cavos (plan B: `renovar` por CLI); panel; página de evidencia; tests y CI.
+**MVP (lunes, congelar 2:30 p. m.):** una cuenta-presupuesto por dueño con un agente; tope por mes calendario (la web calcula el fin de mes en hora CR); máximo por llamada; pausa, rotación de llave y retiro; comisión de 1% acumulada y cobrable; SDK `fetch`; vendedor demo; facilitador público (el propio como respaldo local); web con Cavos (plan B: `renovar` por CLI); panel; página de evidencia; tests y CI.
 
 **Stretch (solo si sobra tiempo antes de las 3:00 a.m.):** lista de vendedores en cadena (`payees`); contrato *factory* para que el despliegue quede dentro de la misma firma; herramienta MCP `pagar_con_presupuesto`.
 
@@ -305,7 +305,7 @@ Grabar con txs reales y cortar las esperas. Cada hash que salga en pantalla tien
 | El faucet de USDC falla | | La cuenta del equipo transfiere USDC de prueba |
 | Testnet caída o reseteada | | Video con tomas grabadas a las 8:30 a.m. y links ya guardados |
 | Un miembro sin commits | Revisión de las 8:00 a.m. | Q9, Q11 o slides |
-| Falla la subida del video | | YouTube y Drive; entregar a las 11:00 a.m. |
+| Falla la subida del video | | YouTube y Drive; entregar antes de las 3:00 p. m. |
 
 ---
 
