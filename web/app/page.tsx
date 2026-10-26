@@ -1,4 +1,4 @@
-// Landing (/), en inglés. CTA principal a /crear, demo en /demo.
+// Landing (/), en inglés. CTA principal a /crear; secundario ancla al ejemplo (#example).
 import Link from "next/link";
 import { Aviso } from "./aviso";
 import "./landing.css";
@@ -22,7 +22,7 @@ function Ctas() {
   return (
     <div className="ql-ctas">
       <Link className="ql-b p" href="/crear">Create your budget</Link>
-      <Link className="ql-b" href="/demo">Watch the demo</Link>
+      <a className="ql-tl" href="#example">See how it works ↓</a>
     </div>
   );
 }
@@ -44,16 +44,17 @@ export default function Landing() {
               <a className="ql-pill" href={FABRICA} target="_blank" rel="noreferrer">● Live on Stellar testnet</a>
               <h1>Your agent pays.<br /><em>You set the cap.</em></h1>
               <p className="ql-lead">Monthly USDC budgets for AI agents, enforced on-chain.</p>
+              <p className="ql-why">Why a cap? A buggy loop or a hijacked agent can drain a wallet in minutes. A hard cap bounds the worst case.</p>
               <Ctas />
             </div>
-            <figure className="ql-card" aria-label="Example budget">
+            <figure className="ql-card" id="example" aria-label="Example budget">
               <span className="ql-tag">Example data</span>
-              <div className="ql-amt">$36.00 <small>/ $50.00 cap</small></div>
+              <div className="ql-amt">36.00 USDC <small>/ 50.00 USDC cap</small></div>
               <div className="ql-bar" role="img" aria-label="72% of the cap used"><i /><b /></div>
               <div className="ql-meta"><span>72% used</span><span>resets Nov 1</span></div>
               <ul className="ql-tx">
-                <li><span>weather-api</span><span className="ok">✓ $0.02</span></li>
-                <li><span>search-api</span><span className="ok">✓ $0.05</span></li>
+                <li><span>weather-api</span><span className="ok">✓ 0.02 USDC</span></li>
+                <li><span>search-api</span><span className="ok">✓ 0.05 USDC</span></li>
                 <li><span>gpu-render</span><span className="no">✕ over cap</span></li>
               </ul>
             </figure>
