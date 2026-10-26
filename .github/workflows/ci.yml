@@ -22,6 +22,10 @@ jobs:
         run: cargo test -p cuenta-presupuesto
       - name: wasm
         run: cargo build -p cuenta-presupuesto --target wasm32v1-none --release
+      - name: cargo test -p fabrica-presupuesto
+        run: cargo test -p fabrica-presupuesto
+      - name: wasm fabrica
+        run: cargo build -p fabrica-presupuesto --target wasm32v1-none --release
 
   typescript:
     name: TypeScript y docs

@@ -1,0 +1,15 @@
+[package]
+name = "fabrica-presupuesto"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "QuickPass: fábrica que despliega una cuenta-presupuesto por dueño"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+soroban-sdk = "22"
+
+[dev-dependencies]
+soroban-sdk = { version = "22", features = ["testutils"] }

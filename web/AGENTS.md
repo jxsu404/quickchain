@@ -22,3 +22,6 @@ Correr: `pnpm dev:web`. Tests sin red: `pnpm --filter web test`.
 - Lo enlazan: [AGENTS (raíz)](../AGENTS.md) · [Tareas](../TAREAS.md) · [Arquitectura](../docs/ARQUITECTURA.md) · [Demo (testnet)](../docs/DEMO.md) · [Mapa (hub)](../docs/MAPA.md) · [PLAN-OPUS — la biblia](../docs/PLAN-OPUS.md)
 - Tags: #quickchain #paquete
 <!-- /enlaces:auto -->
+
+## /crear (fábrica)
+`web/app/crear/page.tsx` + `web/lib/fabrica.ts`: el usuario Cavos firma `crear` en la [fábrica](../contracts/fabrica-presupuesto/AGENTS.md) (dueño = su `G…`, agente demo o pegado), ve su `C…` y sigue a `/presupuesto?contract=C…`. `NEXT_PUBLIC_FACTORY_CONTRACT_ID` cambia la fábrica.
