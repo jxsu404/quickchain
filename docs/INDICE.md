@@ -14,6 +14,7 @@
 | [DEMO.md](DEMO.md) | Guion de la demo y links de transacciones |
 | [pruebas-q1.md](pruebas-q1.md) | Pruebas reales de Q1 en testnet (txs y fees) |
 | [transacciones.md](transacciones.md) | Hashes de testnet (vacío hasta Q10) y link a Stellar Expert |
+| [deploy-api.md](deploy-api.md) | Deploy del vendedor api-demo (Render / Docker) |
 | [COSTOS.md](COSTOS.md) | Fees medidos en testnet y comisión de 1 % (Q8) |
 | [../api-demo/AGENTS.md](../api-demo/AGENTS.md) | Vendedor demo `api-demo/servidor/vendedor.ts` (`/tipo-cambio`, `/caro`) y facilitador x402 (Q3) |
 | [PITCH.md](PITCH.md) | Pitch (borrador) |

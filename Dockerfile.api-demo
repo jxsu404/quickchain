@@ -1,0 +1,11 @@
+# Alternativa a render.yaml (Railway, Fly, cualquier host con Docker). Ver docs/deploy-api.md.
+FROM node:22-slim
+WORKDIR /app
+RUN corepack enable
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY api-demo/package.json api-demo/
+RUN pnpm install --frozen-lockfile --filter api-demo...
+COPY api-demo/ api-demo/
+ENV PORT=4020
+EXPOSE 4020
+CMD ["pnpm", "--filter", "api-demo", "vendedor"]
