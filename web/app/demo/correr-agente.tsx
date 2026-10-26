@@ -104,7 +104,7 @@ export default function CorrerAgente() {
       )}
       {final?.tipo === "bloqueado" && (
         <p style={{ padding: "0.75rem", border: "2px solid #c0392b", borderRadius: 8 }}>
-          <strong>⛔ {final.motivo === "TopeAlcanzado" ? "Bloqueado: llegó al tope" : `Bloqueado: ${final.motivo}`}</strong><br />
+          <strong>⛔ {final.motivo === "TopeAlcanzado" ? "Bloqueado: llegó al límite" : `Bloqueado: ${final.motivo}`}</strong><br />
           <small>Call {final.n} was rejected by the contract during simulation: no transaction was sent and no money moved.</small>
         </p>
       )}
